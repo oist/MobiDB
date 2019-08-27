@@ -1,0 +1,50 @@
+designWidget:
+
+<designWidget>:
+    canvas.before:
+        Color:
+            rgba: 0.4, 0.4, 0.4, 0.4
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Label:
+            text_size: self.size
+            text: 'Searching in MobiDB'
+
+            halign: 'left'
+            size_hint_x: 1
+            size_hint_y:0.5
+            font_size: 24
+
+        Label:
+            size_hint_y: 0.1
+
+            text:''
+
+        BoxLayout:
+            size_hint_x:0.9
+            size_hint_y:0.4
+            orientation: 'horizontal'
+
+            TextInput:
+                id:text_box
+                font_size: 22
+                focus: True
+                on_text_validate: root.btnClicked_text()
+
+
+        FloatLayout:
+            Button:
+                text: "Search"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.75, "y":0}
+                font_size: 20
+
+                on_press: root.btnClicked_text()
+
