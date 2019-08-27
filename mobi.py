@@ -43,7 +43,7 @@ class Search_Screen(Screen):
         self.connect_mythread = threading.Thread(target=self.connect_uniprot_thread)   # Uniprotに接続するためのスレッドを生成
         self.connect_mythread.start()                                                  # Uniprotに接続開始
 
-        logger.debug('end init_SearchScreen')
+        logger.debug('End init_SearchScreen')
 
     def connect_uniprot_thread(self):
         # Uniprotに接続する
@@ -53,44 +53,40 @@ class Search_Screen(Screen):
         from bioservices import UniProt     # Uniprotのメソッドをインポート
         self.service = UniProt()            # ネットに接続する
 
-        logger.debug('Start connect_uniprot_thread')
+        logger.debug('End connect_uniprot_thread')
 
     def press_search_button(self):
         #ボタンイベント，waitに画面遷移し、threadを開始する
 
         logger.debug('Start press_search_button')
-        # t1 = time.time()                             # 測定開始
+
         self.connect_mythread.join()
 
         sm.add_widget(Wait_Screen(name='wait'))
         sm.current = 'wait'
 
-        self.search_start()
-
-        sm.add_widget(Output_Screen(name='output'))
-        sm.current = 'output'
-
-
-        print(self.result)
-
-        # t2 = time.time()                              # 測定終了
-        # elapsed_time = t2 - t1                        # 処理にかかった時間を計算する
-        # print(f"経過時間：{elapsed_time}")
-        logger.debug('End press_search_button')
-
-    def search_start(self):
         self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)
         self.search_mythread.start()
-        self.search_mythread.join()
 
+
+        logger.debug('End press_search_button')
 
     def search_to_uniprot_thread(self):
         # データを探す
 
         logger.debug('Start search_to_uniprot_thread')
 
+        t1 = time.time()                             # 測定開始
+        
         query = self.ids["text_box"].text                       # 検索用の値をqueryとして代入
-        self.result = self.service.search("keyword:" + query)   # データを抽出し出力.
+        result = self.service.search("keyword:" + query)   # データを抽出し出力.
+
+        t2 = time.time()  # 測定終了
+        elapsed_time = t2 - t1  # 処理にかかった時間を計算する
+        print(f"経過時間：{elapsed_time}")
+
+        sm.add_widget(Output_Screen(name='output'))
+        sm.current = 'output'
 
         logger.debug('End search_to_uniprot_thread')
 
