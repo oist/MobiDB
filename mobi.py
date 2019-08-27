@@ -60,19 +60,15 @@ class Search_Screen(Screen):
 
         logger.debug('Start press_search_button')
         # t1 = time.time()                             # 測定開始
-
-        self.wait_screen_mythread = threading.Thread(target=self.wait_screen_thread)
-        self.wait_screen_mythread.start()
-        self.wait_screen_mythread.join()
         self.connect_mythread.join()
 
-        self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)
-        self.search_mythread.start()
-        self.search_mythread.join()
+        sm.add_widget(Wait_Screen(name='wait'))
+        sm.current = 'wait'
 
-        self.output_screen_mythread = threading.Thread(target=self.output_screen_thread)
-        self.output_screen_mythread.start()
-        self.output_screen_mythread.join()
+        self.search_start()
+
+        sm.add_widget(Output_Screen(name='output'))
+        sm.current = 'output'
 
 
         print(self.result)
@@ -81,6 +77,11 @@ class Search_Screen(Screen):
         # elapsed_time = t2 - t1                        # 処理にかかった時間を計算する
         # print(f"経過時間：{elapsed_time}")
         logger.debug('End press_search_button')
+
+    def search_start(self):
+        self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)
+        self.search_mythread.start()
+        self.search_mythread.join()
 
 
     def search_to_uniprot_thread(self):
@@ -93,26 +94,6 @@ class Search_Screen(Screen):
 
         logger.debug('End search_to_uniprot_thread')
 
-
-    def wait_screen_thread(self):
-        # ボタンイベント，waitに画面遷移する
-
-        logger.debug('Start wait_Screen_thread')
-
-        sm.add_widget(Wait_Screen(name='wait'))
-        sm.current = 'wait'
-
-        logger.debug('End wait_Screen_thread')
-
-    def output_screen_thread(self):
-        # ボタンイベント，waitに画面遷移する
-
-        logger.debug('Start wait_Screen_thread')
-
-        sm.add_widget(Output_Screen(name='output'))
-        sm.current = 'output'
-
-        logger.debug('End wait_Screen_thread')
 
 
 class Wait_Screen(Screen):
