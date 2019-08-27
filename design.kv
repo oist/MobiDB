@@ -1,20 +1,30 @@
-designWidget:
+#:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+ScreenManagement:
+    transition:
+    Top_Screen:
+    Search_Screen:
+    Wait_Screen:
+    Output_Screen:
 
-<designWidget>:
-    canvas.before:
-        Color:
-            rgba: 0.4, 0.4, 0.4, 0.4
-        Rectangle:
-            pos: self.pos
-            size: self.size
+<Top_Screen>:
 
     BoxLayout:
-        orientation: 'vertical'
-        size: root.size
+        size:root.size
+
+        Button:
+            size:root.size
+            size_hint:None,None
+            text:'Go to search screen '
+            on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+
+<Search_Screen>:
+    BoxLayout:
+        orientation:'vertical'
+        size:root.size
 
         Label:
             text_size: self.size
-            text: 'Searching in MobiDB'
+            text:'Searching in MobiDB'
 
             halign: 'left'
             size_hint_x: 1
@@ -23,13 +33,12 @@ designWidget:
 
         Label:
             size_hint_y: 0.1
-
             text:''
 
         BoxLayout:
             size_hint_x:0.9
             size_hint_y:0.4
-            orientation: 'horizontal'
+            orientation:'horizontal'
 
             TextInput:
                 id:text_box
@@ -37,14 +46,55 @@ designWidget:
                 focus: True
                 on_text_validate: root.btnClicked_text()
 
+        Label:
+            size_hint_y: 0.1
+            text:''
 
         FloatLayout:
             Button:
-                text: "Search"
+                text:"Search"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
                 pos_hint: {"x":0.75, "y":0}
                 font_size: 20
 
-                on_press: root.btnClicked_text()
+                on_press:
+                    root.press_search_button()
 
+<Wait_Screen>:
+    BoxLayout:
+        orientation:'vertical'
+        size: root.size
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        Label:
+            text_size: self.size
+            text:'Searching Now'
+
+            halign:'left'
+            size_hint_x: 1
+            size_hint_y:0.8
+            font_size: 24
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        Button:
+            size: 50,50
+            size_hint: None,None
+            text:"cancel"
+            on_press: root.press_cancel_button()#Wait_Screenのメソッドが実行される
+
+<Output_Screen>:
+    BoxLayout:
+        size: root.size
+
+        Button:
+            size: 50,50
+            size_hint: None,None
+            text:'finish'
+            on_press: root.press_return_button()#Output_Screenのメソッドが実行される
