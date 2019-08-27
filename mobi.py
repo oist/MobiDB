@@ -14,7 +14,6 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
-
 logger.debug('hello')
 
 
@@ -23,6 +22,7 @@ class Top_Screen(Screen):
 
     def press_enter_button(self):
         #ボタンイベント，searchに画面遷移する
+
         logger.debug('Start press_enter_button')
 
         sm.add_widget(Search_Screen(name='search'))         # Search画面を生成する
@@ -60,14 +60,13 @@ class Search_Screen(Screen):
 
         logger.debug('Start press_search_button')
 
-        self.connect_mythread.join()
+        self.connect_mythread.join()                # Uniprotに接続するまで待機
 
-        sm.add_widget(Wait_Screen(name='wait'))
-        sm.current = 'wait'
+        sm.add_widget(Wait_Screen(name='wait'))     # wait画面を生成
+        sm.current = 'wait'                         # wait画面に移動
 
-        self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)
-        self.search_mythread.start()
-
+        self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)   # 検索するためのスレッドを用意する
+        self.search_mythread.start()                                                    # 検索するためのスレッドをスタートする
 
         logger.debug('End press_search_button')
 
@@ -76,20 +75,19 @@ class Search_Screen(Screen):
 
         logger.debug('Start search_to_uniprot_thread')
 
-        t1 = time.time()                             # 測定開始
+        t1 = time.time()                                   # 測定開始
         
-        query = self.ids["text_box"].text                       # 検索用の値をqueryとして代入
+        query = self.ids["text_box"].text                  # 検索用の値をqueryとして代入
         result = self.service.search("keyword:" + query)   # データを抽出し出力.
 
-        t2 = time.time()  # 測定終了
-        elapsed_time = t2 - t1  # 処理にかかった時間を計算する
+        t2 = time.time()                                   # 測定終了
+        elapsed_time = t2 - t1                             # 処理にかかった時間を計算する
         print(f"経過時間：{elapsed_time}")
 
         sm.add_widget(Output_Screen(name='output'))
         sm.current = 'output'
 
         logger.debug('End search_to_uniprot_thread')
-
 
 
 class Wait_Screen(Screen):
@@ -105,6 +103,7 @@ class Wait_Screen(Screen):
 
         logger.debug('End press_cancel_button')
 
+
 class Output_Screen(Screen):
     """output画面"""
 
@@ -118,9 +117,9 @@ class Output_Screen(Screen):
 
         logger.debug('End press_return_button')
 
+
 class ScreenManagement(ScreenManager):
     pass
-
 
 
 class mobiApp(App):
@@ -132,7 +131,6 @@ class mobiApp(App):
 
         logger.debug('End mobiApp')
         return sm
-
 
 
 if __name__ == '__main__':
