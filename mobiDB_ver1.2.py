@@ -47,7 +47,7 @@ class designWidget(Widget):
 class designApp(App):
     def __init__(self, **kwargs):
         super(designApp, self).__init__(**kwargs)
-        self.title = 'Search form'
+
 
 
 if __name__ == '__main__':
