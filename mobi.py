@@ -4,15 +4,19 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import threading
 from kivy.core.window import Window
 from kivy.lang import Builder
-
-
-
+import time
+import logging
+#デバック用のスレッドを残す
+logging.basicConfig(level=logging.DEBUG,
+                    format='[%(levelname)s] (%(threadName)-10s) %(message)s',
+                    )
+logging.debug('Starting')
+logging.debug('Exiting')
 
 class Top_Screen(Screen):
     """Top画面"""
 
     def press_enter_button(self):
-        print("1")
         sm.add_widget(Search_Screen(name='search'))# 初期処理を動かしたい画面は遷移の直前に追加する
         sm.remove_widget(self)
         sm.current = 'search'#遷移
@@ -32,27 +36,26 @@ class Search_Screen(Screen):
         sm.add_widget(Wait_Screen(name='wait'))# 初期処理を動かしたい画面は遷移の直前に追加する
         sm.current = 'wait'#遷移
         self.mythread.start()#スレッドスタート]
-        self.mythread.join
-        threading.active_count()
+        self.mythread.setDaemon(True)
 
 
     def search_to_uniprot_thread(self):
         # Uniprotに接続
+        from bioservices import UniProt
+        service = UniProt()
 
-            from bioservices import UniProt
-            service = UniProt()
 
-            # 検索用の値をqueryとして代入
+        # 検索用の値をqueryとして代入
 
-            query = self.ids["text_box"].text
+        query = self.ids["text_box"].text
 
-            # データを抽出し出力.
-            result = service.search("keyword:" + query)
-            print(result)
-            print("finish")
+        # データを抽出し出力.
+        result = service.search("keyword:" + query)
+        print(result)
+        print("finish")
 
-            sm.add_widget(Output_Screen(name='output'))# 初期処理を動かしたい画面は遷移の直前に追加する
-            sm.current = 'output'
+        sm.add_widget(Output_Screen(name='output'))# 初期処理を動かしたい画面は遷移の直前に追加する
+        sm.current = 'output'
 
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""

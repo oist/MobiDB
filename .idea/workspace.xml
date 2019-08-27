@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2aa2d9e8-0608-4510-ae14-6632f2f8f0ce" name="Default Changelist" comment="" />
+    <list default="true" id="2aa2d9e8-0608-4510-ae14-6632f2f8f0ce" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mobi.py" beforeDir="false" afterPath="$PROJECT_DIR$/mobi.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,10 +15,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobi.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+            <state relative-caret-position="255">
+              <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
               <folding>
-                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#24#48#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -31,12 +33,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/mobiDB_ver1.2.py" />
+        <option value="$PROJECT_DIR$/mobi.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="328" />
-    <option name="y" value="-21" />
+    <option name="x" value="180" />
+    <option name="y" value="-8" />
     <option name="width" value="974" />
     <option name="height" value="1167" />
   </component>
@@ -120,7 +123,7 @@
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13909379" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -143,10 +146,10 @@
     <entry file="file://$PROJECT_DIR$/mobiDB_ver1.2.py" />
     <entry file="file://$PROJECT_DIR$/mobi.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="31" lean-forward="true" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
+        <state relative-caret-position="255">
+          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#24#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
