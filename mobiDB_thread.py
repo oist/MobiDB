@@ -18,9 +18,9 @@ def worker(i, lengs):
     print(start_num)
     print(end_num)
 
-    #for query in itertools.islice(fr_line, start_num, end_num):
-        #result = service.search("id:" + query)
-        #fw.write(result + "\n")
+    for query in itertools.islice(fr_line, start_num, end_num):
+        result = service.search("id:" + query)
+        fw.write(result + "\n")
 
     time.sleep(1)
     logging.debug('end')
@@ -30,7 +30,7 @@ if __name__ == '__main__':
     t1 = time.time()
     threads = []
     service = UniProt()
-    core = 8
+    core = 5
 
     with open("result.txt", "w") as fw:
         with open("MobiDB_ID_small.txt") as fr:
