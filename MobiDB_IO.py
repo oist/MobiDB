@@ -2,14 +2,20 @@ from bioservices import UniProt  # Uniprotのメソッドをインポート
 if __name__ == '__main__':
     service = UniProt()
 
-    with open("MobiDB_ID.txt") as fr:
-        for s_line in fr:
-            s_line = fr.readline()
-            query = s_line
-            result = service.search(query)
+    with open("result.txt", "w") as fw:
+        with open("MobiDB_ID_small.txt") as fr:
 
-            with open("result.txt", mode='w') as fw:
-                fw.write(result + "\n")
+            fr_line = fr.readlines()
+            leng = len(fr_line)
+
+
+        for line in fr_line:
+
+            query = line
+            result = service.search("id:" + query)
+            fw.write(result + "\n")
+
 
     print("finish")
+
 

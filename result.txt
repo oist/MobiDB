@@ -1,25 +1,102 @@
 Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O43760	SNG2_HUMAN	reviewed	Synaptogyrin-2 (Cellugyrin)	SYNGR2 UNQ352/PRO615	Homo sapiens (Human)	224
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P31994	FCG2B_HUMAN	reviewed	Low affinity immunoglobulin gamma Fc region receptor II-b (IgG Fc receptor II-b) (CDw32) (Fc-gamma RII-b) (Fc-gamma-RIIb) (FcRII-b) (CD antigen CD32)	FCGR2B CD32 FCG2 IGFR2	Homo sapiens (Human)	310
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O14829	PPE1_HUMAN	reviewed	Serine/threonine-protein phosphatase with EF-hands 1 (PPEF-1) (EC 3.1.3.16) (Protein phosphatase with EF calcium-binding domain) (PPEF) (Serine/threonine-protein phosphatase 7) (PP7)	PPEF1 PPEF PPP7C	Homo sapiens (Human)	653
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P43360	MAGA6_HUMAN	reviewed	Melanoma-associated antigen 6 (Cancer/testis antigen 1.6) (CT1.6) (MAGE-6 antigen) (MAGE3B antigen)	MAGEA6 MAGE6	Homo sapiens (Human)	314
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q06413	MEF2C_HUMAN	reviewed	Myocyte-specific enhancer factor 2C (Myocyte enhancer factor 2C)	MEF2C	Homo sapiens (Human)	473
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8NH61	O51F2_HUMAN	reviewed	Olfactory receptor 51F2 (Olfactory receptor OR11-23)	OR51F2	Homo sapiens (Human)	342
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q969H0	FBXW7_HUMAN	reviewed	F-box/WD repeat-containing protein 7 (Archipelago homolog) (hAgo) (F-box and WD-40 domain-containing protein 7) (F-box protein FBX30) (SEL-10) (hCdc4)	FBXW7 FBW7 FBX30 SEL10	Homo sapiens (Human)	707
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9H1Z9	TSN10_HUMAN	reviewed	Tetraspanin-10 (Tspan-10) (Oculospanin)	TSPAN10 OCSP	Homo sapiens (Human)	355
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8IXK0	PHC2_HUMAN	reviewed	Polyhomeotic-like protein 2 (hPH2) (Early development regulatory protein 2)	PHC2 EDR2 PH2	Homo sapiens (Human)	858
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q92728	Q92728_HUMAN	unreviewed	Mutated retinoblastoma protein (Retinoblastoma-associated protein)	RB1	Homo sapiens (Human)	53
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8N187	CARTF_HUMAN	reviewed	Calcium-responsive transcription factor (Amyotrophic lateral sclerosis 2 chromosomal region candidate gene 8 protein) (Calcium-response factor) (CaRF) (Testis development protein NYD-SP24)	CARF ALS2CR8	Homo sapiens (Human)	725
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O75628	REM1_HUMAN	reviewed	GTP-binding protein REM 1 (GTPase-regulating endothelial cell sprouting) (Rad and Gem-like GTP-binding protein 1)	REM1 GES REM	Homo sapiens (Human)	298
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8IWA0	WDR75_HUMAN	reviewed	WD repeat-containing protein 75 (U3 small nucleolar RNA-associated protein 17 homolog)	WDR75 UTP17	Homo sapiens (Human)	830
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P19784	CSK22_HUMAN	reviewed	Casein kinase II subunit alpha' (CK II alpha') (EC 2.7.11.1)	CSNK2A2 CK2A2	Homo sapiens (Human)	350
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P42025	ACTY_HUMAN	reviewed	Beta-centractin (Actin-related protein 1B) (ARP1B)	ACTR1B CTRN2	Homo sapiens (Human)	376
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P06493	CDK1_HUMAN	reviewed	Cyclin-dependent kinase 1 (CDK1) (EC 2.7.11.22) (EC 2.7.11.23) (Cell division control protein 2 homolog) (Cell division protein kinase 1) (p34 protein kinase)	CDK1 CDC2 CDC28A CDKN1 P34CDC2	Homo sapiens (Human)	297
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9HDB9	GAK5_HUMAN	reviewed	Endogenous retrovirus group K member 5 Gag polyprotein (HERV-K(II) Gag protein) (HERV-K_3q12.3 provirus ancestral Gag polyprotein) (Gag polyprotein)	ERVK-5 ERVK5	Homo sapiens (Human)	667
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9Y6R6	Z780B_HUMAN	reviewed	Zinc finger protein 780B (Zinc finger protein 779)	ZNF780B ZNF779	Homo sapiens (Human)	833
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96NN9	AIFM3_HUMAN	reviewed	Apoptosis-inducing factor 3 (EC 1.-.-.-) (Apoptosis-inducing factor-like protein)	AIFM3 AIFL	Homo sapiens (Human)	605
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P01814	HV270_HUMAN	reviewed	Immunoglobulin heavy variable 2-70 (Ig heavy chain V-II region COR) (Ig heavy chain V-II region DAW) (Ig heavy chain V-II region OU) (Ig heavy chain V-II region SESS)	IGHV2-70	Homo sapiens (Human)	119
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q16555	DPYL2_HUMAN	reviewed	Dihydropyrimidinase-related protein 2 (DRP-2) (Collapsin response mediator protein 2) (CRMP-2) (N2A3) (Unc-33-like phosphoprotein 2) (ULIP-2)	DPYSL2 CRMP2 ULIP2	Homo sapiens (Human)	572
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O14633	LCE2B_HUMAN	reviewed	Late cornified envelope protein 2B (Late envelope protein 10) (Skin-specific protein Xp5) (Small proline-rich-like epidermal differentiation complex protein 1B)	LCE2B LEP10 SPRL1B XP5	Homo sapiens (Human)	110
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8NCP5	ZBT44_HUMAN	reviewed	Zinc finger and BTB domain-containing protein 44 (BTB/POZ domain-containing protein 15) (Zinc finger protein 851)	ZBTB44 BTBD15 ZNF851	Homo sapiens (Human)	570
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9HCJ6	VAT1L_HUMAN	reviewed	Synaptic vesicle membrane protein VAT-1 homolog-like (EC 1.-.-.-)	VAT1L KIAA1576	Homo sapiens (Human)	419
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P02741	CRP_HUMAN	reviewed	C-reactive protein [Cleaved into: C-reactive protein(1-205)]	CRP PTX1	Homo sapiens (Human)	224
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P13647	K2C5_HUMAN	reviewed	Keratin, type II cytoskeletal 5 (58 kDa cytokeratin) (Cytokeratin-5) (CK-5) (Keratin-5) (K5) (Type-II keratin Kb5)	KRT5	Homo sapiens (Human)	590
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5T0L3	SPT46_HUMAN	reviewed	Spermatogenesis-associated protein 46	SPATA46 C1orf111 HSD20	Homo sapiens (Human)	261
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
 Q93009	UBP7_HUMAN	reviewed	Ubiquitin carboxyl-terminal hydrolase 7 (EC 3.4.19.12) (Deubiquitinating enzyme 7) (Herpesvirus-associated ubiquitin-specific protease) (Ubiquitin thioesterase 7) (Ubiquitin-specific-processing protease 7)	USP7 HAUSP	Homo sapiens (Human)	1102
-Q6W2J9	BCOR_HUMAN	reviewed	BCL-6 corepressor (BCoR)	BCOR KIAA1575	Homo sapiens (Human)	1755
-Q9HC52	CBX8_HUMAN	reviewed	Chromobox protein homolog 8 (Polycomb 3 homolog) (Pc3) (hPc3) (Rectachrome 1)	CBX8 PC3 RC1	Homo sapiens (Human)	389
-Q00987	MDM2_HUMAN	reviewed	E3 ubiquitin-protein ligase Mdm2 (EC 2.3.2.27) (Double minute 2 protein) (Hdm2) (Oncoprotein Mdm2) (RING-type E3 ubiquitin transferase Mdm2) (p53-binding protein Mdm2)	MDM2	Homo sapiens (Human)	491
-Q99836	MYD88_HUMAN	reviewed	Myeloid differentiation primary response protein MyD88	MYD88	Homo sapiens (Human)	296
-P60484	PTEN_HUMAN	reviewed	Phosphatidylinositol 3,4,5-trisphosphate 3-phosphatase and dual-specificity protein phosphatase PTEN (EC 3.1.3.16) (EC 3.1.3.48) (EC 3.1.3.67) (Mutated in multiple advanced cancers 1) (Phosphatase and tensin homolog)	PTEN MMAC1 TEP1	Homo sapiens (Human)	403
-P04637	P53_HUMAN	reviewed	Cellular tumor antigen p53 (Antigen NY-CO-13) (Phosphoprotein p53) (Tumor suppressor p53)	TP53 P53	Homo sapiens (Human)	393
-Q99496	RING2_HUMAN	reviewed	E3 ubiquitin-protein ligase RING2 (EC 2.3.2.27) (Huntingtin-interacting protein 2-interacting protein 3) (HIP2-interacting protein 3) (Protein DinG) (RING finger protein 1B) (RING1b) (RING finger protein 2) (RING finger protein BAP-1) (RING-type E3 ubiquitin transferase RING2)	RNF2 BAP1 DING HIPI3 RING1B	Homo sapiens (Human)	336
-Q06587	RING1_HUMAN	reviewed	E3 ubiquitin-protein ligase RING1 (EC 2.3.2.27) (Polycomb complex protein RING1) (RING finger protein 1) (RING-type E3 ubiquitin transferase RING1) (Really interesting new gene 1 protein)	RING1 RNF1	Homo sapiens (Human)	406
-O35618	MDM4_MOUSE	reviewed	Protein Mdm4 (Double minute 4 protein) (Mdm2-like p53-binding protein) (Protein Mdmx) (p53-binding protein Mdm4)	Mdm4 Mdmx	Mus musculus (Mouse)	489
-P35227	PCGF2_HUMAN	reviewed	Polycomb group RING finger protein 2 (DNA-binding protein Mel-18) (RING finger protein 110) (Zinc finger protein 144)	PCGF2 MEL18 RNF110 ZNF144	Homo sapiens (Human)	344
-Q99426	TBCB_HUMAN	reviewed	Tubulin-folding cofactor B (Cytoskeleton-associated protein 1) (Cytoskeleton-associated protein CKAPI) (Tubulin-specific chaperone B)	TBCB CG22 CKAP1	Homo sapiens (Human)	244
-P06400	RB_HUMAN	reviewed	Retinoblastoma-associated protein (p105-Rb) (pRb) (Rb) (pp110)	RB1	Homo sapiens (Human)	928
-P84022	SMAD3_HUMAN	reviewed	Mothers against decapentaplegic homolog 3 (MAD homolog 3) (Mad3) (Mothers against DPP homolog 3) (hMAD-3) (JV15-2) (SMAD family member 3) (SMAD 3) (Smad3) (hSMAD3)	SMAD3 MADH3	Homo sapiens (Human)	425
-O15151	MDM4_HUMAN	reviewed	Protein Mdm4 (Double minute 4 protein) (Mdm2-like p53-binding protein) (Protein Mdmx) (p53-binding protein Mdm4)	MDM4 MDMX	Homo sapiens (Human)	490
-Q9UER7	DAXX_HUMAN	reviewed	Death domain-associated protein 6 (Daxx) (hDaxx) (ETS1-associated protein 1) (EAP1) (Fas death domain-associated protein)	DAXX BING2 DAP6	Homo sapiens (Human)	740
-Q5U5Q3	MEX3C_HUMAN	reviewed	RNA-binding E3 ubiquitin-protein ligase MEX3C (EC 2.3.2.27) (RING finger and KH domain-containing protein 2) (RING finger protein 194) (RING-type E3 ubiquitin transferase MEX3C)	MEX3C RKHD2 RNF194 BM-013	Homo sapiens (Human)	659
-P35226	BMI1_HUMAN	reviewed	Polycomb complex protein BMI-1 (Polycomb group RING finger protein 4) (RING finger protein 51)	BMI1 PCGF4 RNF51	Homo sapiens (Human)	326
-P21145	MAL_HUMAN	reviewed	Myelin and lymphocyte protein (T-lymphocyte maturation-associated protein)	MAL	Homo sapiens (Human)	153
-P03211	EBNA1_EBVB9	reviewed	Epstein-Barr nuclear antigen 1 (EBNA-1) (EBV nuclear antigen 1)	EBNA1 BKRF1	Epstein-Barr virus (strain B95-8) (HHV-4) (Human herpesvirus 4)	641
-Q86VY4	TSYL5_HUMAN	reviewed	Testis-specific Y-encoded-like protein 5 (TSPY-like protein 5)	TSPYL5 KIAA1750	Homo sapiens (Human)	417
-Q77UV9	Q77UV9_HHV8	unreviewed	ORF 45 (ORF45) (ORF45 protein)	KIE-2 ORF45	Human herpesvirus 8 (HHV-8) (Kaposi's sarcoma-associated herpesvirus)	407
-F5H9D8	F5H9D8_HHV8	unreviewed	K10 (VIRF-4 protein)	vIRF-4 VIRF-4	Human herpesvirus 8 (HHV-8) (Kaposi's sarcoma-associated herpesvirus)	911
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P57738	TCTA_HUMAN	reviewed	T-cell leukemia translocation-altered gene protein (T-cell leukemia translocation-associated gene protein)	TCTA	Homo sapiens (Human)	103
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P39656	OST48_HUMAN	reviewed	Dolichyl-diphosphooligosaccharide--protein glycosyltransferase 48 kDa subunit (DDOST 48 kDa subunit) (Oligosaccharyl transferase 48 kDa subunit)	DDOST KIAA0115 OST48 OK/SW-cl.45	Homo sapiens (Human)	456
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9C075	K1C23_HUMAN	reviewed	Keratin, type I cytoskeletal 23 (Cytokeratin-23) (CK-23) (Keratin-23) (K23)	KRT23	Homo sapiens (Human)	422
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9Y5E3	PCDB6_HUMAN	reviewed	Protocadherin beta-6 (PCDH-beta-6)	PCDHB6	Homo sapiens (Human)	794
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q2VIR3	IF2GL_HUMAN	reviewed	Eukaryotic translation initiation factor 2 subunit 3B (Eukaryotic translation initiation factor 2 subunit gamma A) (eIF-2-gamma A) (eIF-2gA)	EIF2S3B	Homo sapiens (Human)	472
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O60266	ADCY3_HUMAN	reviewed	Adenylate cyclase type 3 (EC 4.6.1.1) (ATP pyrophosphate-lyase 3) (Adenylate cyclase type III) (AC-III) (Adenylate cyclase, olfactive type) (Adenylyl cyclase 3) (AC3)	ADCY3 KIAA0511	Homo sapiens (Human)	1144
 
