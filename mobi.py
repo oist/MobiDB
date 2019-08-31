@@ -80,7 +80,12 @@ class Search_Screen(Screen):
         query = self.ids["text_box"].text                  # 検索用の値をqueryとして代入
         result = self.service.search("keyword:" + query)   # データを抽出し出力.
 
-        t2 = time.time()                                   # 測定終了
+        #query = "GL1147"
+        #result = self.service.search(query)
+
+        t2 = time.time()
+        print(result)
+        # 測定終了
         elapsed_time = t2 - t1                             # 処理にかかった時間を計算する
         print(f"経過時間：{elapsed_time}")
 

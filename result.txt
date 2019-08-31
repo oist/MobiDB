@@ -1,0 +1,25 @@
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q93009	UBP7_HUMAN	reviewed	Ubiquitin carboxyl-terminal hydrolase 7 (EC 3.4.19.12) (Deubiquitinating enzyme 7) (Herpesvirus-associated ubiquitin-specific protease) (Ubiquitin thioesterase 7) (Ubiquitin-specific-processing protease 7)	USP7 HAUSP	Homo sapiens (Human)	1102
+Q6W2J9	BCOR_HUMAN	reviewed	BCL-6 corepressor (BCoR)	BCOR KIAA1575	Homo sapiens (Human)	1755
+Q9HC52	CBX8_HUMAN	reviewed	Chromobox protein homolog 8 (Polycomb 3 homolog) (Pc3) (hPc3) (Rectachrome 1)	CBX8 PC3 RC1	Homo sapiens (Human)	389
+Q00987	MDM2_HUMAN	reviewed	E3 ubiquitin-protein ligase Mdm2 (EC 2.3.2.27) (Double minute 2 protein) (Hdm2) (Oncoprotein Mdm2) (RING-type E3 ubiquitin transferase Mdm2) (p53-binding protein Mdm2)	MDM2	Homo sapiens (Human)	491
+Q99836	MYD88_HUMAN	reviewed	Myeloid differentiation primary response protein MyD88	MYD88	Homo sapiens (Human)	296
+P60484	PTEN_HUMAN	reviewed	Phosphatidylinositol 3,4,5-trisphosphate 3-phosphatase and dual-specificity protein phosphatase PTEN (EC 3.1.3.16) (EC 3.1.3.48) (EC 3.1.3.67) (Mutated in multiple advanced cancers 1) (Phosphatase and tensin homolog)	PTEN MMAC1 TEP1	Homo sapiens (Human)	403
+P04637	P53_HUMAN	reviewed	Cellular tumor antigen p53 (Antigen NY-CO-13) (Phosphoprotein p53) (Tumor suppressor p53)	TP53 P53	Homo sapiens (Human)	393
+Q99496	RING2_HUMAN	reviewed	E3 ubiquitin-protein ligase RING2 (EC 2.3.2.27) (Huntingtin-interacting protein 2-interacting protein 3) (HIP2-interacting protein 3) (Protein DinG) (RING finger protein 1B) (RING1b) (RING finger protein 2) (RING finger protein BAP-1) (RING-type E3 ubiquitin transferase RING2)	RNF2 BAP1 DING HIPI3 RING1B	Homo sapiens (Human)	336
+Q06587	RING1_HUMAN	reviewed	E3 ubiquitin-protein ligase RING1 (EC 2.3.2.27) (Polycomb complex protein RING1) (RING finger protein 1) (RING-type E3 ubiquitin transferase RING1) (Really interesting new gene 1 protein)	RING1 RNF1	Homo sapiens (Human)	406
+O35618	MDM4_MOUSE	reviewed	Protein Mdm4 (Double minute 4 protein) (Mdm2-like p53-binding protein) (Protein Mdmx) (p53-binding protein Mdm4)	Mdm4 Mdmx	Mus musculus (Mouse)	489
+P35227	PCGF2_HUMAN	reviewed	Polycomb group RING finger protein 2 (DNA-binding protein Mel-18) (RING finger protein 110) (Zinc finger protein 144)	PCGF2 MEL18 RNF110 ZNF144	Homo sapiens (Human)	344
+Q99426	TBCB_HUMAN	reviewed	Tubulin-folding cofactor B (Cytoskeleton-associated protein 1) (Cytoskeleton-associated protein CKAPI) (Tubulin-specific chaperone B)	TBCB CG22 CKAP1	Homo sapiens (Human)	244
+P06400	RB_HUMAN	reviewed	Retinoblastoma-associated protein (p105-Rb) (pRb) (Rb) (pp110)	RB1	Homo sapiens (Human)	928
+P84022	SMAD3_HUMAN	reviewed	Mothers against decapentaplegic homolog 3 (MAD homolog 3) (Mad3) (Mothers against DPP homolog 3) (hMAD-3) (JV15-2) (SMAD family member 3) (SMAD 3) (Smad3) (hSMAD3)	SMAD3 MADH3	Homo sapiens (Human)	425
+O15151	MDM4_HUMAN	reviewed	Protein Mdm4 (Double minute 4 protein) (Mdm2-like p53-binding protein) (Protein Mdmx) (p53-binding protein Mdm4)	MDM4 MDMX	Homo sapiens (Human)	490
+Q9UER7	DAXX_HUMAN	reviewed	Death domain-associated protein 6 (Daxx) (hDaxx) (ETS1-associated protein 1) (EAP1) (Fas death domain-associated protein)	DAXX BING2 DAP6	Homo sapiens (Human)	740
+Q5U5Q3	MEX3C_HUMAN	reviewed	RNA-binding E3 ubiquitin-protein ligase MEX3C (EC 2.3.2.27) (RING finger and KH domain-containing protein 2) (RING finger protein 194) (RING-type E3 ubiquitin transferase MEX3C)	MEX3C RKHD2 RNF194 BM-013	Homo sapiens (Human)	659
+P35226	BMI1_HUMAN	reviewed	Polycomb complex protein BMI-1 (Polycomb group RING finger protein 4) (RING finger protein 51)	BMI1 PCGF4 RNF51	Homo sapiens (Human)	326
+P21145	MAL_HUMAN	reviewed	Myelin and lymphocyte protein (T-lymphocyte maturation-associated protein)	MAL	Homo sapiens (Human)	153
+P03211	EBNA1_EBVB9	reviewed	Epstein-Barr nuclear antigen 1 (EBNA-1) (EBV nuclear antigen 1)	EBNA1 BKRF1	Epstein-Barr virus (strain B95-8) (HHV-4) (Human herpesvirus 4)	641
+Q86VY4	TSYL5_HUMAN	reviewed	Testis-specific Y-encoded-like protein 5 (TSPY-like protein 5)	TSPYL5 KIAA1750	Homo sapiens (Human)	417
+Q77UV9	Q77UV9_HHV8	unreviewed	ORF 45 (ORF45) (ORF45 protein)	KIE-2 ORF45	Human herpesvirus 8 (HHV-8) (Kaposi's sarcoma-associated herpesvirus)	407
+F5H9D8	F5H9D8_HHV8	unreviewed	K10 (VIRF-4 protein)	vIRF-4 VIRF-4	Human herpesvirus 8 (HHV-8) (Kaposi's sarcoma-associated herpesvirus)	911
+
