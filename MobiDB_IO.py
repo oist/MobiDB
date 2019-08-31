@@ -12,6 +12,7 @@ if __name__ == '__main__':
         for line in fr_line:
 
             query = line
+            print(line)
             result = service.search("id:" + query)
             fw.write(result + "\n")
 
