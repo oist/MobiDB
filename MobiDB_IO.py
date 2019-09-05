@@ -8,7 +8,6 @@ if __name__ == '__main__':
             fr_line = fr.readlines()
             leng = len(fr_line)
 
-
         for line in fr_line:
 
             query = line
