@@ -157,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.mobiDB_thread">
+  <component name="RunManager" selected="Python.mobi">
     <configuration name="mobi" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="MobiDB" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,11 +265,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.mobi" />
         <item itemvalue="Python.mobiDB_thread" />
         <item itemvalue="Python.mobiDB_SQL" />
         <item itemvalue="Python.mobiDB_IO" />
         <item itemvalue="Python.thread" />
-        <item itemvalue="Python.mobi" />
       </list>
     </recent_temporary>
   </component>

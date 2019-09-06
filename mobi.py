@@ -142,7 +142,6 @@ if __name__ == '__main__':
     logger.debug('Start main')
 
     sm = ScreenManager()            # スクリーンマネージャ
-    Builder.load_file("design.kv")  # kvファイルをロードする
     Window.size = (400, 220)
     mobiApp().run()
 
