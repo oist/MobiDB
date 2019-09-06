@@ -1,0 +1,498 @@
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q969E1	LEAP2_HUMAN	reviewed	Liver-expressed antimicrobial peptide 2 (LEAP-2)	LEAP2	Homo sapiens (Human)	77
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PNZ6	E9PNZ6_HUMAN	unreviewed	Zinc finger protein 34 (Fragment)	ZNF34	Homo sapiens (Human)	158
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JW43	C9JW43_HUMAN	unreviewed	Sodium channel protein type 7 subunit alpha	SCN7A	Homo sapiens (Human)	743
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8VXF3	F8VXF3_HUMAN	unreviewed	Tastin	TROAP	Homo sapiens (Human)	126
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O00160	MYO1F_HUMAN	reviewed	Unconventional myosin-If (Myosin-Ie)	MYO1F	Homo sapiens (Human)	1098
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O43760	SNG2_HUMAN	reviewed	Synaptogyrin-2 (Cellugyrin)	SYNGR2 UNQ352/PRO615	Homo sapiens (Human)	224
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q7L5A8	FA2H_HUMAN	reviewed	Fatty acid 2-hydroxylase (EC 1.14.18.-) (Fatty acid alpha-hydroxylase)	FA2H FAAH	Homo sapiens (Human)	372
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96BJ8	ELMO3_HUMAN	reviewed	Engulfment and cell motility protein 3	ELMO3	Homo sapiens (Human)	720
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P31994	FCG2B_HUMAN	reviewed	Low affinity immunoglobulin gamma Fc region receptor II-b (IgG Fc receptor II-b) (CDw32) (Fc-gamma RII-b) (Fc-gamma-RIIb) (FcRII-b) (CD antigen CD32)	FCGR2B CD32 FCG2 IGFR2	Homo sapiens (Human)	310
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B4E3F4	B4E3F4_HUMAN	unreviewed	Integrin alpha-5 (cDNA FLJ50382, moderately similar to Integrin alpha-5)	ITGA5	Homo sapiens (Human)	137
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5T7N2	LITD1_HUMAN	reviewed	LINE-1 type transposase domain-containing protein 1 (ES cell-associated protein 11)	L1TD1 ECAT11	Homo sapiens (Human)	865
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F2Z3H2	F2Z3H2_HUMAN	unreviewed	Phosphatidylserine lipase ABHD16A	ABHD16A	Homo sapiens (Human)	65
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q6NZ63	STEAL_HUMAN	reviewed	STEAP family member 1B	STEAP1B	Homo sapiens (Human)	245
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O14829	PPE1_HUMAN	reviewed	Serine/threonine-protein phosphatase with EF-hands 1 (PPEF-1) (EC 3.1.3.16) (Protein phosphatase with EF calcium-binding domain) (PPEF) (Serine/threonine-protein phosphatase 7) (PP7)	PPEF1 PPEF PPP7C	Homo sapiens (Human)	653
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PHV5	E9PHV5_HUMAN	unreviewed	Protein ITPRID2	ITPRID2	Homo sapiens (Human)	1237
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9BRF8	CPPED_HUMAN	reviewed	Serine/threonine-protein phosphatase CPPED1 (EC 3.1.3.16) (Calcineurin-like phosphoesterase domain-containing protein 1) (Complete S-transactivated protein 1)	CPPED1 CSTP1	Homo sapiens (Human)	314
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P19823	ITIH2_HUMAN	reviewed	Inter-alpha-trypsin inhibitor heavy chain H2 (ITI heavy chain H2) (ITI-HC2) (Inter-alpha-inhibitor heavy chain 2) (Inter-alpha-trypsin inhibitor complex component II) (Serum-derived hyaluronan-associated protein) (SHAP)	ITIH2 IGHEP2	Homo sapiens (Human)	946
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O14924	RGS12_HUMAN	reviewed	Regulator of G-protein signaling 12 (RGS12)	RGS12	Homo sapiens (Human)	1447
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P43360	MAGA6_HUMAN	reviewed	Melanoma-associated antigen 6 (Cancer/testis antigen 1.6) (CT1.6) (MAGE-6 antigen) (MAGE3B antigen)	MAGEA6 MAGE6	Homo sapiens (Human)	314
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B5MD47	B5MD47_HUMAN	unreviewed	Septin-2 (Fragment)	SEPTIN2	Homo sapiens (Human)	94
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9H2S1	KCNN2_HUMAN	reviewed	Small conductance calcium-activated potassium channel protein 2 (SK2) (SKCa 2) (SKCa2) (KCa2.2)	KCNN2	Homo sapiens (Human)	579
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A075B6R4	A0A075B6R4_HUMAN	unreviewed	A-kinase anchor protein 4 (Fragment)	AKAP4	Homo sapiens (Human)	254
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+V9HW50	V9HW50_HUMAN	unreviewed	Alcohol dehydrogenase 1B (Epididymis secretory protein Li 117)	ADH1B HEL-S-117	Homo sapiens (Human)	375
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q06413	MEF2C_HUMAN	reviewed	Myocyte-specific enhancer factor 2C (Myocyte enhancer factor 2C)	MEF2C	Homo sapiens (Human)	473
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B4DM58	B4DM58_HUMAN	unreviewed	Dihydrofolate reductase (cDNA FLJ51500, highly similar to Dihydrofolate reductase)	DHFR	Homo sapiens (Human)	129
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0J9YXY3	TVB62_HUMAN	reviewed	T cell receptor beta variable 6-2	TRBV6-2	Homo sapiens (Human)	114
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H3BSM5	H3BSM5_HUMAN	unreviewed	Gamma-aminobutyric acid receptor-associated protein-like 2	GABARAPL2	Homo sapiens (Human)	88
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8NH61	O51F2_HUMAN	reviewed	Olfactory receptor 51F2 (Olfactory receptor OR11-23)	OR51F2	Homo sapiens (Human)	342
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+M0R0L7	M0R0L7_HUMAN	unreviewed	Testis-expressed protein 45 (Fragment)	TEX45	Homo sapiens (Human)	90
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q86UQ5	GTSC1_HUMAN	reviewed	Gilles de la Tourette syndrome chromosomal region candidate gene 1 protein	GTSCR1	Homo sapiens (Human)	136
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+G3V2Y3	G3V2Y3_HUMAN	unreviewed	Protein NDRG2	NDRG2	Homo sapiens (Human)	122
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y429	H0Y429_HUMAN	unreviewed	Serine/threonine-protein kinase N2 (Fragment)	PKN2	Homo sapiens (Human)	65
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q969H0	FBXW7_HUMAN	reviewed	F-box/WD repeat-containing protein 7 (Archipelago homolog) (hAgo) (F-box and WD-40 domain-containing protein 7) (F-box protein FBX30) (SEL-10) (hCdc4)	FBXW7 FBW7 FBX30 SEL10	Homo sapiens (Human)	707
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7C4B5	H7C4B5_HUMAN	unreviewed	Adipocyte enhancer-binding protein 1 (Fragment)	AEBP1	Homo sapiens (Human)	54
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P24592	IBP6_HUMAN	reviewed	Insulin-like growth factor-binding protein 6 (IBP-6) (IGF-binding protein 6) (IGFBP-6)	IGFBP6 IBP6	Homo sapiens (Human)	240
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0A0MQT0	A0A0A0MQT0_HUMAN	unreviewed	Retinol binding protein 1, cellular (Retinol-binding protein 1)	RBP1 hCG_16055	Homo sapiens (Human)	197
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B4DT28	B4DT28_HUMAN	unreviewed	Heterogeneous nuclear ribonucleoprotein R (Heterogeneous nuclear ribonucleoprotein R, isoform CRA_a) (cDNA FLJ54544, highly similar to Heterogeneous nuclear ribonucleoprotein R)	HNRNPR HNRPR hCG_38907	Homo sapiens (Human)	494
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9H1Z9	TSN10_HUMAN	reviewed	Tetraspanin-10 (Tspan-10) (Oculospanin)	TSPAN10 OCSP	Homo sapiens (Human)	355
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JVS7	C9JVS7_HUMAN	unreviewed	Testis-specific gene 13 protein (Fragment)	TSGA13	Homo sapiens (Human)	58
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B1ATL7	PRR32_HUMAN	reviewed	Proline-rich protein 32	PRR32 CXorf64	Homo sapiens (Human)	298
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A8MUN3	YQ048_HUMAN	reviewed	Putative uncharacterized protein ENSP00000381830		Homo sapiens (Human)	132
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JIR1	C9JIR1_HUMAN	unreviewed	Melanoma-associated antigen 4 (Fragment)	MAGEA4	Homo sapiens (Human)	241
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JR66	C9JR66_HUMAN	unreviewed	ETS translocation variant 5 (Fragment)	ETV5	Homo sapiens (Human)	132
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+J3KT10	J3KT10_HUMAN	unreviewed	Nuclear pore complex protein Nup85	NUP85	Homo sapiens (Human)	611
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8IXK0	PHC2_HUMAN	reviewed	Polyhomeotic-like protein 2 (hPH2) (Early development regulatory protein 2)	PHC2 EDR2 PH2	Homo sapiens (Human)	858
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A087X2G2	A0A087X2G2_HUMAN	unreviewed	Optineurin	OPTN	Homo sapiens (Human)	58
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7C4N8	H7C4N8_HUMAN	unreviewed	Integrin beta-1 (Fragment)	ITGB1	Homo sapiens (Human)	108
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y4J5	H0Y4J5_HUMAN	unreviewed	Protein disulfide-isomerase A2 (Fragment)	PDIA2	Homo sapiens (Human)	227
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q92728	Q92728_HUMAN	unreviewed	Mutated retinoblastoma protein (Retinoblastoma-associated protein)	RB1	Homo sapiens (Human)	53
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P17342	ANPRC_HUMAN	reviewed	Atrial natriuretic peptide receptor 3 (Atrial natriuretic peptide clearance receptor) (Atrial natriuretic peptide receptor type C) (ANP-C) (ANPR-C) (NPR-C)	NPR3 ANPRC C5orf23 NPRC	Homo sapiens (Human)	541
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0FGR8	ESYT2_HUMAN	reviewed	Extended synaptotagmin-2 (E-Syt2) (Chr2Syt)	ESYT2 FAM62B KIAA1228	Homo sapiens (Human)	921
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+G3XAD3	G3XAD3_HUMAN	unreviewed	Glutamate receptor ionotropic, kainate 2 (Glutamate receptor, ionotropic, kainate 2, isoform CRA_b)	GRIK2 hCG_16784	Homo sapiens (Human)	353
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8N187	CARTF_HUMAN	reviewed	Calcium-responsive transcription factor (Amyotrophic lateral sclerosis 2 chromosomal region candidate gene 8 protein) (Calcium-response factor) (CaRF) (Testis development protein NYD-SP24)	CARF ALS2CR8	Homo sapiens (Human)	725
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7C4V0	H7C4V0_HUMAN	unreviewed	PX domain-containing protein kinase-like protein (Fragment)	PXK	Homo sapiens (Human)	312
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q03828	EVX2_HUMAN	reviewed	Homeobox even-skipped homolog protein 2 (EVX-2)	EVX2	Homo sapiens (Human)	476
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9UGI6	KCNN3_HUMAN	reviewed	Small conductance calcium-activated potassium channel protein 3 (SK3) (SKCa 3) (SKCa3) (KCa2.3)	KCNN3 K3	Homo sapiens (Human)	731
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H3BT56	H3BT56_HUMAN	unreviewed	CHKB-CPT1B readthrough (NMD candidate) (Fragment)	CHKB-CPT1B	Homo sapiens (Human)	60
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O75628	REM1_HUMAN	reviewed	GTP-binding protein REM 1 (GTPase-regulating endothelial cell sprouting) (Rad and Gem-like GTP-binding protein 1)	REM1 GES REM	Homo sapiens (Human)	298
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+J3QL56	J3QL56_HUMAN	unreviewed	Protein SCO1 homolog, mitochondrial	SCO1	Homo sapiens (Human)	270
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P83436	COG7_HUMAN	reviewed	Conserved oligomeric Golgi complex subunit 7 (COG complex subunit 7) (Component of oligomeric Golgi complex 7)	COG7 UNQ3082/PRO10013	Homo sapiens (Human)	770
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q13439	GOGA4_HUMAN	reviewed	Golgin subfamily A member 4 (256 kDa golgin) (Golgin-245) (Protein 72.1) (Trans-Golgi p230)	GOLGA4	Homo sapiens (Human)	2230
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+D6RAX4	D6RAX4_HUMAN	unreviewed	DNA-binding protein RFX8	RFX8	Homo sapiens (Human)	80
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q3B8N2	LEG9B_HUMAN	reviewed	Galectin-9B (Gal-9B) (Galectin-9-like protein A)	LGALS9B	Homo sapiens (Human)	356
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8IWA0	WDR75_HUMAN	reviewed	WD repeat-containing protein 75 (U3 small nucleolar RNA-associated protein 17 homolog)	WDR75 UTP17	Homo sapiens (Human)	830
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O00483	NDUA4_HUMAN	reviewed	Cytochrome c oxidase subunit NDUFA4 (Complex I-MLRQ) (CI-MLRQ) (NADH-ubiquinone oxidoreductase MLRQ subunit)	NDUFA4	Homo sapiens (Human)	81
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A1W2PKR9	A0A1W2PKR9_HUMAN		Merged into Q5TCX8.			
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9J477	C9J477_HUMAN	unreviewed	Armadillo-like helical domain-containing protein 1 (Fragment)	ARMH1	Homo sapiens (Human)	115
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PHA6	E9PHA6_HUMAN	unreviewed	DNA mismatch repair protein	MSH2	Homo sapiens (Human)	921
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P19784	CSK22_HUMAN	reviewed	Casein kinase II subunit alpha' (CK II alpha') (EC 2.7.11.1)	CSNK2A2 CK2A2	Homo sapiens (Human)	350
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YLL5	H0YLL5_HUMAN	unreviewed	Isocitrate dehydrogenase [NADP], mitochondrial	IDH2	Homo sapiens (Human)	38
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y565	H0Y565_HUMAN	unreviewed	Glycerophosphocholine phosphodiesterase GPCPD1 (Fragment)	GPCPD1	Homo sapiens (Human)	264
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0G2JL52	A0A0G2JL52_HUMAN	unreviewed	VARS2 (Valine--tRNA ligase, mitochondrial)	VARS2	Homo sapiens (Human)	1093
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P42025	ACTY_HUMAN	reviewed	Beta-centractin (Actin-related protein 1B) (ARP1B)	ACTR1B CTRN2	Homo sapiens (Human)	376
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O15496	PA2GX_HUMAN	reviewed	Group 10 secretory phospholipase A2 (EC 3.1.1.4) (Group X secretory phospholipase A2) (GX sPLA2) (sPLA2-X) (Phosphatidylcholine 2-acylhydrolase 10)	PLA2G10	Homo sapiens (Human)	165
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q4VBA9	Q4VBA9_HUMAN	unreviewed	6-phosphofructo-2-kinase/fructose-2,6-bisphosphatase 1 (PFKFB1 protein)	PFKFB1	Homo sapiens (Human)	271
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96CX3	ZN501_HUMAN	reviewed	Zinc finger protein 501 (Zinc finger protein 52)	ZNF501 ZNF52	Homo sapiens (Human)	271
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7C4K6	H7C4K6_HUMAN	unreviewed	Intraflagellar transport protein 80 homolog (Fragment)	IFT80	Homo sapiens (Human)	122
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P06493	CDK1_HUMAN	reviewed	Cyclin-dependent kinase 1 (CDK1) (EC 2.7.11.22) (EC 2.7.11.23) (Cell division control protein 2 homolog) (Cell division protein kinase 1) (p34 protein kinase)	CDK1 CDC2 CDC28A CDKN1 P34CDC2	Homo sapiens (Human)	297
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P06239	LCK_HUMAN	reviewed	Tyrosine-protein kinase Lck (EC 2.7.10.2) (Leukocyte C-terminal Src kinase) (LSK) (Lymphocyte cell-specific protein-tyrosine kinase) (Protein YT16) (Proto-oncogene Lck) (T cell-specific protein-tyrosine kinase) (p56-LCK)	LCK	Homo sapiens (Human)	509
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A6NET4	OR5K3_HUMAN	reviewed	Olfactory receptor 5K3	OR5K3	Homo sapiens (Human)	321
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JU10	C9JU10_HUMAN	unreviewed	Threonine synthase-like 2	THNSL2	Homo sapiens (Human)	258
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9HDB9	GAK5_HUMAN	reviewed	Endogenous retrovirus group K member 5 Gag polyprotein (HERV-K(II) Gag protein) (HERV-K_3q12.3 provirus ancestral Gag polyprotein) (Gag polyprotein)	ERVK-5 ERVK5	Homo sapiens (Human)	667
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A1B0GVM6	CK097_HUMAN	reviewed	Uncharacterized protein C11orf97	C11orf97	Homo sapiens (Human)	126
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F2Z303	F2Z303_HUMAN	unreviewed	Uridine 5'-monophosphate synthase (Uridine monophosphate synthetase isoform 2)	UMPS	Homo sapiens (Human)	66
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9NWR8	MCUB_HUMAN	reviewed	Calcium uniporter regulatory subunit MCUb, mitochondrial (MCUb) (Coiled-coil domain-containing protein 109B)	MCUB CCDC109B	Homo sapiens (Human)	336
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+D6REY1	D6REY1_HUMAN	unreviewed	Chitotriosidase-1	CHIT1	Homo sapiens (Human)	361
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9Y6R6	Z780B_HUMAN	reviewed	Zinc finger protein 780B (Zinc finger protein 779)	ZNF780B ZNF779	Homo sapiens (Human)	833
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5VWT9	Q5VWT9_HUMAN	unreviewed	Transcription initiation protein SPT3 homolog	SUPT3H	Homo sapiens (Human)	108
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+X6R390	X6R390_HUMAN	unreviewed	AP complex subunit sigma	AP2S1	Homo sapiens (Human)	156
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q2Q1W2	LIN41_HUMAN	reviewed	E3 ubiquitin-protein ligase TRIM71 (EC 2.3.2.27) (Protein lin-41 homolog) (RING-type E3 ubiquitin transferase TRIM71) (Tripartite motif-containing protein 71)	TRIM71 LIN41	Homo sapiens (Human)	868
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E7EQ24	E7EQ24_HUMAN	unreviewed	Testican-3	SPOCK3	Homo sapiens (Human)	79
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96NN9	AIFM3_HUMAN	reviewed	Apoptosis-inducing factor 3 (EC 1.-.-.-) (Apoptosis-inducing factor-like protein)	AIFM3 AIFL	Homo sapiens (Human)	605
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+X6REF7	X6REF7_HUMAN	unreviewed	Pulmonary surfactant-associated protein A2 (Fragment)	SFTPA2	Homo sapiens (Human)	158
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YK49	H0YK49_HUMAN	unreviewed	Electron transfer flavoprotein subunit alpha, mitochondrial	ETFA	Homo sapiens (Human)	229
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+D6RCQ1	D6RCQ1_HUMAN	unreviewed	Protein RUFY3 (Fragment)	RUFY3	Homo sapiens (Human)	201
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P01814	HV270_HUMAN	reviewed	Immunoglobulin heavy variable 2-70 (Ig heavy chain V-II region COR) (Ig heavy chain V-II region DAW) (Ig heavy chain V-II region OU) (Ig heavy chain V-II region SESS)	IGHV2-70	Homo sapiens (Human)	119
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9UPZ6	THS7A_HUMAN	reviewed	Thrombospondin type-1 domain-containing protein 7A [Cleaved into: Thrombospondin type-1 domain-containing protein 7A, soluble form]	THSD7A KIAA0960	Homo sapiens (Human)	1657
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A087X0V2	A0A087X0V2_HUMAN		Deleted.			
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JRW1	C9JRW1_HUMAN	unreviewed	Suppressor of tumorigenicity 7 protein	ST7	Homo sapiens (Human)	251
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+G3V350	G3V350_HUMAN	unreviewed	Corticosteroid-binding globulin (Serpin peptidase inhibitor, clade A (Alpha-1 antiproteinase, antitrypsin), member 6, isoform CRA_a)	SERPINA6 hCG_22332	Homo sapiens (Human)	278
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5T165	Q5T165_HUMAN	unreviewed	Golgin subfamily A member 1 (Fragment)	GOLGA1	Homo sapiens (Human)	112
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q16555	DPYL2_HUMAN	reviewed	Dihydropyrimidinase-related protein 2 (DRP-2) (Collapsin response mediator protein 2) (CRMP-2) (N2A3) (Unc-33-like phosphoprotein 2) (ULIP-2)	DPYSL2 CRMP2 ULIP2	Homo sapiens (Human)	572
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YE54	H0YE54_HUMAN	unreviewed	Golgin subfamily A member 1 (Fragment)	GOLGA1	Homo sapiens (Human)	151
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+K7EPJ5	K7EPJ5_HUMAN	unreviewed	E3 ubiquitin-protein ligase MGRN1 (Fragment)	MGRN1	Homo sapiens (Human)	594
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y9S1	H0Y9S1_HUMAN	unreviewed	PR domain zinc finger protein 5 (Fragment)	PRDM5	Homo sapiens (Human)	145
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O14633	LCE2B_HUMAN	reviewed	Late cornified envelope protein 2B (Late envelope protein 10) (Skin-specific protein Xp5) (Small proline-rich-like epidermal differentiation complex protein 1B)	LCE2B LEP10 SPRL1B XP5	Homo sapiens (Human)	110
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q6ZMY3	SPOC1_HUMAN	reviewed	SPOC domain-containing protein 1	SPOCD1	Homo sapiens (Human)	1216
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y8K9	H0Y8K9_HUMAN	unreviewed	WD repeat-containing protein 19 (Fragment)	WDR19	Homo sapiens (Human)	135
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A087WZ27	A0A087WZ27_HUMAN		Deleted.			
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9J0L2	C9J0L2_HUMAN	unreviewed	Deoxyribonuclease gamma (Fragment)	DNASE1L3	Homo sapiens (Human)	100
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8NCP5	ZBT44_HUMAN	reviewed	Zinc finger and BTB domain-containing protein 44 (BTB/POZ domain-containing protein 15) (Zinc finger protein 851)	ZBTB44 BTBD15 ZNF851	Homo sapiens (Human)	570
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q6ZUT1	NKAP1_HUMAN	reviewed	Uncharacterized protein NKAPD1 (NKAP domain containing protein 1)	NKAPD1 C11orf57	Homo sapiens (Human)	292
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+D6RIE9	D6RIE9_HUMAN	unreviewed	Protein FAM170A	FAM170A	Homo sapiens (Human)	283
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8W9X7	F8W9X7_HUMAN	unreviewed	Coiled-coil domain-containing protein 93	CCDC93	Homo sapiens (Human)	630
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A075B6Q6	A0A075B6Q6_HUMAN	unreviewed	A-kinase anchor protein 4 (Fragment)	AKAP4	Homo sapiens (Human)	213
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9HCJ6	VAT1L_HUMAN	reviewed	Synaptic vesicle membrane protein VAT-1 homolog-like (EC 1.-.-.-)	VAT1L KIAA1576	Homo sapiens (Human)	419
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8WAW7	F8WAW7_HUMAN	unreviewed	Target of Myb protein 1	TOM1	Homo sapiens (Human)	69
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A8MX07	A8MX07_HUMAN	unreviewed	Centrosomal protein of 19 kDa	CEP19	Homo sapiens (Human)	128
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JKF7	C9JKF7_HUMAN	unreviewed	Lymphocyte-specific protein 1 (Fragment)	LSP1	Homo sapiens (Human)	126
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P02741	CRP_HUMAN	reviewed	C-reactive protein [Cleaved into: C-reactive protein(1-205)]	CRP PTX1	Homo sapiens (Human)	224
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5YKI7	GGNB1_HUMAN	reviewed	Putative gametogenetin-binding protein 1	GGNBP1	Homo sapiens (Human)	109
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B7ZBC8	B7ZBC8_HUMAN	unreviewed	Katanin p60 ATPase-containing subunit A1 (Fragment)	KATNA1	Homo sapiens (Human)	280
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8WE57	F8WE57_HUMAN	unreviewed	MAL-like protein	MALL	Homo sapiens (Human)	120
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7BXQ9	H7BXQ9_HUMAN	unreviewed	DNA excision repair protein ERCC-6-like 2 (Fragment)	ERCC6L2	Homo sapiens (Human)	522
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P13647	K2C5_HUMAN	reviewed	Keratin, type II cytoskeletal 5 (58 kDa cytokeratin) (Cytokeratin-5) (CK-5) (Keratin-5) (K5) (Type-II keratin Kb5)	KRT5	Homo sapiens (Human)	590
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0A0MR45	A0A0A0MR45_HUMAN	unreviewed	Calpastatin	CAST	Homo sapiens (Human)	430
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q6IMJ6	Q6IMJ6_HUMAN	unreviewed	NOELIN1_V5 (Noelin)	OLFM1	Homo sapiens (Human)	167
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JPH1	C9JPH1_HUMAN	unreviewed	Golgi apparatus membrane protein TVP23 homolog (Fragment)	TVP23C	Homo sapiens (Human)	110
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q92922	SMRC1_HUMAN	reviewed	SWI/SNF complex subunit SMARCC1 (BRG1-associated factor 155) (BAF155) (SWI/SNF complex 155 kDa subunit) (SWI/SNF-related matrix-associated actin-dependent regulator of chromatin subfamily C member 1)	SMARCC1 BAF155	Homo sapiens (Human)	1105
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q5T0L3	SPT46_HUMAN	reviewed	Spermatogenesis-associated protein 46	SPATA46 C1orf111 HSD20	Homo sapiens (Human)	261
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8WE71	F8WE71_HUMAN	unreviewed	Serine/threonine-protein phosphatase PP1-beta catalytic subunit	PPP1CB	Homo sapiens (Human)	64
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YMR6	H0YMR6_HUMAN	unreviewed	SAFB-like transcription modulator	SLTM	Homo sapiens (Human)	177
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q2M389	WASC4_HUMAN	reviewed	WASH complex subunit 4 (Strumpellin and WASH-interacting protein) (SWIP) (WASH complex subunit SWIP)	WASHC4 KIAA1033	Homo sapiens (Human)	1173
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8WB77	F8WB77_HUMAN	unreviewed	Apolipoprotein L1	APOL1	Homo sapiens (Human)	123
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q76N25	Q76N25_HUMAN	unreviewed	MNB/DYRK protein kinase (Fragment)	MNB/DYRK	Homo sapiens (Human)	46
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q93009	UBP7_HUMAN	reviewed	Ubiquitin carboxyl-terminal hydrolase 7 (EC 3.4.19.12) (Deubiquitinating enzyme 7) (Herpesvirus-associated ubiquitin-specific protease) (Ubiquitin thioesterase 7) (Ubiquitin-specific-processing protease 7)	USP7 HAUSP	Homo sapiens (Human)	1102
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PKZ9	E9PKZ9_HUMAN	unreviewed	Complex I assembly factor TMEM126B, mitochondrial	TMEM126B	Homo sapiens (Human)	40
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A6NIJ9	O6C70_HUMAN	reviewed	Olfactory receptor 6C70	OR6C70	Homo sapiens (Human)	312
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B0FWH7	B0FWH7_HUMAN	unreviewed	Sex hormone-binding globulin (Fragment)	SHBG	Homo sapiens (Human)	113
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q13588	GRAP_HUMAN	reviewed	GRB2-related adapter protein	GRAP	Homo sapiens (Human)	217
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P57738	TCTA_HUMAN	reviewed	T-cell leukemia translocation-altered gene protein (T-cell leukemia translocation-associated gene protein)	TCTA	Homo sapiens (Human)	103
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PSD0	E9PSD0_HUMAN	unreviewed	Zinc finger protein 34 (Fragment)	ZNF34	Homo sapiens (Human)	264
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9JU82	C9JU82_HUMAN	unreviewed	Coiled-coil domain-containing protein 14 (Fragment)	CCDC14	Homo sapiens (Human)	312
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+O75934	SPF27_HUMAN	reviewed	Pre-mRNA-splicing factor SPF27 (Breast carcinoma-amplified sequence 2) (DNA amplified in mammary carcinoma 1 protein) (Spliceosome-associated protein SPF 27)	BCAS2 DAM1	Homo sapiens (Human)	225
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q8NEN0	ARMC2_HUMAN	reviewed	Armadillo repeat-containing protein 2	ARMC2	Homo sapiens (Human)	867
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YBF3	H0YBF3_HUMAN	unreviewed	Tripartite motif-containing protein 35 (Fragment)	TRIM35	Homo sapiens (Human)	100
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q15858	SCN9A_HUMAN	reviewed	Sodium channel protein type 9 subunit alpha (Neuroendocrine sodium channel) (hNE-Na) (Peripheral sodium channel 1) (PN1) (Sodium channel protein type IX subunit alpha) (Voltage-gated sodium channel subunit alpha Nav1.7)	SCN9A NENA	Homo sapiens (Human)	1988
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0C4DFX0	A0A0C4DFX0_HUMAN	unreviewed	Nucleolar protein 6	NOL6	Homo sapiens (Human)	200
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y544	H0Y544_HUMAN	unreviewed	Solute carrier family 23 member 2 (Fragment)	SLC23A2	Homo sapiens (Human)	304
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+P39656	OST48_HUMAN	reviewed	Dolichyl-diphosphooligosaccharide--protein glycosyltransferase 48 kDa subunit (DDOST 48 kDa subunit) (Oligosaccharyl transferase 48 kDa subunit)	DDOST KIAA0115 OST48 OK/SW-cl.45	Homo sapiens (Human)	456
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0YG03	H0YG03_HUMAN	unreviewed	Microfibrillar-associated protein 5 (Fragment)	MFAP5	Homo sapiens (Human)	163
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+A0A0G2JPC7	A0A0G2JPC7_HUMAN	unreviewed	Leukocyte immunoglobulin-like receptor subfamily B member 4	LILRB4	Homo sapiens (Human)	447
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96BF6	NACC2_HUMAN	reviewed	Nucleus accumbens-associated protein 2 (NAC-2) (BTB/POZ domain-containing protein 14A) (Repressor with BTB domain and BEN domain)	NACC2 BTBD14A NAC2 RBB	Homo sapiens (Human)	587
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+B3KRP1	B3KRP1_HUMAN	unreviewed	Serine/threonine-protein kinase tousled-like 1 (Tousled-like kinase 1, isoform CRA_b) (cDNA FLJ34656 fis, clone KIDNE2018352, highly similar to Serine/threonine-protein kinase tousled-like 1)	TLK1 hCG_15833	Homo sapiens (Human)	413
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9C075	K1C23_HUMAN	reviewed	Keratin, type I cytoskeletal 23 (Cytokeratin-23) (CK-23) (Keratin-23) (K23)	KRT23	Homo sapiens (Human)	422
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+C9J998	C9J998_HUMAN	unreviewed	Transmembrane protein 106B (Fragment)	TMEM106B	Homo sapiens (Human)	25
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PPV8	E9PPV8_HUMAN	unreviewed	Protein mono-ADP-ribosyltransferase PARP10 (Fragment)	PARP10	Homo sapiens (Human)	178
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H0Y5V5	H0Y5V5_HUMAN	unreviewed	Serine/threonine-protein kinase N2 (Fragment)	PKN2	Homo sapiens (Human)	211
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q9Y5E3	PCDB6_HUMAN	reviewed	Protocadherin beta-6 (PCDH-beta-6)	PCDHB6	Homo sapiens (Human)	794
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+F8WC85	F8WC85_HUMAN	unreviewed	Septin-10	SEPTIN10	Homo sapiens (Human)	48
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q96G46	DUS3L_HUMAN	reviewed	tRNA-dihydrouridine(47) synthase [NAD(P)(+)]-like (EC 1.3.1.-) (tRNA-dihydrouridine synthase 3-like)	DUS3L	Homo sapiens (Human)	650
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E5RJE7	E5RJE7_HUMAN	unreviewed	Protein CBFA2T1 (Fragment)	RUNX1T1	Homo sapiens (Human)	69
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+Q2VIR3	IF2GL_HUMAN	reviewed	Eukaryotic translation initiation factor 2 subunit 3B (Eukaryotic translation initiation factor 2 subunit gamma A) (eIF-2-gamma A) (eIF-2gA)	EIF2S3B	Homo sapiens (Human)	472
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+H7C2U8	H7C2U8_HUMAN	unreviewed	Protein FAM234A (Fragment)	FAM234A	Homo sapiens (Human)	192
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+M0QY34	M0QY34_HUMAN	unreviewed	Testis-expressed protein 45 (Fragment)	TEX45	Homo sapiens (Human)	192
+
+Entry	Entry name	Status	Protein names	Gene names	Organism	Length
+E9PN95	E9PN95_HUMAN	unreviewed	Uteroglobin	SCGB1A1	Homo sapiens (Human)	56
+

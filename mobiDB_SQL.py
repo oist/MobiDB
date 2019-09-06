@@ -40,9 +40,9 @@ if __name__ == '__main__':
                 PRIMARY KEY (id)
                 )""")
 
-            cursor.execute("""INSERT INTO mobiDB_SQL (Entry, Entry_name, Status, Protain_name, Gene_name, Organism, Length)
+            cursor.execute("""INSERT INTO mobiDB_SQL (id, Entry, Entry_name, Status, Protain_name, Gene_name, Organism, Length)
                             VALUES (%s, %s, %s, %s, %s, %s, %s)""",
-                           (re[0], re[1], re[2], re[3], re[4], re[5], re[6]))
+                           (thread_num, re[0], re[1], re[2], re[3], re[4], re[5], re[6]))
 
             # ここに実行したいコードを入力します
             cursor.execute("SELECT * FROM mobiDB_SQL")
