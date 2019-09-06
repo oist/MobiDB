@@ -11,7 +11,7 @@ def worker(i, lengs):
     # print(type(i))
     start_num=i*lengs
     if (i < core):
-        end_num=(i+1)*lengs-1
+        end_num=(i+1)*lengs
     else:
         end_num = i*lengs + remainder
 
