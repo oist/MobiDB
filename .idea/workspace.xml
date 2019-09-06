@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2aa2d9e8-0608-4510-ae14-6632f2f8f0ce" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/mobiDB_SQLThread.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobiDB_SQL.py" beforeDir="false" afterPath="$PROJECT_DIR$/mobiDB_SQL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/result.txt" beforeDir="false" afterPath="$PROJECT_DIR$/result.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mobiDB_SQLThread.py" beforeDir="false" afterPath="$PROJECT_DIR$/mobiDB_SQLThread.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mobiDB_SQLThread.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+            <state relative-caret-position="531">
+              <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
               </folding>
@@ -429,8 +426,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mobiDB_SQLThread.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="52" selection-start-line="34" selection-start-column="52" selection-end-line="34" selection-end-column="52" />
+        <state relative-caret-position="531">
+          <caret line="59" column="2" selection-start-line="59" selection-start-column="2" selection-end-line="59" selection-end-column="2" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
           </folding>
