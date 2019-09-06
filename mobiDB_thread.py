@@ -4,7 +4,7 @@ import threading
 import time
 import itertools
 
-def worker(i, lengs):
+def worker(i):
 
     # thread の名前を取得
     logging.debug('start')
@@ -20,9 +20,9 @@ def worker(i, lengs):
 
     for query in itertools.islice(fr_line, start_num, end_num):
         result = service.search("id:" + query)
-        fw.write(result + "\n")
+        result_s = result.strip("Entry	Entry name	Status	Protein names	Gene names	Organism	Length\n")
+        fw.write(result_s + "\n")
 
-    time.sleep(1)
     logging.debug('end')
     return
 
@@ -30,10 +30,10 @@ if __name__ == '__main__':
     t1 = time.time()
     threads = []
     service = UniProt()
-    core = 5
+    core = 9
 
-    with open("result.txt", "w") as fw:
-        with open("MobiDB_ID_small.txt") as fr:
+  #  with open("mobiDB_all.txt", "w") as fw:
+        with open("MobiDB_ID.txt") as fr:
             fr_line = fr.readlines()
             lengs = int(len(fr_line)/core)
             remainder = int(len(fr_line) % core)
@@ -42,7 +42,7 @@ if __name__ == '__main__':
             print(remainder)
 
             for i in range(core+1):
-                t = threading.Thread(target=worker, args=(i, lengs,))
+                t = threading.Thread(target=worker, args=(i,))
                 t.start()
                 threads.append(t)
             for thread in threads:
