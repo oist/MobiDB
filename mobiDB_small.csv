@@ -1,0 +1,496 @@
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+O43760	SNG2_HUMAN	224	24,810	cell	junction	[GO:0030054];	extracellular	exosome	[GO:0070062];	integral	component	of	membrane	[GO:0016021];	lipid	droplet	[GO:0005811];	neuromuscular	junction	[GO:0031594];	synaptic	vesicle	membrane	[GO:0030672]
+Q6AZY7	SCAR3_HUMAN	606	65,137	Golgi	membrane	[GO:0000139];	collagen	trimer	[GO:0005581];	collagen-containing	extracellular	matrix	[GO:0062023];	endoplasmic	reticulum	[GO:0005783];	endoplasmic	reticulum	membrane	[GO:0005789];	extracellular	matrix	[GO:0031012];	extracellular	space	[GO:0005615];	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P31994	FCG2B_HUMAN	310	34,044	cell	body	[GO:0044297];	dendritic	spine	[GO:0043197];	external	side	of	plasma	membrane	[GO:0009897];	integral	component	of	plasma	membrane	[GO:0005887];	plasma	membrane	[GO:0005886]
+P29350	PTN6_HUMAN	595	67,561	alpha-beta	T	cell	receptor	complex	[GO:0042105];	cell-cell	junction	[GO:0005911];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	extracellular	region	[GO:0005576];	membrane	[GO:0016020];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	protein-containing	complex	[GO:0032991];	specific	granule	lumen	[GO:0035580];	tertiary	granule	lumen	[GO:1904724]
+Q92835	SHIP1_HUMAN	1189	133,292	cytoskeleton	[GO:0005856];	cytosol	[GO:0005829];	membrane	raft	[GO:0045121];	plasma	membrane	[GO:0005886]
+P19174	PLCG1_HUMAN	1290	148,532	COP9	signalosome	[GO:0008180];	Schaffer	collateral	-	CA1	synapse	[GO:0098685];	cell	projection	[GO:0042995];	cell-cell	junction	[GO:0005911];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	glutamatergic	synapse	[GO:0098978];	lamellipodium	[GO:0030027];	plasma	membrane	[GO:0005886];	ruffle	[GO:0001726]
+P16333	NCK1_HUMAN	377	42,864	cell-cell	junction	[GO:0005911];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	protein	phosphatase	type	1	complex	[GO:0000164];	ribosome	[GO:0005840];	vesicle	membrane	[GO:0012506]
+P01857	IGHG1_HUMAN	330	36,106	blood	microparticle	[GO:0072562];	external	side	of	plasma	membrane	[GO:0009897];	extracellular	exosome	[GO:0070062];	extracellular	region	[GO:0005576];	extracellular	space	[GO:0005615];	immunoglobulin	complex,	circulating	[GO:0042571]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+O14829	PPE1_HUMAN	653	75,792	cytosol	[GO:0005829];	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P43360	MAGA6_HUMAN	314	34,891
+Q8IYE0	CC146_HUMAN	955	112,806	centriole	[GO:0005814]
+O00154	BACH_HUMAN	380	41,796	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	mitochondrion	[GO:0005739];	nucleoplasm	[GO:0005654]
+O75348	VATG1_HUMAN	118	13,758	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	lysosomal	membrane	[GO:0005765];	plasma	membrane	[GO:0005886];	vacuolar	proton-transporting	V-type	ATPase	complex	[GO:0016471]
+Q13263	TIF1B_HUMAN	835	88,550	RNA	polymerase	II	transcription	factor	complex	[GO:0090575];	chromatin	[GO:0000785];	nuclear	euchromatin	[GO:0005719];	nuclear	heterochromatin	[GO:0005720];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q9H788	SH24A_HUMAN	454	52,727	cytoplasm	[GO:0005737];	cytosol	[GO:0005829]
+Q8N5M1	ATPF2_HUMAN	289	32,772	cytosol	[GO:0005829];	mitochondrion	[GO:0005739];	nuclear	speck	[GO:0016607]
+O95219	SNX4_HUMAN	450	51,909	SNARE	complex	[GO:0031201];	cytoplasm	[GO:0005737];	cytoplasmic	dynein	complex	[GO:0005868];	early	endosome	membrane	[GO:0031901];	membrane	[GO:0016020];	plasma	membrane	[GO:0005886];	protein-containing	complex	[GO:0032991]
+Q9Y333	LSM2_HUMAN	95	10,835	Lsm1-7-Pat1	complex	[GO:1990726];	Lsm2-8	complex	[GO:0120115];	P-body	[GO:0000932];	U2-type	precatalytic	spliceosome	[GO:0071005];	U4/U6	x	U5	tri-snRNP	complex	[GO:0046540];	U6	snRNP	[GO:0005688];	catalytic	step	2	spliceosome	[GO:0071013];	cytosol	[GO:0005829];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q2WGJ6	KLH38_HUMAN	581	65,541
+Q5SQN1	SNP47_HUMAN	464	52,562	SNARE	complex	[GO:0031201];	dendrite	[GO:0030425];	glutamatergic	synapse	[GO:0098978];	hippocampal	mossy	fiber	to	CA3	synapse	[GO:0098686];	neuronal	cell	body	[GO:0043025];	perinuclear	region	of	cytoplasm	[GO:0048471];	plasma	membrane	[GO:0005886];	postsynaptic	density	[GO:0014069];	synaptic	vesicle	membrane	[GO:0030672]
+Q9P2K3	RCOR3_HUMAN	495	55,581	nucleus	[GO:0005634];	transcription	factor	complex	[GO:0005667];	transcriptional	repressor	complex	[GO:0017053]
+Q13190	STX5_HUMAN	355	39,673	ER	to	Golgi	transport	vesicle	membrane	[GO:0012507];	Golgi	apparatus	[GO:0005794];	Golgi	membrane	[GO:0000139];	SNARE	complex	[GO:0031201];	cytosol	[GO:0005829];	endomembrane	system	[GO:0012505];	endoplasmic	reticulum	membrane	[GO:0005789];	endoplasmic	reticulum-Golgi	intermediate	compartment	membrane	[GO:0033116];	integral	component	of	membrane	[GO:0016021];	vesicle	[GO:0031982]
+Q12899	TRI26_HUMAN	539	62,166	cytosol	[GO:0005829];	nucleus	[GO:0005634]
+Q9HCY8	S10AE_HUMAN	104	11,662	cell	junction	[GO:0030054];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	nuclear	body	[GO:0016604];	perinuclear	region	of	cytoplasm	[GO:0048471];	plasma	membrane	[GO:0005886]
+O14530	TXND9_HUMAN	226	26,534	centrosome	[GO:0005813];	cytosol	[GO:0005829];	midbody	[GO:0030496];	nucleus	[GO:0005634]
+O75386	TULP3_HUMAN	442	49,642	9+0	non-motile	cilium	[GO:0097731];	axoneme	[GO:0005930];	ciliary	base	[GO:0097546];	cilium	[GO:0005929];	extracellular	region	[GO:0005576];	nucleolus	[GO:0005730];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+Q96FJ0	STALP_HUMAN	436	49,783	cytosol	[GO:0005829];	endosome	[GO:0005768];	membrane	[GO:0016020]
+O43639	NCK2_HUMAN	380	42,915	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	postsynaptic	density	[GO:0014069];	vesicle	membrane	[GO:0012506]
+O00471	EXOC5_HUMAN	708	81,853	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	exocyst	[GO:0000145];	midbody	[GO:0030496]
+Q8TD10	MIPO1_HUMAN	442	51,537	nucleus	[GO:0005634]
+Q08499	PDE4D_HUMAN	809	91,115	apical	plasma	membrane	[GO:0016324];	calcium	channel	complex	[GO:0034704];	centrosome	[GO:0005813];	cytosol	[GO:0005829];	membrane	[GO:0016020];	nuclear	membrane	[GO:0031965];	plasma	membrane	[GO:0005886];	voltage-gated	calcium	channel	complex	[GO:0005891]
+Q96CS2	HAUS1_HUMAN	278	31,863	HAUS	complex	[GO:0070652];	centrosome	[GO:0005813];	cytosol	[GO:0005829];	microtubule	[GO:0005874];	spindle	pole	[GO:0000922]
+Q5SYB0	FRPD1_HUMAN	1578	173,437	cytoskeleton	[GO:0005856];	cytosol	[GO:0005829];	plasma	membrane	[GO:0005886];	protein-containing	complex	[GO:0032991]
+Q99996	AKAP9_HUMAN	3907	452,987	Golgi	apparatus	[GO:0005794];	Golgi	stack	[GO:0005795];	centrosome	[GO:0005813];	cis-Golgi	network	[GO:0005801];	cytoskeleton	[GO:0005856];	cytosol	[GO:0005829];	dendritic	branch	[GO:0044307];	extrinsic	component	of	postsynaptic	density	membrane	[GO:0099147];	glutamatergic	synapse	[GO:0098978];	intracellular	membrane-bounded	organelle	[GO:0043231];	neuronal	cell	body	[GO:0043025];	synaptic	membrane	[GO:0097060];	voltage-gated	potassium	channel	complex	[GO:0008076]
+Q8NA54	IQUB_HUMAN	791	92,581	acrosomal	vesicle	[GO:0001669];	motile	cilium	[GO:0031514]
+Q9BQE9	BCL7B_HUMAN	202	22,195
+P61513	RL37A_HUMAN	92	10,275	cytosol	[GO:0005829];	cytosolic	large	ribosomal	subunit	[GO:0022625];	extracellular	exosome	[GO:0070062];	focal	adhesion	[GO:0005925];	nucleus	[GO:0005634]
+Q9H2L5	RASF4_HUMAN	321	36,748
+Q6PF18	MORN3_HUMAN	240	27,585	nucleus	[GO:0005634]
+O15155	BET1_HUMAN	118	13,289	Golgi	membrane	[GO:0000139];	Golgi	trans	cisterna	[GO:0000138];	SNARE	complex	[GO:0031201];	endoplasmic	reticulum	membrane	[GO:0005789];	endoplasmic	reticulum-Golgi	intermediate	compartment	membrane	[GO:0033116];	integral	component	of	Golgi	membrane	[GO:0030173];	membrane	[GO:0016020];	transport	vesicle	[GO:0030133]
+Q9NXC2	GFOD1_HUMAN	390	43,158	extracellular	region	[GO:0005576]
+Q16619	CTF1_HUMAN	201	21,227	extracellular	region	[GO:0005576];	extracellular	space	[GO:0005615]
+Q96GY3	LIN37_HUMAN	246	28,383	Myb	complex	[GO:0031523];	nucleoplasm	[GO:0005654];	transcriptional	repressor	complex	[GO:0017053]
+Q6NSI1	AR26L_HUMAN	321	35,437
+Q96FG2	ELMD3_HUMAN	381	43,046	cytoplasm	[GO:0005737];	cytoskeleton	[GO:0005856];	kinocilium	[GO:0060091];	stereocilium	[GO:0032420]
+Q32MH5	F214A_HUMAN	1076	121,670
+Q8N3X6	LCORL_HUMAN	602	66,964	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q06413	MEF2C_HUMAN	473	51,221	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	intracellular	membrane-bounded	organelle	[GO:0043231];	nuclear	chromatin	[GO:0000790];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	postsynapse	[GO:0098794];	protein-containing	complex	[GO:0032991];	sarcoplasm	[GO:0016528]
+G7EA50	G7EA50_MIXOS	150	15,915
+A0A1X7QXN6	A0A1X7QXN6_9SACH	156	16,866
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q8NH61	O51F2_HUMAN	342	38,518	integral	component	of	membrane	[GO:0016021];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q969H0	FBXW7_HUMAN	707	79,663	Golgi	apparatus	[GO:0005794];	Parkin-FBXW7-Cul1	ubiquitin	ligase	complex	[GO:1990452];	SCF	ubiquitin	ligase	complex	[GO:0019005];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	mitochondrion	[GO:0005739];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471];	protein-containing	complex	[GO:0032991]
+U4L258	U4L258_PYROM	637	70,724
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q9H1Z9	TSN10_HUMAN	355	36,498	integral	component	of	plasma	membrane	[GO:0005887]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q8IXK0	PHC2_HUMAN	858	90,713	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	heterochromatin	[GO:0000792];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q9BXS5	AP1M1_HUMAN	423	48,587	Golgi	membrane	[GO:0000139];	clathrin	adaptor	complex	[GO:0030131];	clathrin-coated	vesicle	membrane	[GO:0030665];	cytoplasmic	vesicle	membrane	[GO:0030659];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	lysosomal	membrane	[GO:0005765];	membrane	[GO:0016020];	plasma	membrane	[GO:0005886];	specific	granule	membrane	[GO:0035579];	trans-Golgi	network	membrane	[GO:0032588]
+Q8WTP8	AEN_HUMAN	325	36,350	nuclear	membrane	[GO:0031965];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q8IUQ4	SIAH1_HUMAN	282	31,123	beta-catenin	destruction	complex	[GO:0030877];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	early	endosome	[GO:0005769];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+P25800	RBTN1_HUMAN	156	17,828	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q9HC52	CBX8_HUMAN	389	43,396	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	heterochromatin	[GO:0000792];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q9Y2D8	ADIP_HUMAN	614	71,236	cell	leading	edge	[GO:0031252];	cell-cell	adherens	junction	[GO:0005913];	centriolar	satellite	[GO:0034451];	ciliary	basal	body	[GO:0036064];	nucleus	[GO:0005634];	protein-containing	complex	[GO:0032991]
+Q13131	AAPK1_HUMAN	559	64,009	apical	plasma	membrane	[GO:0016324];	axon	[GO:0030424];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	dendrite	[GO:0030425];	neuronal	cell	body	[GO:0043025];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	nucleotide-activated	protein	kinase	complex	[GO:0031588];	nucleus	[GO:0005634]
+P53350	PLK1_HUMAN	603	68,255	centriolar	satellite	[GO:0034451];	centriole	[GO:0005814];	centrosome	[GO:0005813];	chromatin	[GO:0000785];	condensed	nuclear	chromosome	outer	kinetochore	[GO:0000942];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	kinetochore	[GO:0000776];	microtubule	cytoskeleton	[GO:0015630];	midbody	[GO:0030496];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	[GO:0005819];	spindle	midzone	[GO:0051233];	spindle	pole	[GO:0000922];	synaptonemal	complex	[GO:0000795]
+P25791	RBTN2_HUMAN	158	18,358	nucleoplasm	[GO:0005654];	transcription	factor	complex	[GO:0005667]
+Q92993	KAT5_HUMAN	513	58,582	NuA4	histone	acetyltransferase	complex	[GO:0035267];	Piccolo	NuA4	histone	acetyltransferase	complex	[GO:0032777];	Swr1	complex	[GO:0000812];	histone	acetyltransferase	complex	[GO:0000123];	nuclear	chromatin	[GO:0000790];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471];	transcription	factor	complex	[GO:0005667]
+Q96T49	PP16B_HUMAN	567	63,551	cell	projection	[GO:0042995];	nuclear	speck	[GO:0016607];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471];	plasma	membrane	[GO:0005886]
+Q96JM7	LMBL3_HUMAN	780	88,337	nucleolus	[GO:0005730];	nucleus	[GO:0005634]
+P35227	PCGF2_HUMAN	344	37,788	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	nuclear	body	[GO:0016604];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	sex	chromatin	[GO:0001739]
+Q14498	RBM39_HUMAN	530	59,380	microtubule	cytoskeleton	[GO:0015630];	microtubule	organizing	center	[GO:0005815];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	protein-containing	complex	[GO:0032991]
+Q96NC0	ZMAT2_HUMAN	199	23,612	U2-type	precatalytic	spliceosome	[GO:0071005];	U4/U6	x	U5	tri-snRNP	complex	[GO:0046540];	nucleus	[GO:0005634]
+Q15014	MO4L2_HUMAN	288	32,308	NuA4	histone	acetyltransferase	complex	[GO:0035267];	histone	acetyltransferase	complex	[GO:0000123];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+Q9UHJ3	SMBT1_HUMAN	866	98,141	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+O00560	SDCB1_HUMAN	298	32,444	adherens	junction	[GO:0005912];	azurophil	granule	lumen	[GO:0035578];	blood	microparticle	[GO:0072562];	cytoplasm	[GO:0005737];	cytoskeleton	[GO:0005856];	cytosol	[GO:0005829];	endoplasmic	reticulum	membrane	[GO:0005789];	extracellular	exosome	[GO:0070062];	extracellular	region	[GO:0005576];	extracellular	space	[GO:0005615];	extracellular	vesicle	[GO:1903561];	focal	adhesion	[GO:0005925];	interleukin-5	receptor	complex	[GO:0005895];	intracellular	membrane-bounded	organelle	[GO:0043231];	melanosome	[GO:0042470];	membrane	[GO:0016020];	membrane	raft	[GO:0045121];	nuclear	membrane	[GO:0031965];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+O43167	ZBT24_HUMAN	697	78,282	nucleoplasm	[GO:0005654]
+Q9BT49	THAP7_HUMAN	309	34,414	intracellular	membrane-bounded	organelle	[GO:0043231];	nuclear	chromatin	[GO:0000790];	nuclear	membrane	[GO:0031965];	nuclear	speck	[GO:0016607];	nucleus	[GO:0005634]
+Q3KNV8	PCGF3_HUMAN	242	28,115	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	X	chromosome	[GO:0000805];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+P08047	SP1_HUMAN	785	80,693	cytoplasm	[GO:0005737];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	protein-DNA	complex	[GO:0032993];	transcriptional	repressor	complex	[GO:0017053]
+Q8WV44	TRI41_HUMAN	630	71,670	cytoplasm	[GO:0005737];	nuclear	body	[GO:0016604];	nucleolus	[GO:0005730]
+P62875	RPAB5_HUMAN	67	7,645	RNA	polymerase	I	complex	[GO:0005736];	RNA	polymerase	II,	core	complex	[GO:0005665];	RNA	polymerase	III	complex	[GO:0005666];	cytosol	[GO:0005829];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+P84022	SMAD3_HUMAN	425	48,081	SMAD	protein	complex	[GO:0071141];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	heteromeric	SMAD	protein	complex	[GO:0071144];	nuclear	chromatin	[GO:0000790];	nuclear	inner	membrane	[GO:0005637];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	receptor	complex	[GO:0043235];	transcription	factor	complex	[GO:0005667]
+Q8N8X9	MB213_HUMAN	362	42,357
+Q17RD7	SYT16_HUMAN	645	72,274
+P57060	RWD2B_HUMAN	319	36,332
+Q8N5A5	ZGPAT_HUMAN	531	57,359	nuclear	chromatin	[GO:0000790];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+Q8TAU3	ZN417_HUMAN	575	65,733	nucleus	[GO:0005634]
+Q9BVG8	KIFC3_HUMAN	833	92,775	Golgi	apparatus	[GO:0005794];	centrosome	[GO:0005813];	cytoplasmic	vesicle	membrane	[GO:0030659];	extracellular	exosome	[GO:0070062];	kinesin	complex	[GO:0005871];	microtubule	[GO:0005874];	zonula	adherens	[GO:0005915]
+Q86SE9	PCGF5_HUMAN	256	29,714	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	X	chromosome	[GO:0000805];	centrosome	[GO:0005813];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q5RGS3	F74A1_HUMAN	127	14,779	integral	component	of	membrane	[GO:0016021]
+Q5TZK3	FAM74_HUMAN	123	14,773
+Q3B820	F161A_HUMAN	660	76,752	astral	microtubule	[GO:0000235];	centrosome	[GO:0005813];	ciliary	basal	body	[GO:0036064];	mitotic	spindle	[GO:0072686];	mitotic	spindle	pole	[GO:0097431];	photoreceptor	connecting	cilium	[GO:0032391];	photoreceptor	inner	segment	[GO:0001917];	spindle	microtubule	[GO:0005876]
+Q8N7X4	MAGB6_HUMAN	407	43,992
+P55081	MFAP1_HUMAN	439	51,958	U2-type	precatalytic	spliceosome	[GO:0071005];	extracellular	region	[GO:0005576];	microfibril	[GO:0001527];	nucleus	[GO:0005634]
+Q9H0I2	ENKD1_HUMAN	346	38,759	cytoplasmic	microtubule	[GO:0005881];	microtubule	cytoskeleton	[GO:0015630]
+Q8NE31	FA13C_HUMAN	585	65,727
+Q8WWY3	PRP31_HUMAN	499	55,456	Cajal	body	[GO:0015030];	MLL1	complex	[GO:0071339];	U2-type	precatalytic	spliceosome	[GO:0071005];	U2-type	spliceosomal	complex	[GO:0005684];	U4	snRNP	[GO:0005687];	U4/U6	x	U5	tri-snRNP	complex	[GO:0046540];	U4atac	snRNP	[GO:0005690];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q96EZ8	MCRS1_HUMAN	462	51,803	Ino80	complex	[GO:0031011];	MLL1	complex	[GO:0071339];	NSL	complex	[GO:0044545];	cytoplasm	[GO:0005737];	dendrite	[GO:0030425];	endoplasmic	reticulum	[GO:0005783];	histone	acetyltransferase	complex	[GO:0000123];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	perikaryon	[GO:0043204];	polysome	[GO:0005844]
+Q86V42	F124A_HUMAN	546	60,104
+Q13895	BYST_HUMAN	437	49,601	apical	part	of	cell	[GO:0045177];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	intracellular	membrane-bounded	organelle	[GO:0043231];	membrane	[GO:0016020];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	preribosome,	small	subunit	precursor	[GO:0030688]
+Q9NX04	CA109_HUMAN	203	23,373	cytoplasm	[GO:0005737];	nucleus	[GO:0005634]
+Q9H257	CARD9_HUMAN	536	62,241	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	plasma	membrane	[GO:0005886];	protein-containing	complex	[GO:0032991]
+P35226	BMI1_HUMAN	326	36,949	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	cytosol	[GO:0005829];	nuclear	body	[GO:0016604];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	ubiquitin	ligase	complex	[GO:0000151]
+P25916	BMI1_MOUSE	324	36,708	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	cytoplasm	[GO:0005737];	heterochromatin	[GO:0000792];	nuclear	body	[GO:0016604];	nucleus	[GO:0005634];	ubiquitin	ligase	complex	[GO:0000151]
+Q9Y295	DRG1_HUMAN	367	40,542	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	membrane	[GO:0016020];	nuclear	body	[GO:0016604];	nucleus	[GO:0005634];	polysome	[GO:0005844]
+Q8WVZ9	KBTB7_HUMAN	684	77,163	cytosol	[GO:0005829]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q92728	Q92728_HUMAN	53	5,392
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q8N187	CARTF_HUMAN	725	80,698	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+O75628	REM1_HUMAN	298	32,947	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q8IWA0	WDR75_HUMAN	830	94,499	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P19784	CSK22_HUMAN	350	41,213	acrosomal	vesicle	[GO:0001669];	chromatin	[GO:0000785];	cytosol	[GO:0005829];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P42025	ACTY_HUMAN	376	42,293	cell	cortex	region	[GO:0099738];	centrosome	[GO:0005813];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	dynactin	complex	[GO:0005869];	extracellular	exosome	[GO:0070062];	extracellular	region	[GO:0005576];	ficolin-1-rich	granule	lumen	[GO:1904813];	membrane	[GO:0016020];	microtubule	cytoskeleton	[GO:0015630];	secretory	granule	lumen	[GO:0034774]
+A0A0C6G264	A0A0C6G264_9RHIZ	62	6,509
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P06493	CDK1_HUMAN	297	34,095	centrosome	[GO:0005813];	cyclin	B1-CDK1	complex	[GO:0097125];	cyclin-dependent	protein	kinase	holoenzyme	complex	[GO:0000307];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endoplasmic	reticulum	membrane	[GO:0005789];	extracellular	exosome	[GO:0070062];	membrane	[GO:0016020];	midbody	[GO:0030496];	mitochondrial	matrix	[GO:0005759];	mitochondrion	[GO:0005739];	mitotic	spindle	[GO:0072686];	nuclear	chromosome,	telomeric	region	[GO:0000784];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	microtubule	[GO:0005876]
+Q99741	CDC6_HUMAN	560	62,720	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	midzone	[GO:0051233];	spindle	pole	[GO:0000922]
+P0CG48	UBC_HUMAN	685	77,039	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endocytic	vesicle	membrane	[GO:0030666];	endoplasmic	reticulum	membrane	[GO:0005789];	endosome	membrane	[GO:0010008];	extracellular	exosome	[GO:0070062];	extracellular	space	[GO:0005615];	host	cell	[GO:0043657];	mitochondrial	outer	membrane	[GO:0005741];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	vesicle	[GO:0031982]
+P38936	CDN1A_HUMAN	164	18,119	PCNA-p21	complex	[GO:0070557];	cyclin-dependent	protein	kinase	holoenzyme	complex	[GO:0000307];	cytosol	[GO:0005829];	nuclear	body	[GO:0016604];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471];	protein-containing	complex	[GO:0032991]
+P14635	CCNB1_HUMAN	433	48,337	centrosome	[GO:0005813];	condensed	nuclear	chromosome	outer	kinetochore	[GO:0000942];	cyclin	B1-CDK1	complex	[GO:0097125];	cyclin-dependent	protein	kinase	holoenzyme	complex	[GO:0000307];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	membrane	[GO:0016020];	mitochondrial	matrix	[GO:0005759];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	pole	[GO:0000922]
+P30307	MPIP3_HUMAN	473	53,365	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471]
+O95835	LATS1_HUMAN	1130	126,870	cytosol	[GO:0005829];	microtubule	organizing	center	[GO:0005815];	spindle	pole	[GO:0000922]
+Q99640	PMYT1_HUMAN	499	54,521	Golgi	apparatus	[GO:0005794];	Golgi	membrane	[GO:0000139];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	endoplasmic	reticulum	membrane	[GO:0005789];	membrane	[GO:0016020];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+P21796	VDAC1_HUMAN	283	30,773	extracellular	exosome	[GO:0070062];	membrane	[GO:0016020];	membrane	raft	[GO:0045121];	mitochondrial	nucleoid	[GO:0042645];	mitochondrial	outer	membrane	[GO:0005741];	mitochondrial	permeability	transition	pore	complex	[GO:0005757];	mitochondrion	[GO:0005739];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	pore	complex	[GO:0046930];	synaptic	vesicle	[GO:0008021]
+Q86V81	THOC4_HUMAN	257	26,888	catalytic	step	2	spliceosome	[GO:0071013];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	membrane	[GO:0016020];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	transcription	export	complex	[GO:0000346]
+P36957	ODO2_HUMAN	453	48,755	membrane	[GO:0016020];	mitochondrial	matrix	[GO:0005759];	mitochondrion	[GO:0005739];	nucleus	[GO:0005634];	oxoglutarate	dehydrogenase	complex	[GO:0045252]
+P03070	LT_SV40	708	81,582	host	cell	nucleus	[GO:0042025]
+Q12778	FOXO1_HUMAN	655	69,662	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	mitochondrion	[GO:0005739];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+P61024	CKS1_HUMAN	79	9,660	SCF	ubiquitin	ligase	complex	[GO:0019005];	cyclin-dependent	protein	kinase	holoenzyme	complex	[GO:0000307];	nucleoplasm	[GO:0005654]
+P19525	E2AK2_HUMAN	551	62,094	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	cytosolic	ribosome	[GO:0022626];	membrane	[GO:0016020];	nucleus	[GO:0005634];	perinuclear	region	of	cytoplasm	[GO:0048471];	ribosome	[GO:0005840]
+O15392	BIRC5_HUMAN	142	16,389	centriole	[GO:0005814];	chromosome	passenger	complex	[GO:0032133];	chromosome,	centromeric	region	[GO:0000775];	condensed	chromosome	kinetochore	[GO:0000777];	cytoplasm	[GO:0005737];	cytoplasmic	microtubule	[GO:0005881];	cytosol	[GO:0005829];	interphase	microtubule	organizing	center	[GO:0031021];	midbody	[GO:0030496];	nuclear	chromosome	[GO:0000228];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	microtubule	[GO:0005876]
+O75618	DEDD_HUMAN	318	36,794	cytoplasm	[GO:0005737];	nucleolus	[GO:0005730]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q9HDB9	GAK5_HUMAN	667	73,588	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q9Y6R6	Z780B_HUMAN	833	96,807	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q96NN9	AIFM3_HUMAN	605	66,791	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	mitochondrial	inner	membrane	[GO:0005743];	mitochondrion	[GO:0005739]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P01814	HV270_HUMAN	119	13,260	external	side	of	plasma	membrane	[GO:0009897];	extracellular	region	[GO:0005576];	immunoglobulin	complex,	circulating	[GO:0042571];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q16555	DPYL2_HUMAN	572	62,294	cytoskeleton	[GO:0005856];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+O14633	LCE2B_HUMAN	110	11,219	cornified	envelope	[GO:0001533];	cytoplasm	[GO:0005737]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q8NCP5	ZBT44_HUMAN	570	63,848	nucleus	[GO:0005634]
+Q9BXS5	AP1M1_HUMAN	423	48,587	Golgi	membrane	[GO:0000139];	clathrin	adaptor	complex	[GO:0030131];	clathrin-coated	vesicle	membrane	[GO:0030665];	cytoplasmic	vesicle	membrane	[GO:0030659];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	lysosomal	membrane	[GO:0005765];	membrane	[GO:0016020];	plasma	membrane	[GO:0005886];	specific	granule	membrane	[GO:0035579];	trans-Golgi	network	membrane	[GO:0032588]
+P54725	RD23A_HUMAN	363	39,609	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	intracellular	membrane-bounded	organelle	[GO:0043231];	microtubule	organizing	center	[GO:0005815];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	proteasome	complex	[GO:0000502];	protein-containing	complex	[GO:0032991]
+Q8NB12	SMYD1_HUMAN	490	56,617	cytoplasm	[GO:0005737];	nucleus	[GO:0005634]
+P60900	PSA6_HUMAN	246	27,399	P-body	[GO:0000932];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	myofibril	[GO:0030016];	nuclear	matrix	[GO:0016363];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	polysome	[GO:0005844];	proteasome	complex	[GO:0000502];	proteasome	core	complex	[GO:0005839];	proteasome	core	complex,	alpha-subunit	complex	[GO:0019773];	sarcomere	[GO:0030017]
+Q8IZQ1	WDFY3_HUMAN	3526	395,258	PML	body	[GO:0016605];	autophagosome	[GO:0005776];	axon	[GO:0030424];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	extrinsic	component	of	autophagosome	membrane	[GO:0097635];	extrinsic	component	of	membrane	[GO:0019898];	inclusion	body	[GO:0016234];	nuclear	envelope	[GO:0005635];	nuclear	membrane	[GO:0031965];	nucleolus	[GO:0005730];	nucleus	[GO:0005634];	perikaryon	[GO:0043204];	plasma	membrane	[GO:0005886]
+Q9UNA4	POLI_HUMAN	740	83,006	cytoplasmic	ribonucleoprotein	granule	[GO:0036464];	intracellular	[GO:0005622];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654]
+O76003	GLRX3_HUMAN	335	37,432	Z	disc	[GO:0030018];	cell	cortex	[GO:0005938];	cytosol	[GO:0005829];	dendrite	[GO:0030425];	nucleus	[GO:0005634]
+Q86V42	F124A_HUMAN	546	60,104
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q14CS0	UBX2B_HUMAN	331	37,077	Golgi	apparatus	[GO:0005794];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	nucleus	[GO:0005634];	spindle	pole	centrosome	[GO:0031616]
+Q9HCJ6	VAT1L_HUMAN	419	45,899
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P02741	CRP_HUMAN	224	25,039	extracellular	region	[GO:0005576];	extracellular	space	[GO:0005615]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P13647	K2C5_HUMAN	590	62,378	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	extracellular	exosome	[GO:0070062];	intermediate	filament	[GO:0005882];	keratin	filament	[GO:0045095];	membrane	[GO:0016020];	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q93062	RBPMS_HUMAN	196	21,802	P-body	[GO:0000932];	cytoplasmic	stress	granule	[GO:0010494];	cytosol	[GO:0005829];	nucleoplasm	[GO:0005654]
+Q5T0L3	SPT46_HUMAN	261	29,150	nuclear	membrane	[GO:0031965]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q93009	UBP7_HUMAN	1102	128,302	PML	body	[GO:0016605];	chromosome	[GO:0005694];	cytosol	[GO:0005829];	nuclear	body	[GO:0016604];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	protein-containing	complex	[GO:0032991]
+Q6W2J9	BCOR_HUMAN	1755	192,189	BCOR	complex	[GO:0140261];	nucleus	[GO:0005634]
+Q9HC52	CBX8_HUMAN	389	43,396	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	heterochromatin	[GO:0000792];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q00987	MDM2_HUMAN	491	55,233	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endocytic	vesicle	membrane	[GO:0030666];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	protein-containing	complex	[GO:0032991];	synapse	[GO:0045202]
+Q99836	MYD88_HUMAN	296	33,233	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endosome	membrane	[GO:0010008];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886]
+P60484	PTEN_HUMAN	403	47,166	PML	body	[GO:0016605];	Schmidt-Lanterman	incisure	[GO:0043220];	apical	plasma	membrane	[GO:0016324];	cell	projection	[GO:0042995];	cytoplasm	[GO:0005737];	cytoplasmic	side	of	plasma	membrane	[GO:0009898];	cytosol	[GO:0005829];	dendritic	spine	[GO:0043197];	extracellular	region	[GO:0005576];	mitochondrion	[GO:0005739];	myelin	sheath	adaxonal	region	[GO:0035749];	neuron	projection	[GO:0043005];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	postsynaptic	cytosol	[GO:0099524];	postsynaptic	membrane	[GO:0045211]
+P04637	P53_HUMAN	393	43,653	PML	body	[GO:0016605];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	endoplasmic	reticulum	[GO:0005783];	mitochondrial	matrix	[GO:0005759];	mitochondrion	[GO:0005739];	nuclear	chromatin	[GO:0000790];	nuclear	matrix	[GO:0016363];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	protein-containing	complex	[GO:0032991];	replication	fork	[GO:0005657];	site	of	double-strand	break	[GO:0035861];	transcription	factor	complex	[GO:0005667]
+Q99496	RING2_HUMAN	336	37,655	MLL1	complex	[GO:0071339];	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	euchromatin	[GO:0000791];	nuclear	body	[GO:0016604];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	sex	chromatin	[GO:0001739];	ubiquitin	ligase	complex	[GO:0000151]
+Q06587	RING1_HUMAN	406	42,429	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	cytosol	[GO:0005829];	nuclear	speck	[GO:0016607];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	sex	chromatin	[GO:0001739];	ubiquitin	ligase	complex	[GO:0000151]
+O35618	MDM4_MOUSE	489	54,963	nucleus	[GO:0005634]
+P35227	PCGF2_HUMAN	344	37,788	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	nuclear	body	[GO:0016604];	nuclear	chromatin	[GO:0000790];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	sex	chromatin	[GO:0001739]
+Q99426	TBCB_HUMAN	244	27,326	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	microtubule	[GO:0005874];	microtubule	cytoskeleton	[GO:0015630]
+P06400	RB_HUMAN	928	106,159	PML	body	[GO:0016605];	Rb-E2F	complex	[GO:0035189];	SWI/SNF	complex	[GO:0016514];	chromatin	[GO:0000785];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	spindle	[GO:0005819];	transcription	factor	complex	[GO:0005667]
+P84022	SMAD3_HUMAN	425	48,081	SMAD	protein	complex	[GO:0071141];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	heteromeric	SMAD	protein	complex	[GO:0071144];	nuclear	chromatin	[GO:0000790];	nuclear	inner	membrane	[GO:0005637];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	plasma	membrane	[GO:0005886];	receptor	complex	[GO:0043235];	transcription	factor	complex	[GO:0005667]
+O15151	MDM4_HUMAN	490	54,864	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q9UER7	DAXX_HUMAN	740	81,373	PML	body	[GO:0016605];	chromosome,	centromeric	region	[GO:0000775];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	nuclear	body	[GO:0016604];	nucleolus	[GO:0005730];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+Q5U5Q3	MEX3C_HUMAN	659	69,366	cytoplasm	[GO:0005737];	nucleus	[GO:0005634]
+P35226	BMI1_HUMAN	326	36,949	PRC1	complex	[GO:0035102];	PcG	protein	complex	[GO:0031519];	cytosol	[GO:0005829];	nuclear	body	[GO:0016604];	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634];	ubiquitin	ligase	complex	[GO:0000151]
+P21145	MAL_HUMAN	153	16,714	apical	plasma	membrane	[GO:0016324];	endoplasmic	reticulum	[GO:0005783];	extrinsic	component	of	membrane	[GO:0019898];	hinge	region	between	urothelial	plaques	of	apical	plasma	membrane	[GO:0120003];	integral	component	of	membrane	[GO:0016021];	membrane	raft	[GO:0045121];	plasma	membrane	raft	[GO:0044853]
+P03211	EBNA1_EBVB9	641	56,427	host	cell	nucleus	[GO:0042025]
+Q86VY4	TSYL5_HUMAN	417	45,143	nucleus	[GO:0005634]
+Q77UV9	Q77UV9_HHV8	407	43,327
+F5H9D8	F5H9D8_HHV8	911	97,956
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P57738	TCTA_HUMAN	103	11,341	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P39656	OST48_HUMAN	456	50,801	azurophil	granule	membrane	[GO:0035577];	endoplasmic	reticulum	[GO:0005783];	endoplasmic	reticulum	membrane	[GO:0005789];	integral	component	of	membrane	[GO:0016021];	intracellular	membrane-bounded	organelle	[GO:0043231];	membrane	[GO:0016020];	oligosaccharyltransferase	complex	[GO:0008250];	plasma	membrane	[GO:0005886];	protein-containing	complex	[GO:0032991]
+Q86WV6	STING_HUMAN	379	42,193	autophagosome	[GO:0005776];	autophagosome	membrane	[GO:0000421];	cytoplasmic	vesicle	membrane	[GO:0030659];	endoplasmic	reticulum	membrane	[GO:0005789];	endosome	[GO:0005768];	integral	component	of	endoplasmic	reticulum-Golgi	intermediate	compartment	(ERGIC)	membrane	[GO:1990701];	mitochondrial	outer	membrane	[GO:0005741];	perinuclear	region	of	cytoplasm	[GO:0048471];	plasma	membrane	[GO:0005886];	secretory	granule	membrane	[GO:0030667]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q9C075	K1C23_HUMAN	422	48,131	cytosol	[GO:0005829];	intermediate	filament	[GO:0005882]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q9Y5E3	PCDB6_HUMAN	794	87,350	integral	component	of	membrane	[GO:0016021];	integral	component	of	plasma	membrane	[GO:0005887]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q2VIR3	IF2GL_HUMAN	472	51,229	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	eukaryotic	translation	initiation	factor	2	complex	[GO:0005850]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+O60266	ADCY3_HUMAN	1144	128,960	Golgi	apparatus	[GO:0005794];	cilium	[GO:0005929];	cytoplasm	[GO:0005737];	integral	component	of	membrane	[GO:0016021];	integral	component	of	plasma	membrane	[GO:0005887];	membrane	[GO:0016020];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q6ZUU3	FOXNB_HUMAN	175	18,625	fibrillar	center	[GO:0001650]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q92901	RL3L_HUMAN	407	46,296	cytosolic	large	ribosomal	subunit	[GO:0022625];	membrane	[GO:0016020];	ribosome	[GO:0005840]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q5TF93	Q5TF93_HUMAN	291	30,799	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P35523	CLCN1_HUMAN	988	108,626	chloride	channel	complex	[GO:0034707];	integral	component	of	plasma	membrane	[GO:0005887];	plasma	membrane	[GO:0005886];	sarcolemma	[GO:0042383]
+Q8IZU0	FAM9B_HUMAN	186	22,438	nucleoplasm	[GO:0005654];	synaptonemal	complex	[GO:0000795]
+Q92624	APBP2_HUMAN	585	66,853	cytoplasm	[GO:0005737];	cytoplasmic	vesicle	membrane	[GO:0030659];	microtubule	[GO:0005874];	microtubule	associated	complex	[GO:0005875];	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A6NCK2	TR43B_HUMAN	446	52,310
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F5H2U0	F5H2U0_HUMAN	72	8,103	cytoplasm	[GO:0005737]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q969V3	NCLN_HUMAN	563	62,974	endoplasmic	reticulum	membrane	[GO:0005789];	integral	component	of	membrane	[GO:0016021];	membrane	[GO:0016020];	protein-containing	complex	[GO:0032991]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F8WC47	F8WC47_HUMAN	111	12,560
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RB33	D6RB33_HUMAN	143	16,286
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A0A0MT60	A0A0A0MT60_HUMAN	1244	136,274	actin	filament	[GO:0005884];	growth	cone	[GO:0030426]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A0G2JIU6	A0A0G2JIU6_HUMAN	180	20,540
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+B1AKP8	B1AKP8_HUMAN	754	85,901
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+K7EMN5	K7EMN5_HUMAN	158	17,132	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A8MWA4	Z705E_HUMAN	300	34,697	nucleus	[GO:0005634]
+A0A1W2PRR0	A0A1W2PRR0_HUMAN
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q5FBX5	Q5FBX5_HUMAN	115	13,370	extracellular	region	[GO:0005576]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+B1AKB2	B1AKB2_HUMAN	244	27,033
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q5TEV5	CA134_HUMAN	83	9,093	extracellular	region	[GO:0005576]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+G3V3F8	G3V3F8_HUMAN	37	4,144
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JST7	C9JST7_HUMAN	199	21,708	endoplasmic	reticulum	membrane	[GO:0005789];	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E7ER60	E7ER60_HUMAN	839	92,303
+U6D822	U6D822_NEOVI	763	85,884
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A6NP17	A6NP17_HUMAN	282	31,313
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E7EPS2	E7EPS2_HUMAN	269	30,300
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+I3L3G5	I3L3G5_HUMAN	159	17,606
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q3T907	Q3T907_HUMAN	67	7,190
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A0C4DFM9	A0A0C4DFM9_HUMAN	195	22,488
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A2A2Q9	A2A2Q9_HUMAN	398	45,034
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+S4R313	S4R313_HUMAN	551	62,653	membrane	[GO:0016020]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RAE9	D6RAE9_HUMAN	56	6,595	membrane	[GO:0016020]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+J3KN64	J3KN64_HUMAN	99	11,028
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F6TRA5	F6TRA5_HUMAN	238	26,708	nuclear	speck	[GO:0016607]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+P26232	CTNA2_HUMAN	953	105,313	actin	cytoskeleton	[GO:0015629];	adherens	junction	[GO:0005912];	axon	[GO:0030424];	basolateral	plasma	membrane	[GO:0016323];	cell-cell	adherens	junction	[GO:0005913];	cytoplasm	[GO:0005737];	cytosol	[GO:0005829];	extrinsic	component	of	postsynaptic	membrane	[GO:0098890];	extrinsic	component	of	presynaptic	membrane	[GO:0098888];	hippocampal	mossy	fiber	to	CA3	synapse	[GO:0098686];	lamellipodium	[GO:0030027];	nucleus	[GO:0005634];	parallel	fiber	to	Purkinje	cell	synapse	[GO:0098688];	postsynaptic	density,	intracellular	component	[GO:0099092];	presynaptic	active	zone	cytoplasmic	component	[GO:0098831]
+Q9UID6	ZN639_HUMAN	485	56,054	nucleoplasm	[GO:0005654];	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q0PRL4	Q0PRL4_HUMAN	530	59,922	nucleus	[GO:0005634]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q7Z4L9	PPR42_HUMAN	309	35,480	centrosome	[GO:0005813];	cytoplasm	[GO:0005737];	manchette	[GO:0002177];	microtubule	cytoskeleton	[GO:0015630];	microtubule	organizing	center	[GO:0005815]
+Q5XEE1	Q5XEE1_STRP6	591	66,596	integral	component	of	membrane	[GO:0016021]
+G3V118	G3V118_HUMAN
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E7EN89	E7EN89_HUMAN	246	27,043
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+G3V1X8	G3V1X8_HUMAN	1504	169,468
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PCM2	E9PCM2_HUMAN	707	77,227	integral	component	of	membrane	[GO:0016021]
+U6DJK1	U6DJK1_NEOVI	457	49,948	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A087X0Z4	A0A087X0Z4_HUMAN	176	18,984
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C2R5	H7C2R5_HUMAN	132	13,728
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A087X0E9	A0A087X0E9_HUMAN	168	19,823
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F8WAD5	F8WAD5_HUMAN	92	9,787
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C2M5	H7C2M5_HUMAN	67	7,514
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A0G2JQ57	A0A0G2JQ57_HUMAN	120	13,849
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+B4DSU6	B4DSU6_HUMAN	147	15,735
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F8WB29	F8WB29_HUMAN	116	11,363
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C447	H7C447_HUMAN	196	21,658
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9J1P7	C9J1P7_HUMAN	242	27,522	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+B8ZZA3	B8ZZA3_HUMAN	148	16,732	cytoplasm	[GO:0005737]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JF80	C9JF80_HUMAN	141	16,056
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JEF2	C9JEF2_HUMAN	89	10,285
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JD54	C9JD54_HUMAN	59	6,833
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A087WTF7	A0A087WTF7_HUMAN	153	16,990
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JDV0	C9JDV0_HUMAN	90	9,521	intracellular	membrane-bounded	organelle	[GO:0043231]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C197	H7C197_HUMAN	193	22,397
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PH76	E9PH76_HUMAN	121	13,745	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9J3C8	C9J3C8_HUMAN	72	8,310	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PD41	E9PD41_HUMAN	210	23,688	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9JD15	C9JD15_HUMAN	105	11,789
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C4W7	H7C4W7_HUMAN	177	18,487	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H7C4W1	H7C4W1_HUMAN	263	29,072	integrin	complex	[GO:0008305]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A0A0MR21	A0A0A0MR21_HUMAN	105	11,749
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+C9J359	C9J359_HUMAN	119	13,368
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+Q5VTQ0	TT39B_HUMAN	682	76,956
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6R9Y7	D6R9Y7_HUMAN	33	3,921
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RHW1	D6RHW1_HUMAN	102	11,570
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PD25	E9PD25_HUMAN	1036	117,336
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RAV9	D6RAV9_HUMAN	44	4,583
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RBP3	D6RBP3_HUMAN	94	10,937
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RFG0	D6RFG0_HUMAN	33	3,816
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+D6RD40	D6RD40_HUMAN	34	4,067
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E7ESM1	E7ESM1_HUMAN	141	15,000
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+A0A087WYG6	A0A087WYG6_HUMAN	84	9,368
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+J3KNA5	J3KNA5_HUMAN	40	4,415
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H0YBN9	H0YBN9_HUMAN	52	6,097
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E5RK56	E5RK56_HUMAN	83	9,160
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+F8W6B9	F8W6B9_HUMAN	137	15,307
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PI20	E9PI20_HUMAN	103	12,367	centrosome	[GO:0005813];	cytosol	[GO:0005829];	plasma	membrane	[GO:0005886]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PQI5	E9PQI5_HUMAN	123	14,139
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+E9PQ23	E9PQ23_HUMAN	37	4,358
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+U6DHQ4	U6DHQ4_NEOVI	202	22,590	integral	component	of	membrane	[GO:0016021]
+H0YDV5	H0YDV5_HUMAN	216	24,358	integral	component	of	membrane	[GO:0016021]
+
+Entry	Entry	name	Length	Mass	Gene	ontology	(cellular	component)
+H0YE13	H0YE13_HUMAN	56	6,018	microtubule	[GO:0005874]
+
