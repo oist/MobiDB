@@ -19,7 +19,9 @@ def worker(i):
     print(start_num)
     print(end_num)
 
-    o = csv.writer(fw)
+
+    o = csv.writer(fw, delimiter='\t')
+
     for row in itertools.islice(fr_line, start_num, end_num):
         o.writerow(row.split())
 
@@ -32,8 +34,8 @@ if __name__ == '__main__':
     rows1 = []
     core = 9
 
-    with open("mobiDB_all.csv", "w") as fw:
-        with open("mobiDB_all.txt") as fr:
+    with open("mobiDB_small.csv", "w") as fw:
+        with open("result.txt") as fr:
             fr_line = fr.readlines()
             lengs = int(len(fr_line)/core)
             remainder = int(len(fr_line) % core)

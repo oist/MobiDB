@@ -1,4 +1,7 @@
 from bioservices import UniProt  # Uniprotのメソッドをインポート
+import pandas as pd
+import io
+
 if __name__ == '__main__':
     service = UniProt()
 
@@ -11,9 +14,12 @@ if __name__ == '__main__':
         for line in fr_line:
 
             query = line
-            print(line)
-            result = service.search("id:" + query)
-            fw.write(result + "\n")
+            columnlist = "id,entry name,length,mass,go(cellular component)"
+            result = service.search(query, frmt="tab", columns = columnlist)
+
+            df = pd.read_table(io.StringIO(result))
+
+
 
 
     print("finish")
