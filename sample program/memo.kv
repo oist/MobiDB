@@ -72,20 +72,21 @@ ScreenManagement:
             size: root.size
             allow_stretch: True
             keep_ratio: False
-            source: 'wait2.zip'
-            Label:
-                text_size: self.size
-                text:'Searching Now'
+            source: './Akihiro Kusumi./PycharmProjects./mobiDB2./wait2.gif'
 
-                halign:'left'
-                size_hint_x: 1
-                size_hint_y:0.8
-                font_size: 24
 
         Label:
             size_hint_y: 0.1
             text:''
 
+        Label:
+            text_size: self.size
+            text:'Searching Now'
+            valign:'bottom'
+            halign:'left'
+            size_hint_x: 0.5
+            size_hint_y:0.4
+            font_size: 24
 
 
         Label:

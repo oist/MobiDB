@@ -255,6 +255,160 @@ class ImageSlideWidget(Widget):
 
         input('Pless any key.\n')"""
 
+"""from kivy.app import App
+from kivy.lang import Builder
+
+kv = '''
+AnchorLayout:
+    anchor_x: 'center'
+    anchor_y: 'center'
+    Button:
+        size: 200, 200
+        size_hint: None, None
+        Image:
+            source: "kivy-logo-black-256.png"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+'''
+
+class MyApp(App):
+    def build(self):
+        return Builder.load_string(kv)
+
+if __name__ == '__main__':
+    MyApp().run()"""
+
+"""from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.image import Image
+
+import glob
+
+class MyImage(Image):
+    def on_touch_down(self, touch):
+     if self.collide_point(*touch.pos):
+      print (self.source)
+
+class Image_Gallery(GridLayout):
+
+    def __init__(self, **kwargs):
+     super(Image_Gallery, self).__init__(**kwargs)
+     images = glob.glob('kusunoki.jpg')
+     self.cols = 3
+     for img in images:
+      thumb = MyImage(source=img)
+      self.add_widget(thumb)
+
+
+class mainApp(App):
+
+
+    def build(self):
+     return Image_Gallery()
+
+
+if __name__ == '__main__':
+    mainApp().run()"""
+
+"""import kivy
+kivy.require('1.0.6')
+
+from glob import glob
+from random import randint
+from os.path import join, dirname
+from kivy.app import App
+from kivy.logger import Logger
+from kivy.uix.scatter import Scatter
+from kivy.properties import StringProperty
+
+
+class Picture(Scatter):
+    '''Picture is the class that will show the image with a white border and a
+    shadow. They are nothing here because almost everything is inside the
+    picture.kv. Check the rule named <Picture> inside the file, and you'll see
+    how the Picture() is really constructed and used.
+
+    The source property will be the filename to show.
+    '''
+
+    source = StringProperty(None)
+
+
+class PicturesApp(App):
+
+    def build(self):
+
+        # the root is created in pictures.kv
+        root = self.root
+        filename = "kusunoki.jpg"
+        try:
+            # load the image
+            picture = Picture(source=filename, rotation=randint(-30, 30))
+            # add to the main field
+            root.add_widget(picture)
+
+        except Exception as e:
+            Logger.exception('Pictures: Unable to load <%s>' % filename)
+
+    def on_pause(self):
+        return True
+
+
+if __name__ == '__main__':
+    PicturesApp().run()""
+
+
+"""
+"""import kivy
+kivy.require('1.0.6')
+
+from glob import glob
+from random import randint
+from os.path import join, dirname
+from kivy.app import App
+from kivy.logger import Logger
+from kivy.uix.scatter import Scatter
+from kivy.properties import StringProperty
+
+
+class Picture(Scatter):
+    '''Picture is the class that will show the image with a white border and a
+    shadow. They are nothing here because almost everything is inside the
+    picture.kv. Check the rule named <Picture> inside the file, and you'll see
+    how the Picture() is really constructed and used.
+
+    The source property will be the filename to show.
+    '''
+
+    source = StringProperty(None)
+
+
+class PicturesApp(App):
+
+    def build(self):
+
+        # the root is created in pictures.kv
+        root = self.root
+        filename = "kusunoki.jpg"
+        try:
+            # load the image
+            picture = Picture(source=filename, rotation=randint(-30, 30))
+            # add to the main field
+            root.add_widget(picture)
+
+        except Exception as e:
+            Logger.exception('Pictures: Unable to load <%s>' % filename)
+
+    def on_pause(self):
+        return True
+
+
+if __name__ == '__main__':
+    PicturesApp().run()""
+
+
+"""
+
 from kivy.base import runTouchApp
 from kivy.lang import Builder
 
@@ -269,7 +423,7 @@ FloatLayout:
         
         allow_stretch: True
         keep_ratio: False
-        source: 'wait2.gif'
+        source: './Akihiro Kusumi./PycharmProjects./mobiDB2./wait2.gif'
         
 
 
