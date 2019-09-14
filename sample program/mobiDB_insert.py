@@ -44,27 +44,27 @@ if __name__ == '__main__':
 
 
 
-    with open("result.txt", "w") as fw:
-        with open("MobiDB_ID_small.txt") as fr:
 
-            fr_line = fr.readlines()
-            leng = len(fr_line)
+    with open("MobiDB_ID_small.txt") as fr:
 
-        for line in fr_line:
+        fr_line = fr.readlines()
+        leng = len(fr_line)
 
-            query = line
+    for line in fr_line:
 
-            result = service.search(query, frmt="tab", columns = columnlist)
+        query = line
 
-            df = pd.read_table(io.StringIO(result))
-            pd.set_option('display.max_rows', None)
-            print(df)
+        result = service.search(query, frmt="tab", columns = columnlist)
 
-            engine = create_engine('mysql://%s:%s@%s:%s/%s' % (c_user, c_passwd, c_host, c_port, c_db))
+        df = pd.read_table(io.StringIO(result))
+        pd.set_option('display.max_rows', None)
+        print(df)
 
-            with engine.begin() as con:
-                df.to_sql('mobiDB_table', con=con, if_exists='append', index=False)
-            connection.commit()
+        engine = create_engine('mysql://%s:%s@%s:%s/%s' % (c_user, c_passwd, c_host, c_port, c_db))
+
+        with engine.begin() as con:
+            df.to_sql('mobiDB_table', con=con, if_exists='append', index=False)
+        connection.commit()
 
     cursor.execute("SELECT * FROM mobiDB_table")
     # 接続を閉じる
