@@ -1,3 +1,0 @@
-Entry	Entry name	Status	Protein names	Gene names	Organism	Length
-A0A060APN7	A0A060APN7_FUSOX	unreviewed	Translation elongation factor 1-alpha (Fragment)		Fusarium oxysporum f. sp. fragariae	100
-I9YZM2	I9YZM2_HELPX	unreviewed	Type I restriction-modification system, M subunit (EC 2.1.1.72)	HPNQ4228_1321	Helicobacter pylori NQ4228	523
