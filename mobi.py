@@ -87,7 +87,7 @@ class Search_Screen(Screen):
         print(result)
         # 測定終了
         elapsed_time = t2 - t1                             # 処理にかかった時間を計算する
-        print(f"経過時間：{elapsed_time}")
+        print("経過時間：{elapsed_time}")
 
         sm.add_widget(Output_Screen(name='output'))
         sm.current = 'output'

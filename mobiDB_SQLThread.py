@@ -114,7 +114,7 @@ if __name__ == '__main__':
 
     t2 = time.time()
     elapsed_time = t2 - t1  # 処理にかかった時間を計算する
-    print(f"経過時間：{elapsed_time}")
+    print("経過時間：{elapsed_time}")
 
     logging.debug('main end')
 
