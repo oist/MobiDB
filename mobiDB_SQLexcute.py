@@ -39,16 +39,6 @@ class MySQL_Connection():
     def field_excute(self):
         logging.debug('field_excute start')
 
-        # self.cur.execute("select * from mobidb_table where `Protein names` like 'integ%'")
-        # self.cur.execute("""select `Entry name` from mobidb_table where mass >= 30""" )
-
-        # stmt = "select * from mobidb_table where `Protein names` like %s"
-        # self.cur.execute(stmt, ("integ" + "%",))
-
-       # score = object.getInt("scores")
-
-
-
         self.con.commit()
 
         logging.debug('field_excute end')
@@ -57,13 +47,9 @@ class MySQL_Connection():
     def result_print(self):
         logging.debug('result_print start')
 
-        # self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '[ 1, 42, "D" ], [ 100, 110, "D" ], [ 150, 157, "D" ], [ 327, 333, "D" ]', '$.mobidb_consensus.disorder.predictors.regions')""")
-        # self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '"Q8IU80"', '$.acc')""")
-        # select * from json_load where JSON_CONTAINS(j_load, '0', '$.mobidb_consensus.disorder.predictors[1].scores[1]')
-        # scoresのネスト　$.mobidb_consensus.disorder.predictors[1].scores[1]
-
-        stmt =" select * from json_load where JSON_CONTAINS(j_load, %s, '$.mobidb_consensus.disorder.predictors[1].scores[1]') "
-        self.cur.execute(stmt, (0,))
+        stmt = """select * from json_load 
+        where JSON_CONTAINS(j_load, %s, '$.mobidb_consensus.disorder.predictors[1].scores')"""
+        self.cur.execute(stmt, (0.7,))
 
         rows = self.cur.fetchall()
         for row in rows:
@@ -96,3 +82,16 @@ if __name__ == '__main__':
 logging.debug('result_print start')
 logging.debug('result_print end')
 """
+
+# self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '[ 1, 42, "D" ], [ 100, 110, "D" ], [ 150, 157, "D" ], [ 327, 333, "D" ]', '$.mobidb_consensus.disorder.predictors.regions')""")
+# self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '"Q8IU80"', '$.acc')""")
+# select * from json_load where JSON_CONTAINS(j_load, '0', '$.mobidb_consensus.disorder.predictors[1].scores[1]')
+
+# scoresのネスト　$.mobidb_consensus.disorder.predictors[1].scores[1]
+
+# self.cur.execute("select * from mobidb_table where `Protein names` like 'integ%'")
+# self.cur.execute("""select `Entry name` from mobidb_table where mass >= 30""" )
+# stmt = "select * from mobidb_table where `Protein names` like %s"
+# self.cur.execute(stmt, ("integ" + "%",))
+# core = object.getInt("scores")
+
