@@ -37,7 +37,7 @@ ScreenManagement:
             text:''
 
         BoxLayout:
-            size_hint_x:0.9
+            size_hint_x:0.75
             size_hint_y:0.4
             orientation:'horizontal'
 
@@ -56,11 +56,53 @@ ScreenManagement:
                 text:"Search"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0.75, "y":0}
+                pos_hint: {"x":0.77, "y":1.15}
                 font_size: 20
 
                 on_press:
                     root.press_search_button()
+
+            ToggleButton:
+                id:Score
+                text:"Score"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0, "y":0.45}
+                font_size: 20
+                state:'normal'
+                background_color :1, 1, 1, 0.9
+                on_press:
+                    root.Score_b()
+
+
+            ToggleButton:
+                id:Lengs
+                text:"Lengs"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.39, "y":0.45}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Lengs_b()
+
+
+            ToggleButton:
+                id:Gap
+                text:"Gap"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.77, "y":0.45}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Gap_b()
+
+
+
+
 
 <Wait_Screen>:
     BoxLayout:

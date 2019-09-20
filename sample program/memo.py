@@ -42,6 +42,34 @@ class Top_Screen(Screen):
 
 class Search_Screen(Screen):
     """search画面"""
+    def Score_b(self):
+        if self.ids['Score'].state != 'down':
+            self.ids['Score'].state = 'normal'
+            self.ids['Score'].background_color = 1, 1, 1, 0.9
+
+        elif self.ids['Score'].state != 'normal':
+            self.ids['Score'].state = 'down'
+            self.ids['Score'].background_color = 0, 0.3, 1, 1
+
+    def Lengs_b(self):
+        if self.ids['Lengs'].state != 'down':
+            self.ids['Lengs'].state = 'normal'
+            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+
+        elif self.ids['Lengs'].state != 'normal':
+            self.ids['Lengs'].state = 'down'
+            self.ids['Lengs'].background_color = 0.2, 0.2, 0.7, 2
+
+    def Gap_b(self):
+        if self.ids['Gap'].state != 'down':
+            self.ids['Gap'].state = 'normal'
+            self.ids['Gap'].background_color = 1, 1, 1, 0.9
+
+        elif self.ids['Gap'].state != 'normal':
+            self.ids['Gap'].state = 'down'
+            self.ids['Gap'].background_color = 0, 0, 0.7, 2
+
+
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
