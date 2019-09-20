@@ -7,9 +7,8 @@ import time
 class MySQL_Connection():
     """MySQL設定"""
 
-    logging.debug('MySQL_Connection start')
-
     def __init__(self, **kwargs):
+        logging.debug('MySQL_Connection start')
         # MySQLに接続する
         self.con = MySQLdb.connect(
             host='localhost',
@@ -25,7 +24,7 @@ class MySQL_Connection():
         # [ Protain_name, Length, Mass ]
         self.f_list = ['integrin', 10, 10]
 
-    logging.debug('MySQL_Connection end')
+        logging.debug('MySQL_Connection end')
 
     def update_status(self):
 
@@ -39,19 +38,15 @@ class MySQL_Connection():
 
     def field_excute(self):
         logging.debug('field_excute start')
-        """
-        if self.f_Protain_name :
-            if self.f_Length:
-                if self.f_mass:
-                    
-        
-        else:"""
 
         # self.cur.execute("select * from mobidb_table where `Protein names` like 'integ%'")
         # self.cur.execute("""select `Entry name` from mobidb_table where mass >= 30""" )
 
-        stmt = "select * from mobidb_table where `Protein names` like %s"
-        self.cur.execute(stmt, ("integ" + "%",))
+        # stmt = "select * from mobidb_table where `Protein names` like %s"
+        # self.cur.execute(stmt, ("integ" + "%",))
+
+       # score = object.getInt("scores")
+
 
 
         self.con.commit()
@@ -61,6 +56,14 @@ class MySQL_Connection():
 
     def result_print(self):
         logging.debug('result_print start')
+
+        # self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '[ 1, 42, "D" ], [ 100, 110, "D" ], [ 150, 157, "D" ], [ 327, 333, "D" ]', '$.mobidb_consensus.disorder.predictors.regions')""")
+        # self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '"Q8IU80"', '$.acc')""")
+        # select * from json_load where JSON_CONTAINS(j_load, '0', '$.mobidb_consensus.disorder.predictors[1].scores[1]')
+        # scoresのネスト　$.mobidb_consensus.disorder.predictors[1].scores[1]
+
+        stmt =" select * from json_load where JSON_CONTAINS(j_load, %s, '$.mobidb_consensus.disorder.predictors[1].scores[1]') "
+        self.cur.execute(stmt, (0,))
 
         rows = self.cur.fetchall()
         for row in rows:
@@ -78,8 +81,7 @@ if __name__ == '__main__':
     # MySQLに接続する
     mysql = MySQL_Connection()
 
-    mysql.update_status()   # 検索条件ステータスのアップデート
-    mysql.field_excute()    # レコードの抽出
+    mysql.field_excute()    # 処理の実行
     mysql.result_print()    # 結果の出力
 
     mysql.con.close()       # MySQLを終了する
