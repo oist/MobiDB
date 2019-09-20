@@ -105,7 +105,7 @@ class Search_Screen(Screen):
 
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""
-    Image = Image(source='./Akihiro Kusumi./PycharmProjects./mobiDB2./wait2.gif')
+    Image = Image(source='loading3.gif')
     def press_cancel_button(self):
         # ボタンが押されたときSearch画面に戻る
 
@@ -119,7 +119,8 @@ class Wait_Screen(Screen):
 
 class Output_Screen(Screen):
     """output画面"""
-
+    wimg = Image(source='kusunoki.jpg')
+    print(wimg)
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
 

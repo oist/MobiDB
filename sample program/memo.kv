@@ -12,7 +12,7 @@ ScreenManagement:
         size:root.size
 
         Button:
-            background_normal: 'kusunoki.jpg'
+            background_normal: 'body_cell.png'
             size:root.size
             size_hint:None,None
             text:'search screen '
@@ -72,7 +72,7 @@ ScreenManagement:
             size: root.size
             allow_stretch: True
             keep_ratio: False
-            source: './Akihiro Kusumi./PycharmProjects./mobiDB2./wait2.gif'
+            source:'loading3.gif'
 
 
         Label:
@@ -103,9 +103,10 @@ ScreenManagement:
     BoxLayout:
         size: root.size
         Image:
-            source: 'kusunoki.jpg'
+            allow_stretch: True
+            keep_ratio: False
             size: root.size
-
+            source: 'kusunoki.jpg'
         Button:
             size: 50,50
             size_hint: None,None
