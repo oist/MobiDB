@@ -40,6 +40,7 @@ ScreenManagement:
             size_hint_x:0.75
             size_hint_y:0.4
             orientation:'horizontal'
+            pos_hint: {"x":0.25, "y":0.8}
 
             TextInput:
                 id:text_box
@@ -56,7 +57,7 @@ ScreenManagement:
                 text:"Search"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0.77, "y":1.15}
+                pos_hint: {"x":0, "y":1.15}
                 font_size: 20
 
                 on_press:
@@ -67,7 +68,7 @@ ScreenManagement:
                 text:"Score"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0, "y":0.45}
+                pos_hint: {"x":0, "y":0.4}
                 font_size: 20
                 state:'normal'
                 background_color :1, 1, 1, 0.9
@@ -80,7 +81,7 @@ ScreenManagement:
                 text:"Lengs"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0.39, "y":0.45}
+                pos_hint: {"x":0.39, "y":0.4}
                 font_size: 20
                 state:'normal'
                 background_color : 1, 1, 1, 0.9
@@ -93,7 +94,7 @@ ScreenManagement:
                 text:"Gap"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0.77, "y":0.45}
+                pos_hint: {"x":0.77, "y":0.4}
                 font_size: 20
                 state:'normal'
                 background_color : 1, 1, 1, 0.9
@@ -109,14 +110,6 @@ ScreenManagement:
         orientation:'vertical'
         size: root.size
 
-        Image:
-
-            size: root.size
-            allow_stretch: True
-            keep_ratio: False
-            source:'loading3.gif'
-
-
         Label:
             size_hint_y: 0.1
             text:''
@@ -129,7 +122,15 @@ ScreenManagement:
             size_hint_x: 0.5
             size_hint_y:0.4
             font_size: 24
+            pos_hint: {"x":0, "y":0.9}
 
+        Image:
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            size_hint_x:1
+            size_hint_y:0.4
+            source:'loading4.gif'
 
         Label:
             size_hint_y: 0.1
@@ -144,11 +145,7 @@ ScreenManagement:
 <Output_Screen>:
     BoxLayout:
         size: root.size
-        Image:
-            allow_stretch: True
-            keep_ratio: False
-            size: root.size
-            source: 'kusunoki.jpg'
+        
         Button:
             size: 50,50
             size_hint: None,None
