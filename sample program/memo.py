@@ -4,17 +4,11 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
-from kivy.lang import Builder
+
 from logging import getLogger, StreamHandler, DEBUG
 import time
-from kivy.base import runTouchApp
-from kivy.lang import Builder
-
-from kivy.factory import Factory
-from kivy.uix.button import Button
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
-from kivy.properties import ObjectProperty
+
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -47,28 +41,44 @@ class Search_Screen(Screen):
         if self.ids['Score'].state != 'down':
             self.ids['Score'].state = 'normal'
             self.ids['Score'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_s'].text = ' '
 
         elif self.ids['Score'].state != 'normal':
             self.ids['Score'].state = 'down'
             self.ids['Score'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_s'].is_open = True
+
+        if self.ids['sp_s'].values == ' ' and self.ids['sp_s'].text == ' ':
+            self.ids['Score'].state = 'normal'
+            self.ids['Score'].background_color = 1, 1, 1, 0.9
+
+        elif self.ids['sp_s'].values != ' ':
+            self.ids['Score'].state = 'down'
+            self.ids['Score'].background_color = 2.8, 2.7, 1, 1
+
+
 
     def Lengs_b(self):
         if self.ids['Lengs'].state != 'down':
             self.ids['Lengs'].state = 'normal'
             self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_l'].text = ' '
 
         elif self.ids['Lengs'].state != 'normal':
             self.ids['Lengs'].state = 'down'
             self.ids['Lengs'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_l'].is_open = True
 
     def Gap_b(self):
         if self.ids['Gap'].state != 'down':
             self.ids['Gap'].state = 'normal'
             self.ids['Gap'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_g'].text = ' '
 
         elif self.ids['Gap'].state != 'normal':
             self.ids['Gap'].state = 'down'
             self.ids['Gap'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_g'].is_open = True
 
 
 
@@ -148,8 +158,7 @@ class Wait_Screen(Screen):
 
 class Output_Screen(Screen):
     """output画面"""
-    wimg = Image(source='kusunoki.jpg')
-    print(wimg)
+
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
 

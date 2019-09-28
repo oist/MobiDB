@@ -1,63 +1,13 @@
-"""import kivy
-kivy.require('1.0.6')
 
-from glob import glob
-from random import randint
-from os.path import join, dirname
-from kivy.app import App
-from kivy.logger import Logger
-from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty
-
-
-class Picture(Scatter):
-    '''Picture is the class that will show the image with a white border and a
-    shadow. They are nothing here because almost everything is inside the
-    picture.kv. Check the rule named <Picture> inside the file, and you'll see
-    how the Picture() is really constructed and used.
-
-    The source property will be the filename to show.
-    '''
-
-    source = StringProperty(None)
-
-
-class PicturesApp(App):
-
-    def build(self):
-
-        # the root is created in pictures.kv
-        root = self.root
-        filename = "kusunoki.jpg"
-        try:
-            # load the image
-            picture = Picture(source=filename, rotation=randint(-30, 30))
-            # add to the main field
-            root.add_widget(picture)
-
-        except Exception as e:
-            Logger.exception('Pictures: Unable to load <%s>' % filename)
-
-    def on_pause(self):
-        return True
-
-
-if __name__ == '__main__':
-    PicturesApp().run()""
-
-
-"""
 # -*- coding: utf-8 -*-
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
-from kivy.lang import Builder
+
 from logging import getLogger, StreamHandler, DEBUG
 import time
 from kivy.uix.image import Image
-from kivy.uix.behaviors import ButtonBehavior
-from kivy.properties import StringProperty
 
 """デバック"""
 logger = getLogger(__name__)
@@ -69,17 +19,12 @@ logger.propagate = False
 logger.debug('hello')
 
 
-class Top_Screen(Screen,ButtonBehavior, Image ):
+class Top_Screen(Screen):
     """Top画面"""
-    source = StringProperty('kusunoki.jpg')
-    def __init__(self, **kwargs):
-
-        super(Top_Screen, self).__init__(**kwargs)
-        self.source = 'atlas://data/images/defaulttheme/button'
 
     def press_enter_button(self):
         # ボタンイベント，searchに画面遷移する
-        self.source = 'atlas://data/images/defaulttheme/button'
+
         logger.debug('Start press_enter_button')
 
         sm.add_widget(Search_Screen(name='search'))  # Search画面を生成する
@@ -91,6 +36,41 @@ class Top_Screen(Screen,ButtonBehavior, Image ):
 
 class Search_Screen(Screen):
     """search画面"""
+
+    def Score_b(self):
+        if self.ids['Score'].state != 'down':
+            self.ids['Score'].state = 'normal'
+            self.ids['Score'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_s'].text = ' '
+
+        elif self.ids['Score'].state != 'normal':
+            self.ids['Score'].state = 'down'
+            self.ids['Score'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_s'].is_open = True
+
+    def Lengs_b(self):
+        if self.ids['Lengs'].state != 'down':
+            self.ids['Lengs'].state = 'normal'
+            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_l'].text = ' '
+
+        elif self.ids['Lengs'].state != 'normal':
+            self.ids['Lengs'].state = 'down'
+            self.ids['Lengs'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_l'].is_open = True
+
+    def Gap_b(self):
+        if self.ids['Gap'].state != 'down':
+            self.ids['Gap'].state = 'normal'
+            self.ids['Gap'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_g'].text = ' '
+
+        elif self.ids['Gap'].state != 'normal':
+            self.ids['Gap'].state = 'down'
+            self.ids['Gap'].background_color = 2.8, 2.7, 1, 1
+            self.ids['sp_g'].is_open = True
+
+
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
@@ -154,7 +134,7 @@ class Search_Screen(Screen):
 
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""
-
+    Image = Image(source='loading3.gif')
     def press_cancel_button(self):
         # ボタンが押されたときSearch画面に戻る
 
@@ -168,6 +148,11 @@ class Wait_Screen(Screen):
 
 class Output_Screen(Screen):
     """output画面"""
+
+    def match(self, word):
+        self.data = [{'text': title.replace(word, '[/color]' + word + '[/color]')}
+                     for title in self.self.service.search
+                     if title.find(word.lower()) >= 0 or title.find(word.upper()) >= 0]
 
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
@@ -186,12 +171,12 @@ class ScreenManagement(ScreenManager):
 
 class mobiDB_topApp(App):
     def build(self):
-        logger.debug('Start mobiApp')
+        logger.debug('Start memoApp')
 
         sm.add_widget(Top_Screen(name='top'))
         sm.current = 'top'
 
-        logger.debug('End mobiApp')
+        logger.debug('End memoApp')
         return sm
 
 

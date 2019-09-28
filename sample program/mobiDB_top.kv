@@ -1,4 +1,5 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+
 ScreenManagement:
     transition:FadeTransition()
     Top_Screen:
@@ -12,7 +13,7 @@ ScreenManagement:
         size:root.size
 
         Button:
-            background_normal:'kusunoki.jpg'
+            background_normal: 'body_cell.png'
             size:root.size
             size_hint:None,None
             text:'search screen '
@@ -37,9 +38,10 @@ ScreenManagement:
             text:''
 
         BoxLayout:
-            size_hint_x:0.9
+            size_hint_x:0.75
             size_hint_y:0.4
             orientation:'horizontal'
+            pos_hint: {"x":0.25, "y":0.8}
 
             TextInput:
                 id:text_box
@@ -56,16 +58,87 @@ ScreenManagement:
                 text:"Search"
                 size_hint_x: 0.23
                 size_hint_y: 0.3
-                pos_hint: {"x":0.75, "y":0}
+                pos_hint: {"x":0, "y":1.15}
                 font_size: 20
 
                 on_press:
                     root.press_search_button()
 
+            ToggleButton:
+                id:Score
+                text:"Score"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color :1, 1, 1, 0.9
+                on_press:
+                    root.Score_b()
+
+
+            Spinner:
+                id:sp_s
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height:True
+                text: ' '
+                values:'0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1', '0.01'
+                pos_hint: {"x":0, "y":0.3}
+
+
+            ToggleButton:
+                id:Lengs
+                text:"Lengs"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.39, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Lengs_b()
+
+            Spinner:
+                id:sp_l
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height:True
+                text: ' '
+                values:'10', '20', '30'
+                pos_hint: {"x":0.39, "y":0.3}
+
+
+            ToggleButton:
+                id:Gap
+                text:"Gap"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.77, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Gap_b()
+
+            Spinner:
+                id:sp_g
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height: True
+                text: ' '
+                values:[str(y) for y in range(1, 20) ]
+                pos_hint: {"x":0.77, "y":0.3}
+
+
+
+
+
 <Wait_Screen>:
     BoxLayout:
         orientation:'vertical'
         size: root.size
+
         Label:
             size_hint_y: 0.1
             text:''
@@ -73,11 +146,20 @@ ScreenManagement:
         Label:
             text_size: self.size
             text:'Searching Now'
-
+            valign:'bottom'
             halign:'left'
-            size_hint_x: 1
-            size_hint_y:0.8
+            size_hint_x: 0.5
+            size_hint_y:0.4
             font_size: 24
+            pos_hint: {"x":0, "y":0.9}
+
+        Image:
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            size_hint_x:1
+            size_hint_y:0.4
+            source:'loading4.gif'
 
         Label:
             size_hint_y: 0.1
@@ -92,6 +174,11 @@ ScreenManagement:
 <Output_Screen>:
     BoxLayout:
         size: root.size
+        canvas:
+            Color:
+                rgba: 1,0,0,0.6
+            Line:
+                points: (self.x,self.y),(self.x+self.width,self.y)
 
         Button:
             size: 50,50
