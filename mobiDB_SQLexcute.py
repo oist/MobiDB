@@ -2,14 +2,16 @@
 import MySQLdb
 import logging
 import time
+from MySQLdb.cursors import DictCursor
 
 
 class MySQL_Connection():
     """MySQL設定"""
 
     def __init__(self, **kwargs):
-        logging.debug('MySQL_Connection start')
+        logging.debug('init_MySQL_Connection start')
         # MySQLに接続する
+
         self.con = MySQLdb.connect(
             host='localhost',
             user='root',
@@ -24,21 +26,14 @@ class MySQL_Connection():
         # [ Protain_name, Length, Mass ]
         self.f_list = ['integrin', 10, 10]
 
-        logging.debug('MySQL_Connection end')
+        logging.debug('init_MySQL_Connection end')
 
-    def update_status(self):
-
-        logging.debug('update_status start')
-
-        self.f_Protain_name = True
-        self.f_Length = False
-        self.f_Mass = False
-
-        logging.debug('update_status end')
 
     def field_excute(self):
         logging.debug('field_excute start')
 
+
+        # 探索用の配列を用意する
         self.con.commit()
 
         logging.debug('field_excute end')
@@ -47,13 +42,9 @@ class MySQL_Connection():
     def result_print(self):
         logging.debug('result_print start')
 
-        stmt = """select * from json_load 
-        where JSON_CONTAINS(j_load, %s, '$.mobidb_consensus.disorder.predictors[1].scores')"""
-        self.cur.execute(stmt, (0.7,))
-
-        rows = self.cur.fetchall()
-        for row in rows:
-            print(row)
+        self.cur.execute("""select j_load from json_load""")
+        rows = self.cur.fetchone()
+        print(rows[1])
 
         logging.debug('result_print end')
 
@@ -81,6 +72,16 @@ if __name__ == '__main__':
 """
 logging.debug('result_print start')
 logging.debug('result_print end')
+
+    def update_status(self):
+
+        logging.debug('update_status start')
+
+        self.f_Protain_name = True
+        self.f_Length = False
+        self.f_Mass = False
+
+        logging.debug('update_status end')
 """
 
 # self.cur.execute("""select * from json_load where JSON_CONTAINS(j_load, '[ 1, 42, "D" ], [ 100, 110, "D" ], [ 150, 157, "D" ], [ 327, 333, "D" ]', '$.mobidb_consensus.disorder.predictors.regions')""")
