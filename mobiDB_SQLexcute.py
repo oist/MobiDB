@@ -43,8 +43,9 @@ class MySQL_Connection():
         logging.debug('result_print start')
 
         self.cur.execute("""select j_load from json_load""")
-        rows = self.cur.fetchone()
-        print(rows[1])
+        rows = self.cur.fetchall()
+        print(rows[44])
+
 
         logging.debug('result_print end')
 
