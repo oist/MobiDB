@@ -1,6 +1,8 @@
 import json
 import logging
 import time
+import numpy as np
+import matplotlib.pyplot as plt
 
 logging.basicConfig(level=logging.DEBUG, format='%(threadName)s: %(message)s')
 
@@ -24,7 +26,6 @@ class BM_Search:
     def get_scores(self):
         # scoreを取得するメソッド
         logging.debug('get_scores start')
-
 
         for i in range(0, 71725):
             # カウントとポジションを初期化する
@@ -81,6 +82,7 @@ class BM_Search:
         logging.debug('get_scores end')
 
 
+
 if __name__ == '__main__':
     """main処理"""
 
@@ -90,6 +92,7 @@ if __name__ == '__main__':
     bm_ser = BM_Search()      # インスタンスを作成する
 
     bm_ser.get_scores()     # 探索を行い，成功したidをまとめたid[]を受け取る
+
 
     t2 = time.time()
     elapsed_time = t2 - t1  # 処理にかかった時間を計算する
