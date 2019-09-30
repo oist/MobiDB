@@ -44,7 +44,7 @@ class MySQL_Connection():
 
         self.cur.execute("""select j_load from json_load""")
         rows = self.cur.fetchall()
-        print(rows[44])
+        print(rows[71723])
 
 
         logging.debug('result_print end')
