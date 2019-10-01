@@ -13,7 +13,7 @@ def connect_SQL():
     connection = MySQLdb.connect(
         host='localhost',
         user='root',
-        passwd='sptotsfvi',
+        passwd='',
         db='mobi_db',
         # テーブル内部で日本語を扱うために追加
         charset='utf8'
@@ -41,19 +41,18 @@ def worker(i):
 
 
     for query in itertools.islice(fr_line, start_num, end_num):
-        try:
-            result = service.search("id:" + query)
-            result_s = result.strip("Entry	Entry name	Status	Protein names	Gene names	Organism	Length\n")
-            re = result_s.split('\t')
 
+        result = service.search("id:" + query)
+        result_s = result.strip("Entry	Entry name	Status	Protein names	Gene names	Organism	Length\n")
+        re = result_s.split('\t')
+        try:
             cursor.execute("""INSERT INTO mobiDB_SQL (id, Entry, Entry_name, Status, Protain_name, Gene_name, Organism, Length)
                                         VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
                            (serial_num[i], re[0], re[1], re[2], re[3], re[4], re[5], re[6]))
-            # 保存を実行
-            connect_SQL().commit()
-        except:
-            None
 
+        except:
+            print("error")
+        connect_SQL().commit()
         fw.write(result_s + "\n")
 
     logging.debug('worker end')
@@ -65,7 +64,7 @@ if __name__ == '__main__':
     logging.debug('main start')
 
     t1 = time.time()
-    core = 9
+    core = 20
     serial_num = [0]*(core+1)
     threads = []
     service = UniProt()

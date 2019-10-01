@@ -14,7 +14,6 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
-logger.debug('hello')
 
 class Top_Screen(Screen):
     """Top画面"""
@@ -85,9 +84,8 @@ class Search_Screen(Screen):
 
         t2 = time.time()
         print(result)
-        # 測定終了
         elapsed_time = t2 - t1                             # 処理にかかった時間を計算する
-        print("経過時間：{elapsed_time}")
+        print("経過時間：", elapsed_time)
 
         sm.add_widget(Output_Screen(name='output'))
         sm.current = 'output'
