@@ -1,24 +1,23 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
 ScreenManagement:
     transition:FadeTransition()
-    Top_Screen:
-    Search_Screen:
-    Wait_Screen:
-    Output_Screen:
+    TopScreen:
+    SearchScreen:
+    WaitScreen:
+    OutputScreen:
 
-<Top_Screen>:
+<TopScreen>:
 
     BoxLayout:
         size:root.size
 
         Button:
-            background_normal: 'kusunoki.jpg'
             size:root.size
             size_hint:None,None
             text:'search screen '
-            on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+            on_press: root.btnClicked_top()#Top_Screenのメソッドが実行される
 
-<Search_Screen>:
+<SearchScreen>:
     BoxLayout:
         orientation:'vertical'
         size:root.size
@@ -60,9 +59,9 @@ ScreenManagement:
                 font_size: 20
 
                 on_press:
-                    root.press_search_button()
+                    root.btnClicked_search()
 
-<Wait_Screen>:
+<WaitScreen>:
     BoxLayout:
         orientation:'vertical'
         size: root.size
@@ -88,9 +87,9 @@ ScreenManagement:
             size: 50,50
             size_hint: None,None
             text:"cancel"
-            on_press: root.press_cancel_button()#Wait_Screenのメソッドが実行される
+            on_press: root.btnClicked_wait()#Wait_Screenのメソッドが実行される
 
-<Output_Screen>:
+<OutputScreen>:
     BoxLayout:
         size: root.size
 
@@ -98,4 +97,4 @@ ScreenManagement:
             size: 50,50
             size_hint: None,None
             text:'finish'
-            on_press: root.press_return_button()#Output_Screenのメソッドが実行される
+            on_press: root.btnClicked_out()#Output_Screenのメソッドが実行される

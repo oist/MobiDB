@@ -15,132 +15,123 @@ logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
 
-class Top_Screen(Screen):
+
+class TopScreen(Screen):
     """Top画面"""
 
+    def btnClicked_top(self):
+        logger.debug('btnClicked_top Begin')
 
-    def press_enter_button(self):
-        #ボタンイベント，searchに画面遷移する
-
-        logger.debug('Start press_enter_button')
-
-        sm.add_widget(Search_Screen(name='search'))         # Search画面を生成する
+        sm.add_widget(SearchScreen(name='search'))         # Search画面を生成する
         sm.remove_widget(self)                              # Top画面を破棄する
         sm.current = 'search'                               # Search画面に移動する
 
-        logger.debug('End press_enter_button')
+        logger.debug('btnClicked_top End')
 
 
-class Search_Screen(Screen):
+class SearchScreen(Screen):
     """search画面"""
 
     def __init__(self, **kwargs):
-        logger.debug('Start init_SearchScreen')
+        logger.debug('ss_init Begin')
 
-        super(Search_Screen, self).__init__(**kwargs)
+        super(SearchScreen, self).__init__(**kwargs)
 
-        self.connect_mythread = threading.Thread(target=self.connect_uniprot_thread)   # Uniprotに接続するためのスレッドを生成
-        self.connect_mythread.start()                                                  # Uniprotに接続開始
+        self.con_mythread = threading.Thread(target=self.th_uniConn)   # Uniprotに接続するためのスレッドを生成
+        self.con_mythread.start()                                                  # Uniprotに接続開始
 
-        logger.debug('End init_SearchScreen')
+        logger.debug('ss_init End')
 
-    def connect_uniprot_thread(self):
-        # Uniprotに接続する
-
-        logger.debug('Start connect_uniprot_thread')
+    def th_uniConn(self):
+        logger.debug('th_uniConn Begin')
 
         from bioservices import UniProt     # Uniprotのメソッドをインポート
         self.service = UniProt()            # ネットに接続する
 
-        logger.debug('End connect_uniprot_thread')
+        logger.debug('th_uniConn End')
 
-    def press_search_button(self):
-        #ボタンイベント，waitに画面遷移し、threadを開始する
+    def btnClicked_search(self):
+        logger.debug('btnClicked_search Begin')
 
-        logger.debug('Start press_search_button')
+        self.con_mythread.join()                # Uniprotに接続するまで待機
 
-        self.connect_mythread.join()                # Uniprotに接続するまで待機
-
-        sm.add_widget(Wait_Screen(name='wait'))     # wait画面を生成
+        sm.add_widget(WaitScreen(name='wait'))     # wait画面を生成
         sm.current = 'wait'                         # wait画面に移動
 
-        self.search_mythread = threading.Thread(target=self.search_to_uniprot_thread)   # 検索するためのスレッドを用意する
+        self.search_mythread = threading.Thread(target=self.th_uniData_search)   # 検索するためのスレッドを用意する
         self.search_mythread.start()                                                    # 検索するためのスレッドをスタートする
 
-        logger.debug('End press_search_button')
+        logger.debug('btnClicked_search End')
 
-    def search_to_uniprot_thread(self):
-        # データを探す
-
-        logger.debug('Start search_to_uniprot_thread')
-
+    def th_uniData_search(self):
+        logger.debug('th_uniData_search Begin')
         t1 = time.time()                                   # 測定開始
         
         query = self.ids["text_box"].text                  # 検索用の値をqueryとして代入
         result = self.service.search("keyword:" + query)   # データを抽出し出力.
 
-        #query = "GL1147"
-        #result = self.service.search(query)
+        # query = "GL1147"
+        # result = self.service.search(query)
 
         t2 = time.time()
         print(result)
         elapsed_time = t2 - t1                             # 処理にかかった時間を計算する
         print("経過時間：", elapsed_time)
 
-        sm.add_widget(Output_Screen(name='output'))
+        sm.add_widget(OutputScreen(name='output'))
         sm.current = 'output'
 
-        logger.debug('End search_to_uniprot_thread')
+        logger.debug('th_uniData_search End')
 
 
-class Wait_Screen(Screen):
+class WaitScreen(Screen):
     """データ抽出中のwait画面"""
 
-    def press_cancel_button(self):
+    def btnClicked_wait(self):
         # ボタンが押されたときSearch画面に戻る
 
-        logger.debug('Start press_cancel_button')
+        logger.debug('btnClicked_wait Start')
 
         sm.remove_widget(self)
         sm.current = 'search'
 
-        logger.debug('End press_cancel_button')
+        logger.debug('btnClicked_wait End')
 
 
-class Output_Screen(Screen):
+class OutputScreen(Screen):
     """output画面"""
 
-    def press_return_button(self):
+    def btnClicked_out(self):
         # ボタンが押されたときSearch画面に戻る
 
-        logger.debug('Start press_return_button')
+        logger.debug('btnClicked_out Begin')
 
         sm.remove_widget(self)
         sm.current = 'search'
 
-        logger.debug('End press_return_button')
+        logger.debug('btnClicked_out End')
 
 
 class ScreenManagement(ScreenManager):
     pass
 
 
-class mobiApp(App):
+class MobiApp(App):
     def build(self):
-        logger.debug('Start mobiApp')
+        logger.debug('MobiApp Begin')
 
-        sm.add_widget(Top_Screen(name='top'))
+        sm.add_widget(TopScreen(name='top'))
         sm.current = 'top'
 
-        logger.debug('End mobiApp')
+        logger.debug('MobiApp End')
         return sm
 
 
 if __name__ == '__main__':
-    logger.debug('Start main')
+    logger.debug('main Begin')
 
     sm = ScreenManager()            # スクリーンマネージャ
     Window.size = (400, 220)
-    mobiApp().run()
+    MobiApp().run()
 
-    logger.debug('end main')
+    logger.debug('main End')
