@@ -4,6 +4,7 @@ import time
 import json
 import matplotlib.pyplot as plt
 import pandas as pd
+from IPython.display import display
 
 """デバック"""
 logger = getLogger(__name__)
@@ -46,6 +47,8 @@ class ScorePlot:
 
         logger.debug('get_json End')
 
+
+
     def output_score(self):
         logger.debug('output_score Begin')
 
@@ -57,7 +60,7 @@ class ScorePlot:
 
 
 def store_graph():
-    logger.debug('set_graph Begin')
+    logger.debug('store_graph Begin')
 
     plt.ylim(-0.2, 1.2)
     plt.title('Score-Plot Test', fontsize=20)
@@ -66,7 +69,7 @@ def store_graph():
 
     plt.grid(True)
 
-    logger.debug('set_graph End')
+    logger.debug('store_graph End')
 
 
 def motion(event):
@@ -83,18 +86,14 @@ if __name__ == '__main__':
     t1 = time.time()
 
     sp = ScorePlot()   # ScorePlotをインスタンス化
-    sp.plot_score()   # jsonからデータを取得
+    sp.output_score()
+    # sp.plot_score()
     store_graph()  # グラフの初期設定
 
     # 十字線の生成
     ln_v = plt.axvline(0)
-    # ln_h = plt.axhline(0)
     plt.connect('motion_notify_event', motion)
 
-    # score値を線グラフでプロット
-
-
-    plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc : " + sp.acc)
     plt.legend()
 
     t2 = time.time()

@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="json_load.predictors" />
+          <option value="list.to_html" />
         </list>
       </option>
     </inspection_tool>

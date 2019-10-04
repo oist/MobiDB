@@ -30,7 +30,7 @@ class ScorePlot:
 
         logger.debug('ScorePlot_init End')
 
-    def load_json(self):
+    def plot_score(self):
         # thread の名前を取得
         logger.debug('get_json Begin')
 
@@ -45,11 +45,7 @@ class ScorePlot:
 
         logger.debug('get_json End')
 
-    def draw_line(self):
-        plt.connect('motion_notify_event', motion)
-
-
-def store_graph_ropaty():
+def store_graph():
     logger.debug('set_graph Begin')
 
     plt.ylim(-0.2, 1.2)
@@ -76,14 +72,13 @@ if __name__ == '__main__':
     t1 = time.time()
 
     sp = ScorePlot()   # ScorePlotをインスタンス化
-    sp.load_json()   # jsonからデータを取得
-    store_graph_ropaty()  # グラフの初期設定
+    sp.plot_score()   # jsonからデータを取得
+    store_graph()  # グラフの初期設定
 
     # 十字線の生成
     ln_v = plt.axvline(0)
     # ln_h = plt.axhline(0)
-    t = threading.Thread(target=sp.draw_line)
-    t.start()
+    plt.connect('motion_notify_event', motion)
 
     # score値を線グラフでプロット
     plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc : " + sp.acc)
