@@ -68,7 +68,7 @@ class SearchScreen(Screen):
         t1 = time.time()                                   # 測定開始
         
         query = self.ids["text_box"].text                  # 検索用の値をqueryとして代入
-        result = self.service.search("keyword:" + query)   # データを抽出し出力.
+        result = self.service.search("protein names:" + query)   # データを抽出し出力.
 
         # query = "GL1147"
         # result = self.service.search(query)

@@ -28,6 +28,7 @@ class ScorePlot:
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
         self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
         self.acc = self.json_dict["acc"]  # Entry nameを取得する
+        self.count_s = 0
 
         logger.debug('ScorePlot_init End')
 
@@ -38,6 +39,7 @@ class ScorePlot:
         for i in range(len(self.score)):
             if self.score[i] > 0.5:
                 plt.scatter(i, self.score[i], marker='.', c="red")
+                self.count_s += 1
             else:
                 plt.scatter(i, self.score[i], marker='.', c="blue")
 

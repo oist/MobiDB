@@ -27,21 +27,27 @@ class ScorePlot:
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
         self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
         self.acc = self.json_dict["acc"]  # Entry nameを取得する
+        self.div = 0
+
 
         logger.debug('ScorePlot_init End')
 
     def plot_score(self):
         # thread の名前を取得
         logger.debug('get_json Begin')
+        count = 0
 
         for i in range(len(self.score)):
             if self.score[i] > 0.5:
                 plt.scatter(i, self.score[i], marker='.', c="red")
+                count += 1
             else:
                 plt.scatter(i, self.score[i], marker='.', c="blue")
 
             # シーケンスをグラフ直下にプロット
             plt.text(i, -0.1, self.sequence[i], size=10, horizontalalignment='center')
+
+        self.div = len(self.score) / count
 
         logger.debug('get_json End')
 
@@ -81,7 +87,7 @@ if __name__ == '__main__':
     plt.connect('motion_notify_event', motion)
 
     # score値を線グラフでプロット
-    plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc : " + sp.acc)
+    plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc : " + sp.acc + ", score_s : " + sp.div)
     plt.legend()
 
     t2 = time.time()
