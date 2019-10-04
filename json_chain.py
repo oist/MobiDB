@@ -28,9 +28,12 @@ class InfoAddName:
             for (i, line) in enumerate(f):
                 logger.debug('insert_protein_names Begin')
 
-                self.json_dict = json.loads(line)
-                result = service.search(self.json_dict["acc"], frmt='tab', columns=columnlist)
-                self.json_dict['protein names'] = result
+                try:
+                    self.json_dict = json.loads(line)
+                    result = service.search(self.json_dict["acc"], frmt='tab', columns=columnlist)
+                    self.json_dict['protein names'] = result
+                except:
+                    print("error")
 
                 logger.debug('insert_protein_names End')
 
