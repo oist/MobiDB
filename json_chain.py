@@ -24,18 +24,27 @@ class InfoAddName:
         logger.debug('search_info Begin')
         # jsonファイル読み込み，条件比較を行う
 
-        with open("disorder.mjson", 'r') as f:
-            for (i, line) in enumerate(f):
+        with open("disorder.mjson", 'r') as fr:
+            for (i, line) in enumerate(fr):
                 logger.debug('insert_protein_names Begin')
 
                 try:
+
+                    self.json_dict = []
                     self.json_dict = json.loads(line)
                     result = service.search(self.json_dict["acc"], frmt='tab', columns=columnlist)
-                    self.json_dict['protein names'] = result
+                    result_s = result.splitlines()
+
+                    a_dict = {'protein names': result_s[-1]}
+
+                    self.json_dict.update(a_dict)
                 except:
                     print("error")
 
                 logger.debug('insert_protein_names End')
+
+        with open('test.json', 'w') as fw:
+            json.dump(self.json_dict, fw)
 
         logger.debug('search_info End')
 
