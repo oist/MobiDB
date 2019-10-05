@@ -20,6 +20,7 @@ logger.debug('hello')
 
 
 class Top_Screen(Screen):
+
     """Top画面"""
 
     def press_enter_button(self):
@@ -40,37 +41,35 @@ class Search_Screen(Screen):
     def Score_b(self):
         if self.ids['Score'].state != 'down':
             self.ids['Score'].state = 'normal'
-            self.ids['Score'].background_color = 1, 1, 1, 0.9
+            self.ids['Score'].background_color = 1, 1, 1, 1
             self.ids['sp_s'].text = ' '
 
         elif self.ids['Score'].state != 'normal':
             self.ids['Score'].state = 'down'
-            self.ids['Score'].background_color = 2.8, 2.7, 1, 1
+            self.ids['Score'].background_color = 6, 2, 0.5, 1
             self.ids['sp_s'].is_open = True
 
     def Lengs_b(self):
         if self.ids['Lengs'].state != 'down':
             self.ids['Lengs'].state = 'normal'
-            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+            self.ids['Lengs'].background_color = 1, 1, 1, 1
             self.ids['sp_l'].text = ' '
 
         elif self.ids['Lengs'].state != 'normal':
             self.ids['Lengs'].state = 'down'
-            self.ids['Lengs'].background_color = 2.8, 2.7, 1, 1
+            self.ids['Lengs'].background_color = 6, 2, 0.5, 1
             self.ids['sp_l'].is_open = True
 
     def Gap_b(self):
         if self.ids['Gap'].state != 'down':
             self.ids['Gap'].state = 'normal'
-            self.ids['Gap'].background_color = 1, 1, 1, 0.9
+            self.ids['Gap'].background_color = 1, 1, 1, 1
             self.ids['sp_g'].text = ' '
 
         elif self.ids['Gap'].state != 'normal':
             self.ids['Gap'].state = 'down'
-            self.ids['Gap'].background_color = 2.8, 2.7, 1, 1
+            self.ids['Gap'].background_color = 6, 2, 0.5, 1
             self.ids['sp_g'].is_open = True
-
-
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
@@ -112,10 +111,32 @@ class Search_Screen(Screen):
 
         logger.debug('Start search_to_uniprot_thread')
 
+        if self.ids['Score'].state == 'down':
+            Score = self.ids['sp_s'].text
+        else:
+            #Score = ' '
+            pass
+
+        if self.ids['Lengs'].state == 'down':
+            Lengs = self.ids['sp_l'].text
+        else:
+            #Lengs = ' '
+            pass
+
+        if self.ids['Gap'].state == 'down':
+            Gap = self.ids['sp_g'].text
+        else:
+            #Gap = ' '
+            pass
+
+        #print(Score, Lengs, Gap)
+
         t1 = time.time()  # 測定開始
 
-        query = self.ids["text_box"].text  # 検索用の値をqueryとして代入
-        result = self.service.search("keyword:" + query)  # データを抽出し出力.
+        keyword = Score + Lengs + Gap
+
+        query = self.ids["text_box"].text # 検索用の値をqueryとして代入
+        result = self.service.search(keyword + query)  # データを抽出し出力.
 
         # query = "GL1147"
         # result = self.service.search(query)
@@ -134,7 +155,7 @@ class Search_Screen(Screen):
 
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""
-    Image = Image(source='loading3.gif')
+
     def press_cancel_button(self):
         # ボタンが押されたときSearch画面に戻る
 
@@ -149,10 +170,6 @@ class Wait_Screen(Screen):
 class Output_Screen(Screen):
     """output画面"""
 
-    def match(self, word):
-        self.data = [{'text': title.replace(word, '[/color]' + word + '[/color]')}
-                     for title in self.self.service.search
-                     if title.find(word.lower()) >= 0 or title.find(word.upper()) >= 0]
 
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
@@ -163,6 +180,9 @@ class Output_Screen(Screen):
         sm.current = 'search'
 
         logger.debug('End press_return_button')
+
+
+
 
 
 class ScreenManagement(ScreenManager):
