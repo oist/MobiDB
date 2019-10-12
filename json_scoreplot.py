@@ -1,8 +1,9 @@
 from logging import getLogger, StreamHandler, DEBUG
-import threading
 import time
 import json
 import matplotlib.pyplot as plt
+import pandas as pd
+
 
 """デバック"""
 logger = getLogger(__name__)
@@ -18,17 +19,18 @@ class ScorePlot:
         logger.debug('ScorePlot_ini Begin')
 
         super(ScorePlot, self).__init__(**kwargs)
-        with open("disorder.mjson", 'r') as f:
+        with open("disorder_add_protain.mjson", 'r') as f:
             for (k, line) in enumerate(f):
-                if k == 3:
+                if k == 25:
                     self.json_dict = json.loads(line)
+
                     break
 
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
         self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
         self.acc = self.json_dict["acc"]  # Entry nameを取得する
+        self.pName = self.json_dict["protein names"]
         self.div = 0
-
 
         logger.debug('ScorePlot_init End')
 
@@ -47,7 +49,7 @@ class ScorePlot:
             # シーケンスをグラフ直下にプロット
             plt.text(i, -0.1, self.sequence[i], size=10, horizontalalignment='center')
 
-        self.div = len(self.score) / count
+        self.div = count/len(self.score)*100
 
         logger.debug('get_json End')
 
@@ -77,18 +79,19 @@ if __name__ == '__main__':
 
     t1 = time.time()
 
-    sp = ScorePlot()   # ScorePlotをインスタンス化
+    sp = ScorePlot()
     sp.plot_score()   # jsonからデータを取得
     store_graph()  # グラフの初期設定
 
-    # 十字線の生成
-    ln_v = plt.axvline(0)
+    ln_v = plt.axvline(0)   # 十字線の生成
     # ln_h = plt.axhline(0)
+
     plt.connect('motion_notify_event', motion)
 
-    # score値を線グラフでプロット
-    plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc : " + sp.acc + ", score_s : " + sp.div)
-    plt.legend()
+    try:
+        plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="protain names : " + sp.pName)
+    except:
+        plt.plot(sp.score, color='black', linestyle='solid', alpha=0.5, label="acc: " + sp.acc)
 
     t2 = time.time()
     elapsed_time = t2 - t1  # 処理にかかった時間を計算する

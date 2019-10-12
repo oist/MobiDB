@@ -59,5 +59,3 @@ if __name__ == '__main__':
     idn.search_info()
 
     logger.debug('main End')
-
-
