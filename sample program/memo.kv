@@ -8,16 +8,21 @@ ScreenManagement:
     Output_Screen:
 
 <Top_Screen>:
-
     BoxLayout:
         size:root.size
-
+        canvas.before:
+            Color:
+                rgba: 0.4, 0.4, 0.4, 0.6
+            Rectangle:
+                size: self.size
         Button:
             background_normal: 'body_cell.png'
             size:root.size
             size_hint:None,None
             text:'search screen '
             on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+
+
 
 <Search_Screen>:
 
@@ -29,7 +34,7 @@ ScreenManagement:
                 rgba: 0.4, 0.4, 0.4, 0.6
             Rectangle:
                 size: self.size
-                pos: self.pos
+                #pos: self.pos
         Label:
             text_size: self.size
             text:'Searching in MobiDB'
@@ -70,9 +75,10 @@ ScreenManagement:
                 pos_hint: {"x":0, "y":1.07}
 
             Button:
+                background_color :1, 1, 1, 0.9
                 background_normal: 'search_icon.png'
-                size_hint_x: 0.1395
-                size_hint_y: 0.57
+                size_hint_x: 0.093
+                size_hint_y: 0.38
 
                 pos_hint: {"x":0.905, "y":1.09}
                 #font_size: 20
@@ -90,7 +96,7 @@ ScreenManagement:
                 state:'normal'
                 background_color :1, 1, 1, 0.9
                 on_press:
-                    root.Score_b()
+                    root.score_b()
 
             Spinner:
                 id:sp_s
@@ -112,7 +118,7 @@ ScreenManagement:
                 state:'normal'
                 background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.Lengs_b()
+                    root.lengs_b()
 
             Spinner:
                 id:sp_l
@@ -134,7 +140,7 @@ ScreenManagement:
                 state:'normal'
                 background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.Gap_b()
+                    root.gap_b()
 
             Spinner:
                 id:sp_g
@@ -153,14 +159,18 @@ ScreenManagement:
     BoxLayout:
         orientation:'vertical'
         size: root.size
-
+        canvas.before:
+            Color:
+                rgba: 0.4, 0.4, 0.4, 0.6
+            Rectangle:
+                size: self.size
         Label:
             size_hint_y: 0.1
             text:''
 
         Label:
             text_size: self.size
-            text:'Searching Now'
+            text:'Search Now'
             valign:'bottom'
             halign:'left'
             size_hint_x: 0.5
