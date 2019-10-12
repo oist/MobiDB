@@ -37,7 +37,7 @@ class Top_Screen(Screen):
 class Search_Screen(Screen):
     """search画面"""
 
-    def Score_b(self):
+    def score_b(self):
         if self.ids['Score'].state != 'down':
             self.ids['Score'].state = 'normal'
             self.ids['Score'].background_color = 1, 1, 1, 0.9
@@ -45,10 +45,10 @@ class Search_Screen(Screen):
 
         elif self.ids['Score'].state != 'normal':
             self.ids['Score'].state = 'down'
-            self.ids['Score'].background_color = 6, 2, 0.5, 1
+            self.ids['Score'].background_color = 7, 1.1, 0.3, 1
             self.ids['sp_s'].is_open = True
 
-    def Lengs_b(self):
+    def lengs_b(self):
         if self.ids['Lengs'].state != 'down':
             self.ids['Lengs'].state = 'normal'
             self.ids['Lengs'].background_color = 1, 1, 1, 0.9
@@ -56,10 +56,10 @@ class Search_Screen(Screen):
 
         elif self.ids['Lengs'].state != 'normal':
             self.ids['Lengs'].state = 'down'
-            self.ids['Lengs'].background_color = 6, 2, 0.5, 1
+            self.ids['Lengs'].background_color = 7, 1.1, 0.3, 1
             self.ids['sp_l'].is_open = True
 
-    def Gap_b(self):
+    def gap_b(self):
 
         if self.ids['Gap'].state != 'down':
             self.ids['Gap'].state = 'normal'
@@ -68,7 +68,7 @@ class Search_Screen(Screen):
 
         elif self.ids['Gap'].state != 'normal':
             self.ids['Gap'].state = 'down'
-            self.ids['Gap'].background_color = 6, 2, 0.5, 1
+            self.ids['Gap'].background_color = 7, 1.1, 0.3, 1
             self.ids['sp_g'].is_open = True
 
     def __init__(self, **kwargs):
