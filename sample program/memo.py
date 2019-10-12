@@ -170,7 +170,7 @@ class Wait_Screen(Screen):
 
 class Output_Screen(Screen):
     """output画面"""
-    print("a")
+
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
 

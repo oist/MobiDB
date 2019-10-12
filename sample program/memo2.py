@@ -534,7 +534,7 @@ class Test(BoxLayout):
 
 class VariousButtons(BoxLayout):
     def on_select_button(self, button):
-        print('press:'+button.text)
+        print('press:' + button.text + button.text )
 
 
 class memo2App(App):

@@ -7,7 +7,7 @@ from kivy.core.window import Window
 
 from logging import getLogger, StreamHandler, DEBUG
 import time
-from kivy.uix.image import Image
+
 
 """デバック"""
 logger = getLogger(__name__)
@@ -38,7 +38,9 @@ class Top_Screen(Screen):
 class Search_Screen(Screen):
     """search画面"""
 
-    def Score_b(self):
+    def score_b(self):
+    
+
         if self.ids['Score'].state != 'down':
             self.ids['Score'].state = 'normal'
             self.ids['Score'].background_color = 1, 1, 1, 1
@@ -49,7 +51,8 @@ class Search_Screen(Screen):
             self.ids['Score'].background_color = 6, 2, 0.5, 1
             self.ids['sp_s'].is_open = True
 
-    def Lengs_b(self):
+
+    def lengs_b(self):
         if self.ids['Lengs'].state != 'down':
             self.ids['Lengs'].state = 'normal'
             self.ids['Lengs'].background_color = 1, 1, 1, 1
@@ -60,7 +63,7 @@ class Search_Screen(Screen):
             self.ids['Lengs'].background_color = 6, 2, 0.5, 1
             self.ids['sp_l'].is_open = True
 
-    def Gap_b(self):
+    def gap_b(self):
         if self.ids['Gap'].state != 'down':
             self.ids['Gap'].state = 'normal'
             self.ids['Gap'].background_color = 1, 1, 1, 1
@@ -114,19 +117,19 @@ class Search_Screen(Screen):
         if self.ids['Score'].state == 'down':
             Score = self.ids['sp_s'].text
         else:
-            #Score = ' '
+            Score = ' '
             pass
 
         if self.ids['Lengs'].state == 'down':
             Lengs = self.ids['sp_l'].text
         else:
-            #Lengs = ' '
+            Lengs = ' '
             pass
 
         if self.ids['Gap'].state == 'down':
             Gap = self.ids['sp_g'].text
         else:
-            #Gap = ' '
+            Gap = ' '
             pass
 
         #print(Score, Lengs, Gap)
