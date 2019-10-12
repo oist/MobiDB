@@ -1,172 +1,14 @@
-"""from kivy.app import App
-from kivy.lang import Builder
 
-kv = '''
-AnchorLayout:
-    anchor_x: 'center'
-    anchor_y: 'center'
-    Button:
-        size: 200, 200
-        size_hint: None, None
-        Image:
-            source: "kivy-logo-black-256.png"
-            center_x: self.parent.center_x
-            center_y: self.parent.center_y
-'''
-
-class MyApp(App):
-    def build(self):
-        return Builder.load_string(kv)
-
-if __name__ == '__main__':
-    MyApp().run()"""
-
-"""from kivy.app import App
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.image import Image
-
-import glob
-
-class MyImage(Image):
-    def on_touch_down(self, touch):
-     if self.collide_point(*touch.pos):
-      print (self.source)
-
-class Image_Gallery(GridLayout):
-
-    def __init__(self, **kwargs):
-     super(Image_Gallery, self).__init__(**kwargs)
-     images = glob.glob('kusunoki.jpg')
-     self.cols = 3
-     for img in images:
-      thumb = MyImage(source=img)
-      self.add_widget(thumb)
-
-
-class mainApp(App):
-
-
-    def build(self):
-     return Image_Gallery()
-
-
-if __name__ == '__main__':
-    mainApp().run()"""
-
-"""import kivy
-kivy.require('1.0.6')
-
-from glob import glob
-from random import randint
-from os.path import join, dirname
-from kivy.app import App
-from kivy.logger import Logger
-from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty
-
-
-class Picture(Scatter):
-    '''Picture is the class that will show the image with a white border and a
-    shadow. They are nothing here because almost everything is inside the
-    picture.kv. Check the rule named <Picture> inside the file, and you'll see
-    how the Picture() is really constructed and used.
-
-    The source property will be the filename to show.
-    '''
-
-    source = StringProperty(None)
-
-
-class PicturesApp(App):
-
-    def build(self):
-
-        # the root is created in pictures.kv
-        root = self.root
-        filename = "kusunoki.jpg"
-        try:
-            # load the image
-            picture = Picture(source=filename, rotation=randint(-30, 30))
-            # add to the main field
-            root.add_widget(picture)
-
-        except Exception as e:
-            Logger.exception('Pictures: Unable to load <%s>' % filename)
-
-    def on_pause(self):
-        return True
-
-
-if __name__ == '__main__':
-    PicturesApp().run()""
-
-
-"""
-"""import kivy
-kivy.require('1.0.6')
-
-from glob import glob
-from random import randint
-from os.path import join, dirname
-from kivy.app import App
-from kivy.logger import Logger
-from kivy.uix.scatter import Scatter
-from kivy.properties import StringProperty
-
-
-class Picture(Scatter):
-    '''Picture is the class that will show the image with a white border and a
-    shadow. They are nothing here because almost everything is inside the
-    picture.kv. Check the rule named <Picture> inside the file, and you'll see
-    how the Picture() is really constructed and used.
-
-    The source property will be the filename to show.
-    '''
-
-    source = StringProperty(None)
-
-
-class PicturesApp(App):
-
-    def build(self):
-
-        # the root is created in pictures.kv
-        root = self.root
-        filename = "kusunoki.jpg"
-        try:
-            # load the image
-            picture = Picture(source=filename, rotation=randint(-30, 30))
-            # add to the main field
-            root.add_widget(picture)
-
-        except Exception as e:
-            Logger.exception('Pictures: Unable to load <%s>' % filename)
-
-    def on_pause(self):
-        return True
-
-
-if __name__ == '__main__':
-    PicturesApp().run()""
-
-
-"""
 # -*- coding: utf-8 -*-
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
-from kivy.lang import Builder
+
 from logging import getLogger, StreamHandler, DEBUG
 import time
-from kivy.base import runTouchApp
-from kivy.lang import Builder
-
-from kivy.factory import Factory
-from kivy.uix.button import Button
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.image import Image
-from kivy.properties import ObjectProperty
+
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -194,6 +36,40 @@ class Top_Screen(Screen):
 
 class Search_Screen(Screen):
     """search画面"""
+
+    def Score_b(self):
+        if self.ids['Score'].state != 'down':
+            self.ids['Score'].state = 'normal'
+            self.ids['Score'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_s'].text = ' '
+
+        elif self.ids['Score'].state != 'normal':
+            self.ids['Score'].state = 'down'
+            self.ids['Score'].background_color = 6, 2, 0.5, 1
+            self.ids['sp_s'].is_open = True
+
+    def Lengs_b(self):
+        if self.ids['Lengs'].state != 'down':
+            self.ids['Lengs'].state = 'normal'
+            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_l'].text = ' '
+
+        elif self.ids['Lengs'].state != 'normal':
+            self.ids['Lengs'].state = 'down'
+            self.ids['Lengs'].background_color = 6, 2, 0.5, 1
+            self.ids['sp_l'].is_open = True
+
+    def Gap_b(self):
+
+        if self.ids['Gap'].state != 'down':
+            self.ids['Gap'].state = 'normal'
+            self.ids['Gap'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_g'].text = ' '
+
+        elif self.ids['Gap'].state != 'normal':
+            self.ids['Gap'].state = 'down'
+            self.ids['Gap'].background_color = 6, 2, 0.5, 1
+            self.ids['sp_g'].is_open = True
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
@@ -235,7 +111,29 @@ class Search_Screen(Screen):
 
         logger.debug('Start search_to_uniprot_thread')
 
+        if self.ids['Score'].state == 'down':
+            Score = self.ids['sp_s'].text
+        else:
+            #Score = ' '
+            pass
+
+        if self.ids['Lengs'].state == 'down':
+            Lengs = self.ids['sp_l'].text
+        else:
+            #Lengs = ' '
+            pass
+
+        if self.ids['Gap'].state == 'down':
+            Gap = self.ids['sp_g'].text
+        else:
+            #Gap = ' '
+            pass
+
+        #print(Score, Lengs, Gap)
+
         t1 = time.time()  # 測定開始
+
+        # keyword = Score + Lengs + Gap
 
         query = self.ids["text_box"].text  # 検索用の値をqueryとして代入
         result = self.service.search("keyword:" + query)  # データを抽出し出力.
@@ -257,6 +155,7 @@ class Search_Screen(Screen):
 
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""
+
 
     def press_cancel_button(self):
         # ボタンが押されたときSearch画面に戻る

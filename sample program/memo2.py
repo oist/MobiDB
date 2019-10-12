@@ -255,7 +255,161 @@ class ImageSlideWidget(Widget):
 
         input('Pless any key.\n')"""
 
-from kivy.base import runTouchApp
+"""from kivy.app import App
+from kivy.lang import Builder
+
+kv = '''
+AnchorLayout:
+    anchor_x: 'center'
+    anchor_y: 'center'
+    Button:
+        size: 200, 200
+        size_hint: None, None
+        Image:
+            source: "kivy-logo-black-256.png"
+            center_x: self.parent.center_x
+            center_y: self.parent.center_y
+'''
+
+class MyApp(App):
+    def build(self):
+        return Builder.load_string(kv)
+
+if __name__ == '__main__':
+    MyApp().run()"""
+
+"""from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.image import Image
+
+import glob
+
+class MyImage(Image):
+    def on_touch_down(self, touch):
+     if self.collide_point(*touch.pos):
+      print (self.source)
+
+class Image_Gallery(GridLayout):
+
+    def __init__(self, **kwargs):
+     super(Image_Gallery, self).__init__(**kwargs)
+     images = glob.glob('kusunoki.jpg')
+     self.cols = 3
+     for img in images:
+      thumb = MyImage(source=img)
+      self.add_widget(thumb)
+
+
+class mainApp(App):
+
+
+    def build(self):
+     return Image_Gallery()
+
+
+if __name__ == '__main__':
+    mainApp().run()"""
+
+"""import kivy
+kivy.require('1.0.6')
+
+from glob import glob
+from random import randint
+from os.path import join, dirname
+from kivy.app import App
+from kivy.logger import Logger
+from kivy.uix.scatter import Scatter
+from kivy.properties import StringProperty
+
+
+class Picture(Scatter):
+    '''Picture is the class that will show the image with a white border and a
+    shadow. They are nothing here because almost everything is inside the
+    picture.kv. Check the rule named <Picture> inside the file, and you'll see
+    how the Picture() is really constructed and used.
+
+    The source property will be the filename to show.
+    '''
+
+    source = StringProperty(None)
+
+
+class PicturesApp(App):
+
+    def build(self):
+
+        # the root is created in pictures.kv
+        root = self.root
+        filename = "kusunoki.jpg"
+        try:
+            # load the image
+            picture = Picture(source=filename, rotation=randint(-30, 30))
+            # add to the main field
+            root.add_widget(picture)
+
+        except Exception as e:
+            Logger.exception('Pictures: Unable to load <%s>' % filename)
+
+    def on_pause(self):
+        return True
+
+
+if __name__ == '__main__':
+    PicturesApp().run()""
+
+
+"""
+"""import kivy
+kivy.require('1.0.6')
+
+from glob import glob
+from random import randint
+from os.path import join, dirname
+from kivy.app import App
+from kivy.logger import Logger
+from kivy.uix.scatter import Scatter
+from kivy.properties import StringProperty
+
+
+class Picture(Scatter):
+    '''Picture is the class that will show the image with a white border and a
+    shadow. They are nothing here because almost everything is inside the
+    picture.kv. Check the rule named <Picture> inside the file, and you'll see
+    how the Picture() is really constructed and used.
+
+    The source property will be the filename to show.
+    '''
+
+    source = StringProperty(None)
+
+
+class PicturesApp(App):
+
+    def build(self):
+
+        # the root is created in pictures.kv
+        root = self.root
+        filename = "kusunoki.jpg"
+        try:
+            # load the image
+            picture = Picture(source=filename, rotation=randint(-30, 30))
+            # add to the main field
+            root.add_widget(picture)
+
+        except Exception as e:
+            Logger.exception('Pictures: Unable to load <%s>' % filename)
+
+    def on_pause(self):
+        return True
+
+
+if __name__ == '__main__':
+    PicturesApp().run()""
+
+
+"""
+
+"""from kivy.base import runTouchApp
 from kivy.lang import Builder
 
 
@@ -269,11 +423,126 @@ FloatLayout:
         
         allow_stretch: True
         keep_ratio: False
-        source: 'wait2.gif'
+        source: './wait2.gif'
         
 
 
 '''
 
 if __name__ == '__main__':
-    runTouchApp(Builder.load_string(kv))
+    runTouchApp(Builder.load_string(kv))"""
+"""
+from kivy.base import runTouchApp
+
+from kivy.app import App
+from kivy.uix.button import Label, Button
+from kivy.uix.togglebutton import ToggleButton
+from kivy.config import Config
+from kivy.uix.floatlayout import FloatLayout
+
+from kivy.core.window import Window
+
+Config.set('graphics', 'width', '200')
+Config.set('graphics', 'height', '200')
+
+
+class RootWidget(FloatLayout):
+    def __init__(self, **kwargs):
+        super(RootWidget, self).__init__(**kwargs)
+        self.Sample1Btn = ToggleButton(text="Sample1", font_size="18sp",
+                                       state='down', size_hint=(.3, .15), pos_hint={'center_x': .2, 'center_y': .7})
+        self.Sample1Btn.bind(on_press=self.Sample1Btncallback)
+        self.add_widget(self.Sample1Btn)
+
+        self.Sample2Btn = ToggleButton(text="Sample2", font_size="18sp",
+                                       size_hint=(.3, .15), pos_hint={'center_x': .2, 'center_y': .5})
+        self.Sample2Btn.bind(on_press=self.Sample2Btncallback)
+        self.add_widget(self.Sample2Btn)
+
+    def Sample1Btncallback(self, instance):
+        if self.Sample1Btn.state != 'down':
+            self.Sample1Btn.state = 'normal'
+        elif self.Sample1Btn.state != 'normal':
+            self.Sample1Btn.state = 'down'
+    def Sample2Btncallback(self, instance):
+        if self.Sample2Btn.state != 'down':
+            self.Sample2Btn.state = 'normal'
+        elif self.Sample2Btn.state != 'normal':
+            self.Sample2Btn.state = 'down'
+
+
+class memo2App(App):
+    def build(self):
+        self.root = root = RootWidget()
+        self.title = 'Test Sample'
+        return self.root
+
+
+memo2App().run()"""
+"""from kivy.uix.widget import Widget
+from kivy.uix.recycleview import RecycleView
+from kivy.app import App
+class MatchView(RecycleView):
+
+    def __init__(self,**kwargs):
+        super(MatchView,self).__init__(**kwargs)
+
+        self.titles     = ['aiueo','tyuukansikenyada','marasonnkirai','amerika','jouho','ai','art']
+        self.match_data = {}
+
+    def match(self,word):
+        self.data = [{'text': title.replace(word, '[/color]' + word + '[/color]')}
+                     for title in self.titles
+                     if title.find(word.lower()) >= 0 or title.find(word.upper()) >= 0]
+
+
+
+class memo2App(App):
+    pass
+
+memo2App().run()"""
+
+from random import sample
+from string import ascii_lowercase
+
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
+
+from kivy.core.text import LabelBase, DEFAULT_FONT
+from kivy.resources import resource_add_path
+
+# 日本語フォント設定
+#resource_add_path('./fonts')
+#LabelBase.register(DEFAULT_FONT, 'ipaexg.ttf')
+
+
+
+
+
+
+class Test(BoxLayout):
+    def __init__(self, **kwargs):
+        super(Test, self).__init__(**kwargs)
+
+        self.rv.data = []
+        btn_list = ['a','b','c','d','e','f','g','h','i','j','k']
+        for btn_list_any in btn_list:
+            self.rv.data.append({'value': btn_list_any})
+
+
+
+class VariousButtons(BoxLayout):
+    def on_select_button(self, button):
+        print('press:' + button.text + button.text )
+
+
+class memo2App(App):
+    def build(self):
+        return Test()
+
+
+if __name__ == '__main__':
+
+    memo2App().run()
+
