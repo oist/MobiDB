@@ -84,7 +84,7 @@ class ScorePlot:
                 bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
 
         for i in range(len(self.score)):
-            ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
+            ax.annotate(self.sequence[i], (i, 1.05), size=8, horizontalalignment='center')
 
         plt.hlines([self.threshold], 0, len(self.score), "r", linestyle=":", lw=1)
 

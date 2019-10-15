@@ -9,7 +9,6 @@ from logging import getLogger, StreamHandler, DEBUG
 import time
 from kivy.uix.image import Image
 
-
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -17,56 +16,92 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
+logger.debug('hello')
 
 
-def load_scores(json_dict):
-    logger.debug('load_scores Begin')
+class LimitScoreSearch:
+    def __init__(self):
+        logger.debug('LSS_init Begin')
 
-    try:
-        return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+        self.success_id = []  # 条件に当てはまったIDを格納する
+        self.false_id = []
+        self.error_id = []  # scoreがそもそも存在しなかった情報を格納する。
 
-    except IndexError as e:
-        print("load_scores IndexError: {}".format(e))
+        logger.debug('LSS_init End')
 
-    logger.debug('load_scores End')
+    def search_info(self, val, lengs, gap):
+        logger.debug('search_info Begin')
+        # jsonファイル読み込み，条件比較を行う
 
+        with open("disorder_add_protain.mjson", 'r') as f:
+            for (i, line) in enumerate(f):
+                json_dict = json.loads(line)
+                count = 0
+                pos = lengs
 
-class VariousButtons(Screen):
-    def on_select_button(self, button):
-        logger.debug('on_VB_button Begin')
+                scores = self.load_scores(json_dict, i)
+                # print(scores)
+                if scores is None:
+                    pass
+                else:
+                    while count < lengs and pos < len(scores):
+                        if scores[pos] < val:
+                            count = 0
+                            pos += lengs
+                        else:
+                            count += 1
+                            pos -= 1
 
-        print('press:'+button.text)
+                    if count >= lengs:
+                        self.success_id.append(i)
+                    else:
+                        self.false_id.append(i)
 
-        logger.debug('on_VB_button End')
+        logger.debug('search_info End')
+
+        return self.success_id
+
+    def load_scores(self, json_dict, i):
+        logger.debug('load_scores Begin')
+
+        try:
+            return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
+        except IndexError as e:
+            print("load_scores IndexError: {}".format(e))
+            self.error_id.append(i)
+
+        logger.debug('load_scores End')
 
 
 class TopScreen(Screen):
     """Top画面"""
 
-    def press_enter_button(self):
+    def press_btn(self):
         # ボタンイベント，searchに画面遷移する
 
-        logger.debug('Start press_enter_button')
+        logger.debug('press_btn_TS Begin')
 
         sm.add_widget(SearchScreen(name='search'))  # Search画面を生成する
         sm.remove_widget(self)  # Top画面を破棄する
         sm.current = 'search'  # Search画面に移動する
 
-        logger.debug('End press_enter_button')
+        logger.debug('press_btn_TS End')
 
 
 class SearchScreen(Screen):
     """search画面"""
 
     def __init__(self, **kwargs):
-        logger.debug('Start init_SearchScreen')
-
         super(SearchScreen, self).__init__(**kwargs)
-        self.threshold_value = 0
-        self.threshold_lengs = 0
-        self.fill_gap = 0
+        logger.debug('SS_init Begin')
 
-        logger.debug('End init_SearchScreen')
+        self.threshold_val = 0
+        self.threshold_len = 0
+        self.fill_gap = 0
+        self.lss = LimitScoreSearch()
+
+        logger.debug('SS_init End')
 
     def Score_b(self):
         if self.ids['Score'].state != 'down':
@@ -102,142 +137,91 @@ class SearchScreen(Screen):
             self.ids['Gap'].background_color = 6, 2, 0.5, 1
             self.ids['sp_g'].is_open = True
 
-    def press_search_button(self):
+    def press_btn(self):
         # ボタンイベント，waitに画面遷移し、threadを開始する
 
-        logger.debug('Start press_search_button')
-
+        logger.debug('press_btn_SS Begin')
+        self.load_parameter()
+        info = self.lss.search_info(self.threshold_val, self.threshold_len, self.fill_gap)
+        print(info)
         sm.add_widget(WaitScreen(name='wait'))  # wait画面を生成
+
         sm.current = 'wait'  # wait画面に移動
 
-        self.store_propaty()
-        sm.read_acc = self.search_info()
+        logger.debug('press_btn_SS End')
 
-        sm.add_widget(OutputScreen(name='output'))
-        sm.current = 'output'
-
-        logger.debug('End press_search_button')
-
-    def store_propaty(self):
+    def load_parameter(self):
         # データを探す
 
-        logger.debug('store_propaty Begin')
+        logger.debug('load_parameter Begin')
 
         if self.ids['Score'].state == 'down':
-            self.threshold_value = int(float(self.ids['sp_s'].text))
+            self.threshold_val = int(float(self.ids['sp_s'].text))
         else:
-            # threshold_value = ' '
             pass
 
         if self.ids['Lengs'].state == 'down':
-            self.threshold_lengs = int(self.ids['sp_l'].text)
+            self.threshold_len = int(self.ids['sp_l'].text)
         else:
-            # threshold_lengs = ' '
             pass
 
         if self.ids['Gap'].state == 'down':
             self.fill_gap = int(self.ids['sp_g'].text)
         else:
-            # fill_gap = ' '
             pass
 
-        logger.debug('store_propaty End')
-
-    def search_info(self):
-        logger.debug('search_info Begin')
-        # jsonファイル読み込み，条件比較を行う
-        true_id = []
-        false_id = []
-
-        with open("disorder_add_protain.mjson", 'r') as f:
-            for (i, line) in enumerate(f):
-                print(i)
-                logger.debug('loop Begin')
-                json_dict = json.loads(line)
-                count = 0
-                pos = self.threshold_lengs
-
-                scores = load_scores(json_dict)
-                # print(scores)
-                if scores is None:
-                    pass
-                else:
-                    while count < self.threshold_lengs and pos < len(scores):
-                        if scores[pos] < self.threshold_value:
-                            count = 0
-                            pos += self.threshold_lengs
-                        else:
-                            count += 1
-                            pos -= 1
-
-                    if count >= self.threshold_lengs:
-                        true_id.append(json_dict["acc"])
-
-                    else:
-                        false_id.append(i)
-        logger.debug('search_info End')
-        print(true_id)
-        return true_id
+        logger.debug('load_parameter End')
 
 
 class WaitScreen(Screen):
     """データ抽出中のwait画面"""
 
-
-    def press_cancel_button(self):
+    def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
 
-        logger.debug('Start press_cancel_button')
+        logger.debug('press_btn_WS Begin ')
 
         sm.remove_widget(self)
-        sm.current = 'search'
+        sm.add_widget(OutputScreen(name='out'))
+        sm.current = 'out'
 
-        logger.debug('End press_cancel_button')
+        logger.debug('press_btn_WS End')
 
 
 class OutputScreen(Screen):
     """output画面"""
-    def __init__(self, **kwargs):
-        super(OutputScreen, self).__init__(**kwargs)
-#        self.rv.data = []
-        #for i in sm.read_acc:
-            #print(type(self.rv.data))
-            #self.rv.data.append({'value': i})
-        #print(self.rv.data)
 
-    def press_return_button(self):
+    def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
 
-        logger.debug('Start press_return_button')
+        logger.debug('press_btn_OS Begin')
 
         sm.remove_widget(self)
         sm.current = 'search'
 
-        logger.debug('End press_return_button')
+        logger.debug('press_btn_OS End')
 
 
 class ScreenManagement(ScreenManager):
-    def __init__(self, **kwargs):
-        super(ScreenManagement, self).__init__(**kwargs)
-        self.read_acc = []
+    pass
 
 
-class mobiApp(App):
+class MobiApp(App):
     def build(self):
-        logger.debug('Start mobiApp')
+        logger.debug('App Begin')
 
         sm.add_widget(TopScreen(name='top'))
         sm.current = 'top'
 
-        logger.debug('End mobiApp')
+        logger.debug('App End')
         return sm
 
 
 if __name__ == '__main__':
-    logger.debug('Start main')
+    logger.debug('main Begin')
 
     sm = ScreenManager()  # スクリーンマネージャ
     Window.size = (400, 220)
-    mobiApp().run()
+    MobiApp().run()
 
-    logger.debug('end main')
+    logger.debug('main End')

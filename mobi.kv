@@ -6,7 +6,6 @@ ScreenManagement:
     SearchScreen:
     WaitScreen:
     OutputScreen:
-    VariousButtons:
 
 <TopScreen>:
 
@@ -18,7 +17,7 @@ ScreenManagement:
             size:root.size
             size_hint:None,None
             text:'search screen '
-            on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+            on_press: root.press_btn()#Top_Screenのメソッドが実行される
 
 <SearchScreen>:
     BoxLayout:
@@ -48,7 +47,7 @@ ScreenManagement:
                 id:text_box
                 font_size: 22
                 focus: True
-                on_text_validate: root.btnClicked_text()
+                on_text_validate: root.text_btn()
 
         Label:
             size_hint_y: 0.1
@@ -63,7 +62,7 @@ ScreenManagement:
                 font_size: 20
 
                 on_press:
-                    root.press_search_button()
+                    root.press_btn()
 
 
             ToggleButton:
@@ -170,50 +169,12 @@ ScreenManagement:
             size: 50,50
             size_hint: None,None
             text:"cancel"
-            on_press: root.press_cancel_button()#Wait_Screenのメソッドが実行される
+            on_press: root.press_btn()#Wait_Screenのメソッドが実行される
 
 <OutputScreen>:
     BoxLayout:
-        canvas:
-            Color:
-                rgba: 0.3, 0.3, 0.3, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        rv: rv
-        RecycleView:
-            id: rv
-            scroll_type: ['bars', 'content']
-            scroll_wheel_distance: sp(60) #スクロール速度
-            bar_width: sp(20)
-            viewclass: 'VariousButtons'
-            RecycleBoxLayout:
-                default_size: None, sp(160)
-                default_size_hint: 1, None
-                size_hint_y: None
-                height: self.minimum_height
-                orientation: 'vertical'
-                spacing: dp(8)
-
-
         Button:
             size: 50,50
             size_hint: None,None
             text:'finish'
-            on_press: root.press_return_button()#Output_Screenのメソッドが実行される
-
-<VariousButtons>:
-    BoxLayout:
-        canvas:
-            Color:
-                rgba: 1, 1, 1, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        value: ''
-        Button:
-            #text: root.value
-            background_normal: ''
-            background_color: 0.5, 0.5, 0.75, 1
-            color: 1, 1 ,1 ,1
-            on_press: root.on_select_button(self)
+            on_press: root.press_btn()#Output_Screenのメソッドが実行される
