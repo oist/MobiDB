@@ -1,13 +1,17 @@
-
-# -*- coding: utf-8 -*-
 from kivy.app import App
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
-import threading
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.core.window import Window
 import json
 from logging import getLogger, StreamHandler, DEBUG
-import time
-from kivy.uix.image import Image
+from kivy.uix.recycleview import RecycleView
+from kivy.uix.recycleview.views import RecycleDataViewBehavior
+from kivy.uix.label import Label
+from kivy.properties import BooleanProperty
+from kivy.uix.recycleboxlayout import RecycleBoxLayout
+from kivy.uix.behaviors import FocusBehavior
+from kivy.uix.recycleview.layout import LayoutSelectionBehavior
+from kivy.lang import Builder
 
 """デバック"""
 logger = getLogger(__name__)
@@ -17,6 +21,33 @@ logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
 logger.debug('hello')
+
+class VariousButtons(RecycleDataViewBehavior, Label):
+    ''' Add selection support to the Label '''
+    index = None
+    selected = BooleanProperty(False)
+    selectable = BooleanProperty(True)
+
+    def refresh_view_attrs(self, rv, index, data):
+        ''' Catch and handle the view changes '''
+        self.index = index
+        return super(VariousButtons, self).refresh_view_attrs(
+            rv, index, data)
+
+    def on_touch_down(self, touch):
+        ''' Add selection on touch down '''
+        if super(VariousButtons, self).on_touch_down(touch):
+            return True
+        if self.collide_point(*touch.pos) and self.selectable:
+            return self.parent.select_with_touch(self.index, touch)
+
+    def apply_selection(self, rv, index, is_selected):
+        ''' Respond to the selection of items in the view. '''
+        self.selected = is_selected
+        if is_selected:
+            print("selection changed to {0}".format(rv.data[index]))
+        else:
+            print("selection removed for {0}".format(rv.data[index]))
 
 
 class LimitScoreSearch:
@@ -83,9 +114,9 @@ class TopScreen(Screen):
 
         logger.debug('press_btn_TS Begin')
 
-        sm.add_widget(SearchScreen(name='search'))  # Search画面を生成する
+        sm.add_widget(OutputScreen(name='out'))  # Search画面を生成する
         sm.remove_widget(self)  # Top画面を破棄する
-        sm.current = 'search'  # Search画面に移動する
+        sm.current = 'out'  # Search画面に移動する
 
         logger.debug('press_btn_TS End')
 
@@ -196,7 +227,7 @@ class OutputScreen(Screen):
         # ボタンが押されたときSearch画面に戻る
 
         logger.debug('press_btn_OS Begin')
-
+        sm.add_widget(OutputScreen(name='search'))
         sm.remove_widget(self)
         sm.current = 'search'
 

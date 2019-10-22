@@ -1,14 +1,5 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
-
-ScreenManagement:
-    transition:FadeTransition()
-    TopScreen:
-    SearchScreen:
-    WaitScreen:
-    OutputScreen:
-
 <TopScreen>:
-
     BoxLayout:
         size:root.size
 
@@ -130,10 +121,6 @@ ScreenManagement:
                 values:[str(y) for y in range(1, 20) ]
                 pos_hint: {"x":0.77, "y":0.3}
 
-
-
-
-
 <WaitScreen>:
     BoxLayout:
         orientation:'vertical'
@@ -171,10 +158,42 @@ ScreenManagement:
             text:"cancel"
             on_press: root.press_btn()#Wait_Screenのメソッドが実行される
 
+<VariousButtons>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    value: 'a'
+    Button:
+        text: self.value
+        background_normal: ''
+        background_color: 0.5, 0.5, 0.75, 1
+        color: 1, 1 ,1 ,1
+        on_press: root.on_select_button(self)
+
 <OutputScreen>:
-    BoxLayout:
-        Button:
-            size: 50,50
-            size_hint: None,None
-            text:'finish'
-            on_press: root.press_btn()#Output_Screenのメソッドが実行される
+    RecycleView:
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+
+        RecycleBoxLayout:
+            viewclass: 'VariousButtons'
+            default_size: None, dp(56)
+            default_size_hint: 1, None
+            size_hint_y: None
+            orientation: 'vertical'
+                    # multiselect: True
+                    # touch_multiselect: True
+
+
+
+
+
+
+
