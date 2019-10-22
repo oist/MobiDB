@@ -20,6 +20,7 @@ logger.debug('hello')
 
 
 class LimitScoreSearch:
+    """閾値以上のScore"""
     def __init__(self):
         logger.debug('LSS_init Begin')
 
