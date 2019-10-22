@@ -4,3 +4,5 @@ disorder.mjson.gz
 disorder.mjson
 disorder_add_protain.mjson
 disorder2.mjson
+__pycache__
+venv
