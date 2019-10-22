@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
+from kivy.lang import Builder
 import json
 from logging import getLogger, StreamHandler, DEBUG
 import time
@@ -220,6 +221,9 @@ class MobiApp(App):
 
 if __name__ == '__main__':
     logger.debug('main Begin')
+
+    with open('./theme.kv', 'r', encoding='utf8') as f:
+        Builder.load_string(f.read())
 
     sm = ScreenManager()  # スクリーンマネージャ
     Window.size = (400, 220)
