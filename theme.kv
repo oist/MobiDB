@@ -1,4 +1,15 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+<Row@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    value: ''
+    Button:
+        text: root.value
+
 <TopScreen>:
     BoxLayout:
         size:root.size
@@ -174,22 +185,76 @@
         on_press: root.on_select_button(self)
 
 <OutputScreen>:
-    RecycleView:
-        canvas:
-            Color:
-                rgba: 0.3, 0.3, 0.3, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-
-        RecycleBoxLayout:
-            viewclass: 'VariousButtons'
-            default_size: None, dp(56)
-            default_size_hint: 1, None
-            size_hint_y: None
+    rv: rv
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
             orientation: 'vertical'
-                    # multiselect: True
-                    # touch_multiselect: True
+            GridLayout:
+                cols: 3
+                rows: 2
+                size_hint_y: None
+                height: dp(108)
+                padding: dp(8)
+                spacing: dp(16)
+                Button:
+                    text: 'Populate list'
+                    on_press: root.populate()
+                Button:
+                    text: 'Sort list'
+                    on_press: root.sort()
+                Button:
+                    text: 'Clear list'
+                    on_press: root.clear()
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Insert new item'
+                        on_press: root.insert(new_item_input.text)
+                    TextInput:
+                        id: new_item_input
+                        size_hint_x: 0.6
+                        hint_text: 'value'
+                        padding: dp(10), dp(10), 0, 0
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Update first item'
+                        on_press: root.update(update_item_input.text)
+                    TextInput:
+                        id: update_item_input
+                        size_hint_x: 0.6
+                        hint_text: 'new value'
+                        padding: dp(10), dp(10), 0, 0
+                Button:
+                    text: 'Remove first item'
+                    on_press: root.remove()
+            RecycleView:
+                id: rv
+                scroll_type: ['bars', 'content']
+                scroll_wheel_distance: dp(114)
+                bar_width: dp(10)
+                RecycleBoxLayout:
+                    viewclass: 'Row'
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    spacing: dp(2)
+        BoxLayout:
+            size_hint: 1.0, 0.1
+            Label: #Dummy
+            Button:
+                text: "Load"
+                on_release: root.Load()
+            Label: #Dummy
 
 
 

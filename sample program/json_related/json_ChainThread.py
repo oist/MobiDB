@@ -77,6 +77,7 @@ class InfoAddName:
         for (k, line) in enumerate(itertools.islice(self.fr_line, start_num, end_num)):
             for _ in range(5):  # 最大3回実行
                 try:
+                    print(line)
                     self.json_dict = []
                     self.json_dict = json.loads(line)
                     result = service.search(self.json_dict["acc"], frmt='tab', columns=columnlist)
@@ -91,8 +92,8 @@ class InfoAddName:
                     time.sleep(0.1)
 
                     logger.debug('write Begin')
-                    with open('disorder_add_protain.mjson', 'a') as fw:
-                        fw.write('{}\n'.format(json.dumps(self.json_dict)))
+                    #with open('disorder_add_protain.mjson', 'a') as fw:
+                       #fw.write('{}\n'.format(json.dumps(self.json_dict)))
                 except Exception as e:
                     pass  # 必要であれば失敗時の処理
                 else:

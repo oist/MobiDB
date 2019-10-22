@@ -1,18 +1,10 @@
 import json
 from logging import getLogger, StreamHandler, DEBUG
-
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.recycleview import RecycleView
-from kivy.uix.recycleview.views import RecycleDataViewBehavior
-from kivy.uix.label import Label
-from kivy.uix.recycleboxlayout import RecycleBoxLayout
-from kivy.uix.behaviors import FocusBehavior
-from kivy.uix.recycleview.layout import LayoutSelectionBehavior
-from kivy.properties import BooleanProperty
+import time
 
 """デバック"""
 logger = getLogger(__name__)
@@ -24,45 +16,8 @@ logger.propagate = False
 logger.debug("hello")
 
 
-class VariousButtons(RecycleDataViewBehavior, Label):
-    """ Add selection support to the Label """
-
-    index = None
-    selected = BooleanProperty(False)
-    selectable = BooleanProperty(True)
-
-    def refresh_view_attrs(self, rv, index, data):
-        """ Catch and handle the view changes """
-        self.index = index
-        return super(VariousButtons, self).refresh_view_attrs(rv, index, data)
-
-    def on_touch_down(self, touch):
-        """ Add selection on touch down """
-        if super(VariousButtons, self).on_touch_down(touch):
-            return True
-        if self.collide_point(*touch.pos) and self.selectable:
-            return self.parent.select_with_touch(self.index, touch)
-
-    def apply_selection(self, rv, index, is_selected):
-        """ Respond to the selection of items in the view. """
-        self.selected = is_selected
-        if is_selected:
-            print("selection changed to {0}".format(rv.data[index]))
-        else:
-            print("selection removed for {0}".format(rv.data[index]))
-
-
 class LimitScoreSearch:
     """閾値以上のScore"""
-
-    def __init__(self):
-        logger.debug("LSS_init Begin")
-
-        self.success_id = []  # 条件に当てはまったIDを格納する
-        self.false_id = []
-        self.error_id = []  # scoreがそもそも存在しなかった情報を格納する。
-
-        logger.debug("LSS_init End")
 
     def search_info(self, val, lengs, gap):
         logger.debug("search_info Begin")
@@ -88,13 +43,14 @@ class LimitScoreSearch:
                             pos -= 1
 
                     if count >= lengs:
-                        self.success_id.append(i)
+                        success_id.append(i)
+
                     else:
-                        self.false_id.append(i)
+                        false_id.append(i)
 
         logger.debug("search_info End")
 
-        return self.success_id
+        return success_id
 
     def load_scores(self, json_dict, i):
         logger.debug("load_scores Begin")
@@ -104,7 +60,7 @@ class LimitScoreSearch:
 
         except IndexError as e:
             print("load_scores IndexError: {}".format(e))
-            self.error_id.append(i)
+            error_id.append(i)
 
         logger.debug("load_scores End")
 
@@ -117,9 +73,9 @@ class TopScreen(Screen):
 
         logger.debug("press_btn_TS Begin")
 
-        sm.add_widget(OutputScreen(name="out"))  # Search画面を生成する
+        sm.add_widget(SearchScreen(name="search"))  # Search画面を生成する
         sm.remove_widget(self)  # Top画面を破棄する
-        sm.current = "out"  # Search画面に移動する
+        sm.current = "search"  # Search画面に移動する
 
         logger.debug("press_btn_TS End")
 
@@ -227,6 +183,30 @@ class WaitScreen(Screen):
 
 class OutputScreen(Screen):
     """output画面"""
+    def __init__(self, **kwargs):
+        super(OutputScreen, self).__init__(**kwargs)
+
+    def populate(self):
+        print("populate")
+        #self.rv.data.append({'value': protain_name})
+
+    def sort(self):
+        self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
+
+    def clear(self):
+        self.rv.data = []
+
+    def insert(self, value):
+        self.rv.data.insert(0, {'value': value or 'default value'})
+
+    def update(self, value):
+        if self.rv.data:
+            self.rv.data[0]['value'] = value or 'default new value'
+            self.rv.refresh_from_data()
+
+    def remove(self):
+        if self.rv.data:
+            self.rv.data.pop(0)
 
     def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
@@ -237,10 +217,6 @@ class OutputScreen(Screen):
         sm.current = "search"
 
         logger.debug("press_btn_OS End")
-
-
-class ScreenManagement(ScreenManager):
-    pass
 
 
 class MobiApp(App):
@@ -257,11 +233,14 @@ class MobiApp(App):
 if __name__ == "__main__":
     logger.debug("main Begin")
 
+    success_id = []  # 条件に当てはまったIDを格納する
+    false_id = []
+    error_id = []
+
     with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
-
+    Window.size = (800, 600)
     sm = ScreenManager()  # スクリーンマネージャ
-    Window.size = (400, 220)
     MobiApp().run()
 
     logger.debug("main End")

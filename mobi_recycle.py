@@ -1,61 +1,77 @@
+from kivy.config import Config
+Config.set('graphics', 'width', '300')
+Config.set('graphics', 'height', '150')
+
+from random import sample
+from string import ascii_lowercase
+
 from kivy.app import App
-
-from kivy.uix.recycleview import RecycleView
-from kivy.uix.recycleview.views import RecycleDataViewBehavior
-from kivy.uix.label import Label
-from kivy.properties import BooleanProperty
-from kivy.uix.recycleboxlayout import RecycleBoxLayout
-from kivy.uix.behaviors import FocusBehavior
-from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.lang import Builder
-
-Builder.load_file("mobi_recycle.kv")
-
-
-class SelectableRecycleBoxLayout(
-    FocusBehavior, LayoutSelectionBehavior, RecycleBoxLayout
-):
-    """ Adds selection and focus behaviour to the view. """
+from kivy.uix.widget import Widget
+from kivy.core.window import Window
+from kivy.uix.recycleview import RecycleView
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.properties import StringProperty, ObjectProperty
 
 
-class SelectableLabel(RecycleDataViewBehavior, Label):
-    """ Add selection support to the Label """
+class ListScreen(Screen):
 
-    index = None
-    selected = BooleanProperty(False)
-    selectable = BooleanProperty(True)
+    def populate(self):
+        self.rv.data = [{'value': ''.join(sample(ascii_lowercase, 6))}
+                        for x in range(50)]
+        print(self.rv.data)
 
-    def refresh_view_attrs(self, rv, index, data):
-        """ Catch and handle the view changes """
-        self.index = index
-        return super(SelectableLabel, self).refresh_view_attrs(rv, index, data)
+    def sort(self):
+        self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
 
-    def on_touch_down(self, touch):
-        """ Add selection on touch down """
-        if super(SelectableLabel, self).on_touch_down(touch):
-            return True
-        if self.collide_point(*touch.pos) and self.selectable:
-            return self.parent.select_with_touch(self.index, touch)
+    def clear(self):
+        self.rv.data = []
 
-    def apply_selection(self, rv, index, is_selected):
-        """ Respond to the selection of items in the view. """
-        self.selected = is_selected
-        if is_selected:
-            print("selection changed to {0}".format(rv.data[index]))
+    def insert(self, value):
+        self.rv.data.insert(0, {'value': value or 'default value'})
+
+    def update(self, value):
+        if self.rv.data:
+            self.rv.data[0]['value'] = value or 'default new value'
+            self.rv.refresh_from_data()
+
+    def remove(self):
+        if self.rv.data:
+            self.rv.data.pop(0)
+
+
+class LoginScreen(Screen):
+    def Login(self, ti):
+        app = App.get_running_app()
+
+        app.user = ti.text
+
+        if ti.text.isdigit():
+            print("Login:[%s]" % ti.text)
+            Window.size = (800, 600)
+            sm.current = "List"
+            sm.remove_widget(self)
         else:
-            print("selection removed for {0}".format(rv.data[index]))
+            print("Wrong ID!")
+        ti.text = ""
 
-
-class RV(RecycleView):
-    def __init__(self, **kwargs):
-        super(RV, self).__init__(**kwargs)
-        self.data = [{"text": str(x)} for x in range(100)]
+    def Cancel(self, ti):
+        print("Cancel")
+        ti.text = ""
 
 
 class TestApp(App):
+    user = StringProperty(None)
+
     def build(self):
-        return RV()
+
+        sm.add_widget(LoginScreen(name="LogIn"))
+        sm.add_widget(ListScreen(name="List"))
+        return sm
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
+    with open("./mobi_recycle.kv", "r", encoding="utf8") as f:
+        Builder.load_string(f.read())
+    sm = ScreenManager()
     TestApp().run()
