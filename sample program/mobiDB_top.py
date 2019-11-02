@@ -23,6 +23,7 @@ class Top_Screen(Screen):
 
     """Top画面"""
 
+
     def press_enter_button(self):
         # ボタンイベント，searchに画面遷移する
 

@@ -504,7 +504,7 @@ memo2App().run()"""
 
 from random import sample
 from string import ascii_lowercase
-
+from kivy.uix.togglebutton import ToggleButton
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -522,20 +522,55 @@ from kivy.resources import resource_add_path
 
 
 class Test(BoxLayout):
-    def __init__(self, **kwargs):
-        super(Test, self).__init__(**kwargs)
+    """search画面"""
 
-        self.rv.data = []
-        btn_list = ['a','b','c','d','e','f','g','h','i','j','k']
-        for btn_list_any in btn_list:
-            self.rv.data.append({'value': btn_list_any})
+    def search_criteria_button(self):
+        if self.ids['Score'].state != 'down':
+            self.ids['sp_s'].text = ' '
 
+        elif self.ids['Score'].state != 'normal'and self.ids['Score'].on_press:
+            self.ids['sp_s'].is_open = True
+            self.ids['sp_l'].is_open = False
+            self.ids['sp_g'].is_open = False
 
+        if self.ids['Lengs'].state != 'down':
+            self.ids['sp_l'].text = ' '
 
-class VariousButtons(BoxLayout):
-    def on_select_button(self, button):
-        print('press:' + button.text + button.text )
+        elif self.ids['Lengs'].state != 'normal'and self.ids['Lengs'].on_press:
+            self.ids['sp_l'].is_open = True
+            self.ids['sp_s'].is_open = False
+            self.ids['sp_g'].is_open = False
 
+        if self.ids['Gap'].state != 'down':
+            self.ids['sp_g'].text = ' '
+
+        elif self.ids['Gap'].state != 'normal'and self.ids['Gap'].on_press:
+            self.ids['sp_g'].is_open = True
+            self.ids['sp_s'].is_open = False
+            self.ids['sp_l'].is_open = False
+
+    """def lengs_b(self):
+        if self.ids['Lengs'].state != 'down':
+            self.ids['Lengs'].state = 'normal'
+            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_l'].text = ' '
+
+        elif self.ids['Lengs'].state != 'normal':
+            self.ids['Lengs'].state = 'down'
+            self.ids['Lengs'].background_color = 7, 1.1, 0.3, 1
+            self.ids['sp_l'].is_open = True
+
+    def gap_b(self):
+
+        if self.ids['Gap'].state != 'down':
+            self.ids['Gap'].state = 'normal'
+            self.ids['Gap'].background_color = 1, 1, 1, 0.9
+            self.ids['sp_g'].text = ' '
+
+        elif self.ids['Gap'].state != 'normal':
+            self.ids['Gap'].state = 'down'
+            self.ids['Gap'].background_color = 7, 1.1, 0.3, 1
+            self.ids['sp_g'].is_open = True"""
 
 class memo2App(App):
     def build(self):

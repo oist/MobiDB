@@ -7,6 +7,19 @@ ScreenManagement:
     Wait_Screen:
     Output_Screen:
 
+<ToggleButton@ToggleButton>:
+    size_hint_x: 0.23
+    size_hint_y: 0.3
+    font_size: 20
+    state:'normal'
+    background_color :1, 1, 1, 0.9
+    on_state:
+        #if self.state != 'normal':self.state = 'down'
+        #elif self.state != 'down': self.state = 'normal'
+        if self.state == 'normal':self.background_color = 1, 1, 1, 0.9
+        elif self.state == 'down':self.background_color = 7, 1.1, 0.3, 1
+
+
 <Top_Screen>:
     FloatLayout:
         size:root.size
@@ -95,14 +108,10 @@ ScreenManagement:
             ToggleButton:
                 id:Score
                 text:"Score"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0, "y":0.6}
                 font_size: 20
-                state:'normal'
-                background_color :1, 1, 1, 0.9
                 on_press:
-                    root.score_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_s
@@ -117,14 +126,9 @@ ScreenManagement:
             ToggleButton:
                 id:Lengs
                 text:"Lengs"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0.39, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.lengs_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_l
@@ -139,14 +143,10 @@ ScreenManagement:
             ToggleButton:
                 id:Gap
                 text:"Gap"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0.77, "y":0.6}
                 font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.gap_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_g
