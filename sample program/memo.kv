@@ -8,19 +8,26 @@ ScreenManagement:
     Output_Screen:
 
 <Top_Screen>:
-    BoxLayout:
+    FloatLayout:
         size:root.size
         canvas.before:
             Color:
                 rgba: 0.4, 0.4, 0.4, 0.6
             Rectangle:
                 size: self.size
-        Button:
-            background_normal: 'body_cell.png'
+
+        Image:
+            source: 'body_cell.png'
             size:root.size
             size_hint:None,None
-            text:'search screen '
-            on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+        Label:
+            text_size: self.size
+            text:'MobiDB'
+            halign: 'center'
+            size_hint_x: 1
+            size_hint_y:0.5
+            font_size: 24
+            pos_hint: {"x":0, "y":0.45}
 
 
 
@@ -75,15 +82,14 @@ ScreenManagement:
                 pos_hint: {"x":0, "y":1.07}
 
             Button:
-                background_color :1, 1, 1, 0.9
-                background_normal: 'search_icon.png'
-                size_hint_x: 0.093
-                size_hint_y: 0.38
-
+                background_normal: 'search_icon3.png'
+                size_hint_x: 0.1
+                size_hint_y: 0.4
                 pos_hint: {"x":0.905, "y":1.09}
-                #font_size: 20
                 on_press:
                     root.press_search_button()
+
+                　　
 
 
             ToggleButton:

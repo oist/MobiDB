@@ -4,10 +4,9 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
-
 from logging import getLogger, StreamHandler, DEBUG
 import time
-from time import sleep
+from kivy.clock import Clock
 from kivy.uix.image import Image
 
 """デバック"""
@@ -21,8 +20,13 @@ logger.debug('hello')
 
 
 class Top_Screen(Screen):
+
     """Top画面"""
-    def press_enter_button(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        Clock.schedule_once(self.press_enter_button, 10.0)
+
+    def press_enter_button(self, dt):
     # ボタンイベント，searchに画面遷移する
 
         logger.debug('Start press_enter_button')
@@ -32,6 +36,7 @@ class Top_Screen(Screen):
         sm.current = 'search'  # Search画面に移動する
 
         logger.debug('End press_enter_button')
+
 
 class Search_Screen(Screen):
     """search画面"""
