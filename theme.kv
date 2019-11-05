@@ -10,6 +10,7 @@
     Button:
         text: root.value
 
+
 <TopScreen>:
     BoxLayout:
         size:root.size
@@ -107,7 +108,7 @@
                 size_hint_y: 0.3
                 sync_height:True
                 text: ' '
-                values:'10', '20', '30'
+                values:'50', '60', '70'
                 pos_hint: {"x":0.39, "y":0.3}
 
 
@@ -169,21 +170,6 @@
             text:"cancel"
             on_press: root.press_btn()#Wait_Screenのメソッドが実行される
 
-<VariousButtons>:
-    canvas:
-        Color:
-            rgba: 1, 1, 1, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    value: 'a'
-    Button:
-        text: self.value
-        background_normal: ''
-        background_color: 0.5, 0.5, 0.75, 1
-        color: 1, 1 ,1 ,1
-        on_press: root.on_select_button(self)
-
 <OutputScreen>:
     rv: rv
     BoxLayout:
@@ -198,43 +184,35 @@
             orientation: 'vertical'
             GridLayout:
                 cols: 3
-                rows: 2
+                rows: 1
                 size_hint_y: None
                 height: dp(108)
                 padding: dp(8)
                 spacing: dp(16)
-                Button:
-                    text: 'Populate list'
-                    on_press: root.populate()
-                Button:
-                    text: 'Sort list'
-                    on_press: root.sort()
-                Button:
-                    text: 'Clear list'
-                    on_press: root.clear()
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Insert new item'
-                        on_press: root.insert(new_item_input.text)
+                        text: 'Sort'
+                        on_press: root.sort(sort_list.text)
                     TextInput:
-                        id: new_item_input
+                        id: sort_list
                         size_hint_x: 0.6
-                        hint_text: 'value'
+                        hint_text: 'select method'
                         padding: dp(10), dp(10), 0, 0
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Update first item'
-                        on_press: root.update(update_item_input.text)
+                        text: 'Filter'
+                        on_press: root.filter(filter_list.text)
                     TextInput:
-                        id: update_item_input
+                        id: filter_list
                         size_hint_x: 0.6
-                        hint_text: 'new value'
+                        hint_text: 'select method'
                         padding: dp(10), dp(10), 0, 0
                 Button:
-                    text: 'Remove first item'
-                    on_press: root.remove()
+                    text: 'return window'
+                    on_press: root.return_window()
+
             RecycleView:
                 id: rv
                 scroll_type: ['bars', 'content']
@@ -248,13 +226,6 @@
                     height: self.minimum_height
                     orientation: 'vertical'
                     spacing: dp(2)
-        BoxLayout:
-            size_hint: 1.0, 0.1
-            Label: #Dummy
-            Button:
-                text: "Load"
-                on_release: root.Load()
-            Label: #Dummy
 
 
 

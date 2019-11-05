@@ -145,6 +145,16 @@ class SearchScreen(Screen):
 
         fw.close()
 
+        os = OutputScreen()
+        with open('success_data.mjson', 'r') as fr:
+            for (i, line) in enumerate(fr):
+                json_dict = json.loads(line)
+                try:
+                    name = json_dict["protein names"]
+                except KeyError:
+                    name = "No Name"
+                os.rv.data.append({'value': name})
+
         logger.debug("press_btn_SS End")
 
     def load_parameter(self):
@@ -190,9 +200,9 @@ class OutputScreen(Screen):
     def __init__(self, **kwargs):
         super(OutputScreen, self).__init__(**kwargs)
 
+    def on_enter(self):
+        logger.debug("on_enter_OS Begin")
 
-
-    def populate(self):
         with open('success_data.mjson', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
@@ -202,33 +212,33 @@ class OutputScreen(Screen):
                     name = "No Name"
                 self.rv.data.append({'value': name})
 
+        logger.debug("on_enter_OS End")
+
     def sort(self):
+        logger.debug("sort_OS Begin")
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
+        logger.debug("sort_OS End")
 
-    def clear(self):
-        self.rv.data = []
+    def filter(self):
+        logger.debug("filter_OS Begin")
 
-    def insert(self, value):
-        self.rv.data.insert(0, {'value': value or 'default value'})
+        print("filter")
 
-    def update(self, value):
-        if self.rv.data:
-            self.rv.data[0]['value'] = value or 'default new value'
-            self.rv.refresh_from_data()
+        logger.debug("filter_OS End")
 
-    def remove(self):
-        if self.rv.data:
-            self.rv.data.pop(0)
+    def return_window(self):
+        logger.debug("return_window Begin")
 
-    def press_btn(self):
-        # ボタンが押されたときSearch画面に戻る
-
-        logger.debug("press_btn_OS Begin")
         sm.add_widget(OutputScreen(name="search"))
         sm.remove_widget(self)
         sm.current = "search"
 
-        logger.debug("press_btn_OS End")
+        logger.debug("return_window End")
+
+
+class Row(Screen):
+    def print(self):
+        logger.debug("print")
 
 
 class MobiApp(App):
@@ -252,7 +262,7 @@ if __name__ == "__main__":
 
     with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
-    Window.size = (400, 300)
+    Window.size = (800, 600)
     sm = ScreenManager()  # スクリーンマネージャ
     MobiApp().run()
 
