@@ -186,9 +186,9 @@
                 cols: 3
                 rows: 1
                 size_hint_y: None
-                height: dp(108)
+                height: dp(54)
                 padding: dp(8)
-                spacing: dp(16)
+                spacing: dp(4)
                 BoxLayout:
                     spacing: dp(8)
                     Button:
@@ -196,7 +196,7 @@
                         on_press: root.sort(sort_list.text)
                     TextInput:
                         id: sort_list
-                        size_hint_x: 0.6
+                        size_hint_x: 1
                         hint_text: 'select method'
                         padding: dp(10), dp(10), 0, 0
                 BoxLayout:
@@ -206,7 +206,7 @@
                         on_press: root.filter(filter_list.text)
                     TextInput:
                         id: filter_list
-                        size_hint_x: 0.6
+                        size_hint_x: 1
                         hint_text: 'select method'
                         padding: dp(10), dp(10), 0, 0
                 Button:
