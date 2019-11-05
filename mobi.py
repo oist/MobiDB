@@ -3,6 +3,7 @@ from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
+import matplotlib.pyplot as plt
 from kivy.uix.screenmanager import ScreenManager, Screen
 import time
 
@@ -18,7 +19,6 @@ logger.debug("hello")
 
 class LimitScoreSearch:
     """閾値以上のScore"""
-
 
     def search_info(self, val, lengs, gap):
         logger.debug("search_info Begin")
@@ -198,7 +198,7 @@ class OutputScreen(Screen):
                     name = json_dict["protein names"]
                 except KeyError:
                     name = "No Name"
-                self.rv.data.append({'value': name})
+                self.rv.data.append({'value': name, 'index': i})
 
         logger.debug("on_enter_OS End")
 
@@ -224,9 +224,110 @@ class OutputScreen(Screen):
         logger.debug("return_window End")
 
 
+class ScorePlot():
+    def __init__(self):
+        self.fig, self.ax = plt.subplots()
+        self.ln_v = self.ax.axvline(0)
+        self.ln_h = self.ax.axhline(0)
+        self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
+
+        self.json_dict = {}
+        self.list_id = []
+        self.score = []
+        self.sequence = []
+        self.acc = ""
+        self.pName = ""
+        self.div = 0
+        self.key = 0
+        self.threshold = 0.75
+        self.text = ""
+
+        self.load_propaty()
+        self.plot_json_data()
+        self.fig.canvas.draw()
+
+        # canvasの一部を再描画するためのやつ
+        self.bg = self.fig.canvas.copy_from_bbox(self.ax.bbox)
+
+    def load_propaty(self):
+        logger.debug('load_propaty Begin')
+
+        div = 0
+
+        with open('success_data.mjson', 'r') as fr:
+            for (k, line) in enumerate(fr):
+                if k == self.key:
+                    self.json_dict = json.loads(line)
+                    break
+
+        self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
+        self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
+        self.acc = self.json_dict["acc"]  # Entry nameを取得する
+        try:
+            self.pName = self.json_dict["protein names"]
+        except KeyError:
+            self.pName = "No Name"
+        for i in range(len(self.score)):
+            if self.score[i] > self.threshold:
+                div += 1
+
+            self.list_id.append(i)
+
+        self.text = "ACC:" + self.acc + "\n" + \
+                    "Protain Names : " + self.pName + "\n" + \
+                    "Percentage (High):" + str(round(div / len(self.score) * 100, 3)) + "%"
+
+    def plot_json_data(self):
+        plt.scatter(self.list_id, self.score, s=25, c=self.score, cmap='jet')
+        plt.plot(self.score, color='black', linestyle='solid', alpha=0.7)
+
+        plt.ylim(0, 1.1)
+        plt.xlabel('Array', fontsize=16)
+        plt.ylabel('Score', fontsize=16)
+        plt.colorbar()
+
+        plt.grid(True)
+
+        self.ax.spines["right"].set_color("none")  # 右枠消し
+        self.ax.spines["top"].set_color("none")  # 上枠消し
+        self.ax.spines["left"].set_color("m")  # 左枠をマゼンダに
+        self.ax.spines["bottom"].set_color("c")
+        self.ax.text(0, 1.1, self.text, fontweight="semibold", style='italic',
+                bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
+
+        for i in range(len(self.score)):
+            self.ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
+
+        plt.hlines([self.threshold], 0, len(self.score), "r", linestyle=":", lw=1)
+
+        plt.tight_layout()
+        self.fig.canvas.draw()
+
+    def on_motion(self, event):
+        self.ln_v.set_xdata(event.xdata)
+        self.ln_h.set_ydata(event.ydata)
+
+        self.fig.canvas.restore_region(self.bg)
+        self.ax.draw_artist(self.ln_h)
+        self.ax.draw_artist(self.ln_v)
+        self.fig.canvas.blit(self.ax.bbox)
+        self.fig.canvas.flush_events()
+
+    def run(self):
+        self.fig.show()
+
+
 class Row(Screen):
-    def print(self):
-        logger.debug("print")
+    def score_plot(self, value):
+        logger.debug("score_plot_R Begin")
+        print(value)
+        print(type(value))
+        score = ScorePlot()
+        score.key = value
+        score.run()
+        plt.show()
+
+        logger.debug("score_plot_R End")
 
 
 class MobiApp(App):

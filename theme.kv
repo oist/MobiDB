@@ -7,8 +7,11 @@
             size: self.size
             pos: self.pos
     value: ''
+
+
     Button:
         text: root.value
+        on_press: root.score_plot(root.index)
 
 
 <TopScreen>:
