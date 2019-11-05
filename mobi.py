@@ -43,14 +43,12 @@ class LimitScoreSearch:
                             pos -= 1
 
                     if count >= lengs:
-                        success_id.append(i)
+                        self.insert_jd(json_dict, i)
 
-                    else:
-                        false_id.append(i)
+                    #else:
+                        #false_id.append(i)
 
         logger.debug("search_info End")
-
-        return success_id
 
     def load_scores(self, json_dict, i):
         logger.debug("load_scores Begin")
@@ -63,6 +61,12 @@ class LimitScoreSearch:
             error_id.append(i)
 
         logger.debug("load_scores End")
+
+    def insert_jd(self, jd, i):
+        try:
+            fw.write('{}\n'.format(json.dumps(jd)))
+        except Exception:
+            print("Insert was failure for success data to Json File, number :", i)
 
 
 class TopScreen(Screen):
@@ -133,13 +137,13 @@ class SearchScreen(Screen):
 
         logger.debug("press_btn_SS Begin")
         self.load_parameter()
-        info = self.lss.search_info(
-            self.threshold_val, self.threshold_len, self.fill_gap
-        )
-        print(info)
+        self.lss.search_info(self.threshold_val, self.threshold_len, self.fill_gap)
+
         sm.add_widget(WaitScreen(name="wait"))  # wait画面を生成
 
         sm.current = "wait"  # wait画面に移動
+
+        fw.close()
 
         logger.debug("press_btn_SS End")
 
@@ -186,9 +190,17 @@ class OutputScreen(Screen):
     def __init__(self, **kwargs):
         super(OutputScreen, self).__init__(**kwargs)
 
+
+
     def populate(self):
-        print("populate")
-        #self.rv.data.append({'value': protain_name})
+        with open('success_data.mjson', 'r') as fr:
+            for (i, line) in enumerate(fr):
+                json_dict = json.loads(line)
+                try:
+                    name = json_dict["protein names"]
+                except KeyError:
+                    name = "No Name"
+                self.rv.data.append({'value': name})
 
     def sort(self):
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
@@ -236,10 +248,11 @@ if __name__ == "__main__":
     success_id = []  # 条件に当てはまったIDを格納する
     false_id = []
     error_id = []
+    fw = open('success_data.mjson', 'w')
 
     with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
-    Window.size = (800, 600)
+    Window.size = (400, 300)
     sm = ScreenManager()  # スクリーンマネージャ
     MobiApp().run()
 
