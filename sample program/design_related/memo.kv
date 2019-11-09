@@ -1,0 +1,240 @@
+#:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+ScreenManagement:
+    transition:FadeTransition()
+    TopScreen:
+    SearchScreen:
+    WaitScreen:
+    OutputScreen:
+
+<Row@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    value: ''
+    Button:
+        text: root.value
+
+
+<TopScreen>:
+    BoxLayout:
+        size:root.size
+
+        Button:
+            background_normal: 'body_cell.png'
+            size:root.size
+            size_hint:None,None
+            text:'search screen '
+            on_press: root.press_btn()#Top_Screenのメソッドが実行される
+
+<SearchScreen>:
+    BoxLayout:
+        orientation:'vertical'
+        size:root.size
+
+        Label:
+            text_size: self.size
+            text:'Searching in MobiDB'
+
+            halign: 'left'
+            size_hint_x: 1
+            size_hint_y:0.5
+            font_size: 24
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        BoxLayout:
+            size_hint_x:0.75
+            size_hint_y:0.4
+            orientation:'horizontal'
+            pos_hint: {"x":0.25, "y":0.8}
+
+            TextInput:
+                id:text_box
+                font_size: 22
+                focus: True
+                on_text_validate: root.text_btn()
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        FloatLayout:
+            Button:
+                text:"Search"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0, "y":1.15}
+                font_size: 20
+
+                on_press:
+                    root.press_btn()
+
+
+            ToggleButton:
+                id:Score
+                text:"Score"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color :1, 1, 1, 0.9
+                on_press:
+                    root.Score_b()
+
+            Spinner:
+                id:sp_s
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height:True
+                text: ' '
+                text_autoupdate:False
+                values:'0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1'
+                pos_hint: {"x":0, "y":0.3}
+
+            ToggleButton:
+                id:Lengs
+                text:"Lengs"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.39, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Lengs_b()
+
+            Spinner:
+                id:sp_l
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height:True
+                text: ' '
+                values:'50', '60', '70'
+                pos_hint: {"x":0.39, "y":0.3}
+
+
+            ToggleButton:
+                id:Gap
+                text:"Gap"
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                pos_hint: {"x":0.77, "y":0.6}
+                font_size: 20
+                state:'normal'
+                background_color : 1, 1, 1, 0.9
+                on_press:
+                    root.Gap_b()
+
+            Spinner:
+                id:sp_g
+                size_hint_x: 0.23
+                size_hint_y: 0.3
+                sync_height: True
+                text: ' '
+                values:[str(y) for y in range(1, 20) ]
+                pos_hint: {"x":0.77, "y":0.3}
+
+<WaitScreen>:
+    BoxLayout:
+        orientation:'vertical'
+        size: root.size
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        Label:
+            text_size: self.size
+            text:'Searching Now'
+            valign:'bottom'
+            halign:'left'
+            size_hint_x: 0.5
+            size_hint_y:0.4
+            font_size: 24
+            pos_hint: {"x":0, "y":0.9}
+
+        Image:
+            size: root.size
+            allow_stretch: True
+            keep_ratio: False
+            size_hint_x:1
+            size_hint_y:0.4
+            source:'loading4.gif'
+
+        Label:
+            size_hint_y: 0.1
+            text:''
+
+        Button:
+            size: 50,50
+            size_hint: None,None
+            text:"cancel"
+            on_press: root.press_btn()#Wait_Screenのメソッドが実行される
+
+<OutputScreen>:
+    rv: rv
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            orientation: 'vertical'
+            GridLayout:
+                cols: 3
+                rows: 1
+                size_hint_y: None
+                height: dp(54)
+                padding: dp(8)
+                spacing: dp(4)
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Sort'
+                        on_press: root.sort(sort_list.text)
+                    TextInput:
+                        id: sort_list
+                        size_hint_x: 1
+                        hint_text: 'select method'
+                        padding: dp(10), dp(10), 0, 0
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Filter'
+                        on_press: root.filter(filter_list.text)
+                    TextInput:
+                        id: filter_list
+                        size_hint_x: 1
+                        hint_text: 'select method'
+                        padding: dp(10), dp(10), 0, 0
+                Button:
+                    text: 'return window'
+                    on_press: root.return_window()
+
+            RecycleView:
+                id: rv
+                scroll_type: ['bars', 'content']
+                scroll_wheel_distance: dp(114)
+                bar_width: dp(10)
+                RecycleBoxLayout:
+                    viewclass: 'Row'
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    spacing: dp(2)
+
+
+
+
+
