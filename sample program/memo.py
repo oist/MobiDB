@@ -4,9 +4,9 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 import threading
 from kivy.core.window import Window
-
 from logging import getLogger, StreamHandler, DEBUG
 import time
+from kivy.clock import Clock
 from kivy.uix.image import Image
 
 """デバック"""
@@ -20,56 +20,46 @@ logger.debug('hello')
 
 
 class Top_Screen(Screen):
+
     """Top画面"""
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        Clock.schedule_once(self.ten_seconds_later, 5.0)
 
-    def press_enter_button(self):
-        # ボタンイベント，searchに画面遷移する
+    def ten_seconds_later(self, dt):
+    # ボタンイベント，searchに画面遷移する
 
-        logger.debug('Start press_enter_button')
+        logger.debug('Start ten_seconds_later')
 
         sm.add_widget(Search_Screen(name='search'))  # Search画面を生成する
         sm.remove_widget(self)  # Top画面を破棄する
         sm.current = 'search'  # Search画面に移動する
 
-        logger.debug('End press_enter_button')
+        logger.debug('End ten_seconds_later')
 
 
 class Search_Screen(Screen):
     """search画面"""
 
-    def Score_b(self):
+    def search_criteria_button(self):
         if self.ids['Score'].state != 'down':
-            self.ids['Score'].state = 'normal'
-            self.ids['Score'].background_color = 1, 1, 1, 0.9
             self.ids['sp_s'].text = ' '
 
-        elif self.ids['Score'].state != 'normal':
-            self.ids['Score'].state = 'down'
-            self.ids['Score'].background_color = 6, 2, 0.5, 1
+        elif self.ids['Score'].state != 'normal' and self.ids['Score'].on_press:
             self.ids['sp_s'].is_open = True
 
-    def Lengs_b(self):
         if self.ids['Lengs'].state != 'down':
-            self.ids['Lengs'].state = 'normal'
-            self.ids['Lengs'].background_color = 1, 1, 1, 0.9
             self.ids['sp_l'].text = ' '
 
-        elif self.ids['Lengs'].state != 'normal':
-            self.ids['Lengs'].state = 'down'
-            self.ids['Lengs'].background_color = 6, 2, 0.5, 1
+        elif self.ids['Lengs'].state != 'normal' and self.ids['Lengs'].on_press:
             self.ids['sp_l'].is_open = True
 
-    def Gap_b(self):
-
         if self.ids['Gap'].state != 'down':
-            self.ids['Gap'].state = 'normal'
-            self.ids['Gap'].background_color = 1, 1, 1, 0.9
             self.ids['sp_g'].text = ' '
 
-        elif self.ids['Gap'].state != 'normal':
-            self.ids['Gap'].state = 'down'
-            self.ids['Gap'].background_color = 6, 2, 0.5, 1
+        elif self.ids['Gap'].state != 'normal' and self.ids['Gap'].on_press:
             self.ids['sp_g'].is_open = True
+
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
