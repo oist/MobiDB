@@ -5,7 +5,10 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 import matplotlib.pyplot as plt
 from kivy.uix.screenmanager import ScreenManager, Screen
+import threading
+import multiprocessing
 import time
+Show_Func = Window.show
 
 """デバック"""
 logger = getLogger(__name__)
@@ -17,57 +20,21 @@ logger.propagate = False
 logger.debug("hello")
 
 
-class LimitScoreSearch:
-    """閾値以上のScore"""
+def change_screen(screen_name):
+    logger.debug("change_screen: " + screen_name + " Begin")
 
-    def search_info(self, val, lengs, gap):
-        logger.debug("search_info Begin")
-        # jsonファイル読み込み，条件比較を行う
-        self.fw = open('success_data.mjson', 'w')
-        with open("disorder_add_protain.mjson", "r") as f:
-            for (i, line) in enumerate(f):
-                json_dict = json.loads(line)
-                count = 0
-                pos = lengs
+    if screen_name == "Top":
+        sm.add_widget(TopScreen(name=screen_name))  # wait画面を生成
+    elif screen_name == "Search":
+        sm.add_widget(SearchScreen(name=screen_name))
+    elif screen_name == "Wait":
+        sm.add_widget(WaitScreen(name=screen_name))
+    elif screen_name == "Output":
+        sm.add_widget(OutputScreen(name=screen_name))
 
-                scores = self.load_scores(json_dict, i)
-                # print(scores)
-                if scores is None:
-                    pass
-                else:
-                    while count < lengs and pos < len(scores):
-                        if scores[pos] < val:
-                            count = 0
-                            pos += lengs
-                        else:
-                            count += 1
-                            pos -= 1
+    sm.current = screen_name  # wait画面に移動
 
-                    if count >= lengs:
-                        self.insert_jd(json_dict, i)
-
-                    #else:
-                        #false_id.append(i)
-
-        logger.debug("search_info End")
-
-    def load_scores(self, json_dict, i):
-        logger.debug("load_scores Begin")
-
-        try:
-            return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
-
-        except IndexError as e:
-            print("load_scores IndexError: {}".format(e))
-            # error_id.append(i)
-
-        logger.debug("load_scores End")
-
-    def insert_jd(self, jd, i):
-        try:
-            self.fw.write('{}\n'.format(json.dumps(jd)))
-        except Exception:
-            print("Insert was failure for success data to Json File, number :", i)
+    logger.debug("change_screen: " + screen_name + "End")
 
 
 class TopScreen(Screen):
@@ -75,14 +42,7 @@ class TopScreen(Screen):
 
     def press_btn(self):
         # ボタンイベント，searchに画面遷移する
-
-        logger.debug("press_btn_TS Begin")
-
-        sm.add_widget(SearchScreen(name="search"))  # Search画面を生成する
-        sm.remove_widget(self)  # Top画面を破棄する
-        sm.current = "search"  # Search画面に移動する
-
-        logger.debug("press_btn_TS End")
+        change_screen("Search")
 
 
 class SearchScreen(Screen):
@@ -135,15 +95,10 @@ class SearchScreen(Screen):
 
     def press_btn(self):
         # ボタンイベント，waitに画面遷移し、threadを開始する
+        logger.debug("press_btn_SS")
 
-        logger.debug("press_btn_SS Begin")
         self.load_parameter()
-        self.lss.search_info(self.threshold_val, self.threshold_len, self.fill_gap)
-
-        sm.add_widget(WaitScreen(name="wait"))  # wait画面を生成
-        sm.current = "wait"  # wait画面に移動
-
-        logger.debug("press_btn_SS End")
+        change_screen("Wait")
 
     def load_parameter(self):
         # search画面からデータを受け取る　
@@ -172,15 +127,18 @@ class WaitScreen(Screen):
     """データ抽出中のwait画面"""
 
     def press_btn(self):
-        # ボタンが押されたときSearch画面に戻る
+        change_screen("Search")
 
-        logger.debug("press_btn_WS Begin ")
+    def on_enter(self):
+        logger.debug("on_enter_WS")
+        lss = LimitScoreSearch()
+        ss = SearchScreen()
 
-        sm.remove_widget(self)
-        sm.add_widget(OutputScreen(name="out"))
-        sm.current = "out"
+        #p = multiprocessing.Process(target=lss.search_info, args=(ss.threshold_val, ss.threshold_len, ss.fill_gap))
+        #p.start()  # プロセスの開始
+        #p.join()
 
-        logger.debug("press_btn_WS End")
+        #change_screen("Output")
 
 
 class OutputScreen(Screen):
@@ -215,17 +173,65 @@ class OutputScreen(Screen):
         logger.debug("filter_OS End")
 
     def return_window(self):
-        logger.debug("return_window Begin")
+        change_screen("Search")
 
-        sm.add_widget(OutputScreen(name="search"))
-        sm.remove_widget(self)
-        sm.current = "search"
 
-        logger.debug("return_window End")
+class LimitScoreSearch:
+    """閾値以上のScoreを探索する"""
+
+    def search_info(self, val, lengs, gap):
+        logger.debug("search_info Begin")
+        # jsonファイル読み込み，条件比較を行う
+        self.fw = open('success_data.mjson', 'w')
+        with open("disorder_add_protain.mjson", "r") as f:
+            for (i, line) in enumerate(f):
+                json_dict = json.loads(line)
+                count = 0
+                pos = lengs
+
+                scores = self.load_scores(json_dict, i)
+                # print(scores)
+                if scores is None:
+                    pass
+                else:
+                    while count < lengs and pos < len(scores):
+                        if scores[pos] < val:
+                            count = 0
+                            pos += lengs
+                        else:
+                            count += 1
+                            pos -= 1
+
+                    if count >= lengs:
+                        self.insert_jd(json_dict, i)
+
+                    #else:
+                        #false_id.append(i)
+
+        logger.debug("search_info End")
+
+    def load_scores(self, json_dict, i):
+        logger.debug("load_scores Begin")
+
+        try:
+            return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
+        except IndexError as e:
+            print("load_scores IndexError: {}".format(e))
+            # error_id.append(i)
+
+        logger.debug("load_scores End")
+
+    def insert_jd(self, jd, i):
+        try:
+            self.fw.write('{}\n'.format(json.dumps(jd)))
+        except Exception:
+            print("Insert was failure for success data to Json File, number :", i)
 
 
 class ScorePlot():
     """scoreのプロット処理"""
+
     def __init__(self):
         self.ss = SearchScreen()  # threshold_value用のインスタンス
 
@@ -234,15 +240,15 @@ class ScorePlot():
         self.ln_h = self.ax.axhline(0)
         self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
 
-        self.json_dict = {}                     # jsonから取り出したデータを保持
-        self.list_id = []                       # 閾値の条件をクリアしたidを保持
-        self.score = []                         # plot用にjson_dictからscoreをload
-        self.sequence = []                      # plot用にjson_dictからsequenceをload
-        self.acc = ""                           # plot用にjson_dictからaccをload
-        self.pName = ""                         # plot用にjson_dictからプロテイン名をload
-        self.div = 0                            # 閾値を超えているスコア数と全体の割合を保持
-        self.key = 0                            # 出力するデータを決めるkey
-        self.text = ""                          # plot画面に表示するtext
+        self.json_dict = {}  # jsonから取り出したデータを保持
+        self.list_id = []  # 閾値の条件をクリアしたidを保持
+        self.score = []  # plot用にjson_dictからscoreをload
+        self.sequence = []  # plot用にjson_dictからsequenceをload
+        self.acc = ""  # plot用にjson_dictからaccをload
+        self.pName = ""  # plot用にjson_dictからプロテイン名をload
+        self.div = 0  # 閾値を超えているスコア数と全体の割合を保持
+        self.key = 0  # 出力するデータを決めるkey
+        self.text = ""  # plot画面に表示するtext
 
         # initでプロパティを読み込みplotする
         self.load_propaty()
@@ -257,7 +263,6 @@ class ScorePlot():
         logger.debug('load_propaty Begin')
 
         div = 0
-        threshold = self.ss.threshold_value
 
         # key番目のデータのみを取り出す
         with open('success_data.mjson', 'r') as fr:
@@ -275,7 +280,7 @@ class ScorePlot():
         except KeyError:
             self.pName = "No Name"
         for i in range(len(self.score)):
-            if self.score[i] > threshold:
+            if self.score[i] > self.ss.threshold_value:
                 div += 1
 
             self.list_id.append(i)
@@ -300,12 +305,12 @@ class ScorePlot():
         self.ax.spines["left"].set_color("m")  # 左枠をマゼンダに
         self.ax.spines["bottom"].set_color("c")
         self.ax.text(0, 1.1, self.text, fontweight="semibold", style='italic',
-                bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
+                     bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
 
         for i in range(len(self.score)):
             self.ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
 
-        plt.hlines([self.threshold], 0, len(self.score), "r", linestyle=":", lw=1)
+        plt.hlines([self.ss.threshold_value], 0, len(self.score), "r", linestyle=":", lw=1)
 
         plt.tight_layout()
         self.fig.canvas.draw()
@@ -341,8 +346,7 @@ class MobiApp(App):
     def build(self):
         logger.debug("App Begin")
 
-        sm.add_widget(TopScreen(name="top"))
-        sm.current = "top"
+        change_screen("Top")
 
         logger.debug("App End")
         return sm
@@ -357,7 +361,6 @@ if __name__ == "__main__":
     # kvファイルをstring型としてload
     with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
-
     Window.size = (800, 600)
     sm = ScreenManager()  # スクリーンマネージャ
     MobiApp().run()
