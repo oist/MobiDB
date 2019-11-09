@@ -59,7 +59,7 @@ class LimitScoreSearch:
 
         except IndexError as e:
             print("load_scores IndexError: {}".format(e))
-            error_id.append(i)
+            # error_id.append(i)
 
         logger.debug("load_scores End")
 
@@ -92,9 +92,9 @@ class SearchScreen(Screen):
         super(SearchScreen, self).__init__(**kwargs)
         logger.debug("SS_init Begin")
 
-        self.threshold_val = 0
-        self.threshold_len = 0
-        self.fill_gap = 0
+        self.threshold_val = 0      # score valueの閾値
+        self.threshold_len = 0      # score lengsの閾値
+        self.fill_gap = 0           # score gapの閾値
         self.lss = LimitScoreSearch()
 
         logger.debug("SS_init End")
@@ -146,7 +146,7 @@ class SearchScreen(Screen):
         logger.debug("press_btn_SS End")
 
     def load_parameter(self):
-        # データを探す
+        # search画面からデータを受け取る　
 
         logger.debug("load_parameter Begin")
 
@@ -210,7 +210,7 @@ class OutputScreen(Screen):
     def filter(self, value):
         logger.debug("filter_OS Begin")
 
-        print("filter")
+        # write code of filter method
 
         logger.debug("filter_OS End")
 
@@ -225,23 +225,26 @@ class OutputScreen(Screen):
 
 
 class ScorePlot():
+    """scoreのプロット処理"""
     def __init__(self):
+        self.ss = SearchScreen()  # threshold_value用のインスタンス
+
         self.fig, self.ax = plt.subplots()
         self.ln_v = self.ax.axvline(0)
         self.ln_h = self.ax.axhline(0)
         self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
 
-        self.json_dict = {}
-        self.list_id = []
-        self.score = []
-        self.sequence = []
-        self.acc = ""
-        self.pName = ""
-        self.div = 0
-        self.key = 0
-        self.threshold = 0.75
-        self.text = ""
+        self.json_dict = {}                     # jsonから取り出したデータを保持
+        self.list_id = []                       # 閾値の条件をクリアしたidを保持
+        self.score = []                         # plot用にjson_dictからscoreをload
+        self.sequence = []                      # plot用にjson_dictからsequenceをload
+        self.acc = ""                           # plot用にjson_dictからaccをload
+        self.pName = ""                         # plot用にjson_dictからプロテイン名をload
+        self.div = 0                            # 閾値を超えているスコア数と全体の割合を保持
+        self.key = 0                            # 出力するデータを決めるkey
+        self.text = ""                          # plot画面に表示するtext
 
+        # initでプロパティを読み込みplotする
         self.load_propaty()
         self.plot_json_data()
         self.fig.canvas.draw()
@@ -250,25 +253,29 @@ class ScorePlot():
         self.bg = self.fig.canvas.copy_from_bbox(self.ax.bbox)
 
     def load_propaty(self):
+        #
         logger.debug('load_propaty Begin')
 
         div = 0
+        threshold = self.ss.threshold_value
 
+        # key番目のデータのみを取り出す
         with open('success_data.mjson', 'r') as fr:
             for (k, line) in enumerate(fr):
                 if k == self.key:
                     self.json_dict = json.loads(line)
                     break
 
-        self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
-        self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
-        self.acc = self.json_dict["acc"]  # Entry nameを取得する
+        # 値を取得する
+        self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+        self.sequence = list(self.json_dict["sequence"])
+        self.acc = self.json_dict["acc"]
         try:
             self.pName = self.json_dict["protein names"]
         except KeyError:
             self.pName = "No Name"
         for i in range(len(self.score)):
-            if self.score[i] > self.threshold:
+            if self.score[i] > threshold:
                 div += 1
 
             self.list_id.append(i)
@@ -318,12 +325,12 @@ class ScorePlot():
 
 
 class Row(Screen):
+    """OutputScreenのRecycleViewで使用するボタンの設定"""
     def score_plot(self, value):
+        # ボタンイベント処理
         logger.debug("score_plot_R Begin")
-        print(value)
-        print(type(value))
         score = ScorePlot()
-        score.key = value
+        score.key = value       # keyを上書きする
         score.run()
         plt.show()
 
@@ -344,13 +351,13 @@ class MobiApp(App):
 if __name__ == "__main__":
     logger.debug("main Begin")
 
-    success_id = []  # 条件に当てはまったIDを格納する
-    false_id = []
+    # デバッグ用の配列
     error_id = []
 
-
+    # kvファイルをstring型としてload
     with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
+
     Window.size = (800, 600)
     sm = ScreenManager()  # スクリーンマネージャ
     MobiApp().run()
