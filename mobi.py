@@ -132,13 +132,10 @@ class WaitScreen(Screen):
     def on_enter(self):
         logger.debug("on_enter_WS")
         lss = LimitScoreSearch()
-        ss = SearchScreen()
 
-        #p = multiprocessing.Process(target=lss.search_info, args=(ss.threshold_val, ss.threshold_len, ss.fill_gap))
-        #p.start()  # プロセスの開始
-        #p.join()
 
-        #change_screen("Output")
+        t = threading.Thread(target=lss.search_info)
+        t.start()  # プロセスの開始
 
 
 class OutputScreen(Screen):
@@ -179,8 +176,14 @@ class OutputScreen(Screen):
 class LimitScoreSearch:
     """閾値以上のScoreを探索する"""
 
-    def search_info(self, val, lengs, gap):
+    def search_info(self):
         logger.debug("search_info Begin")
+
+        ss = SearchScreen()
+        val = ss.threshold_val
+        lengs = ss.threshold_len
+        gap = ss.fill_gap
+
         # jsonファイル読み込み，条件比較を行う
         self.fw = open('success_data.mjson', 'w')
         with open("disorder_add_protain.mjson", "r") as f:
@@ -207,6 +210,8 @@ class LimitScoreSearch:
 
                     #else:
                         #false_id.append(i)
+
+            change_screen("Output")
 
         logger.debug("search_info End")
 
