@@ -8,6 +8,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import threading
 import multiprocessing
 import time
+import itertools
 Show_Func = Window.show
 
 """デバック"""
@@ -175,6 +176,14 @@ class OutputScreen(Screen):
 
 class LimitScoreSearch:
     """閾値以上のScoreを探索する"""
+    def __init__(self):
+        logger.debug('LSS_init Begin')
+
+        self.num_thread = 1
+        self.serial_num = [0] * (self.num_thread + 1)
+        self.threads = []
+        self.len = 0
+        self.remainder = 0
 
     def search_info(self):
         logger.debug("search_info Begin")
@@ -185,39 +194,81 @@ class LimitScoreSearch:
         gap = ss.fill_gap
 
         # jsonファイル読み込み，条件比較を行う
-        self.fw = open('success_data.mjson', 'w')
-        with open("disorder_add_protain.mjson", "r") as f:
-            for (i, line) in enumerate(f):
-                json_dict = json.loads(line)
-                count = 0
-                pos = lengs
+        with open('success_data.mjson', 'w') as fw:
+            with open("disorder_add_protain.mjson", "r") as fr:
+                self.fr_line = fr.readlines()
+                self.len = int(len(self.fr_line) / self.num_thread)
+                self.remainder = int(len(self.fr_line) % self.num_thread)
 
-                scores = self.load_scores(json_dict, i)
-                # print(scores)
-                if scores is None:
-                    pass
-                else:
-                    while count < lengs and pos < len(scores):
-                        if scores[pos] < val:
-                            count = 0
-                            pos += lengs
-                        else:
-                            count += 1
-                            pos -= 1
+                t1 = time.time()
+                for i in range(self.num_thread + 1):
+                    t = threading.Thread(target=self.worker, args=(i, fw, val, lengs, gap))
+                    t.start()
 
-                    if count >= lengs:
-                        self.insert_jd(json_dict, i)
+                    self.threads.append(t)
+                for thread in self.threads:
+                    thread.join()
+                t2 = time.time()
+                elapsed_time = t2 - t1  # 処理にかかった時間を計算する
+                print("経過時間：", elapsed_time)
 
-                    #else:
-                        #false_id.append(i)
-
-            change_screen("Output")
-
+        change_screen("Output")
         logger.debug("search_info End")
 
-    def load_scores(self, json_dict, i):
-        logger.debug("load_scores Begin")
+    def worker(self, i, fw, val, lengs, gap):
+        logger.debug('worker' + str(i))
+        start_num = i * self.len
 
+        if i < self.num_thread:
+            end_num = (i + 1) * self.len
+        else:
+            end_num = i * self.len + self.remainder
+
+        if self.serial_num[i] == [0]:
+            self.serial_num[i] = self.serial_num[i] + start_num
+
+        # logger.debug("i:" + str(i))
+        # logger.debug("lengs:" + str(self.len))
+        # logger.debug("start_num:" + str(start_num))
+        # logger.debug("end_num:" + str(end_num))
+
+        for (k, line) in enumerate(itertools.islice(self.fr_line, start_num, end_num)):
+            logger.debug("worker : " + str(i))
+            for _ in range(3):  # 最大3回実行
+                try:
+                    json_dict = json.loads(line)
+                    count = 0
+                    pos = lengs
+
+                    scores = self.load_scores(json_dict, i)
+                    # print(scores)
+                    if scores is None:
+                        pass
+                    else:
+                        while count < lengs and pos < len(scores):
+                            if scores[pos] < val:
+                                count = 0
+                                pos += lengs
+                            else:
+                                count += 1
+                                pos -= 1
+
+                        if count >= lengs:
+                            try:
+                                fw.write('{}\n'.format(json.dumps(json_dict)))
+                            except Exception:
+                                print("Insert was failure for success data to Json File, number :", i)
+
+                    time.sleep(0.05)
+
+                except Exception as e:
+                    pass  # 必要であれば失敗時の処理
+                else:
+                    break
+            else:
+                print("write false:", k)
+
+    def load_scores(self, json_dict, i):
         try:
             return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
 
@@ -225,13 +276,9 @@ class LimitScoreSearch:
             print("load_scores IndexError: {}".format(e))
             # error_id.append(i)
 
-        logger.debug("load_scores End")
 
-    def insert_jd(self, jd, i):
-        try:
-            self.fw.write('{}\n'.format(json.dumps(jd)))
-        except Exception:
-            print("Insert was failure for success data to Json File, number :", i)
+
+
 
 
 class ScorePlot():
