@@ -96,6 +96,7 @@ ScreenManagement:
                 pos_hint: {"x":0, "y":1.07}
 
 
+
             BoxLayout:
                 size_hint_x:0.23
                 size_hint_y:0.35
@@ -152,6 +153,7 @@ ScreenManagement:
                 size_hint_x: 0.2
                 size_hint_y: 0.85
                 pos_hint: {"x":0.8, "y":0}
+
                 on_press:
                     root.press_search_button()
 
@@ -173,20 +175,22 @@ ScreenManagement:
         Label:
             text_size: self.size
             text:'Search Now'
-            valign:'bottom'
+            valign:'top'
             halign:'left'
             size_hint_x: 0.5
             size_hint_y:0.4
             font_size: 24
-            pos_hint: {"x":0, "y":0.9}
+            pos_hint: {"x":0, "y":1}
+
 
         Image:
+            source:root.source
             size: root.size
             allow_stretch: True
             keep_ratio: False
             size_hint_x:1
             size_hint_y:0.4
-            source:'loading4.gif'
+
 
         Label:
             size_hint_y: 0.1

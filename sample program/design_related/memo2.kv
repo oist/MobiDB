@@ -1,147 +1,19 @@
-<ToggleButton@ToggleButton>:
-    size_hint_x: 0.23
-    size_hint_y: 0.3
-    font_size: 20
-    state:'normal'
-    background_color :1, 1, 1, 0.9
-    on_state:
-        if self.state != 'normal':self.state = 'down'
-        elif self.state != 'down': self.state = 'normal'
-        if self.state == 'normal':self.background_color = 1, 1, 1, 0.9
-        elif self.state == 'down':self.background_color = 7, 1.1, 0.3, 1
+#Builder.load_string('''
+<CustomLayout>
+    pos_hint: {'x': .5, 'y': .5}
+    size: root.size
+    #allow_stretch: True
 
-<Spinner@Spinner>:
-    size_hint_x: 0.23
-    size_hint_y: 0.3
-    sync_height:True
-    text: ' '
-    text_autoupdate:False
-
-<Test>:
-
-    BoxLayout:
-        orientation:'vertical'
-        size:root.size
-        canvas.before:
-            Color:
-                rgba: 0.4, 0.4, 0.4, 0.6
-            Rectangle:
-                size: self.size
-                #pos: self.pos
-        Label:
-            text_size: self.size
-            text:'Searching in MobiDB'
-
-            halign: 'left'
-            size_hint_x: 1
-            size_hint_y:0.5
-            font_size: 24
-
-        Label:
-            size_hint_y: 0.1
-            text:''
-
-
-        BoxLayout:
-            size_hint_x:0.75
-            size_hint_y:0.38
-            orientation:'horizontal'
-            pos_hint: {"x":0.155, "y":0.84}
-
-
-            TextInput:
-                id:text_box
-                font_size: 22
-                hint_text:'keyword'
-                focus: True
-                on_text_validate: root.btnClicked_text()
-
-        Label:
-            size_hint_y: 0.1
-            text:''
-
-        FloatLayout:
-            Image:
-                source: 'logo-from-tunnel.png'
-                size_hint_x: 0.154
-                size_hint_y:0.44
-                pos_hint: {"x":0, "y":1.07}
-
-            Button:
-                background_normal: 'search_icon3.png'
-                size_hint_x: 0.1
-                size_hint_y: 0.4
-                pos_hint: {"x":0.905, "y":1.09}
-                on_press:
-                    root.press_search_button()
-
-                　　
-
-
-            ToggleButton:
-                id:Score
-                text:"Score"
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                pos_hint: {"x":0, "y":0.6}
-                #font_size: 20
-                #state:'normal'
-                #background_color :1, 1, 1, 0.9
-                on_press:
-                    root.search_criteria_button()
-
-            Spinner:
-                id:sp_s
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                #sync_height:True
-                #text: ' '
-                #text_autoupdate:False
-                values:[str(s/100) for s in range(55, 95, 5) ]
-                pos_hint: {"x":0, "y":0.3}
-
-            ToggleButton:
-                id:Lengs
-                text:"Lengs"
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                pos_hint: {"x":0.39, "y":0.6}
-                #font_size: 20
-                #state:'normal'
-                #background_color : 1, 1, 1, 0.9
-                on_press:
-                    root.search_criteria_button()
-
-            Spinner:
-                id:sp_l
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                #sync_height:True
-                #text: ' '
-                values:[str(l) for l in range(30, 101) ]
-                pos_hint: {"x":0.39, "y":0.3}
-
-
-            ToggleButton:
-                id:Gap
-                text:"Gap"
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                pos_hint: {"x":0.77, "y":0.6}
-                #font_size: 20
-                #state:'normal'
-                #background_color : 1, 1, 1, 0.9
-                on_press:
-                    root.search_criteria_button()
-
-            Spinner:
-                id:sp_g
-                #size_hint_x: 0.23
-                #size_hint_y: 0.3
-                #sync_height: True
-                #text: ' '
-                values:[str(g) for g in range(1, 21) ]
-                pos_hint: {"x":0.77, "y":0.3}
+    canvas.before:
+        BorderImage:
+            texture: self.background_image.texture
 
 
 
+#<RootWidget>
+ #   CustomLayout:
+  #      size_hint: 1, .9
+   #     pos_hint: {'x': 1,'y': 0.6}
+        #rows:1
+
+#''')

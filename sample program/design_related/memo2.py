@@ -501,7 +501,7 @@ class memo2App(App):
     pass
 
 memo2App().run()"""
-
+"""
 from random import sample
 from string import ascii_lowercase
 from kivy.uix.togglebutton import ToggleButton
@@ -522,7 +522,7 @@ from kivy.resources import resource_add_path
 
 
 class Test(BoxLayout):
-    """search画面"""
+    search画面
 
     def search_criteria_button(self):
         if self.ids['Score'].state != 'down':
@@ -549,7 +549,7 @@ class Test(BoxLayout):
             self.ids['sp_s'].is_open = False
             self.ids['sp_l'].is_open = False
 
-    """def lengs_b(self):
+    def lengs_b(self):
         if self.ids['Lengs'].state != 'down':
             self.ids['Lengs'].state = 'normal'
             self.ids['Lengs'].background_color = 1, 1, 1, 0.9
@@ -570,7 +570,7 @@ class Test(BoxLayout):
         elif self.ids['Gap'].state != 'normal':
             self.ids['Gap'].state = 'down'
             self.ids['Gap'].background_color = 7, 1.1, 0.3, 1
-            self.ids['sp_g'].is_open = True"""
+            self.ids['sp_g'].is_open = True
 
 class memo2App(App):
     def build(self):
@@ -579,5 +579,68 @@ class memo2App(App):
 
 if __name__ == '__main__':
 
-    memo2App().run()
+    memo2App().run()"""
+"""
+from kivy.uix.relativelayout import RelativeLayout
+from kivy.uix.image import Image
+from kivy.uix.widget import Widget
+from kivy.app import App
+from kivy.graphics import Rectangle
 
+class anime(Widget):
+    wimg = Image(source='loading4.gif')
+
+class memo2App(App):
+    def __init__(self, **kwargs):
+        super(memo2App, self).__init__(**kwargs)
+        self.root = RelativeLayout()
+
+        animated_icon = Image(source='loading4.gif')
+        animated_icon.bind(texture=self.update_texture)
+
+        self.r = Rectangle(texture=animated_icon.texture, size_hint=(1, 0.4), pos=(100, 100))
+        self.root.canvas.add(self.r)
+
+    def update_texture(self, instance, value):
+        self.r.texture = value
+
+    def build(self):
+        return self.root
+
+
+if __name__ == '__main__':
+    memo2App().run()"""
+
+from kivy.app import App
+from kivy.uix.floatlayout import FloatLayout
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.image import Image
+from kivy.properties import ObjectProperty
+from kivy.lang import Builder
+
+
+
+
+
+class CustomLayout(GridLayout):
+
+    background_image = ObjectProperty(
+        Image(
+            source='loading4.gif',
+            size_hint_x=1,
+            size_hint_y=0.4,
+            allow_stretch=True
+           ))
+
+
+#class RootWidget(FloatLayout):
+ #   pass
+
+
+class memo2App(App):
+
+    def build(self):
+        return CustomLayout()
+
+if __name__ == '__main__':
+    memo2App().run()

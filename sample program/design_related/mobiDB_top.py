@@ -7,8 +7,14 @@ from kivy.core.window import Window
 from logging import getLogger, StreamHandler, DEBUG
 import time
 from kivy.clock import Clock
+from kivy.properties import StringProperty
 from kivy.uix.image import Image
-
+from kivy.uix.relativelayout import RelativeLayout
+from kivy.graphics import Rectangle
+import io
+from kivy.core.image import Image as CoreImage
+from kivy.resources import resource_add_path
+resource_add_path('./image')
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -82,8 +88,8 @@ class Search_Screen(Screen):
         logger.debug('Start search_to_uniprot_thread')
 
         self.threshold_val = int(float(self.ids["text_box_score"].text))
-        self.threshold_val = int(float(self.ids["text_box_lengs"].text))
-        self.threshold_val = int(float(self.ids["text_box_gap"].text))
+        self.threshold_len = int(float(self.ids["text_box_lengs"].text))
+        self.fill_gap = int(float(self.ids["text_box_gap"].text))
 
         #print(Score, Lengs, Gap)
 
@@ -112,6 +118,7 @@ class Search_Screen(Screen):
 class Wait_Screen(Screen):
     """データ抽出中のwait画面"""
 
+    source = StringProperty('loading4.gif') #アニメーションgifを表示
 
     def press_cancel_button(self):
         # ボタンが押されたときSearch画面に戻る
