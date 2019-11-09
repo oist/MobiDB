@@ -99,31 +99,39 @@ class SearchScreen(Screen):
 
         logger.debug("SS_init End")
 
-    def setup(self, i):
-        if i == 1:
-            char = "Score"
-            char2 = "sp_s"
-
-        elif i == 2:
-            char = "Lengs"
-            char2 = "sp_l"
-
-        elif i == 3:
-            char = "Gap"
-            char2 = "sp_g"
-
-
-
-        if self.ids[char].state != "down":
-            self.ids[char].state = "normal"
-            self.ids[char].background_color = 1, 1, 1, 0.9
-            self.ids[char2].text = " "
+    def Score_b(self):
+        if self.ids["Score"].state != "down":
+            self.ids["Score"].state = "normal"
+            self.ids["Score"].background_color = 1, 1, 1, 0.9
+            self.ids["sp_s"].text = " "
 
         elif self.ids["Score"].state != "normal":
             self.ids["Score"].state = "down"
             self.ids["Score"].background_color = 6, 2, 0.5, 1
             self.ids["sp_s"].is_open = True
 
+    def Lengs_b(self):
+        if self.ids["Lengs"].state != "down":
+            self.ids["Lengs"].state = "normal"
+            self.ids["Lengs"].background_color = 1, 1, 1, 0.9
+            self.ids["sp_l"].text = " "
+
+        elif self.ids["Lengs"].state != "normal":
+            self.ids["Lengs"].state = "down"
+            self.ids["Lengs"].background_color = 6, 2, 0.5, 1
+            self.ids["sp_l"].is_open = True
+
+    def Gap_b(self):
+
+        if self.ids["Gap"].state != "down":
+            self.ids["Gap"].state = "normal"
+            self.ids["Gap"].background_color = 1, 1, 1, 0.9
+            self.ids["sp_g"].text = " "
+
+        elif self.ids["Gap"].state != "normal":
+            self.ids["Gap"].state = "down"
+            self.ids["Gap"].background_color = 6, 2, 0.5, 1
+            self.ids["sp_g"].is_open = True
 
     def press_btn(self):
         # ボタンイベント，waitに画面遷移し、threadを開始する
