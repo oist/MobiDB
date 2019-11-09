@@ -8,11 +8,6 @@ from logging import getLogger, StreamHandler, DEBUG
 import time
 from kivy.clock import Clock
 from kivy.properties import StringProperty
-from kivy.uix.image import Image
-from kivy.uix.relativelayout import RelativeLayout
-from kivy.graphics import Rectangle
-import io
-from kivy.core.image import Image as CoreImage
 from kivy.resources import resource_add_path
 resource_add_path('./image')
 """デバック"""
@@ -133,7 +128,7 @@ class Wait_Screen(Screen):
 
 class Output_Screen(Screen):
     """output画面"""
-
+    Window.size = (800, 600)
     def press_return_button(self):
         # ボタンが押されたときSearch画面に戻る
 

@@ -15,7 +15,8 @@ ScreenManagement:
 
 <ImageButton@Button>:
     source: None
-
+    background_color:1, 1, 1, 0.7
+    text:"Search"
     Image:
         source: root.source
         pos: root.pos
@@ -153,7 +154,6 @@ ScreenManagement:
                 size_hint_x: 0.2
                 size_hint_y: 0.85
                 pos_hint: {"x":0.8, "y":0}
-
                 on_press:
                     root.press_search_button()
 

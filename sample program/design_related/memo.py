@@ -5,6 +5,11 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
 import time
+from kivy.clock import Clock
+from kivy.properties import StringProperty
+from kivy.resources import resource_add_path
+resource_add_path('./image')
+
 
 """デバック"""
 logger = getLogger(__name__)
@@ -73,16 +78,20 @@ class LimitScoreSearch:
 class TopScreen(Screen):
     """Top画面"""
 
-    def press_btn(self):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        Clock.schedule_once(self.ten_seconds_later, 1.0)
+
+    def ten_seconds_later(self, dt):
         # ボタンイベント，searchに画面遷移する
 
-        logger.debug("press_btn_TS Begin")
+        logger.debug('Start ten_seconds_later')
 
-        sm.add_widget(SearchScreen(name="search"))  # Search画面を生成する
+        sm.add_widget(SearchScreen(name='search'))  # Search画面を生成する
         sm.remove_widget(self)  # Top画面を破棄する
-        sm.current = "search"  # Search画面に移動する
+        sm.current = 'search'  # Search画面に移動する
 
-        logger.debug("press_btn_TS End")
+        logger.debug('End ten_seconds_later')
 
 
 class SearchScreen(Screen):
@@ -98,40 +107,6 @@ class SearchScreen(Screen):
         self.lss = LimitScoreSearch()
 
         logger.debug("SS_init End")
-
-    def Score_b(self):
-        if self.ids["Score"].state != "down":
-            self.ids["Score"].state = "normal"
-            self.ids["Score"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_s"].text = " "
-
-        elif self.ids["Score"].state != "normal":
-            self.ids["Score"].state = "down"
-            self.ids["Score"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_s"].is_open = True
-
-    def Lengs_b(self):
-        if self.ids["Lengs"].state != "down":
-            self.ids["Lengs"].state = "normal"
-            self.ids["Lengs"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_l"].text = " "
-
-        elif self.ids["Lengs"].state != "normal":
-            self.ids["Lengs"].state = "down"
-            self.ids["Lengs"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_l"].is_open = True
-
-    def Gap_b(self):
-
-        if self.ids["Gap"].state != "down":
-            self.ids["Gap"].state = "normal"
-            self.ids["Gap"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_g"].text = " "
-
-        elif self.ids["Gap"].state != "normal":
-            self.ids["Gap"].state = "down"
-            self.ids["Gap"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_g"].is_open = True
 
     def press_btn(self):
         # ボタンイベント，waitに画面遷移し、threadを開始する
@@ -150,26 +125,16 @@ class SearchScreen(Screen):
 
         logger.debug("load_parameter Begin")
 
-        if self.ids["Score"].state == "down":
-            self.threshold_val = int(float(self.ids["sp_s"].text))
-        else:
-            pass
-
-        if self.ids["Lengs"].state == "down":
-            self.threshold_len = int(self.ids["sp_l"].text)
-        else:
-            pass
-
-        if self.ids["Gap"].state == "down":
-            self.fill_gap = int(self.ids["sp_g"].text)
-        else:
-            pass
+        self.threshold_val = int(float(self.ids["text_box_score"].text))
+        self.threshold_len = int(float(self.ids["text_box_lengs"].text))
+        self.fill_gap = int(float(self.ids["text_box_gap"].text))
 
         logger.debug("load_parameter End")
 
 
 class WaitScreen(Screen):
     """データ抽出中のwait画面"""
+    source = StringProperty('loading4.gif')  # アニメーションgifを表示
 
     def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
@@ -229,7 +194,7 @@ class Row(Screen):
         logger.debug("print")
 
 
-class MobiApp(App):
+class memoApp(App):
     def build(self):
         logger.debug("App Begin")
 
@@ -248,10 +213,10 @@ if __name__ == "__main__":
     error_id = []
 
 
-    with open("./theme.kv", "r", encoding="utf8") as f:
+    with open("./memo.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
-    Window.size = (800, 600)
+    Window.size = (400, 220)
     sm = ScreenManager()  # スクリーンマネージャ
-    MobiApp().run()
+    memoApp().run()
 
     logger.debug("main End")
