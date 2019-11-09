@@ -1,5 +1,4 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
-
 ScreenManagement:
     transition:FadeTransition()
     Top_Screen:
@@ -7,23 +6,54 @@ ScreenManagement:
     Wait_Screen:
     Output_Screen:
 
+<ToggleButton@ToggleButton>:
+    size_hint_x: 0.23
+    size_hint_y: 0.3
+    font_size: 20
+    state:'normal'
+    background_color :1, 1, 1, 0.9
+    on_state:
+        #if self.state != 'normal':self.state = 'down'
+        #elif self.state != 'down': self.state = 'normal'
+        if self.state == 'normal':self.background_color = 1, 1, 1, 0.9
+        elif self.state == 'down':self.background_color = 7, 1.1, 0.3, 1
+
+
 <Top_Screen>:
-
-    BoxLayout:
+    FloatLayout:
         size:root.size
+        canvas.before:
+            Color:
+                rgba: 0.4, 0.4, 0.4, 0.6
+            Rectangle:
+                size: self.size
 
-        Button:
-            background_normal: 'body_cell.png'
+        Image:
+            source: 'body_cell.png'
             size:root.size
             size_hint:None,None
-            text:'search screen '
-            on_press: root.press_enter_button()#Top_Screenのメソッドが実行される
+        Label:
+            text_size: self.size
+            text:'MobiDB'
+            halign: 'center'
+            size_hint_x: 1
+            size_hint_y:0.5
+            font_size: 24
+            pos_hint: {"x":0, "y":0.45}
+
+
 
 <Search_Screen>:
+
     BoxLayout:
         orientation:'vertical'
         size:root.size
-
+        canvas.before:
+            Color:
+                rgba: 0.4, 0.4, 0.4, 0.6
+            Rectangle:
+                size: self.size
+                #pos: self.pos
         Label:
             text_size: self.size
             text:'Searching in MobiDB'
@@ -37,15 +67,18 @@ ScreenManagement:
             size_hint_y: 0.1
             text:''
 
+
         BoxLayout:
             size_hint_x:0.75
-            size_hint_y:0.4
+            size_hint_y:0.38
             orientation:'horizontal'
-            pos_hint: {"x":0.25, "y":0.8}
+            pos_hint: {"x":0.155, "y":0.84}
+
 
             TextInput:
                 id:text_box
                 font_size: 22
+                hint_text:'keyword'
                 focus: True
                 on_text_validate: root.btnClicked_text()
 
@@ -54,28 +87,29 @@ ScreenManagement:
             text:''
 
         FloatLayout:
-            Button:
-                text:"Search"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                pos_hint: {"x":0, "y":1.15}
-                font_size: 20
+            Image:
+                source: 'logo-from-tunnel.png'
+                size_hint_x: 0.154
+                size_hint_y:0.44
+                pos_hint: {"x":0, "y":1.07}
 
+            Button:
+                background_normal: 'search_icon_mini.png'
+                size_hint_x: 0.1
+                size_hint_y: 0.4
+                pos_hint: {"x":0.905, "y":1.09}
                 on_press:
                     root.press_search_button()
+
+                　　
 
 
             ToggleButton:
                 id:Score
                 text:"Score"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color :1, 1, 1, 0.9
                 on_press:
-                    root.Score_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_s
@@ -84,20 +118,15 @@ ScreenManagement:
                 sync_height:True
                 text: ' '
                 text_autoupdate:False
-                values:'0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1'
+                values:[str(s/100) for s in range(55, 95, 5) ]
                 pos_hint: {"x":0, "y":0.3}
 
             ToggleButton:
                 id:Lengs
                 text:"Lengs"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0.39, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.Lengs_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_l
@@ -105,21 +134,16 @@ ScreenManagement:
                 size_hint_y: 0.3
                 sync_height:True
                 text: ' '
-                values:'10', '20', '30'
+                values:[str(l) for l in range(30, 101) ]
                 pos_hint: {"x":0.39, "y":0.3}
 
 
             ToggleButton:
                 id:Gap
                 text:"Gap"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
                 pos_hint: {"x":0.77, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
                 on_press:
-                    root.Gap_b()
+                    root.search_criteria_button()
 
             Spinner:
                 id:sp_g
@@ -127,7 +151,7 @@ ScreenManagement:
                 size_hint_y: 0.3
                 sync_height: True
                 text: ' '
-                values:[str(y) for y in range(1, 20) ]
+                values:[str(g) for g in range(1, 21) ]
                 pos_hint: {"x":0.77, "y":0.3}
 
 
@@ -138,14 +162,18 @@ ScreenManagement:
     BoxLayout:
         orientation:'vertical'
         size: root.size
-
+        canvas.before:
+            Color:
+                rgba: 0.4, 0.4, 0.4, 0.6
+            Rectangle:
+                size: self.size
         Label:
             size_hint_y: 0.1
             text:''
 
         Label:
             text_size: self.size
-            text:'Searching Now'
+            text:'Search Now'
             valign:'bottom'
             halign:'left'
             size_hint_x: 0.5
