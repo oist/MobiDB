@@ -1,5 +1,4 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
-
 ScreenManagement:
     transition:FadeTransition()
     Top_Screen:
@@ -95,7 +94,7 @@ ScreenManagement:
                 pos_hint: {"x":0, "y":1.07}
 
             Button:
-                background_normal: 'search_icon3.png'
+                background_normal: 'search_icon_mini.png'
                 size_hint_x: 0.1
                 size_hint_y: 0.4
                 pos_hint: {"x":0.905, "y":1.09}
@@ -109,7 +108,6 @@ ScreenManagement:
                 id:Score
                 text:"Score"
                 pos_hint: {"x":0, "y":0.6}
-                font_size: 20
                 on_press:
                     root.search_criteria_button()
 
@@ -144,7 +142,6 @@ ScreenManagement:
                 id:Gap
                 text:"Gap"
                 pos_hint: {"x":0.77, "y":0.6}
-                font_size: 20
                 on_press:
                     root.search_criteria_button()
 

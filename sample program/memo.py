@@ -24,7 +24,7 @@ class Top_Screen(Screen):
     """Top画面"""
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        Clock.schedule_once(self.ten_seconds_later, 10.0)
+        Clock.schedule_once(self.ten_seconds_later, 5.0)
 
     def ten_seconds_later(self, dt):
     # ボタンイベント，searchに画面遷移する
@@ -59,7 +59,7 @@ class Search_Screen(Screen):
 
         elif self.ids['Gap'].state != 'normal' and self.ids['Gap'].on_press:
             self.ids['sp_g'].is_open = True
-            
+
 
     def __init__(self, **kwargs):
         logger.debug('Start init_SearchScreen')
