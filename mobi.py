@@ -134,7 +134,6 @@ class WaitScreen(Screen):
         logger.debug("on_enter_WS")
         lss = LimitScoreSearch()
 
-
         t = threading.Thread(target=lss.search_info)
         t.start()  # プロセスの開始
 
@@ -185,20 +184,16 @@ class LimitScoreSearch:
         self.len = 0
         self.remainder = 0
 
+
     def search_info(self):
         logger.debug("search_info Begin")
-
-        ss = SearchScreen()
-        val = ss.threshold_val
-        lengs = ss.threshold_len
-        gap = ss.fill_gap
 
         # jsonファイル読み込み，条件比較を行う
         with open('success_data.mjson', 'w') as fw:
             with open("disorder_add_protain.mjson", "r") as fr:
                 t1 = time.time()
 
-                t = threading.Thread(target=self.worker, args=(fw, fr, val, lengs, gap))
+                t = threading.Thread(target=self.worker, args=(fr, fw))
                 t.start()
                 t.join()
 
@@ -209,55 +204,39 @@ class LimitScoreSearch:
         change_screen("Output")
         logger.debug("search_info End")
 
-    def worker(self, fr, fw, val, lengs, gap):
-        for line in enumerate(fr):
-            for _ in range(3):  # 最大3回実行
-                try:
-                    json_dict = json.loads(line)
-                    count = 0
-                    pos = lengs
+    def worker(self, fr, fw):
+        scores = []
+        ss = SearchScreen()
 
-                    scores = self.load_scores(json_dict)
-                    # print(scores)
-                    if scores is None:
-                        pass
-                    else:
-                        while count < lengs and pos < len(scores):
-                            if scores[pos] < val:
-                                count = 0
-                                pos += lengs
-                            else:
-                                count += 1
-                                pos -= 1
+        for (i, line) in enumerate(fr):
+            json_dict = json.loads(line)
+            count = 0
+            pos = ss.threshold_len
+            try:
+                # logger.debug("success")
+                scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+            except IndexError as e:
+                print(e)
 
-                        if count >= lengs:
-                            try:
-                                fw.write('{}\n'.format(json.dumps(json_dict)))
-                            except Exception:
-                                print("Insert was failure for success data to Json File, number :", line)
-                except Exception as e:
-                    pass  # 必要であれば失敗時の処理
-                else:
-                    break
+            if scores is None:
+                pass
             else:
-                print("write false:", line)
+                while count < ss.threshold_len and pos < len(scores):
+                    if scores[pos] < ss.threshold_val:
+                        count = 0
+                        pos += ss.threshold_len
+                    else:
+                        count += 1
+                        pos -= 1
 
-    def load_scores(self, json_dict):
-        try:
-            return json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
-        except IndexError as e:
-            print("load_scores IndexError: {}".format(e))
-            # error_id.append(i)
-
-
-
-
+                if count >= ss.threshold_len:
+                    fw.write('{}\n'.format(json.dumps(json_dict)))
 
 
-class ScorePlot():
+class ScorePlot:
     """scoreのプロット処理"""
 
-    def __init__(self):
+    def __init__(self, value):
         self.ss = SearchScreen()  # threshold_value用のインスタンス
 
         self.fig, self.ax = plt.subplots()
@@ -265,17 +244,18 @@ class ScorePlot():
         self.ln_h = self.ax.axhline(0)
         self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
 
-        self.json_dict = {}  # jsonから取り出したデータを保持
-        self.list_id = []  # 閾値の条件をクリアしたidを保持
-        self.score = []  # plot用にjson_dictからscoreをload
-        self.sequence = []  # plot用にjson_dictからsequenceをload
-        self.acc = ""  # plot用にjson_dictからaccをload
-        self.pName = ""  # plot用にjson_dictからプロテイン名をload
-        self.div = 0  # 閾値を超えているスコア数と全体の割合を保持
-        self.key = 0  # 出力するデータを決めるkey
-        self.text = ""  # plot画面に表示するtext
+        self.json_dict = {}         # jsonから取り出したデータを保持
+        self.list_id = []           # 閾値の条件をクリアしたidを保持
+        self.score = []             # json_dictからscoreをload
+        self.sequence = []          # json_dictからsequenceをload
+        self.acc = ""               # json_dictからaccをload
+        self.pName = ""             # json_dictからプロテイン名をload
+        self.div = 0                # 閾値を超えているスコア数と全体の割合を保持
+        self.key = value                # 出力するデータを決めるkey
+        self.text = ""              # plot画面に表示するtext
+        print("ScorePlot value:" + str(self.key))
 
-        # initでプロパティを読み込みplotする
+        # initでプロパティを読み込む
         self.load_propaty()
         self.plot_json_data()
         self.fig.canvas.draw()
@@ -305,7 +285,7 @@ class ScorePlot():
         except KeyError:
             self.pName = "No Name"
         for i in range(len(self.score)):
-            if self.score[i] > self.ss.threshold_value:
+            if self.score[i] > self.ss.threshold_val:
                 div += 1
 
             self.list_id.append(i)
@@ -326,8 +306,8 @@ class ScorePlot():
         plt.grid(True)
 
         self.ax.spines["right"].set_color("none")  # 右枠消し
-        self.ax.spines["top"].set_color("none")  # 上枠消し
-        self.ax.spines["left"].set_color("m")  # 左枠をマゼンダに
+        self.ax.spines["top"].set_color("none")    # 上枠消し
+        self.ax.spines["left"].set_color("m")      # 左枠をマゼンダに
         self.ax.spines["bottom"].set_color("c")
         self.ax.text(0, 1.1, self.text, fontweight="semibold", style='italic',
                      bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
@@ -335,7 +315,7 @@ class ScorePlot():
         for i in range(len(self.score)):
             self.ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
 
-        plt.hlines([self.ss.threshold_value], 0, len(self.score), "r", linestyle=":", lw=1)
+        plt.hlines([self.ss.threshold_val], 0, len(self.score), "r", linestyle=":", lw=1)
 
         plt.tight_layout()
         self.fig.canvas.draw()
@@ -359,8 +339,8 @@ class Row(Screen):
     def score_plot(self, value):
         # ボタンイベント処理
         logger.debug("score_plot_R Begin")
-        score = ScorePlot()
-        score.key = value       # keyを上書きする
+        print("Row value:" + str(value))
+        score = ScorePlot(value)
         score.run()
         plt.show()
 
