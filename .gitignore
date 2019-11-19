@@ -1,5 +1,6 @@
 sample program/wait2.gif
 sample program/wait2.zip
+<<<<<<< HEAD
 disorder.mjson.gz
 disorder.mjson
 disorder_add_protain.mjson
@@ -8,3 +9,11 @@ __pycache__
 venv
 success_data.mjson
 .idea
+=======
+sample program/design_related/disorder_add_protain.mjson
+disorder_add_protain.mjson
+success_data.mjson
+>>>>>>> YukaNakadomari
+error_indent.mjson
+d2.mjson
+success_indent.mjson
