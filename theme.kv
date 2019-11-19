@@ -7,23 +7,32 @@
             size: self.size
             pos: self.pos
     value: ''
-
-
     Button:
         text: root.value
         on_press: root.score_plot(root.index)
+
+<SSTextBoxLayout@BoxLayout>:
+    orientation:'horizontal'
+    size:self.size
+    size_hint_x: 0.7
+
+
+<SSLabel@Label>:
+    font_size: 24
+    text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
+    halign: 'left'                   # 横方向(左揃え)
 
 
 <TopScreen>:
     BoxLayout:
         size:root.size
-
         Button:
             background_normal: 'body_cell.zip'
             size:root.size
             size_hint:None,None
             text:'search screen '
             on_press: root.press_btn()#Top_Screenのメソッドが実行される
+
 
 <SearchScreen>:
     BoxLayout:
@@ -39,7 +48,7 @@
 
         # タイトル
         Label:
-            size_hint_y: 0.1
+            size_hint_y: 0.2
         Label:
             text:'MobiDB Plot Apprication'   # Labelの名前を設定
             font_size: 36
@@ -47,88 +56,47 @@
             halign: 'left'                   # 横方向(左揃え)
             valign: 'center'                 # 縦方向(真ん中揃え)
             underline: True
-
-
-        Label:
-            size_hint_y: 0.1
-
-        # キーワード入力
-        Label:
-            text:"Keyword"
-            font_size: 24
-            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-            halign: 'left'                   # 横方向(左揃え)
-
-        BoxLayout:
-            orientation:'horizontal'
-            size:self.size
-
-            TextInput:
-                id:keyword
-                font_size: 24
-
-            Label:
-                size_hint_x: 0.33
         Label:
             size_hint_y: 0.2
 
-        # Threshold Value入力
-        Label:
-            text:"Threshold Value"
-            font_size: 24
-            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-            halign: 'left'                   # 横方向(左揃え)
-
-        BoxLayout:
-            orientation:'horizontal'
-            size:self.size
-
+        # キーワードの入力
+        SSLabel:
+            text:"keyword"
+        SSTextBoxLayout:
             TextInput:
-                id:th_val
                 font_size: 24
+                id:keyword
+        Label:
+            size_hint_y: 0.2
 
-            Label:
-                size_hint_x: 0.33
+        # Threshold Valueの入力
+        SSLabel:
+            text:"Threshold Value"
+        SSTextBoxLayout:
+            TextInput:
+                font_size: 24
+                id:th_val
+
         Label:
             size_hint_y: 0.2
 
         # Threshold Lengsの入力
-        Label:
+        SSLabel:
             text:"Threshold Lengs"
-            font_size: 24
-            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-            halign: 'left'                   # 横方向(左揃え)
-
-        BoxLayout:
-            orientation:'horizontal'
-            size:self.size
-
+        SSTextBoxLayout:
             TextInput:
-                id:th_len
                 font_size: 24
-
-            Label:
-                size_hint_x: 0.33
+                id:th_len
         Label:
             size_hint_y: 0.2
 
         # fill gapの入力
-        Label:
+        SSLabel:
             text:"Fill Gap"
-            font_size: 24
-            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-            halign: 'left'                   # 横方向(左揃え)
-
-        BoxLayout:
-            orientation:'horizontal'
-            size:self.size
-
+        SSTextBoxLayout:
             TextInput:
-                id:th_val
                 font_size: 24
-
-            Label:
-                size_hint_x: 0.33
+                id:fill_gap
         Label:
             size_hint_y: 0.2
 
@@ -137,11 +105,11 @@
             orientation:'horizontal'
             size:self.size
             Label:
-                size_hint_x: 0.75
+                size_hint_x: 0.7
             Button:
                 text: 'Search with this condition'
                 background_color: (0, 2, 10, 0.5)
-                size_hint_x: 0.25
+                size_hint_x: 0.3
                 on_press: root.press_btn()
 
 <WaitScreen>:

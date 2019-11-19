@@ -6,9 +6,8 @@ from kivy.lang import Builder
 import matplotlib.pyplot as plt
 from kivy.uix.screenmanager import ScreenManager, Screen
 import threading
-import multiprocessing
 import time
-import itertools
+import config
 Show_Func = Window.show
 
 """デバック"""
@@ -49,79 +48,19 @@ class TopScreen(Screen):
 class SearchScreen(Screen):
     """search画面"""
 
-    def __init__(self, **kwargs):
-        super(SearchScreen, self).__init__(**kwargs)
-        logger.debug("SS_init Begin")
-
-        self.threshold_val = 0      # score valueの閾値
-        self.threshold_len = 0      # score lengsの閾値
-        self.fill_gap = 0           # score gapの閾値
-        self.lss = LimitScoreSearch()
-
-        logger.debug("SS_init End")
-
-    def Score_b(self):
-        if self.ids["Score"].state != "down":
-            self.ids["Score"].state = "normal"
-            self.ids["Score"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_s"].text = " "
-
-        elif self.ids["Score"].state != "normal":
-            self.ids["Score"].state = "down"
-            self.ids["Score"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_s"].is_open = True
-
-    def Lengs_b(self):
-        if self.ids["Lengs"].state != "down":
-            self.ids["Lengs"].state = "normal"
-            self.ids["Lengs"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_l"].text = " "
-
-        elif self.ids["Lengs"].state != "normal":
-            self.ids["Lengs"].state = "down"
-            self.ids["Lengs"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_l"].is_open = True
-
-    def Gap_b(self):
-
-        if self.ids["Gap"].state != "down":
-            self.ids["Gap"].state = "normal"
-            self.ids["Gap"].background_color = 1, 1, 1, 0.9
-            self.ids["sp_g"].text = " "
-
-        elif self.ids["Gap"].state != "normal":
-            self.ids["Gap"].state = "down"
-            self.ids["Gap"].background_color = 6, 2, 0.5, 1
-            self.ids["sp_g"].is_open = True
-
     def press_btn(self):
         logger.debug("press_btn_SS")
+        try:
+            config.keyword = self.ids["keyword"].text
 
-        print(self.ids["text_box"].text)
-        # self.load_parameter()
-        change_screen("Wait")
+            val = self.ids["th_val"].text
+            config.threshold_val = float(val.replace('"', ''))
+            config.threshold_len = int(self.ids["th_len"].text)
+            config.fill_gap = self.ids["fill_gap"].text
 
-    def load_parameter(self):
-        # search画面からデータを受け取る　
-
-        logger.debug("load_parameter Begin")
-
-        if self.ids["Score"].state == "down":
-            self.threshold_val = int(float(self.ids["sp_s"].text))
-        else:
-            pass
-
-        if self.ids["Lengs"].state == "down":
-            self.threshold_len = int(self.ids["sp_l"].text)
-        else:
-            pass
-
-        if self.ids["Gap"].state == "down":
-            self.fill_gap = int(self.ids["sp_g"].text)
-        else:
-            pass
-
-        logger.debug("load_parameter End")
+            change_screen("Wait")
+        except ValueError as e:
+            print(e)
 
 
 class WaitScreen(Screen):
@@ -180,11 +119,12 @@ class LimitScoreSearch:
 
         # 2019/11/19
         # search画面でデータが取得できないため、一時的に固定で扱う
-        self.th_len = 200
-        self.th_val = 0.8
 
     def search_info(self):
         logger.debug("search_info Begin")
+
+        print(config.threshold_len)
+        print(config.threshold_val)
 
         # jsonファイル読み込み，条件比較を行う
         with open('success_data.mjson', 'w') as fw:
@@ -208,7 +148,7 @@ class LimitScoreSearch:
         for (i, line) in enumerate(fr):
             json_dict = json.loads(line)
             count = 0
-            pos = self.th_len
+            pos = config.threshold_len
             try:
                 # logger.debug("success")
                 scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
@@ -218,15 +158,15 @@ class LimitScoreSearch:
             if scores is None:
                 pass
             else:
-                while count < self.th_len and pos < len(scores):
-                    if scores[pos] < self.th_val:
+                while count < config.threshold_len and pos < len(scores):
+                    if scores[pos] < config.threshold_val:
                         count = 0
-                        pos += self.th_len
+                        pos += config.threshold_len
                     else:
                         count += 1
                         pos -= 1
 
-                if count >= self.th_len:
+                if count >= config.threshold_len:
                     fw.write('{}\n'.format(json.dumps(json_dict)))
 
 
@@ -234,8 +174,6 @@ class ScorePlot:
     """scoreのプロット処理"""
 
     def __init__(self, value):
-        self.ss = SearchScreen()  # threshold_value用のインスタンス
-
         self.fig, self.ax = plt.subplots()
         self.ln_v = self.ax.axvline(0)
         self.ln_h = self.ax.axhline(0)
@@ -250,7 +188,7 @@ class ScorePlot:
         self.div = 0                # 閾値を超えているスコア数と全体の割合を保持
         self.key = value                # 出力するデータを決めるkey
         self.text = ""              # plot画面に表示するtext
-        print("ScorePlot value:" + str(self.key))
+        # print("ScorePlot value:" + str(self.key))
 
         # initでプロパティを読み込む
         self.load_propaty()
@@ -261,7 +199,7 @@ class ScorePlot:
         self.bg = self.fig.canvas.copy_from_bbox(self.ax.bbox)
 
     def load_propaty(self):
-        #
+
         logger.debug('load_propaty Begin')
 
         div = 0
@@ -281,7 +219,7 @@ class ScorePlot:
 
         # 閾値以上の数の割合を計算する
         for i in range(len(self.score)):
-            if self.score[i] > self.ss.threshold_val:
+            if self.score[i] > config.threshold_val:
                 div += 1
 
             self.list_id.append(i)
@@ -315,7 +253,7 @@ class ScorePlot:
         for i in range(len(self.score)):
             self.ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
 
-        plt.hlines([self.ss.threshold_val], 0, len(self.score), "r", linestyle=":", lw=1)
+        plt.hlines([config.threshold_val], 0, len(self.score), "r", linestyle=":", lw=1)
 
         plt.tight_layout()
         self.fig.canvas.draw()
@@ -336,6 +274,7 @@ class ScorePlot:
 
 class Row(Screen):
     """OutputScreenのRecycleViewで使用するボタンの設定"""
+
     def score_plot(self, value):
         # ボタンイベント処理
         logger.debug("score_plot_R Begin")
