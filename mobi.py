@@ -22,10 +22,11 @@ logger.debug("hello")
 
 
 def change_screen(screen_name):
+    """画面遷移する"""
     logger.debug("change_screen: " + screen_name + " Begin")
 
     if screen_name == "Top":
-        sm.add_widget(TopScreen(name=screen_name))  # wait画面を生成
+        sm.add_widget(TopScreen(name=screen_name))  # Top画面を生成
     elif screen_name == "Search":
         sm.add_widget(SearchScreen(name=screen_name))
     elif screen_name == "Wait":
@@ -42,7 +43,6 @@ class TopScreen(Screen):
     """Top画面"""
 
     def press_btn(self):
-        # ボタンイベント，searchに画面遷移する
         change_screen("Search")
 
 
@@ -95,10 +95,10 @@ class SearchScreen(Screen):
             self.ids["sp_g"].is_open = True
 
     def press_btn(self):
-        # ボタンイベント，waitに画面遷移し、threadを開始する
         logger.debug("press_btn_SS")
 
-        self.load_parameter()
+        print(self.ids["text_box"].text)
+        # self.load_parameter()
         change_screen("Wait")
 
     def load_parameter(self):
@@ -178,12 +178,10 @@ class LimitScoreSearch:
     def __init__(self):
         logger.debug('LSS_init Begin')
 
-        self.num_thread = 1
-        self.serial_num = [0] * (self.num_thread + 1)
-        self.threads = []
-        self.len = 0
-        self.remainder = 0
-
+        # 2019/11/19
+        # search画面でデータが取得できないため、一時的に固定で扱う
+        self.th_len = 200
+        self.th_val = 0.8
 
     def search_info(self):
         logger.debug("search_info Begin")
@@ -206,12 +204,11 @@ class LimitScoreSearch:
 
     def worker(self, fr, fw):
         scores = []
-        ss = SearchScreen()
 
         for (i, line) in enumerate(fr):
             json_dict = json.loads(line)
             count = 0
-            pos = ss.threshold_len
+            pos = self.th_len
             try:
                 # logger.debug("success")
                 scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
@@ -221,15 +218,15 @@ class LimitScoreSearch:
             if scores is None:
                 pass
             else:
-                while count < ss.threshold_len and pos < len(scores):
-                    if scores[pos] < ss.threshold_val:
+                while count < self.th_len and pos < len(scores):
+                    if scores[pos] < self.th_val:
                         count = 0
-                        pos += ss.threshold_len
+                        pos += self.th_len
                     else:
                         count += 1
                         pos -= 1
 
-                if count >= ss.threshold_len:
+                if count >= self.th_len:
                     fw.write('{}\n'.format(json.dumps(json_dict)))
 
 
@@ -245,7 +242,7 @@ class ScorePlot:
         self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
 
         self.json_dict = {}         # jsonから取り出したデータを保持
-        self.list_id = []           # 閾値の条件をクリアしたidを保持
+        self.list_id = []           # scatter用のx軸を表す配列
         self.score = []             # json_dictからscoreをload
         self.sequence = []          # json_dictからsequenceをload
         self.acc = ""               # json_dictからaccをload
@@ -280,16 +277,19 @@ class ScorePlot:
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
         self.sequence = list(self.json_dict["sequence"])
         self.acc = self.json_dict["acc"]
-        try:
-            self.pName = self.json_dict["protein names"]
-        except KeyError:
-            self.pName = "No Name"
+        self.pName = self.json_dict["protein names"]
+
+        # 閾値以上の数の割合を計算する
         for i in range(len(self.score)):
             if self.score[i] > self.ss.threshold_val:
                 div += 1
 
             self.list_id.append(i)
 
+        # プロット時に表示するデータの構成
+        # print(str(div))
+        # print(str(len(self.score)))
+        # print(round(div / len(self.score) * 100, 3))
         self.text = "ACC:" + self.acc + "\n" + \
                     "Protain Names : " + self.pName + "\n" + \
                     "Percentage (High):" + str(round(div / len(self.score) * 100, 3)) + "%"
