@@ -25,7 +25,16 @@
 
 <TopScreen>:
     BoxLayout:
-        size:root.size
+        # 背景色
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation:'vertical'
+        size:root.size                     # windowのサイズを取得
+
         Button:
             background_normal: 'body_cell.zip'
             size:root.size
@@ -66,6 +75,7 @@
             TextInput:
                 font_size: 24
                 id:keyword
+                hint_text: 'e.g. integrin, protain'
         Label:
             size_hint_y: 0.2
 
@@ -76,6 +86,7 @@
             TextInput:
                 font_size: 24
                 id:th_val
+                hint_text: 'e.g. 0.8'
 
         Label:
             size_hint_y: 0.2
@@ -87,6 +98,7 @@
             TextInput:
                 font_size: 24
                 id:th_len
+                hint_text: 'e.g. 100'
         Label:
             size_hint_y: 0.2
 
@@ -97,6 +109,7 @@
             TextInput:
                 font_size: 24
                 id:fill_gap
+                hint_text: 'e.g. 5'
         Label:
             size_hint_y: 0.2
 
@@ -114,8 +127,15 @@
 
 <WaitScreen>:
     BoxLayout:
+        # 背景色
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
         orientation:'vertical'
-        size: root.size
+        size:root.size                     # windowのサイズを取得
 
         Label:
             size_hint_y: 0.1

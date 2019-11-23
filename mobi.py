@@ -38,6 +38,13 @@ def change_screen(screen_name):
     logger.debug("change_screen: " + screen_name + "End")
 
 
+def make_sure_text(ss_text):
+    if ss_text == "":
+        return 0
+    else:
+        return float(ss_text.replace('"', ''))
+
+
 class TopScreen(Screen):
     """Top画面"""
 
@@ -52,11 +59,9 @@ class SearchScreen(Screen):
         logger.debug("press_btn_SS")
         try:
             config.keyword = self.ids["keyword"].text
-
-            val = self.ids["th_val"].text
-            config.threshold_val = float(val.replace('"', ''))
-            config.threshold_len = int(self.ids["th_len"].text)
-            config.fill_gap = self.ids["fill_gap"].text
+            config.threshold_val = make_sure_text(self.ids["th_val"].text)
+            config.threshold_len = int(make_sure_text(self.ids["th_len"].text))
+            config.fill_gap = int(make_sure_text(self.ids["fill_gap"].text))
 
             change_screen("Wait")
         except ValueError as e:
@@ -88,10 +93,7 @@ class OutputScreen(Screen):
         with open('success_data.mjson', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                try:
-                    name = json_dict["protein names"]
-                except KeyError:
-                    name = "No Name"
+                name = json_dict["protein names"]
                 self.rv.data.append({'value': name, 'index': i})
 
         logger.debug("on_enter_OS End")
@@ -117,14 +119,11 @@ class LimitScoreSearch:
     def __init__(self):
         logger.debug('LSS_init Begin')
 
-        # 2019/11/19
-        # search画面でデータが取得できないため、一時的に固定で扱う
-
     def search_info(self):
         logger.debug("search_info Begin")
 
-        print(config.threshold_len)
-        print(config.threshold_val)
+        # print(config.threshold_len)
+        # print(config.threshold_val)
 
         # jsonファイル読み込み，条件比較を行う
         with open('success_data.mjson', 'w') as fw:
@@ -143,21 +142,20 @@ class LimitScoreSearch:
         logger.debug("search_info End")
 
     def worker(self, fr, fw):
-        scores = []
-
+        count_a = 0
         for (i, line) in enumerate(fr):
             json_dict = json.loads(line)
             count = 0
             pos = config.threshold_len
             try:
                 # logger.debug("success")
-                scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
-            except IndexError as e:
-                print(e)
+                # keywordが含まれていないか判定, protain namesの中には必ず""が含まれているため、この書き方でいける
+                if config.keyword not in json_dict["protein names"]:
+                    continue
 
-            if scores is None:
-                pass
-            else:
+                # scoreが閾値を超えているか判定
+                scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
                 while count < config.threshold_len and pos < len(scores):
                     if scores[pos] < config.threshold_val:
                         count = 0
@@ -168,6 +166,12 @@ class LimitScoreSearch:
 
                 if count >= config.threshold_len:
                     fw.write('{}\n'.format(json.dumps(json_dict)))
+
+            except IndexError as e:
+                print(e)
+
+            count_a += 1
+            print(count_a)
 
 
 class ScorePlot:
@@ -219,7 +223,7 @@ class ScorePlot:
 
         # 閾値以上の数の割合を計算する
         for i in range(len(self.score)):
-            if self.score[i] > config.threshold_val:
+            if self.score[i] >= config.threshold_val:
                 div += 1
 
             self.list_id.append(i)
@@ -230,7 +234,7 @@ class ScorePlot:
         # print(round(div / len(self.score) * 100, 3))
         self.text = "ACC:" + self.acc + "\n" + \
                     "Protain Names : " + self.pName + "\n" + \
-                    "Percentage (High):" + str(round(div / len(self.score) * 100, 3)) + "%"
+                    "Percentage (x >= " + str(config.threshold_val) + "):" + str(round(div / len(self.score) * 100, 3)) + "%"
 
     def plot_json_data(self):
         plt.scatter(self.list_id, self.score, s=25, c=self.score, cmap='jet')
