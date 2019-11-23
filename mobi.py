@@ -142,36 +142,59 @@ class LimitScoreSearch:
         logger.debug("search_info End")
 
     def worker(self, fr, fw):
-        count_a = 0
+        """
+        score[pos]              : pos番目のscore値。
+        config.threshold_val    : score値用の閾値。
+        config.threshold_len    : 閾値以上が何回続けばよいかを決める変数。
+        succeeded_times         : scores[pos] > config.threshold_val が True であった回数を保持する変数。
+
+        whileループは　succeeded_times > threshold_len のときに抜ける。
+
+        config.fill_gap         : 閾値以下を何回まで許すかを決める変数　
+                                  例）　score[ 1, 1, 0, 1, 1, 1 ], threshold_val = 0.5 とする。
+                                     ---------------------------------------------
+                                        for i in len(score):
+                                            if score[i] > threshold_val:
+                                                i += 1
+                                            elif score[i] < threshold_val
+                                                i = 0
+                                     ---------------------------------------------
+                                     上記のように比較した場合の出力は、
+                                        fill_gap == 0 -> 3
+                                        fill_gap == 1 -> 5
+                                     と違いがでる。
+                                     このように、閾値以下を何回許すかを決める変数をfill_gapとする。
+
+        ignored_times           : 無視した回数の合計を保持する変数。
+        current_ignored_times   : 無視した連続回数を保持する変数。
+        """
+
         for (i, line) in enumerate(fr):
             json_dict = json.loads(line)
-            count = 0
+            scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
+            succeeded_times = 0
             pos = config.threshold_len
+
             try:
-                # logger.debug("success")
-                # keywordが含まれていないか判定, protain namesの中には必ず""が含まれているため、この書き方でいける
+                # keywordが含まれているか判定
                 if config.keyword not in json_dict["protein names"]:
                     continue
 
                 # scoreが閾値を超えているか判定
-                scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
-
-                while count < config.threshold_len and pos < len(scores):
+                while pos < len(scores):
                     if scores[pos] < config.threshold_val:
-                        count = 0
+                        succeeded_times = 0
                         pos += config.threshold_len
                     else:
-                        count += 1
+                        succeeded_times += 1
                         pos -= 1
 
-                if count >= config.threshold_len:
-                    fw.write('{}\n'.format(json.dumps(json_dict)))
+                    if succeeded_times >= config.threshold_len:
+                        fw.write('{}\n'.format(json.dumps(json_dict)))
 
             except IndexError as e:
                 print(e)
-
-            count_a += 1
-            print(count_a)
 
 
 class ScorePlot:
