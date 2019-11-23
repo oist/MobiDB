@@ -171,9 +171,10 @@ class LimitScoreSearch:
 
         for (i, line) in enumerate(fr):
             json_dict = json.loads(line)
-            scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
 
             succeeded_times = 0
+            ignored_times = 0
+            current_ignored_times = 0
             pos = config.threshold_len
 
             try:
@@ -181,17 +182,40 @@ class LimitScoreSearch:
                 if config.keyword not in json_dict["protein names"]:
                     continue
 
+                scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
                 # scoreが閾値を超えているか判定
                 while pos < len(scores):
-                    if scores[pos] < config.threshold_val:
-                        succeeded_times = 0
-                        pos += config.threshold_len
-                    else:
+                    """
+                    print(
+                     "num                   : " + str(i) + "\n" +
+                     "Position              : " + str(pos) + "\n" +
+                     "Score                 : " + str(scores[pos]) + "\n" +
+                     "succeeded_times       : " + str(succeeded_times) + "\n" +
+                     "current_ignored_times : " + str(current_ignored_times) + "\n")"""
+
+                    if scores[pos] > config.threshold_val:
                         succeeded_times += 1
                         pos -= 1
 
+                        current_ignored_times = 0
+                    else:
+                        # fill_gapの処理を入れる
+                        if config.fill_gap > current_ignored_times:
+                            pos -= 1
+
+                            current_ignored_times += 1
+                            ignored_times += 1
+                        else:
+                            succeeded_times = 0
+                            pos += config.threshold_len + ignored_times
+
+                            current_ignored_times = 0
+                            ignored_times = 0
+
                     if succeeded_times >= config.threshold_len:
                         fw.write('{}\n'.format(json.dumps(json_dict)))
+                        break
 
             except IndexError as e:
                 print(e)
