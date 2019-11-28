@@ -7,136 +7,133 @@
             size: self.size
             pos: self.pos
     value: ''
-    Button:
-        text: root.value
+    BoxLayout:
+        orientation:'horizontal'
+        Button:
+            size_hint_x: 0.8
+            text: root.value
+            on_press: root.score_plot(root.index)
+
+        Button:
+            size_hint_x: 0.2
+            text: "UniProt"
+            on_press: root.go_UniProt(root.index)
+
+<SSTextBoxLayout@BoxLayout>:
+    orientation:'horizontal'
+    size:self.size
+    size_hint_x: 0.7
+
+
+<SSLabel@Label>:
+    font_size: 32
+    text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
+    halign: 'left'                   # 横方向(左揃え)
 
 
 <TopScreen>:
     BoxLayout:
-        size:root.size
+        # 背景色
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        orientation:'vertical'
+        size:root.size                     # windowのサイズを取得
 
         Button:
-            background_normal: 'body_cell.png'
+            background_normal: 'body_cell.zip'
             size:root.size
             size_hint:None,None
             text:'search screen '
             on_press: root.press_btn()#Top_Screenのメソッドが実行される
 
+
 <SearchScreen>:
     BoxLayout:
+        # 背景色
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
         orientation:'vertical'
-        size:root.size
+        size:root.size                     # windowのサイズを取得
 
+        # タイトル
         Label:
-            text_size: self.size
-            text:'Searching in MobiDB'
-
-            halign: 'left'
-            size_hint_x: 1
-            size_hint_y:0.5
-            font_size: 24
-
+            size_hint_y: 0.2
         Label:
-            size_hint_y: 0.1
-            text:''
+            text:'MobiDB Plot Apprication'   # Labelの名前を設定
+            font_size: 48
+            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
+            halign: 'left'                   # 横方向(左揃え)
+            valign: 'center'                 # 縦方向(真ん中揃え)
+            underline: True
+        Label:
+            size_hint_y: 0.2
 
-        BoxLayout:
-            size_hint_x:0.75
-            size_hint_y:0.4
-            orientation:'horizontal'
-            pos_hint: {"x":0.25, "y":0.8}
 
+        # Threshold Valueの入力
+        SSLabel:
+            text:"Threshold Value"
+        SSTextBoxLayout:
             TextInput:
-                id:text_box
-                font_size: 22
-                focus: True
-                on_text_validate: root.text_btn()
+                font_size: 28
+                id:th_val
+                hint_text: 'e.g. 0.8'
 
         Label:
-            size_hint_y: 0.1
-            text:''
+            size_hint_y: 0.2
 
-        FloatLayout:
+        # Threshold Lengsの入力
+        SSLabel:
+            text:"Threshold Lengs"
+        SSTextBoxLayout:
+            TextInput:
+                font_size: 28
+                id:th_len
+                hint_text: 'e.g. 100'
+        Label:
+            size_hint_y: 0.2
+
+        # fill gapの入力
+        SSLabel:
+            text:"Fill Gap"
+        SSTextBoxLayout:
+            TextInput:
+                font_size: 28
+                id:fill_gap
+                hint_text: 'e.g. 5'
+        Label:
+            size_hint_y: 0.2
+
+        # 実行ボタン
+        BoxLayout:
+            orientation:'horizontal'
+            size:self.size
+            Label:
+                size_hint_x: 0.7
             Button:
-                text:"Search"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                pos_hint: {"x":0, "y":1.15}
-                font_size: 20
-
-                on_press:
-                    root.press_btn()
-
-
-            ToggleButton:
-                id:Score
-                text:"Score"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                pos_hint: {"x":0, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color :1, 1, 1, 0.9
-                on_press:
-                    root.Score_b()
-
-            Spinner:
-                id:sp_s
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                sync_height:True
-                text: ' '
-                text_autoupdate:False
-                values:'0.8', '0.7', '0.6', '0.5', '0.4', '0.3', '0.2', '0.1'
-                pos_hint: {"x":0, "y":0.3}
-
-            ToggleButton:
-                id:Lengs
-                text:"Lengs"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                pos_hint: {"x":0.39, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
-                on_press:
-                    root.Lengs_b()
-
-            Spinner:
-                id:sp_l
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                sync_height:True
-                text: ' '
-                values:'50', '60', '70'
-                pos_hint: {"x":0.39, "y":0.3}
-
-
-            ToggleButton:
-                id:Gap
-                text:"Gap"
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                pos_hint: {"x":0.77, "y":0.6}
-                font_size: 20
-                state:'normal'
-                background_color : 1, 1, 1, 0.9
-                on_press:
-                    root.Gap_b()
-
-            Spinner:
-                id:sp_g
-                size_hint_x: 0.23
-                size_hint_y: 0.3
-                sync_height: True
-                text: ' '
-                values:[str(y) for y in range(1, 20) ]
-                pos_hint: {"x":0.77, "y":0.3}
+                text: 'Search with this condition'
+                background_color: (0, 2, 10, 0.5)
+                size_hint_x: 0.3
+                on_press: root.press_btn()
 
 <WaitScreen>:
     BoxLayout:
+        # 背景色
+        canvas:
+            Color:
+                rgba: 0.3, 0.3, 0.3, 1
+            Rectangle:
+                size: self.size
+                pos: self.pos
         orientation:'vertical'
-        size: root.size
+        size:root.size                     # windowのサイズを取得
 
         Label:
             size_hint_y: 0.1
@@ -159,6 +156,7 @@
             size_hint_x:1
             size_hint_y:0.4
             source:'loading4.gif'
+
 
         Label:
             size_hint_y: 0.1
@@ -192,25 +190,22 @@
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Sort'
-                        on_press: root.sort(sort_list.text)
+                        text: 'Filter Keywords'
+                        on_press: root.filter()
                     TextInput:
-                        id: sort_list
+                        id: keyword
                         size_hint_x: 1
-                        hint_text: 'select method'
+                        hint_text: 'e.g. integrin'
                         padding: dp(10), dp(10), 0, 0
+
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Filter'
-                        on_press: root.filter(filter_list.text)
-                    TextInput:
-                        id: filter_list
-                        size_hint_x: 1
-                        hint_text: 'select method'
-                        padding: dp(10), dp(10), 0, 0
+                        text: 'Sort in abc order'
+                        on_press: root.sort()
+
                 Button:
-                    text: 'return window'
+                    text: 'Go back to search window'
                     on_press: root.return_window()
 
             RecycleView:
