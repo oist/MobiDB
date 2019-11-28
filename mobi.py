@@ -108,15 +108,18 @@ class OutputScreen(Screen):
         logger.debug("filter Begin")
         config.keyword = self.ids["keyword"].text
 
+        temp = []
+
         with open('success_data.mjson', 'r') as fr:
-            with open('used_filter.mjson', 'w') as fw:
-                for (i, line) in enumerate(fr):
-                    json_dict = json.loads(line)
-                    if config.keyword in json_dict["protein names"]:
-                        fw.write('{}\n'.format(json.dumps(json_dict)))
+            for (i, line) in enumerate(fr):
+                json_dict = json.loads(line)
+                if config.keyword in json_dict["protein names"]:
+                    name = json_dict["protein names"]
+                    temp.append({'value': name, 'index': i})
+
+            self.rv.data = temp
 
         logger.debug("filter End")
-
 
     def return_window(self):
         change_screen("Search")
