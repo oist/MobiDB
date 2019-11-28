@@ -7,9 +7,17 @@
             size: self.size
             pos: self.pos
     value: ''
-    Button:
-        text: root.value
-        on_press: root.score_plot(root.index)
+    BoxLayout:
+        orientation:'horizontal'
+        Button:
+            size_hint_x: 0.8
+            text: root.value
+            on_press: root.score_plot(root.index)
+
+        Button:
+            size_hint_x: 0.2
+            text: "UniProt"
+            on_press: root.go_UniProt(root.index)
 
 <SSTextBoxLayout@BoxLayout>:
     orientation:'horizontal'
@@ -18,7 +26,7 @@
 
 
 <SSLabel@Label>:
-    font_size: 24
+    font_size: 32
     text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
     halign: 'left'                   # 横方向(左揃え)
 
@@ -60,7 +68,7 @@
             size_hint_y: 0.2
         Label:
             text:'MobiDB Plot Apprication'   # Labelの名前を設定
-            font_size: 36
+            font_size: 48
             text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
             halign: 'left'                   # 横方向(左揃え)
             valign: 'center'                 # 縦方向(真ん中揃え)
@@ -68,23 +76,13 @@
         Label:
             size_hint_y: 0.2
 
-        # キーワードの入力
-        SSLabel:
-            text:"keyword"
-        SSTextBoxLayout:
-            TextInput:
-                font_size: 24
-                id:keyword
-                hint_text: 'e.g. integrin, protain'
-        Label:
-            size_hint_y: 0.2
 
         # Threshold Valueの入力
         SSLabel:
             text:"Threshold Value"
         SSTextBoxLayout:
             TextInput:
-                font_size: 24
+                font_size: 28
                 id:th_val
                 hint_text: 'e.g. 0.8'
 
@@ -96,7 +94,7 @@
             text:"Threshold Lengs"
         SSTextBoxLayout:
             TextInput:
-                font_size: 24
+                font_size: 28
                 id:th_len
                 hint_text: 'e.g. 100'
         Label:
@@ -107,7 +105,7 @@
             text:"Fill Gap"
         SSTextBoxLayout:
             TextInput:
-                font_size: 24
+                font_size: 28
                 id:fill_gap
                 hint_text: 'e.g. 5'
         Label:
@@ -192,25 +190,22 @@
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Sort'
-                        on_press: root.sort(sort_list.text)
+                        text: 'Filter Keywords'
+                        on_press: root.filter()
                     TextInput:
-                        id: sort_list
+                        id: keyword
                         size_hint_x: 1
-                        hint_text: 'select method'
+                        hint_text: 'e.g. integrin'
                         padding: dp(10), dp(10), 0, 0
+
                 BoxLayout:
                     spacing: dp(8)
                     Button:
-                        text: 'Filter'
-                        on_press: root.filter(filter_list.text)
-                    TextInput:
-                        id: filter_list
-                        size_hint_x: 1
-                        hint_text: 'select method'
-                        padding: dp(10), dp(10), 0, 0
+                        text: 'Sort in abc order'
+                        on_press: root.sort()
+
                 Button:
-                    text: 'return window'
+                    text: 'Go back to search window'
                     on_press: root.return_window()
 
             RecycleView:

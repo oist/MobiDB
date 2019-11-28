@@ -8,6 +8,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 import threading
 import time
 import config
+import webbrowser
 Show_Func = Window.show
 
 """デバック"""
@@ -58,7 +59,6 @@ class SearchScreen(Screen):
     def press_btn(self):
         logger.debug("press_btn_SS")
         try:
-            config.keyword = self.ids["keyword"].text
             config.threshold_val = make_sure_text(self.ids["th_val"].text)
             config.threshold_len = int(make_sure_text(self.ids["th_len"].text))
             config.fill_gap = int(make_sure_text(self.ids["fill_gap"].text))
@@ -98,17 +98,25 @@ class OutputScreen(Screen):
 
         logger.debug("on_enter_OS End")
 
-    def sort(self, value):
-        logger.debug("sort_OS Begin")
+    def sort(self):
+        logger.debug("sort Begin")
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
-        logger.debug("sort_OS End")
 
-    def filter(self, value):
-        logger.debug("filter_OS Begin")
+        logger.debug("sort End")
 
-        # write code of filter method
+    def filter(self):
+        logger.debug("filter Begin")
+        config.keyword = self.ids["keyword"].text
 
-        logger.debug("filter_OS End")
+        with open('success_data.mjson', 'r') as fr:
+            with open('used_filter.mjson', 'w') as fw:
+                for (i, line) in enumerate(fr):
+                    json_dict = json.loads(line)
+                    if config.keyword in json_dict["protein names"]:
+                        fw.write('{}\n'.format(json.dumps(json_dict)))
+
+        logger.debug("filter End")
+
 
     def return_window(self):
         change_screen("Search")
@@ -151,7 +159,7 @@ class LimitScoreSearch:
         whileループは　succeeded_times > threshold_len のときに抜ける。
 
         config.fill_gap         : 閾値以下を何回まで許すかを決める変数　
-                                  例）　score[ 1, 1, 0, 1, 1, 1 ], threshold_val = 0.5 とする。
+                                  例）　score[ 1, 1, 0, 0, 1, 1 ], threshold_val = 0.5 とする。
                                      ---------------------------------------------
                                         for i in len(score):
                                             if score[i] > threshold_val:
@@ -160,13 +168,12 @@ class LimitScoreSearch:
                                                 i = 0
                                      ---------------------------------------------
                                      上記のように比較した場合の出力は、
-                                        fill_gap == 0 -> 3
-                                        fill_gap == 1 -> 5
+                                        fill_gap == 1 -> 2
+                                        fill_gap == 2 -> 6
                                      と違いがでる。
                                      このように、閾値以下を何回許すかを決める変数をfill_gapとする。
 
         ignored_times           : 無視した回数の合計を保持する変数。
-        current_ignored_times   : 無視した連続回数を保持する変数。
         """
 
         for (i, line) in enumerate(fr):
@@ -184,12 +191,6 @@ class LimitScoreSearch:
                 scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
 
                 while pos < len(scores):
-                    print(
-                     "num                   : " + str(i) + "\n" +
-                     "Position              : " + str(pos) + "\n" +
-                     "Score                 : " + str(scores[pos]) + "\n" +
-                     "succeeded_times       : " + str(succeeded_times) + "\n" +
-                     "ignored_times : " + str(ignored_times) + "\n")
 
                     # scoreが閾値を超えているか判定
                     if scores[pos] > config.threshold_val:
@@ -205,7 +206,6 @@ class LimitScoreSearch:
                         else:
                             succeeded_times = 0
                             pos += config.threshold_len + ignored_times
-
                             ignored_times = 0
 
                     if succeeded_times >= config.threshold_len:
@@ -330,6 +330,14 @@ class Row(Screen):
         plt.show()
 
         logger.debug("score_plot_R End")
+
+    def go_UniProt(self, value):
+
+        url = 'https://www.uniprot.org/uniprot/' + 'P31994'
+        browser = webbrowser.get('"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %s')
+        browser.open(url)
+        # service = UniProt()
+        # result = service.search(query, frmt="tab", columns=columnlist)
 
 
 class MobiApp(App):
