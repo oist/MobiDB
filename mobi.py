@@ -174,7 +174,6 @@ class LimitScoreSearch:
 
             succeeded_times = 0
             ignored_times = 0
-            current_ignored_times = 0
             pos = config.threshold_len
 
             try:
@@ -184,33 +183,29 @@ class LimitScoreSearch:
 
                 scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
 
-                # scoreが閾値を超えているか判定
                 while pos < len(scores):
-                    """
                     print(
                      "num                   : " + str(i) + "\n" +
                      "Position              : " + str(pos) + "\n" +
                      "Score                 : " + str(scores[pos]) + "\n" +
                      "succeeded_times       : " + str(succeeded_times) + "\n" +
-                     "current_ignored_times : " + str(current_ignored_times) + "\n")"""
+                     "ignored_times : " + str(ignored_times) + "\n")
 
+                    # scoreが閾値を超えているか判定
                     if scores[pos] > config.threshold_val:
                         succeeded_times += 1
                         pos -= 1
-
-                        current_ignored_times = 0
+                        ignored_times = 0
                     else:
                         # fill_gapの処理を入れる
-                        if config.fill_gap > current_ignored_times:
+                        if config.fill_gap > ignored_times:
+                            succeeded_times += 1
                             pos -= 1
-
-                            current_ignored_times += 1
                             ignored_times += 1
                         else:
                             succeeded_times = 0
                             pos += config.threshold_len + ignored_times
 
-                            current_ignored_times = 0
                             ignored_times = 0
 
                     if succeeded_times >= config.threshold_len:
