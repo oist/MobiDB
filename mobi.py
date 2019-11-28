@@ -216,7 +216,7 @@ class LimitScoreSearch:
                         break
 
             except IndexError as e:
-                print(e)
+                pass
 
 
 class ScorePlot:
