@@ -6,20 +6,14 @@ disorder_add_protain.mjson
 disorder2.mjson
 __pycache__
 venv
-success_data.mjson
 .idea
-<<<<<<< HEAD
 sample_program/design_related/disorder_add_protain.mjson
-=======
-<<<<<<< HEAD
 success_indent.mjson
 error_indent.mjson
 d2.mjson
-=======
-=======
 sample program/design_related/disorder_add_protain.mjson
+disorder_add_protain.mjson
 success_data.mjson
 error_indent.mjson
 d2.mjson
 success_indent.mjson
->>>>>>> develop
