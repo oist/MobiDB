@@ -9,7 +9,9 @@ import threading
 import time
 import config
 import webbrowser
+import re
 Show_Func = Window.show
+
 
 """デバック"""
 logger = getLogger(__name__)
@@ -19,6 +21,13 @@ logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
 logger.debug("hello")
+
+
+def rename_protain(name):
+    name = name[:name.find('(')]
+    #name = name[:name.find('[')]
+    #name = name[:name.find(',')]
+    return name
 
 
 def change_screen(screen_name):
@@ -93,7 +102,7 @@ class OutputScreen(Screen):
         with open('success_data.mjson', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                name = json_dict["protein names"]
+                name = rename_protain(json_dict["protein names"])
                 self.rv.data.append({'value': name, 'index': i})
 
         logger.debug("on_enter_OS End")
@@ -114,7 +123,7 @@ class OutputScreen(Screen):
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
                 if config.keyword in json_dict["protein names"]:
-                    name = json_dict["protein names"]
+                    name = rename_protain(json_dict["protein names"])
                     temp.append({'value': name, 'index': i})
 
             self.rv.data = temp
@@ -265,6 +274,7 @@ class ScorePlot:
         self.sequence = list(self.json_dict["sequence"])
         self.acc = self.json_dict["acc"]
         self.pName = self.json_dict["protein names"]
+        name = rename_protain(self.json_dict["protein names"])
 
         # 閾値以上の数の割合を計算する
         for i in range(len(self.score)):
@@ -278,7 +288,7 @@ class ScorePlot:
         # print(str(len(self.score)))
         # print(round(div / len(self.score) * 100, 3))
         self.text = "ACC:" + self.acc + "\n" + \
-                    "Protain Names : " + self.pName + "\n" + \
+                    "Protain Names : " + name + "\n" + \
                     "Percentage (x >= " + str(config.threshold_val) + "):" + str(round(div / len(self.score) * 100, 3)) + "%"
 
     def plot_json_data(self):
@@ -335,12 +345,15 @@ class Row(Screen):
         logger.debug("score_plot_R End")
 
     def go_UniProt(self, value):
+        with open('success_data.mjson', 'r') as fr:
+            for (k, line) in enumerate(fr):
+                if k == value:
+                    json_dict = json.loads(line)
+                    break
 
-        url = 'https://www.uniprot.org/uniprot/' + 'P31994'
+        url = 'https://www.uniprot.org/uniprot/' + json_dict["acc"]
         browser = webbrowser.get('"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %s')
         browser.open(url)
-        # service = UniProt()
-        # result = service.search(query, frmt="tab", columns=columnlist)
 
 
 class MobiApp(App):
