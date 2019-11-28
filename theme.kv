@@ -67,7 +67,7 @@
         Label:
             size_hint_y: 0.2
         Label:
-            text:'MobiDB Plot Apprication'   # Labelの名前を設定
+            text:'MobiDB Plot Application'   # Labelの名前を設定
             font_size: 48
             text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
             halign: 'left'                   # 横方向(左揃え)
@@ -84,19 +84,19 @@
             TextInput:
                 font_size: 28
                 id:th_val
-                hint_text: 'e.g. 0.8'
+                hint_text: 'default: 0.0'
 
         Label:
             size_hint_y: 0.2
 
         # Threshold Lengsの入力
         SSLabel:
-            text:"Threshold Lengs"
+            text:"Threshold Length"
         SSTextBoxLayout:
             TextInput:
                 font_size: 28
                 id:th_len
-                hint_text: 'e.g. 100'
+                hint_text: 'default: 0'
         Label:
             size_hint_y: 0.2
 
@@ -107,7 +107,7 @@
             TextInput:
                 font_size: 28
                 id:fill_gap
-                hint_text: 'e.g. 5'
+                hint_text: 'default: 0'
         Label:
             size_hint_y: 0.2
 
@@ -205,7 +205,7 @@
                         on_press: root.sort()
 
                 Button:
-                    text: 'Go back to search window'
+                    text: 'Back to search window'
                     on_press: root.return_window()
 
             RecycleView:
