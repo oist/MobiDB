@@ -31,7 +31,7 @@
     halign: 'left'                   # 横方向(左揃え)
 
 
-<TopScreen>:
+<ScreenTop>:
     BoxLayout:
         # 背景色
         canvas:
@@ -48,10 +48,10 @@
             size:root.size
             size_hint:None,None
             text:'search screen '
-            on_press: root.press_btn()#Top_Screenのメソッドが実行される
+            on_press: root.btn_event()#Top_Screenのメソッドが実行される
 
 
-<SearchScreen>:
+<ScreenSearch>:
     BoxLayout:
         # 背景色
         canvas:
@@ -121,9 +121,9 @@
                 text: 'Search with this condition'
                 background_color: (0, 2, 10, 0.5)
                 size_hint_x: 0.3
-                on_press: root.press_btn()
+                on_press: root.btn_event()
 
-<WaitScreen>:
+<ScreenWait>:
     BoxLayout:
         # 背景色
         canvas:
@@ -166,9 +166,9 @@
             size: 50,50
             size_hint: None,None
             text:"cancel"
-            on_press: root.press_btn()#Wait_Screenのメソッドが実行される
+            on_press: root.btn_event()#Wait_Screenのメソッドが実行される
 
-<OutputScreen>:
+<ScreenOut>:
     rv: rv
     BoxLayout:
         orientation: 'vertical'
