@@ -12,12 +12,12 @@
         Button:
             size_hint_x: 0.8
             text: root.value
-            on_press: root.score_plot(root.index)
+            on_press: root.btn_event(root.index, 0)
 
         Button:
             size_hint_x: 0.2
             text: "UniProt"
-            on_press: root.go_UniProt(root.index)
+            on_press: root.btn_event(root.index, 1)
 
 <SSTextBoxLayout@BoxLayout>:
     orientation:'horizontal'
@@ -31,7 +31,7 @@
     halign: 'left'                   # 横方向(左揃え)
 
 
-<TopScreen>:
+<ScreenTop>:
     BoxLayout:
         # 背景色
         canvas:
@@ -46,12 +46,13 @@
         Button:
             background_normal: 'body_cell.zip'
             size:root.size
+            font_size: 40
             size_hint:None,None
-            text:'search screen '
-            on_press: root.press_btn()#Top_Screenのメソッドが実行される
+            text:'Click'
+            on_press: root.btn_event()#Top_Screenのメソッドが実行される
 
 
-<SearchScreen>:
+<ScreenSearch>:
     BoxLayout:
         # 背景色
         canvas:
@@ -121,9 +122,9 @@
                 text: 'Search with this condition'
                 background_color: (0, 2, 10, 0.5)
                 size_hint_x: 0.3
-                on_press: root.press_btn()
+                on_press: root.btn_event()
 
-<WaitScreen>:
+<ScreenWait>:
     BoxLayout:
         # 背景色
         canvas:
@@ -166,9 +167,9 @@
             size: 50,50
             size_hint: None,None
             text:"cancel"
-            on_press: root.press_btn()#Wait_Screenのメソッドが実行される
+            on_press: root.btn_event()#Wait_Screenのメソッドが実行される
 
-<OutputScreen>:
+<ScreenOut>:
     rv: rv
     BoxLayout:
         orientation: 'vertical'
@@ -191,7 +192,7 @@
                     spacing: dp(8)
                     Button:
                         text: 'Filter Keywords'
-                        on_press: root.filter()
+                        on_press: root.btn_event(0)
                     TextInput:
                         id: keyword
                         size_hint_x: 1
@@ -202,11 +203,11 @@
                     spacing: dp(8)
                     Button:
                         text: 'Sort in abc order'
-                        on_press: root.sort()
+                        on_press: root.btn_event(1)
 
                 Button:
                     text: 'Back to search window'
-                    on_press: root.return_window()
+                    on_press: root.btn_event(2)
 
             RecycleView:
                 id: rv

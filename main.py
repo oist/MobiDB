@@ -1,21 +1,8 @@
-import json
-from kivy.app import App
 from kivy.core.window import Window
 from kivy.lang import Builder
 from application import MobiApp
-import matplotlib.pyplot as plt
-from kivy.uix.screenmanager import ScreenManager, Screen
-import threading
-import time
-import config
-import webbrowser
-from screen_top_main import ScreenTop
-from screen_search_main import ScreenSearch
-from screen_wait_main import ScreenWait
-from screen_out_main import ScreenOut
-
 from logging import getLogger, StreamHandler, DEBUG
-
+import init
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -27,13 +14,17 @@ logger.debug("main Begin")
 
 
 if __name__ == "__main__":
-    logger.debug("main Begin")
+    logger.debug("main.py, main")
 
     # kvファイルをstring型としてload
-    with open("./theme2.kv", "r", encoding="utf8") as f:
+    with open("./theme.kv", "r", encoding="utf8") as f:
         Builder.load_string(f.read())
+
     Window.size = (800, 600)
 
+    # グローバル変数を初期化
+    init.init()
     MobiApp().run()
 
-    logger.debug("main End")
+
+
