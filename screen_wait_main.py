@@ -1,6 +1,6 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.screenmanager import Screen
-from kivy.app import App
+
 from screen_wait_search import SearchScore
 import init
 """デバック"""
@@ -18,9 +18,7 @@ class ScreenWait(Screen):
 
         # 閾値とsocreを比較し、条件に当てはまるものを検索する
         ss = SearchScore()
-        ss.search_score()
-
-        self.change_screen("out")
+        ss.start()
 
     def btn_event(self):
         logger.debug("screen_wait_main.py, ScreenWait, btn_event()")
@@ -29,8 +27,3 @@ class ScreenWait(Screen):
         init.init()
         self.change_screen("search")
 
-    def change_screen(self, name):
-        logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
-
-        app = App.get_running_app()
-        app.sm.current = name

@@ -3,6 +3,8 @@ from kivy.lang import Builder
 from application import MobiApp
 from logging import getLogger, StreamHandler, DEBUG
 import init
+
+
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
