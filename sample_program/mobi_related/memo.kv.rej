@@ -1,0 +1,10 @@
+diff a/sample program/memo.kv b/sample program/memo.kv	(rejected hunks)
+@@ -13,7 +13,7 @@
+         size:root.size
+ 
+         Button:
+-            background_normal: 'kusunoki.jpg'
++            background_normal: 'body_cell.png'
+             size:root.size
+             size_hint:None,None
+             text:'search screen '
