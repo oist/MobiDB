@@ -1,10 +1,14 @@
-from logging import getLogger
+from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.screenmanager import Screen
 from kivy.app import App
 
-
+"""デバック"""
 logger = getLogger(__name__)
-
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
 
 class ScreenTop(Screen):
     """

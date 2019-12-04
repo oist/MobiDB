@@ -11,15 +11,6 @@ class ScreenSearch(Screen):
     """
     app.sm.current == "search" 時の処理
 
-    Parameters
-    ----------
-    config.threshold_val : float
-        score 値と比較する閾値を保持
-    config.threshold_len : int
-        閾値以上の score の連続回数と比較する閾値を保持
-    config.fill_gap : int
-        閾値以下をスルーする回数を保持
-
     Methods
     ----------
     btn_event(self)

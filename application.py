@@ -1,4 +1,4 @@
-from logging import getLogger
+from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from screen_top_main import ScreenTop
@@ -7,7 +7,14 @@ from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
 
 
+"""デバック"""
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
+
 
 
 class MobiApp(App):
