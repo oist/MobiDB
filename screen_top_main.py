@@ -1,21 +1,27 @@
-from logging import getLogger, StreamHandler, DEBUG
-from kivy.uix.screenmanager import Screen, ScreenManager
+from logging import getLogger
+from kivy.uix.screenmanager import Screen
 from kivy.app import App
 
 
-"""デバック"""
 logger = getLogger(__name__)
-handler = StreamHandler()
-handler.setLevel(DEBUG)
-logger.setLevel(DEBUG)
-logger.addHandler(handler)
-logger.propagate = False
-
-
-sm = ScreenManager()
 
 
 class ScreenTop(Screen):
+    """
+    app.sm.current == "top"　時の処理
+
+    Parameters
+    ----------
+    app : class application.MobiApp
+        現在の app の情報を取得
+    app.sm.current(self, name = "search")　: str
+        表示するスクリーンを name = "search" にする
+
+    Notes
+    ----------
+    Button イベントは theme.ScreenTopに記載されている。
+
+    """
     def btn_event(self):
         logger.debug("screen_top_main.py, ScreenTop, btn_event()")
 

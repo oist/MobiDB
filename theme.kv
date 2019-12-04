@@ -12,12 +12,12 @@
         Button:
             size_hint_x: 0.8
             text: root.value
-            on_press: root.btn_event(root.index, 0)
+            on_press: root.btn_event(root.index, True)
 
         Button:
             size_hint_x: 0.2
             text: "UniProt"
-            on_press: root.btn_event(root.index, 1)
+            on_press: root.btn_event(root.index, False)
 
 <SSTextBoxLayout@BoxLayout>:
     orientation:'horizontal'

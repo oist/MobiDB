@@ -24,16 +24,17 @@ class ScorePlot:
         self.ln_h = self.ax.axhline(0)
         self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
 
-        self.json_dict = {}         # jsonから取り出したデータを保持
-        self.list_id = []           # scatter用のx軸を表す配列
-        self.score = []             # json_dictからscoreをload
-        self.sequence = []          # json_dictからsequenceをload
+        self.json_dict = dict()     # jsonデータを保持する変数
+
+        self.list_id = list()           # scatter用のx軸を表す配列
+        self.score = list()             # json_dictからscoreをload
+        self.sequence = list()          # json_dictからsequenceをload
+
         self.acc = ""               # json_dictからaccをload
         self.name = ""             # json_dictからプロテイン名をload
         self.div = 0                # 閾値を超えているスコア数と全体の割合を保持
         self.key = value                # 出力するデータを決めるkey
         self.text = ""              # plot画面に表示するtext
-        # print("ScorePlot value:" + str(self.key))
 
         # initでプロパティを読み込む
         self.load_propaty()
