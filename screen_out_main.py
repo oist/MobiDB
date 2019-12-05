@@ -17,13 +17,26 @@ logger.propagate = False
 
 
 class Row(Screen):
-    """OutputScreenのRecycleViewで使用するボタンの設定"""
+    """
+    app.sm.current == "out" 時の処理
+
+    Methods
+    ----------
+    btn_event(self, id, boolean)
+        true  : value=idを受け取り、プロットメソッドを呼び出す。マルチプロセスで処理する。
+        false : value=idを受け取り、Uniprot(Webサイト)にアクセスする。
+
+
+    Notes
+    ----------
+    Rowクラスの親クラスがScreenOutクラス
+
+    """
 
     def btn_event(self, value, i):
 
         if i:
             logger.debug("screen_out_row.py, Row, btn_event, plot_score()")
-            print("Row value:" + str(value))
             score = ScorePlot(value)
             score.run()
             plt.show()
@@ -41,6 +54,29 @@ class Row(Screen):
 
 
 class ScreenOut(Screen):
+    """
+    app.sm.current == "out" 時の処理
+
+    Methods
+    ----------
+    on_enter(self)
+        success_data.mjsonからプロテイン名のみを抽出し、self.rv.dataに追加することで、
+        ボタンの名前表示を追加していく。
+
+    btn_event(self, int)
+        iの値に応じて処理を行う。
+        1.キーワード検索メソッドの実行
+        2.abc順でソートする
+        3.ScreennSearchに移動する。
+
+    filter_keyword(self)
+        success_data.mjsonからプロテイン名のみを抽出し、キーワードが含まれているかを判定し
+        Trueならself.rvにappendする。
+
+    sort_abc(self)
+        ラムダ関数を使ったsortを行う
+
+    """
     def on_enter(self):
         logger.debug("screen_out_main.py, ScreenOut, on_enter()")
 

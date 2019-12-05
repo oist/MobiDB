@@ -14,7 +14,10 @@ logger.propagate = False
 
 
 class ScorePlot:
-    """scoreのプロット処理"""
+    """
+    指定されたidのスコアをプロットする
+
+    """
 
     def __init__(self, value):
         logger.debug("screen_out_plot.py, ScorePlot, __init__()")

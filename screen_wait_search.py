@@ -32,6 +32,39 @@ class SearchScore(threading.Thread):
 
     Examples
     ----------
+    検索アルゴリズムはBM法を参考にした。
+    config.threshold_val　→　th_val
+    config.threshold_len　→　th_len
+    config.fill_gap       →　fill_gap
+
+    1. score[current_pos]と th_valを末尾から比較(True-> successed_times++)。
+    2. successed_timesが th_lenを上回れば記入。
+    3. 検索に失敗した場合、その地点にth_lenとfill_gapを足して、再度末尾から検索する。
+
+    以下の条件で検索を行うと、
+    -------------------------------------
+             0  1  2  3  4  5  6
+    score = [1, 0, 0, 1, 0, 1, 1]
+    config.threshold_val    = 0.5
+    config.threshold_len    = 4
+    config.fill_gap         = 1
+    -------------------------------------
+
+    current_pos = th_len
+        score[3] True
+        score[2] False, ignore_times 1
+        score[1] False, ignore_times 2
+
+    current_pos = current_pos + th_len + ignore_times
+        core[6] True
+        score[5] True
+        score[4] Flase, ignore_times 1
+        score[3] True
+
+        と検索は成功し、jsonファイルに記入される。
+
+    Examples
+    ----------
     How to use config.threshold_val, config.threshold_len and config.fill_gap.
     scoreの範囲は 0 < x < 1である。
     以下のようなscoreをもったプロテインがあるとする。
@@ -87,42 +120,6 @@ class SearchScore(threading.Thread):
                         # scoreを取得
                         scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
                         scores_len = len(scores)
-
-                        """
-                        Examples
-                        ----------
-                        検索アルゴリズムはBM法を参考にした。
-                        config.threshold_val　→　th_val
-                        config.threshold_len　→　th_len
-                        config.fill_gap       →　fill_gap
-                        
-                        1. score[current_pos]と th_valを末尾から比較(True-> successed_times++)。
-                        2. successed_timesが th_lenを上回れば記入。
-                        3. 検索に失敗した場合、その地点にth_lenとfill_gapを足して、再度末尾から検索する。
-                        
-                        以下の条件で検索を行うと、
-                        -------------------------------------
-                                 0  1  2  3  4  5  6
-                        score = [1, 0, 0, 1, 0, 1, 1]
-                        config.threshold_val    = 0.5
-                        config.threshold_len    = 4
-                        config.fill_gap         = 1
-                        -------------------------------------
-                    
-                        current_pos = th_len
-                            score[3] True
-                            score[2] False, ignore_times 1
-                            score[1] False, ignore_times 2
-                        
-                        current_pos = current_pos + th_len + ignore_times
-                            score[6] True
-                            score[5] True
-                            score[4] Flase, ignore_times 1
-                            score[3] True
-                        
-                        と検索は成功し、jsonファイルに記入される。
-                        
-                        """
 
                         while current_pos < scores_len:
                             # scoreが閾値を超えているか判定
