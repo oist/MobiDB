@@ -1,10 +1,8 @@
 from logging import getLogger, StreamHandler, DEBUG
-import time
 import json
 import config
 import threading
 from kivy.app import App
-
 
 """デバック"""
 logger = getLogger(__name__)
@@ -29,6 +27,17 @@ class SearchScore(threading.Thread):
         score[i] < config.threshold_val を許容した回数を保持する。
     current_pos : int = config.threshold_len
         現在のスコアの位置を保持する。
+
+
+    Methods
+    ----------
+    kill(self)
+        スレッドを終了させる。
+    compare_score(self)
+        条件に応じて、値を代入する。
+    run(self)
+        scoreを比較し、条件に一致したものをsuccessed_data.mjsonに追加する
+
 
     Examples
     ----------
@@ -63,6 +72,7 @@ class SearchScore(threading.Thread):
 
         と検索は成功し、jsonファイルに記入される。
 
+
     Examples
     ----------
     How to use config.threshold_val, config.threshold_len and config.fill_gap.
@@ -91,10 +101,12 @@ class SearchScore(threading.Thread):
         fill_gap = 0 -> i == 3  fail
         fill_gap = 1 -> i == 5  successed
 
+
     Raises
     ------
     IndexError
     プロテインにスコアが存在しない場合に発生。
+
 
     Notes
     ----------
@@ -102,56 +114,76 @@ class SearchScore(threading.Thread):
 
     """
 
+    def __init__(self):
+        super().__init__()
+        self.alive = True
+
+        self.json_dict = dict()
+        self.succeeded_times = 0
+        self.ignored_times = 0
+        self.current_pos = config.threshold_len
+
     def run(self):
         logger.debug("screen_wait_search, SearchScore, search_score()")
 
         with open('success_data.mjson', 'w') as fw:
             with open("mobiDB_human.mjson", "r") as fr:
-                t1 = time.time()
 
                 for (i, line) in enumerate(fr):
-                    json_dict = json.loads(line)
-
-                    succeeded_times = 0
-                    ignored_times = 0
-                    current_pos = config.threshold_len
+                    print(i)
+                    self.json_dict = json.loads(line)
 
                     try:
                         # scoreを取得
-                        scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+
+                        scores = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
                         scores_len = len(scores)
 
-                        while current_pos < scores_len:
-                            # scoreが閾値を超えているか判定
-                            if scores[current_pos] > config.threshold_val:
-                                succeeded_times += 1
-                                current_pos -= 1
-                                ignored_times = 0
-                            else:
-                                # fill_gapの処理を入れる
-                                if config.fill_gap > ignored_times:
-                                    succeeded_times += 1
-                                    current_pos -= 1
-                                    ignored_times += 1
-                                else:
-                                    succeeded_times = 0
-                                    current_pos += config.threshold_len + ignored_times
-                                    ignored_times = 0
+                        while self.alive:
 
-                            if succeeded_times >= config.threshold_len:
-                                fw.write('{}\n'.format(json.dumps(json_dict)))
+                            if self.current_pos < scores_len:
+                                break
+
+                            # scoreを比較
+                            self.compare_score(scores)
+
+                            # 成功したscoreデータの書き込み
+                            if self.succeeded_times >= self.current_pos:
+                                fw.write('{}\n'.format(json.dumps(self.json_dict)))
                                 break
                     except IndexError:
                         pass
+                    #
+                    if not self.alive:
+                        break
 
-                self.change_screen("out")
-
-                t2 = time.time()
-                elapsed_time = t2 - t1  # 処理にかかった時間を計算する
-                print("経過時間：", elapsed_time)
+                else:
+                    self.change_screen("out")
 
     def change_screen(self, name):
         logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name
+
+    def kill(self):
+        logger.debug("screen_wait_main.py, ScreenWait, kill()")
+        self.alive = False
+
+    def compare_score(self, scores):
+        logger.debug("screen_wait_main.py, ScreenWait, compare_score()")
+        # scoreが閾値を超えているか判定
+        if scores[self.current_pos] > config.threshold_val:
+            self.succeeded_times += 1
+            self.current_pos -= 1
+            self.ignored_times = 0
+        else:
+            # fill_gapの処理を入れる
+            if config.fill_gap > self.ignored_times:
+                self.succeeded_times += 1
+                self.current_pos -= 1
+                self.ignored_times += 1
+            else:
+                self.succeeded_times = 0
+                self.current_pos += self.current_pos + self.ignored_times
+                self.ignored_times = 0

@@ -16,7 +16,6 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-
 class MobiApp(App):
 
     """

@@ -41,22 +41,26 @@ class ScreenWait(Screen):
 
         """
 
+    def __init__(self, **kw):
+        super().__init__(**kw)
+        self.ss = SearchScore()
+
     def on_enter(self):
         logger.debug("screen_wait_main.py, ScreenWait, on_enter()")
 
         # 閾値とscoreを比較し、条件に当てはまるものを検索する
-        ss = SearchScore()
-        ss.start()
+        self.ss = SearchScore()
+        self.ss.start()
 
     def btn_event(self):
         logger.debug("screen_wait_main.py, ScreenWait, btn_event()")
 
         # cancelボタンが押されたらsearch画面の値を初期化して戻る
-        #ss.stop()
+        self.ss.kill()
         self.change_screen("search")
 
     def change_screen(self, name):
-        logger.debug("screen_top_main.py, ScreenTop, change_screen()")
+        logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name
