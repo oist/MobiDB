@@ -43,6 +43,7 @@ def change_screen(screen_name):
     elif screen_name == "Output":
         sm.add_widget(OutputScreen(name=screen_name))
 
+    print(type(screen_name))
     sm.current = screen_name  # wait画面に移動
 
     logger.debug("change_screen: " + screen_name + "End")
