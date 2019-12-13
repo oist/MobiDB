@@ -3,9 +3,9 @@ from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from screen_out_plot import ScorePlot
 import config
-import matplotlib.pyplot as plt
 import json
 import webbrowser
+
 
 """デバック"""
 logger = getLogger(__name__)
@@ -26,7 +26,6 @@ class Row(Screen):
         true  : value=idを受け取り、プロットメソッドを呼び出す。マルチプロセスで処理する。
         false : value=idを受け取り、Uniprot(Webサイト)にアクセスする。
 
-
     Notes
     ----------
     Rowクラスの親クラスがScreenOutクラス
@@ -37,9 +36,16 @@ class Row(Screen):
 
         if i:
             logger.debug("screen_out_row.py, Row, btn_event, plot_score()")
+
             score = ScorePlot(value)
+
+            # value番目のプロパティを取得
+            score.load_propaty()
+            score.calculate_score_rate()
+
+            # JSまたはC#によるplotを実行する
             score.run()
-            plt.show()
+
         else:
             logger.debug("screen_out_row.py, Row, btn_event, go_to_uniplot()")
             with open('success_data.mjson', 'r') as fr:

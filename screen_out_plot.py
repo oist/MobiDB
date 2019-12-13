@@ -1,8 +1,6 @@
 from logging import getLogger, StreamHandler, DEBUG
-import matplotlib.pyplot as plt
-import config
 import json
-
+import config
 
 """デバック"""
 logger = getLogger(__name__)
@@ -16,108 +14,86 @@ logger.propagate = False
 class ScorePlot:
     """
     指定されたidのスコアをプロットする
+    Parameters
+    ----------
+    self.key : int
+        Holds the number to load.
+    self.json_dict : dict
+        Hold valueth data of succeed_data.mjson.
+    self.score : list
+        Load score value from json_dict.
+    self.sequence : list
+        Load sequence from json_dict.
+    self.acc : str
+        Load accession number from json_dict
+    self.name : str
+        Load protain names from json_dict
+    self.succeed_score_rate
+        Percentage of score value above threshold
+
+    Methods
+    ----------
+    def load_propaty(self) :
+        Load valueth data of succeed_data.mjson.
+    def calculate_score_rate(self) :
+        Calculate percentage of score value above threshold
+    def run(self) :
+        plot score, sequence, acc, name and succeed_score_rate
+
+
+    Note
+    ----------
+    RecycleViewは MVCという概念からできている。
+
+    [Controller]
+    RecycleViewが持つviewclassプロパティに値(文字列)を渡すことで、各子widgetのwindgetの種類を決定することができる。
+    RecycleView直下の子widgetは各子widgethへのメソッドを提供することができる。
+
+    [Model]
+    RecycleViewが持つdataプロパティはModelに相当する。
+    dataプロパティは辞書のリストになっており、リストの要素数だけ子widgetができる。
+    辞書はキーに子widgetのプロパティ(文字列)を、値にそのプロパティの値を持つ。
+
+    [View]
+    RecycleView直下の子widgetは、各子widgetの並びを決定することができる。
+    RecycleViewが持つviewclassプロパティにカスタムwidget(文字列)を渡すことで、各子widgetの個々のプロパティを決定することができる。
+
+    参考 : https://labor.hatenablog.jp/entry/2019/09/25/%E7%A7%81%E6%96%87_vs_kivy%285-1%29_RecycleView%E3%81%AE%E5%9F%BA%E6%9C%AC_1
 
     """
 
     def __init__(self, value):
         logger.debug("screen_out_plot.py, ScorePlot, __init__()")
 
-        self.fig, self.ax = plt.subplots()
-        self.ln_v = self.ax.axvline(0)
-        self.ln_h = self.ax.axhline(0)
-        self.fig.canvas.mpl_connect("motion_notify_event", self.on_motion)
+        self.key = value
 
-        self.json_dict = dict()     # jsonデータを保持する変数
-
-        self.list_id = list()           # scatter用のx軸を表す配列
-        self.score = list()             # json_dictからscoreをload
-        self.sequence = list()          # json_dictからsequenceをload
-
-        self.acc = ""               # json_dictからaccをload
-        self.name = ""             # json_dictからプロテイン名をload
-        self.div = 0                # 閾値を超えているスコア数と全体の割合を保持
-        self.key = value                # 出力するデータを決めるkey
-        self.text = ""              # plot画面に表示するtext
-
-        # initでプロパティを読み込む
-        self.load_propaty()
-        self.plot_json_data()
-        self.fig.canvas.draw()
-
-        # canvasの一部を再描画するためのやつ
-        self.bg = self.fig.canvas.copy_from_bbox(self.ax.bbox)
+        self.json_dict = dict()
+        self.score = list()
+        self.sequence = list()
+        self.acc = ""
+        self.name = ""
+        self.succeed_score_rate = 0
 
     def load_propaty(self):
         logger.debug("screen_out_plot.py, ScorePlot, load_propaty()")
 
-        div = 0
-
-        # key番目のデータのみを取り出す
         with open('success_data.mjson', 'r') as fr:
             for (k, line) in enumerate(fr):
                 if k == self.key:
                     self.json_dict = json.loads(line)
                     break
 
-        # 値を取得する
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
         self.sequence = list(self.json_dict["sequence"])
         self.acc = self.json_dict["acc"]
         self.name = self.json_dict["protein names"]
 
-        # 閾値以上の数の割合を計算する
-        for i in range(len(self.score)):
+    def calculate_score_rate(self):
+        score_len = len(self.score)
+        for i in range(score_len):
             if self.score[i] >= config.threshold_val:
-                div += 1
-
-            self.list_id.append(i)
-
-        # プロット時に表示するデータの構成
-        self.text = "ACC:" + self.acc + "\n" + \
-                    "Protain Names : " + self.name + "\n" + \
-                    "Percentage (x >= " + str(config.threshold_val) + "):" + str(round(div / len(self.score) * 100, 3)) + "%"
-
-    def plot_json_data(self):
-        logger.debug("screen_out_plot.py, ScorePlot, plot_json_data()")
-
-        plt.scatter(self.list_id, self.score, s=25, c=self.score, cmap='jet')
-        plt.plot(self.score, color='black', linestyle='solid', alpha=0.7)
-
-        plt.ylim(0, 1.1)
-        plt.xlabel('Array', fontsize=16)
-        plt.ylabel('Score', fontsize=16)
-        plt.colorbar()
-
-        plt.grid(True)
-
-        self.ax.spines["right"].set_color("none")  # 右枠消し
-        self.ax.spines["top"].set_color("none")    # 上枠消し
-        self.ax.spines["left"].set_color("m")      # 左枠をマゼンダに
-        self.ax.spines["bottom"].set_color("c")
-        self.ax.text(0, 1.1, self.text, fontweight="semibold", style='italic',
-                     bbox={'facecolor': 'blue', 'alpha': 0.3, 'pad': 10})
-
-        for i in range(len(self.score)):
-            self.ax.annotate(self.sequence[i], (i, 1.05), size=5, horizontalalignment='center')
-
-        plt.hlines([config.threshold_val], 0, len(self.score), "r", linestyle=":", lw=1)
-
-        plt.tight_layout()
-        self.fig.canvas.draw()
-
-    def on_motion(self, event):
-        logger.debug("screen_out_plot.py, ScorePlot, on_motion()")
-
-        self.ln_v.set_xdata(event.xdata)
-        self.ln_h.set_ydata(event.ydata)
-
-        self.fig.canvas.restore_region(self.bg)
-        self.ax.draw_artist(self.ln_h)
-        self.ax.draw_artist(self.ln_v)
-        self.fig.canvas.blit(self.ax.bbox)
-        self.fig.canvas.flush_events()
+                self.succeed_score_rate += 1
 
     def run(self):
         logger.debug("screen_out_plot.py, ScorePlot, run()")
-
-        self.fig.show()
+        # ここで、JS or C#による plotを実行したい
