@@ -123,13 +123,15 @@ class SearchScore(threading.Thread):
 
         with open('success_data.mjson', 'w') as fw:
             with open("mobiDB_human.mjson", "r") as fr:
-
                 for (i, line) in enumerate(fr):
                     print(i)
                     json_dict = json.loads(line)
                     succeeded_times = 0
                     ignored_times = 0
                     current_pos = config.threshold_len
+                    print(config.threshold_len)
+                    print(config.threshold_val)
+                    print(config.fill_gap)
 
                     try:
                         # scoreを取得
@@ -151,19 +153,17 @@ class SearchScore(threading.Thread):
                                     ignored_times += 1
                                 else:
                                     succeeded_times = 0
-                                    current_pos += current_pos + ignored_times
+                                    current_pos += config.threshold_len + ignored_times
                                     ignored_times = 0
 
                             # 成功したscoreデータの書き込み
-                            if succeeded_times >= current_pos:
+                            if succeeded_times >= config.threshold_len:
                                 fw.write('{}\n'.format(json.dumps(json_dict)))
                                 break
                     except IndexError:
                         pass
-                    #
                     if not self.alive:
                         break
-
                 else:
                     self.change_screen("out")
 
