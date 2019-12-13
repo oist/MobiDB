@@ -14,6 +14,7 @@ logger.propagate = False
 class ScorePlot:
     """
     指定されたidのスコアをプロットする
+
     Parameters
     ----------
     self.key : int
@@ -45,10 +46,6 @@ class ScorePlot:
     ----------
     RecycleViewは MVCという概念からできている。
 
-    [Controller]
-    RecycleViewが持つviewclassプロパティに値(文字列)を渡すことで、各子widgetのwindgetの種類を決定することができる。
-    RecycleView直下の子widgetは各子widgethへのメソッドを提供することができる。
-
     [Model]
     RecycleViewが持つdataプロパティはModelに相当する。
     dataプロパティは辞書のリストになっており、リストの要素数だけ子widgetができる。
@@ -57,6 +54,10 @@ class ScorePlot:
     [View]
     RecycleView直下の子widgetは、各子widgetの並びを決定することができる。
     RecycleViewが持つviewclassプロパティにカスタムwidget(文字列)を渡すことで、各子widgetの個々のプロパティを決定することができる。
+
+    [Controller]
+    RecycleViewが持つviewclassプロパティに値(文字列)を渡すことで、各子widgetのwindgetの種類を決定することができる。
+    RecycleView直下の子widgetは各子widgethへのメソッドを提供することができる。
 
     参考 : https://labor.hatenablog.jp/entry/2019/09/25/%E7%A7%81%E6%96%87_vs_kivy%285-1%29_RecycleView%E3%81%AE%E5%9F%BA%E6%9C%AC_1
 
@@ -89,11 +90,19 @@ class ScorePlot:
         self.name = self.json_dict["protein names"]
 
     def calculate_score_rate(self):
+        score_rate = 0
         score_len = len(self.score)
         for i in range(score_len):
             if self.score[i] >= config.threshold_val:
-                self.succeed_score_rate += 1
+                score_rate += 1
+
+        self.succeed_score_rate = "{0:.3f}".format(score_rate / score_len * 100)
 
     def run(self):
         logger.debug("screen_out_plot.py, ScorePlot, run()")
         # ここで、JS or C#による plotを実行したい
+        print("score : " + str(self.score))
+        print("sequence : " + str(self.sequence))
+        print("acc : " + str(self.acc))
+        print("name : " + str(self.name))
+        print("succeed_score_rate : " + str(self.succeed_score_rate))
