@@ -2,7 +2,6 @@ from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from screen_out_plot import ScorePlot
-import config
 import json
 import webbrowser
 
@@ -103,20 +102,18 @@ class ScreenOut(Screen):
 
     def filter_keyword(self):
         logger.debug("screen_out_main.py, ScreenOut, filter_keyword()")
-
         temp = []
 
         with open('success_data.mjson', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                if config.keyword in json_dict["protein names"]:
+                if self.ids["keyword"].text in json_dict["protein names"]:
                     temp.append({'value': json_dict["protein names"], 'index': i})
 
         self.rv.data = temp
 
     def sort_abc(self):
         logger.debug("screen_out_main.py, ScreenOut, sort_abc()")
-
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
 
     def change_screen(self, name):

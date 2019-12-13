@@ -124,14 +124,10 @@ class SearchScore(threading.Thread):
         with open('success_data.mjson', 'w') as fw:
             with open("mobiDB_human.mjson", "r") as fr:
                 for (i, line) in enumerate(fr):
-                    print(i)
                     json_dict = json.loads(line)
                     succeeded_times = 0
                     ignored_times = 0
                     current_pos = config.threshold_len
-                    print(config.threshold_len)
-                    print(config.threshold_val)
-                    print(config.fill_gap)
 
                     try:
                         # scoreを取得
