@@ -118,11 +118,6 @@ class SearchScore(threading.Thread):
         super().__init__()
         self.alive = True
 
-        self.json_dict = dict()
-        self.succeeded_times = 0
-        self.ignored_times = 0
-        self.current_pos = config.threshold_len
-
     def run(self):
         logger.debug("screen_wait_search, SearchScore, search_score()")
 
@@ -131,25 +126,37 @@ class SearchScore(threading.Thread):
 
                 for (i, line) in enumerate(fr):
                     print(i)
-                    self.json_dict = json.loads(line)
+                    json_dict = json.loads(line)
+                    succeeded_times = 0
+                    ignored_times = 0
+                    current_pos = config.threshold_len
 
                     try:
                         # scoreを取得
 
-                        scores = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
+                        scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
                         scores_len = len(scores)
 
-                        while self.alive:
-
-                            if self.current_pos < scores_len:
-                                break
-
+                        while self.alive | current_pos < scores_len:
                             # scoreを比較
-                            self.compare_score(scores)
+                            if scores[current_pos] > config.threshold_val:
+                                succeeded_times += 1
+                                current_pos -= 1
+                                ignored_times = 0
+                            else:
+                                # fill_gapの処理を入れる
+                                if config.fill_gap > ignored_times:
+                                    succeeded_times += 1
+                                    current_pos -= 1
+                                    ignored_times += 1
+                                else:
+                                    succeeded_times = 0
+                                    current_pos += current_pos + ignored_times
+                                    ignored_times = 0
 
                             # 成功したscoreデータの書き込み
-                            if self.succeeded_times >= self.current_pos:
-                                fw.write('{}\n'.format(json.dumps(self.json_dict)))
+                            if succeeded_times >= current_pos:
+                                fw.write('{}\n'.format(json.dumps(json_dict)))
                                 break
                     except IndexError:
                         pass
@@ -169,21 +176,3 @@ class SearchScore(threading.Thread):
     def kill(self):
         logger.debug("screen_wait_main.py, ScreenWait, kill()")
         self.alive = False
-
-    def compare_score(self, scores):
-        logger.debug("screen_wait_main.py, ScreenWait, compare_score()")
-        # scoreが閾値を超えているか判定
-        if scores[self.current_pos] > config.threshold_val:
-            self.succeeded_times += 1
-            self.current_pos -= 1
-            self.ignored_times = 0
-        else:
-            # fill_gapの処理を入れる
-            if config.fill_gap > self.ignored_times:
-                self.succeeded_times += 1
-                self.current_pos -= 1
-                self.ignored_times += 1
-            else:
-                self.succeeded_times = 0
-                self.current_pos += self.current_pos + self.ignored_times
-                self.ignored_times = 0
