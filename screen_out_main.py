@@ -40,6 +40,7 @@ class Row(Screen):
 
             # value番目のプロパティを取得
             score.load_propaty()
+            score.json_propaty()
             score.calculate_score_rate()
 
             # JSまたはC#によるplotを実行する

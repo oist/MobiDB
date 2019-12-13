@@ -89,6 +89,16 @@ class ScorePlot:
         self.acc = self.json_dict["acc"]
         self.name = self.json_dict["protein names"]
 
+    def json_propaty(self):
+        temp = {
+            "acc" : self.acc,
+            "sequence" : self.sequence,
+            "protain_name" : self.name,
+            "score" : self.score
+        }
+        with open('plot_data.json', 'w') as f:
+            json.dump(temp, f, ensure_ascii=False)
+
     def calculate_score_rate(self):
         score_rate = 0
         score_len = len(self.score)
