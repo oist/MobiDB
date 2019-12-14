@@ -134,7 +134,7 @@ class SearchScreen(Screen):
 
 class WaitScreen(Screen):
     """データ抽出中のwait画面"""
-    source = StringProperty('loading4.gif')  # アニメーションgifを表示
+    source = StringProperty('loading5.gif')  # アニメーションgifを表示
 
     def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
@@ -142,7 +142,7 @@ class WaitScreen(Screen):
         logger.debug("press_btn_WS Begin ")
 
         sm.remove_widget(self)
-        Window.size = (600, 500)
+        Window.size = (800, 600)
         sm.add_widget(OutputScreen(name="out"))
         sm.current = "out"
 
