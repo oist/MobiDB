@@ -21,6 +21,7 @@
     source: None
     background_color:1, 1, 1, 0.7
     text:"Search"
+
     Image:
         source: root.source
         pos: root.pos
@@ -60,22 +61,21 @@
                 #pos: self.pos
         Label:
             text_size: self.size
-            text:'Searching in MobiDB'
-
+            text:'Search from MobiDB'
             halign: 'left'
             size_hint_x: 1
-            size_hint_y:0.5
+            size_hint_y:0.3
             font_size: 24
 
         Label:
-            size_hint_y: 0.1
+            size_hint_y: 0.03
             text:''
 
         BoxLayout:
-            size_hint_x:0.83
+            size_hint_x:0.78
             size_hint_y:0.38
             orientation:'horizontal'
-            pos_hint: {"x":0.158, "y":0.84}
+            pos_hint: {"x":0.217, "y":1.5}
 
             TextInput:
                 id:text_box
@@ -91,15 +91,15 @@
         FloatLayout:
             Image:
                 source: 'logo-from-tunnel.png'
-                size_hint_x: 0.154
-                size_hint_y:0.44
-                pos_hint: {"x":0, "y":1.07}
+                size_hint_x: 0.202
+                size_hint_y:0.58
+                pos_hint: {"x":0, "y":1}
 
             BoxLayout:
                 size_hint_x:0.5
                 size_hint_y:0.35
                 orientation:'horizontal'
-                pos_hint: {"x":0.22, "y":0.7}
+                pos_hint: {"x":0.22, "y":0.71}
 
                 TextInput:
                     id:text_box_score
@@ -110,13 +110,13 @@
 
             value_select:
                 text:'Score'
-                pos_hint: {"x":0.03, "y":0.76}
+                pos_hint: {"x":0.03, "y":0.77}
 
             BoxLayout:
                 size_hint_x:0.5
                 size_hint_y:0.35
                 orientation:'horizontal'
-                pos_hint: {"x":0.22, "y":0.35}
+                pos_hint: {"x":0.22, "y":0.36}
 
                 TextInput:
                     id:text_box_lengs
@@ -127,13 +127,13 @@
 
             value_select:
                 text:'Lengs'
-                pos_hint: {"x":0.03, "y":0.4}
+                pos_hint: {"x":0.03, "y":0.45}
 
             BoxLayout:
                 size_hint_x:0.5
                 size_hint_y:0.35
                 orientation:'horizontal'
-                pos_hint: {"x":0.22, "y":0}
+                pos_hint: {"x":0.22, "y":0.01}
 
                 TextInput:
                     id:text_box_gap
@@ -144,13 +144,13 @@
 
             value_select:
                 text:'Gap'
-                pos_hint: {"x":0.03, "y":0}
+                pos_hint: {"x":0.05, "y":0.08}
 
             ImageButton:
                 source: 'search_icon_L.png'
-                size_hint_x: 0.2
+                size_hint_x: 0.25
                 size_hint_y: 0.85
-                pos_hint: {"x":0.8, "y":0}
+                pos_hint: {"x":0.75, "y":0}
                 on_press:
                     root.press_btn()
 
@@ -165,7 +165,7 @@
                 size: self.size
 
         Label:
-            size_hint_y: 0.1
+            size_hint_y: 0.01
             text:''
 
         Label:
@@ -174,7 +174,7 @@
             valign:'top'
             halign:'left'
             size_hint_x: 0.5
-            size_hint_y:0.4
+            size_hint_y:0.3
             font_size: 24
             pos_hint: {"x":0, "y":1}
 
