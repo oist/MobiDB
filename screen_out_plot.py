@@ -78,7 +78,7 @@ class ScorePlot:
     def load_propaty(self):
         logger.debug("screen_out_plot.py, ScorePlot, load_propaty()")
 
-        with open('success_data.mjson', 'r') as fr:
+        with open('success_data.json', 'r') as fr:
             for (k, line) in enumerate(fr):
                 if k == self.key:
                     self.json_dict = json.loads(line)
@@ -87,13 +87,13 @@ class ScorePlot:
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
         self.sequence = list(self.json_dict["sequence"])
         self.acc = self.json_dict["acc"]
-        self.name = self.json_dict["protein names"]
+        self.name = self.json_dict["protein_names"]
 
     def json_propaty(self):
         temp = {
             "acc" : self.acc,
             "sequence" : self.sequence,
-            "protain_name" : self.name,
+            "protain_names" : self.name,
             "score" : self.score
         }
         with open('plot_data.json', 'w') as f:

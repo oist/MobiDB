@@ -18,4 +18,6 @@ error_indent.mjson
 d2.mjson
 success_indent.mjson
 
-mobiDB_human.mjson
+sample_program/mobi_related/mobiDB_human.mjson
+mobiDB_human.json
+success_data.json

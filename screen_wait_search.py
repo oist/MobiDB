@@ -121,8 +121,8 @@ class SearchScore(threading.Thread):
     def run(self):
         logger.debug("screen_wait_search, SearchScore, search_score()")
 
-        with open('success_data.mjson', 'w') as fw:
-            with open("mobiDB_human.mjson", "r") as fr:
+        with open('success_data.json', 'w') as fw:
+            with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
                     json_dict = json.loads(line)
                     succeeded_times = 0

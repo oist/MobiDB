@@ -48,7 +48,7 @@ class Row(Screen):
 
         else:
             logger.debug("screen_out_row.py, Row, btn_event, go_to_uniplot()")
-            with open('success_data.mjson', 'r') as fr:
+            with open('success_data.json', 'r') as fr:
                 for (k, line) in enumerate(fr):
                     if k == value:
                         json_dict = json.loads(line)
@@ -86,10 +86,10 @@ class ScreenOut(Screen):
     def on_enter(self):
         logger.debug("screen_out_main.py, ScreenOut, on_enter()")
 
-        with open('success_data.mjson', 'r') as fr:
+        with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                self.rv.data.append({'value': json_dict["protein names"], 'index': i})
+                self.rv.data.append({'value': json_dict["protein_names"], 'index': i})
 
     def btn_event(self, i):
         logger.debug("screen_out_main.py, ScreenOut, btn_event()")
@@ -105,11 +105,11 @@ class ScreenOut(Screen):
         logger.debug("screen_out_main.py, ScreenOut, filter_keyword()")
         temp = []
 
-        with open('success_data.mjson', 'r') as fr:
+        with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                if self.ids["keyword"].text in json_dict["protein names"]:
-                    temp.append({'value': json_dict["protein names"], 'index': i})
+                if self.ids["keyword"].text in json_dict["protein_names"]:
+                    temp.append({'value': json_dict["protein_names"], 'index': i})
 
         self.rv.data = temp
 
