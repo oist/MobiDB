@@ -2,7 +2,9 @@ from logging import getLogger, StreamHandler, DEBUG
 import json
 import config
 import threading
-from kivymd.app import MDApp
+from kivymd.toast.kivytoast.kivytoast import toast
+
+
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -161,10 +163,7 @@ class SearchData(threading.Thread):
                     if not self.alive:
                         break
                 else:
-                    app = MDApp.get_running_app()
-                    app.show_toast()
-
-        print("finish2")
+                    toast("Load Success")
 
     def kill(self):
         logger.debug("search_data.py, SearchData, kill()")

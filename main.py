@@ -3,14 +3,12 @@ from logging import getLogger, StreamHandler, DEBUG
 
 from kivy.lang import Builder
 from kivy.core.window import Window
-from kivy.uix.boxlayout import BoxLayout
 
 from kivymd.app import MDApp
-from kivymd.toast.kivytoast.kivytoast import toast
-from kivymd.uix.tab import MDTabsBase
 
-from load_text import Load
-from search_data import SearchData
+
+from menu_tab import Menu
+from result_tab import Result
 
 
 """デバック"""
@@ -22,19 +20,12 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class MyTab(BoxLayout, MDTabsBase):
-    pass
-
-
 class MainApp(MDApp):
-    list_name = ["Menu", "Result"]
-
     def __init__(self, **kwargs):
         logger.debug("main.py, MainApp, __init__()")
-        self.title = "MobiDB -Human"
-        self.theme_cls.primary_palette = "Blue"
-        self.sd = SearchData()
-        self.load = Load()
+        self.title = "MobiDB - Human"
+        self.theme_cls.primary_palette = "Indigo"
+
         super().__init__(**kwargs)
 
     def build(self):
@@ -43,29 +34,24 @@ class MainApp(MDApp):
         with open("./theme.kv", "r", encoding="utf8") as f:
             screen = Builder.load_string(f.read())
 
-        for name_tab in self.list_name:
-            tab = MyTab(text=name_tab)
-            screen.ids.android_tabs.add_widget(tab)
-
-        self.root = screen
+        self.root = self.create_tab(screen, "Menu", "Result")
 
     def exit(self):
         logger.debug("main.py, MainApp, exit()")
         sys.exit(1)
 
-    def btn_event(self):
-        logger.debug("main.py, MainApp, btn_event()")
-        self.load.load_text(self.root.ids["th_val"].text, self.root.ids["th_len"].text, self.root.ids["fill_gap"].text)
+    def create_tab(self, screen, name1, name2):
+        logger.debug("main.py, MainApp, create_tab()")
+        tab = Menu(text=name1)
+        screen.ids.tabs.add_widget(tab)
 
-        self.sd = SearchData()
-        self.sd.start()
+        tab = Result(text=name2)
+        screen.ids.tabs.add_widget(tab)
 
-    def show_toast(self):
-        logger.debug("main.py, MainApp, show_toast()")
-        toast("Load is Successed")
+        return screen
 
 
 if __name__ == "__main__":
 
-    Window.size = (647, 400)
+    Window.size = (728, 450)
     MainApp().run()
