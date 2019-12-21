@@ -3,17 +3,7 @@
     helper_text_mode: "on_focus"
     helper_text:""
 
-BoxLayout:
-    orientation: "vertical"
-
-    MDToolbar:
-        id: toolbar
-        title: app.title
-        md_bg_color: app.theme_cls.primary_color
-        background_palette: "Primary"
-        left_action_items: [["menu", lambda x: None]]
-
-
+<StyleMenuTab@FloatLayout>:
     ScrollView:
 
         BoxLayout:
@@ -52,3 +42,20 @@ BoxLayout:
                 pos_hint: {"center_x": .5}
                 on_press:
                     app.btn_event()
+<MyTab>:
+    StyleMenuTab:
+
+BoxLayout:
+    orientation: "vertical"
+
+    MDToolbar:
+        id: toolbar
+        title: app.title
+        md_bg_color: app.theme_cls.primary_color
+        background_palette: "Primary"
+        left_action_items: [["menu", lambda x: None]]
+
+    MDTabs:
+        id: android_tabs
+
+
