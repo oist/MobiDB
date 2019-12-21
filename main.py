@@ -7,8 +7,8 @@ from kivy.core.window import Window
 from kivymd.app import MDApp
 
 
-from menu_tab import Menu
-from result_tab import Result
+from menu_main import Menu
+from result_main import Result
 
 
 """デバック"""

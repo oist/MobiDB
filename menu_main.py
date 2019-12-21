@@ -1,6 +1,6 @@
 from logging import getLogger, StreamHandler, DEBUG
-from search_data import SearchData
-from load_text import Load
+from menu_search_data import SearchData
+from menu_load_text import Load
 
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.tab import MDTabsBase

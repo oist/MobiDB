@@ -1,5 +1,5 @@
 from logging import getLogger, StreamHandler, DEBUG
-from plot_score import Plot
+from result_plot_score import Plot
 import webbrowser
 import json
 
