@@ -105,6 +105,7 @@ class ScreenOut(Screen):
         logger.debug("screen_out_main.py, ScreenOut, filter_keyword()")
         temp = []
 
+
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
