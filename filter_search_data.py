@@ -3,7 +3,7 @@ import json
 import config
 import threading
 from kivymd.toast.kivytoast.kivytoast import toast
-from result_methods import ResultMethods
+from result_main import Result
 
 """デバック"""
 logger = getLogger(__name__)
@@ -119,7 +119,7 @@ class SearchData(threading.Thread):
         logger.debug("filter_search_data.py, SearchData, __init__()")
         super().__init__()
         self.alive = True
-        self.methods = ResultMethods()
+        self.result = Result()
 
     def run(self):
         logger.debug("filter_search_data.py, SearchData, run()")
@@ -163,9 +163,9 @@ class SearchData(threading.Thread):
                     if not self.alive:
                         break
                 else:
-                    self.methods.store_success_list()
-                    self.methods.create_buttons()
+                    self.result.store()
                     toast("Load Success")
+                    self.result.sort_abc()
 
     def kill(self):
         logger.debug("filter_search_data.py, SearchData, kill()")
