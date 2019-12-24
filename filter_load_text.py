@@ -35,7 +35,7 @@ class Load:
     """
 
     def load_text(self, th_val, th_len, fill_gap):
-        logger.debug("load_text.py, Load, load_text()")
+        logger.debug("filter_load_text.py, Load, load_text()")
 
         try:
             config.threshold_val = self.substitute_text(th_val)
@@ -46,7 +46,7 @@ class Load:
             print(e)
 
     def substitute_text(self, ss_text):
-        logger.debug("load_text.py, Load, substitute_text()")
+        logger.debug("filter_load_text.py, Load, substitute_text()")
 
         if ss_text == "":
             return 0

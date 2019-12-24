@@ -3,12 +3,12 @@ from logging import getLogger, StreamHandler, DEBUG
 
 from kivy.lang import Builder
 from kivy.core.window import Window
-
 from kivymd.app import MDApp
 
-
-from menu_main import Menu
+from filter_main import Filter
 from result_main import Result
+from keyword_main import Keyword
+import config
 
 
 """デバック"""
@@ -25,6 +25,7 @@ class MainApp(MDApp):
         logger.debug("main.py, MainApp, __init__()")
         self.title = "MobiDB - Human"
         self.theme_cls.primary_palette = "Indigo"
+        config.name_list = []
 
         super().__init__(**kwargs)
 
@@ -33,25 +34,31 @@ class MainApp(MDApp):
 
         with open("./theme.kv", "r", encoding="utf8") as f:
             screen = Builder.load_string(f.read())
-
-        self.root = self.create_tab(screen, "Menu", "Result")
+            self.root = self.create_tab(screen)
 
     def exit(self):
         logger.debug("main.py, MainApp, exit()")
         sys.exit(1)
 
-    def create_tab(self, screen, name1, name2):
+    def create_tab(self, screen):
         logger.debug("main.py, MainApp, create_tab()")
-        tab = Menu(text=name1)
-        screen.ids.tabs.add_widget(tab)
 
-        tab = Result(text=name2)
-        screen.ids.tabs.add_widget(tab)
+        name_list = ["Keyword", "Filter", "Result"]
+        list_len = len(name_list)
+
+        for i in range(list_len):
+            if i == 0:
+                tab = Keyword(text=name_list[i])
+            elif i == 1:
+                tab = Filter(text=name_list[i])
+            else:
+                tab = Result(text=name_list[i])
+
+            screen.ids.tabs.add_widget(tab)
 
         return screen
 
 
 if __name__ == "__main__":
-
     Window.size = (728, 450)
     MainApp().run()

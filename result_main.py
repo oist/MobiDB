@@ -1,6 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG
 import json
 
+
 from kivy.uix.boxlayout import BoxLayout
 from kivymd.uix.tab import MDTabsBase
 
@@ -39,28 +40,23 @@ class Result(BoxLayout, MDTabsBase):
 
         """
 
-    def on_enter(self):
-        logger.debug("result_tab.py, Result, on_enter()")
-
-        with open('success_data.json', 'r') as fr:
-            for (i, line) in enumerate(fr):
-                json_dict = json.loads(line)
-                self.rv.data.append({'value': json_dict["protein_names"], 'index': i})
+    def __init__(self, **kwargs):
+        logger.debug("result_main.py, Result, __init__()")
+        super().__init__(**kwargs)
+        self.success_list = list()
 
     def btn_event(self, i):
-        logger.debug("result_tab.py, Result, btn_event()")
+        logger.debug("result_main.py, Result, btn_event()")
 
         if i == 0:
             self.filter_keyword()
         elif i == 1:
             self.sort_abc()
-        elif i == 2:
-            self.change_screen("search")
 
     def filter_keyword(self):
-        logger.debug("result_tab.py, Result, filter_keyword()")
+        logger.debug("result_main.py, Result, filter_keyword()")
 
-        temp = []
+        temp = list()
 
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
@@ -68,9 +64,10 @@ class Result(BoxLayout, MDTabsBase):
                 if self.ids["keyword"].text in json_dict["protein_names"]:
                     temp.append({'value': json_dict["protein_names"], 'index': i})
 
-        self.rv.data = temp
+        self.success_list = temp
 
     def sort_abc(self):
-        logger.debug("result_tab.py, Result, sort_abc()")
+        logger.debug("result_main.py, Result, sort_abc()")
 
-        self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
+        self.success_list = sorted(self.success_list, key=lambda x: x['value'])
+

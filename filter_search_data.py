@@ -3,7 +3,7 @@ import json
 import config
 import threading
 from kivymd.toast.kivytoast.kivytoast import toast
-
+from result_methods import ResultMethods
 
 """デバック"""
 logger = getLogger(__name__)
@@ -116,12 +116,13 @@ class SearchData(threading.Thread):
     """
 
     def __init__(self):
-        logger.debug("search_data.py, SearchData, __init__()")
+        logger.debug("filter_search_data.py, SearchData, __init__()")
         super().__init__()
         self.alive = True
+        self.methods = ResultMethods()
 
     def run(self):
-        logger.debug("search_data.py, SearchData, run()")
+        logger.debug("filter_search_data.py, SearchData, run()")
         with open('success_data.json', 'w') as fw:
             with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
@@ -132,7 +133,6 @@ class SearchData(threading.Thread):
 
                     try:
                         # scoreを取得
-                        print(config.threshold_len)
 
                         scores = json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
                         scores_len = len(scores)
@@ -163,8 +163,10 @@ class SearchData(threading.Thread):
                     if not self.alive:
                         break
                 else:
+                    self.methods.store_success_list()
+                    self.methods.create_buttons()
                     toast("Load Success")
 
     def kill(self):
-        logger.debug("search_data.py, SearchData, kill()")
+        logger.debug("filter_search_data.py, SearchData, kill()")
         self.alive = False
