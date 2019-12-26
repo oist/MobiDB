@@ -3,6 +3,7 @@ from logging import getLogger, StreamHandler, DEBUG
 
 from kivy.lang import Builder
 from kivy.core.window import Window
+from kivy.properties import StringProperty, ObservableList, ObjectProperty, ListProperty, Property
 from kivymd.app import MDApp
 
 from filter_main import Filter
@@ -21,11 +22,16 @@ logger.propagate = False
 
 
 class MainApp(MDApp):
+    tab = ObjectProperty()
+    tab_bar = ObjectProperty()
+
     def __init__(self, **kwargs):
         logger.debug("main.py, MainApp, __init__()")
         self.title = "MobiDB - Human"
         self.theme_cls.primary_palette = "Indigo"
-        config.name_list = []
+        self.result = Result
+
+
 
         super().__init__(**kwargs)
 
@@ -57,6 +63,10 @@ class MainApp(MDApp):
             screen.ids.tabs.add_widget(tab)
 
         return screen
+
+    def p(self, ed_self):
+
+        print(ed_self)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG
+
+from kivy.properties import StringProperty
+
 from filter_search_data import SearchData
 from filter_load_text import Load
 
