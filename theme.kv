@@ -1,10 +1,11 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
 #:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
-#:import MDSeparator kivymd.card.MDSeparator
+#:import colors kivymd.color_definitions.colors
 <StyleSearchScreen@MDTextField>:
     hint_text: "default: 0"
     helper_text_mode: "on_focus"
     helper_text:""
+
 
 <StyleBackGround@BoxLayout>:
     orientation: "vertical"
@@ -17,23 +18,19 @@
 
     MDSeparator:
 
-<MDMenuItem>:
-
 
 <ResultBotton@BoxLayout>:
-
     value: ''
-    BoxLayout:
-        orientation:'horizontal'
-        MDRaisedButton:
-            size_hint: None, None
-            size: 3 * dp(48), dp(48)
-            text: root.value
-            opposite_colors: True
-            pos_hint: {"center_x": .2, "center_y": .9}
-            on_press: root.store_protain_propaty(root.index)
-            on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
-            on_release: MDSeparator
+
+    MDRectangleFlatButton:
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        size_hint_x: 1
+        size_hint_y: 0.8
+        text: root.value
+        pos_hint: {'center_x': .5}
+        on_press: root.store_protain_propaty(root.index)
+        on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
 
 <ScreenSearch>:
@@ -106,7 +103,7 @@
             bar_width: dp(10)
             RecycleBoxLayout:
                 viewclass: 'ResultBotton'
-                default_size: None, dp(56)
+                default_size: None, dp(60)
                 default_size_hint: 1, None
                 size_hint_y: None
                 height: self.minimum_height
