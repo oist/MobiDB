@@ -1,6 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG
 import json
 from io import StringIO
+import os
 import tempfile
 import webbrowser
 from jinja2 import Environment, FileSystemLoader
@@ -115,7 +116,7 @@ class ScorePlot:
     def run(self):
         logger.debug("screen_out_plot.py, ScorePlot, run()")
         # ここで、JS or C#による plotを実行したい
-        env = Environment(loader=FileSystemLoader('./', encoding='utf8'))
+        env = Environment(loader=FileSystemLoader('./templates', encoding='utf8'))
         tpl = env.get_template('index.html')
         data = {
             "protain_names": self.name,
@@ -125,10 +126,11 @@ class ScorePlot:
             "threshold": config.threshold_val,
             "percentage": self.succeed_score_rate,
         }
-        html = tpl.render(data)
-        with tempfile.NamedTemporaryFile("w+") as f:
-            print(StringIO(html), file=f)
-            webbrowser.open_new_tab(f.name)
+        html = tpl.render(data=data)
+        with open("./index.html", "w") as f:
+            print(str(html), file=f)
+            browser = webbrowser.get('"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %s')
+            browser.open_new_tab(os.path.abspath("./index.html"))
         print("score : " + str(self.score))
         print("sequence : " + str(self.sequence))
         print("acc : " + str(self.acc))

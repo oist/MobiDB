@@ -4,21 +4,22 @@
         <meta charset="utf-8" />
         <title>MobiDB: {{ data.acc }}</title>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@0.7.4"></script>
         <script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.4.0/chartjs-plugin-colorschemes.min.js"></script>
     </head>
 
     <body>
-        <canvas id="myChart" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
+        
+        <div style="width:90%;">
+            <canvas id="myChart" role="img"></canvas>
+            <button onclick="resetZoom()" style="text-align:center;">Reset Zoom</button>
+        </div>
         <script>
-        // Scoreが大きい順にindexの0から指定されていく
-        /*const pointMakerColor = ["255,255,0,1", "128,128,128,1", "0,255,255,1",
-                                 "0,255,0,1", "128,128,0,1", "255,0,255,1",
-                                 "0,128,128,1", "128,0,128,1", "0,128,0,1", "0,0,255,1",];
-        */
+ 
         const generatePointMakerColor = (points => {
             const bgColors = [];
             points.forEach(e => {
-                //bgColors.push("rgba(" + pointMakerColor[10 - Math.floor(e * 10)] + ")");
                 const transparency =  String(1 - (10 - Math.floor(e * 10)) / 10)
                 bgColors.push(`rgba(122,87,209,${transparency})`);
             });
@@ -48,14 +49,13 @@
                         borderColor: "rgb(75, 192, 192)",
                         data: scores,
                         fill: false,
+                        showLine: false,
                         pointHoverRadius: 5,
                         pointBackgroundColor: pointBgColors,
-                       //pointBackgroundColor: "rgba(122,87,209,0)"
                     },
                     {
                         label: "# threshold",
                         data: thresholdPoints,
-                        //borderColor: 'rgba(255, 9, 232, 1)',
                         pointRadius: 0,  // Do not show marker
                         pointHoverRadius: 0,  // Do not show marker if hover
                         fill: false,
@@ -63,9 +63,21 @@
                 ]
             },
             options: {
+                responsive: true,
                 plugins: {
                     colorschemes: { // https://nagix.github.io/chartjs-plugin-colorschemes/
                         scheme: 'brewer.SetTwo4'
+                    },
+                    zoom: {
+                        pan: {
+                            enabled: true,
+                            mode: 'xy'
+                        },
+                        zoom: {
+                            enabled: true,
+                            //drag: true,
+                            mode: 'xy',
+                        }
                     },
                 },
                 title: {
@@ -86,9 +98,13 @@
                             labelString: "Score",
                             fontSize: 18
                         },
+                        ticks: {
+                            min: 0,
+                            max: 1,
+                        }
                     }],
                     xAxes: [{
-                        display: true,
+                        //display: true,
                         scaleLabel: {
                             display: true,
                             labelString: "Sequence",
@@ -97,8 +113,10 @@
                     }],
                 },
             },
-
         });
+        window.resetZoom = function() {
+			myLineChart.resetZoom();
+		};
         </script>
     </body>
 </html>
