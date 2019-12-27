@@ -6,6 +6,30 @@
     helper_text_mode: "on_focus"
     helper_text:""
 
+<StyleLabel@MDLabel>:
+    size_hint_y: None
+    height: self.texture_size[1]
+
+<StyleItemCheck@BoxLayout>
+    group: ""
+    text: ""
+    active: False
+    size_hint_y: 0
+    height: self.minimum_height
+    pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+    MDCheckbox:
+        group: root.group
+        active: root.active
+        size_hint: None, None
+        size: dp(48), dp(48)
+        pos_hint: {"center_y": 0}
+        on_active: app.callback(root.text, self.active)
+
+    StyleLabel:
+        text: root.text
+        pos_hint: {"center_y": 0}
+
 
 <StyleBackGround@BoxLayout>:
     orientation: "vertical"
@@ -17,6 +41,51 @@
         left_action_items: [["menu", lambda x: None]]
 
     MDSeparator:
+
+<StyleFilter@ScrollView>
+    BoxLayout:
+        orientation: "vertical"
+        size_hint_y: None
+        height: self.minimum_height
+        padding: dp(48)
+        spacing: 10
+        pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+        MDLabel:
+            text: "Threshold value"
+
+        StyleSearchScreen:
+            id:th_val
+            helper_text:"Please input number between 0 < x < 1.0"
+
+        MDLabel:
+            text: "Threshold length"
+
+        StyleSearchScreen:
+            id:th_len
+            helper_text:"Please input number between 0 < x"
+
+        MDLabel:
+            text: "Fill gap"
+
+        StyleSearchScreen:
+            id:fill_gap
+            helper_text:"Please input number between 0 < x"
+
+<StyleKeyword@BoxLayout>:
+    StyleSearchScreen:
+        helper_text:"keyword search"
+
+<StyleModeSelect@BoxLayout>:
+    StyleItemCheck:
+        group: "mode"
+        text: "Keyword"
+        active: True
+
+    StyleItemCheck:
+        group: "mode"
+        text: "Filter"
+
 
 <MDMenuItem>:
     theme_text_color: "Custom"
@@ -45,44 +114,25 @@
 <ScreenSearch>:
     StyleBackGround:
 
-        MDSeparator:
-        ScrollView:
-            BoxLayout:
-                orientation: "vertical"
-                size_hint_y: None
-                height: self.minimum_height
-                padding: dp(48)
-                spacing: 10
+        StyleModeSelect:
+            size_hint_y: 0.1
 
-                MDLabel:
-                    text: "Threshold value"
+        BoxLayout:
+            size_hint_y: 0.75
+            StyleFilter:
+            StyleKeyword:
 
-                StyleSearchScreen:
-                    id:th_val
-                    helper_text:"Please input number between 0 < x < 1.0"
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
 
-
-                MDLabel:
-                    text: "Threshold length"
-
-                StyleSearchScreen:
-                    id:th_len
-                    helper_text:"Please input number between 0 < x"
+        Label:
+            size_hint_y:0.05
 
 
-                MDLabel:
-                    text: "Fill gap"
 
-                StyleSearchScreen:
-                    id:fill_gap
-                    helper_text:"Please input number between 0 < x"
-
-
-                MDRaisedButton:
-                    text: "Search with this conditions"
-                    pos_hint: {"center_x": .5}
-                    on_press:
-                        root.btn_event()
 
 <ScreenWait>:
     StyleBackGround:
