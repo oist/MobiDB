@@ -18,6 +18,15 @@
 
     MDSeparator:
 
+<MDMenuItem>:
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.primary_color
+    canvas.before:
+	    Color:
+			rgba: app.theme_cls.bg_light
+		Rectangle:
+			size: self.size
+			pos: self.pos
 
 <ResultBotton@BoxLayout>:
     value: ''
@@ -26,7 +35,7 @@
         theme_text_color: "Custom"
         text_color: app.theme_cls.primary_color
         size_hint_x: 1
-        size_hint_y: 0.8
+        size_hint_y: 1
         text: root.value
         pos_hint: {'center_x': .5}
         on_press: root.store_protain_propaty(root.index)
