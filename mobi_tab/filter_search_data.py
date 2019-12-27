@@ -1,5 +1,8 @@
 from logging import getLogger, StreamHandler, DEBUG
 import json
+
+from kivymd.app import MDApp
+
 import config
 import threading
 from kivymd.toast.kivytoast.kivytoast import toast
@@ -123,6 +126,7 @@ class SearchData(threading.Thread):
 
     def run(self):
         logger.debug("filter_search_data.py, SearchData, run()")
+
         with open('success_data.json', 'w') as fw:
             with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
@@ -163,9 +167,8 @@ class SearchData(threading.Thread):
                     if not self.alive:
                         break
                 else:
-                    self.result.store()
                     toast("Load Success")
-                    self.result.sort_abc()
+                    self.result.change_tab_flag = True
 
     def kill(self):
         logger.debug("filter_search_data.py, SearchData, kill()")
