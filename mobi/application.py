@@ -1,7 +1,6 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
-from screen_top_main import ScreenTop
 from screen_search_main import ScreenSearch
 from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
@@ -55,7 +54,6 @@ class MobiApp(App):
     def add_screen(self):
         logger.debug("application.py, App, add_screen()")
 
-        MobiApp.sm.add_widget(ScreenTop(name="top"))
         MobiApp.sm.add_widget(ScreenSearch(name="search"))
         MobiApp.sm.add_widget(ScreenWait(name="wait"))
         MobiApp.sm.add_widget(ScreenOut(name="out"))

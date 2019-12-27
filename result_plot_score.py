@@ -2,6 +2,7 @@ from logging import getLogger, StreamHandler, DEBUG
 import json
 import config
 
+
 """デバック"""
 logger = getLogger(__name__)
 handler = StreamHandler()
@@ -11,7 +12,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class ScorePlot:
+class Plot:
     """
     指定されたidのスコアをプロットする
 
@@ -64,7 +65,7 @@ class ScorePlot:
     """
 
     def __init__(self, value):
-        logger.debug("screen_out_plot.py, ScorePlot, __init__()")
+        logger.debug("plot_score.py, Plot, __init__()")
 
         self.key = value
 
@@ -76,9 +77,9 @@ class ScorePlot:
         self.succeed_score_rate = 0
 
     def load_propaty(self):
-        logger.debug("screen_out_plot.py, ScorePlot, load_propaty()")
+        logger.debug("plot_score.py, Plot, load_propaty()")
 
-        with open('success_data.mjson', 'r') as fr:
+        with open('success_data.json', 'r') as fr:
             for (k, line) in enumerate(fr):
                 if k == self.key:
                     self.json_dict = json.loads(line)
@@ -87,9 +88,23 @@ class ScorePlot:
         self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]
         self.sequence = list(self.json_dict["sequence"])
         self.acc = self.json_dict["acc"]
-        self.name = self.json_dict["protein names"]
+        self.name = self.json_dict["protein_names"]
+
+    def json_propaty(self):
+        logger.debug("plot_score.py, Plot, json_propaty()")
+
+        temp = {
+            "acc" : self.acc,
+            "sequence" : self.sequence,
+            "protain_names" : self.name,
+            "score" : self.score
+        }
+        with open('plot_data.json', 'w') as f:
+            json.dump(temp, f, ensure_ascii=False)
 
     def calculate_score_rate(self):
+        logger.debug("plot_score.py, Plot, calculate_score_rate()")
+
         score_rate = 0
         score_len = len(self.score)
         for i in range(score_len):
@@ -99,7 +114,7 @@ class ScorePlot:
         self.succeed_score_rate = "{0:.3f}".format(score_rate / score_len * 100)
 
     def run(self):
-        logger.debug("screen_out_plot.py, ScorePlot, run()")
+        logger.debug("plot_score.py, Plot, run()")
         # ここで、JS or C#による plotを実行したい
         print("score : " + str(self.score))
         print("sequence : " + str(self.sequence))

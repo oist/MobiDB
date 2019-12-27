@@ -2,7 +2,8 @@ from logging import getLogger, StreamHandler, DEBUG
 import json
 import config
 import threading
-from kivy.app import App
+from kivymd.toast.kivytoast.kivytoast import toast
+from result_main import Result
 
 """デバック"""
 logger = getLogger(__name__)
@@ -13,7 +14,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class SearchScore(threading.Thread):
+class SearchData(threading.Thread):
     """
     Parameters
     ----------
@@ -115,23 +116,20 @@ class SearchScore(threading.Thread):
     """
 
     def __init__(self):
+        logger.debug("filter_search_data.py, SearchData, __init__()")
         super().__init__()
         self.alive = True
+        self.result = Result()
 
     def run(self):
-        logger.debug("screen_wait_search, SearchScore, search_score()")
-
-        with open('success_data.mjson', 'w') as fw:
-            with open("mobiDB_human.mjson", "r") as fr:
+        logger.debug("filter_search_data.py, SearchData, run()")
+        with open('success_data.json', 'w') as fw:
+            with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
-                    print(i)
                     json_dict = json.loads(line)
                     succeeded_times = 0
                     ignored_times = 0
                     current_pos = config.threshold_len
-                    print(config.threshold_len)
-                    print(config.threshold_val)
-                    print(config.fill_gap)
 
                     try:
                         # scoreを取得
@@ -165,14 +163,10 @@ class SearchScore(threading.Thread):
                     if not self.alive:
                         break
                 else:
-                    self.change_screen("out")
-
-    def change_screen(self, name):
-        logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
-
-        app = App.get_running_app()
-        app.sm.current = name
+                    self.result.store()
+                    toast("Load Success")
+                    self.result.sort_abc()
 
     def kill(self):
-        logger.debug("screen_wait_main.py, ScreenWait, kill()")
+        logger.debug("filter_search_data.py, SearchData, kill()")
         self.alive = False
