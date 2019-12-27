@@ -14,8 +14,6 @@ logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
 
-class Row:
-    pass
 
 class Result(BoxLayout, MDTabsBase):
     """
@@ -46,10 +44,11 @@ class Result(BoxLayout, MDTabsBase):
         logger.debug("result_main.py, Result, __init__()")
         super().__init__(**kwargs)
         self.success_list = list()
+        self.change_tab_flag = False
 
-    def store(self):
+
+    def store_data(self):
         logger.debug("screen_out_main.py, ScreenOut, store()")
-
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
@@ -69,7 +68,6 @@ class Result(BoxLayout, MDTabsBase):
     def filter_keyword(self):
         logger.debug("screen_out_main.py, ScreenOut, filter_keyword()")
         temp = []
-
 
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):

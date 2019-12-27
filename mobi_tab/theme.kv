@@ -1,0 +1,145 @@
+<MenuTextField@MDTextField>:
+    hint_text: "default: 0"
+    helper_text_mode: "on_focus"
+    helper_text:""
+
+<Row@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: 0.5, 0.5, 0.5, 1
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    value: ''
+    BoxLayout:
+        orientation:'horizontal'
+        Button:
+            size_hint_x: 0.8
+            text: root.value
+            on_press: root.btn_event(root.index, True)
+
+        Button:
+            size_hint_x: 0.2
+            text: "UniProt"
+            on_press: root.btn_event(root.index, False)
+
+
+<Keyword>:
+
+    MDLabel:
+        text: "Keyword"
+
+
+<Filter>:
+    ScrollView:
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+
+            MDLabel:
+                text: "Threshold value"
+
+            MenuTextField:
+                id:th_val
+                helper_text:"Please input number between 0 < x < 1.0"
+
+
+            MDLabel:
+                text: "Threshold length"
+
+            MenuTextField:
+                id:th_len
+                helper_text:"Please input number between 0 < x"
+
+
+            MDLabel:
+                text: "Fill gap"
+
+            MenuTextField:
+                id:fill_gap
+                helper_text:"Please input number between 0 < x"
+
+
+            MDRaisedButton:
+                text: "Search with this conditions"
+                pos_hint: {"center_x": .5}
+                on_press:
+                    root.btn_event()
+
+<Result>:
+    rv: rv
+
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 0.3, 0.3, 0.3, 1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            orientation: 'vertical'
+            GridLayout:
+                cols: 3
+                rows: 1
+                size_hint_y: None
+                height: dp(54)
+                padding: dp(8)
+                spacing: dp(4)
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Filter Keywords'
+                        on_press: root.btn_event(0)
+                    TextInput:
+                        id: keyword
+                        size_hint_x: 1
+                        hint_text: 'e.g. integrin'
+                        padding: dp(10), dp(10), 0, 0
+
+                BoxLayout:
+                    spacing: dp(8)
+                    Button:
+                        text: 'Sort in abc order'
+                        on_press: root.btn_event(1)
+
+                Button:
+                    text: 'Back to search window'
+                    on_press: root.btn_event(2)
+
+            RecycleView:
+                id: rv
+                scroll_type: ['bars', 'content']
+                scroll_wheel_distance: dp(114)
+                bar_width: dp(10)
+                RecycleBoxLayout:
+                    viewclass: 'Row'
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    spacing: dp(2)
+
+
+
+
+
+BoxLayout:
+    orientation: "vertical"
+
+    MDToolbar:
+        id: toolbar
+        title: app.title
+        md_bg_color: app.theme_cls.primary_color
+        background_palette: "Primary"
+        left_action_items: [["menu", lambda x: None]]
+
+    MDSeparator:
+
+    MDTabs:
+        on_tab_switch: app.change_tab("1")
+        id: tabs
