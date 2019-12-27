@@ -1,5 +1,9 @@
 from logging import getLogger, StreamHandler, DEBUG
 import json
+from io import StringIO
+import tempfile
+import webbrowser
+from jinja2 import Environment, FileSystemLoader
 import config
 
 
@@ -10,7 +14,6 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
-
 
 class Plot:
     """
@@ -115,7 +118,22 @@ class Plot:
 
     def run(self):
         logger.debug("plot_score.py, Plot, run()")
-        # ここで、JS or C#による plotを実行したい
+
+        env = Environment(loader=FileSystemLoader('./', encoding='utf8'))
+        tpl = env.get_template('index.html')
+        data = {
+            "protain_names": self.name,
+            "acc": self.acc,
+            "score": self.score,
+            "seq": self.sequence,
+            "threshold": config.threshold_val,
+            "percentage": self.succeed_score_rate,
+        }
+        html = tpl.render(data)
+        with tempfile.NamedTemporaryFile("w+") as f:
+            print(StringIO(html), file=f)
+            webbrowser.open_new_tab(f.name)
+
         print("score : " + str(self.score))
         print("sequence : " + str(self.sequence))
         print("acc : " + str(self.acc))
