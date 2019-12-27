@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>MobiDB: {{ data.acc }}</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script type="text/javascript" src="https://github.com/nagix/chartjs-plugin-colorschemes/releases/download/v0.4.0/chartjs-plugin-colorschemes.min.js"></script>
+    </head>
+
+    <body>
+        <canvas id="myChart" width="400" height="100" aria-label="Hello ARIA World" role="img"></canvas>
+        <script>
+        // Scoreが大きい順にindexの0から指定されていく
+        /*const pointMakerColor = ["255,255,0,1", "128,128,128,1", "0,255,255,1",
+                                 "0,255,0,1", "128,128,0,1", "255,0,255,1",
+                                 "0,128,128,1", "128,0,128,1", "0,128,0,1", "0,0,255,1",];
+        */
+        const generatePointMakerColor = (points => {
+            const bgColors = [];
+            points.forEach(e => {
+                //bgColors.push("rgba(" + pointMakerColor[10 - Math.floor(e * 10)] + ")");
+                const transparency =  String(1 - (10 - Math.floor(e * 10)) / 10)
+                bgColors.push(`rgba(122,87,209,${transparency})`);
+            });
+            return bgColors;
+        });
+
+        let ctx = document.getElementById('myChart');
+
+        {% autoescape false %}
+        const label = {{ data.seq }};
+        {% endautoescape %}
+        const scores = {{ data.score }};
+        const protainName = "{{ data.protain_names }}";
+        const acc = "{{ data.acc }}";
+        const th = {{ data.threshold }};
+        const percentage = {{ data.percentage }};
+        const thresholdPoints = scores.map(() => th);
+
+        const pointBgColors = generatePointMakerColor(scores);
+        const myLineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: label,
+                datasets: [
+                    {
+                        label: "# scores",
+                        borderColor: "rgb(75, 192, 192)",
+                        data: scores,
+                        fill: false,
+                        pointHoverRadius: 5,
+                        pointBackgroundColor: pointBgColors,
+                       //pointBackgroundColor: "rgba(122,87,209,0)"
+                    },
+                    {
+                        label: "# threshold",
+                        data: thresholdPoints,
+                        //borderColor: 'rgba(255, 9, 232, 1)',
+                        pointRadius: 0,  // Do not show marker
+                        pointHoverRadius: 0,  // Do not show marker if hover
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                plugins: {
+                    colorschemes: { // https://nagix.github.io/chartjs-plugin-colorschemes/
+                        scheme: 'brewer.SetTwo4'
+                    },
+                },
+                title: {
+                    display: true,
+                    fontFamily: "sans-serif",
+                    fontSize: 20,
+                    text: [
+                        `ACC: ${acc}`,
+                        `Protain Name: ${protainName}`,
+                        `Percentage(x >= ${th}): ${percentage}%`
+                    ],
+                },
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Score",
+                            fontSize: 18
+                        },
+                    }],
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: "Sequence",
+                            fontSize: 18,
+                        },
+                    }],
+                },
+            },
+
+        });
+        </script>
+    </body>
+</html>
