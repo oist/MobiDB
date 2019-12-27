@@ -1,11 +1,13 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
+from kivy.properties import ListProperty
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 
 from screen_search_main import ScreenSearch
 from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
+from screen_out_botton import  ResultBotton
 
 
 """デバック"""
