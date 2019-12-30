@@ -1,8 +1,35 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+#:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
+#:import colors kivymd.color_definitions.colors
 <StyleSearchScreen@MDTextField>:
     hint_text: "default: 0"
     helper_text_mode: "on_focus"
     helper_text:""
+
+<StyleLabel@MDLabel>:
+    size_hint_y: None
+    height: self.texture_size[1]
+
+<StyleItemCheck@BoxLayout>
+    group: ""
+    text: ""
+    active: False
+    size_hint_y: 0
+    height: self.minimum_height
+    pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+    MDCheckbox:
+        group: root.group
+        active: root.active
+        size_hint: None, None
+        size: dp(48), dp(48)
+        pos_hint: {"center_y": 0}
+        on_active: root.parent.parent.parent.check_event(root.text, self.active)
+
+    StyleLabel:
+        text: root.text
+        pos_hint: {"center_y": 0}
+
 
 <StyleBackGround@BoxLayout>:
     orientation: "vertical"
@@ -15,113 +42,139 @@
 
     MDSeparator:
 
-<Row@BoxLayout>:
+<MDMenuItem>:
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.primary_color
     canvas.before:
-        Color:
-            rgba: 0.5, 0.5, 0.5, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
+	    Color:
+			rgba: app.theme_cls.bg_light
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<ResultBotton@BoxLayout>:
     value: ''
-    BoxLayout:
-        orientation:'horizontal'
-        Button:
-            size_hint_x: 0.8
-            text: root.value
-            on_press: root.btn_event(root.index, True)
 
-        Button:
-            size_hint_x: 0.2
-            text: "UniProt"
-            on_press: root.btn_event(root.index, False)
+    MDRectangleFlatButton:
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        size_hint_x: 1
+        size_hint_y: 1
+        text: root.value
+        pos_hint: {'center_x': .5}
+        on_press: root.store_protain_propaty(root.index)
+        on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
-<SSTextBoxLayout@BoxLayout>:
-    orientation:'horizontal'
-    size:self.size
-    size_hint_x: 0.7
-
-
-<SSLabel@Label>:
-    font_size: 32
-    text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-    halign: 'left'                   # 横方向(左揃え)
 
 <ScreenSearch>:
     StyleBackGround:
 
-        MDSeparator:
+        BoxLayout:
+            size_hint_y: 0.1
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                active: True
+                id: mode_keyword
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Filter"
+                id: mode_filter
+
         ScrollView:
+            size_hint_y: 0.75
             BoxLayout:
                 orientation: "vertical"
                 size_hint_y: None
                 height: self.minimum_height
                 padding: dp(48)
                 spacing: 10
+                pos_hint: {'center_x': 0.5, 'center_y': 1}
 
                 MDLabel:
                     text: "Threshold value"
 
                 StyleSearchScreen:
                     id:th_val
+                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x < 1.0"
-
 
                 MDLabel:
                     text: "Threshold length"
 
                 StyleSearchScreen:
                     id:th_len
+                    disabled: mode_filter.active
+                    disabled_outline_color: "black"
                     helper_text:"Please input number between 0 < x"
-
 
                 MDLabel:
                     text: "Fill gap"
 
                 StyleSearchScreen:
                     id:fill_gap
+                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x"
 
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
 
-                MDRaisedButton:
-                    text: "Search with this conditions"
-                    pos_hint: {"center_x": .5}
-                    on_press:
-                        root.btn_event()
+        Label:
+            size_hint_y:0.05
 
-<ScreenWait>:
+<ScreenSearchKeyword>
     StyleBackGround:
 
-        Label:
+        BoxLayout:
             size_hint_y: 0.1
-            text:''
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                active: True
+                id: mode_keyword
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Filter"
+                id: mode_filter
+
+        MDLabel:
+            text: "Keyword"
+
+        StyleSearchScreen:
+            id:keyword
+            helper_text:"input keyword"
+            disabled: mode_filter.active
+
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
 
         Label:
-            text_size: self.size
-            text:'Searching Now'
-            valign:'bottom'
-            halign:'left'
-            size_hint_x: 0.5
-            size_hint_y:0.4
-            font_size: 24
-            pos_hint: {"x":0, "y":0.9}
-
+            size_hint_y:0.05
+<ScreenWait>:
+    StyleBackGround:
         Image:
             size: root.size
             allow_stretch: True
             keep_ratio: False
             size_hint_x:1
-            size_hint_y:0.4
-            source:'loading4.gif'
-
-
-        Label:
-            size_hint_y: 0.1
-            text:''
+            size_hint_y:1
+            source:'loading_bouningen.gif'
 
         MDRaisedButton:
-            text: "Search with this conditions"
+            text: "Cancel"
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
+
+        Label:
+            size_hint_y:0.05
 
 <ScreenOut>:
     rv: rv
@@ -132,8 +185,8 @@
             scroll_wheel_distance: dp(114)
             bar_width: dp(10)
             RecycleBoxLayout:
-                viewclass: 'Row'
-                default_size: None, dp(56)
+                viewclass: 'ResultBotton'
+                default_size: None, dp(60)
                 default_size_hint: 1, None
                 size_hint_y: None
                 height: self.minimum_height

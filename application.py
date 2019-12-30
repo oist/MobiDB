@@ -1,11 +1,13 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
+from kivy.properties import ListProperty
 from kivy.uix.screenmanager import ScreenManager
 from kivymd.app import MDApp
 
 from screen_search_main import ScreenSearch
 from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
+from screen_out_botton import  ResultBotton
 
 
 """デバック"""
@@ -50,6 +52,7 @@ class MobiApp(MDApp):
 
         # 画面をScreenManagerに追加する
         self.title = "MobiDB - Human"
+        self.theme_cls.primary_palette = "Indigo"
         self.add_screen()
 
         return MobiApp.sm
@@ -60,5 +63,12 @@ class MobiApp(MDApp):
         MobiApp.sm.add_widget(ScreenSearch(name="search"))
         MobiApp.sm.add_widget(ScreenWait(name="wait"))
         MobiApp.sm.add_widget(ScreenOut(name="out"))
+
+    def callback(self, text, value):
+        if value and self.root:
+            if text == "Keyword":
+                print("Keyword")
+            elif text == "Filter":
+                print("Filter")
 
 
