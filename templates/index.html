@@ -27,7 +27,6 @@
 
     <body>
         <div id="graphdiv" style="width: 100%;"></div>
-        <button onclick="unzoomGraph()" style="text-align:center;">Reset Zoom</button>
 
         <script type="text/javascript">
         {% autoescape false %}
@@ -95,13 +94,6 @@
                 }
               }
           );
-          
-      function unzoomGraph() {
-        g.updateOptions({
-          dateWindow: null,
-          valueRange: null
-        });
-      }
         </script>
     </body>
 </html>
