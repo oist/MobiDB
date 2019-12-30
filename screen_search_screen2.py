@@ -17,8 +17,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-
-class ScreenSearch(Screen, BoxLayout, MDTabsBase):
+class ScreenSearch2(Screen, BoxLayout, MDTabsBase):
     """
     app.sm.current == "search" 時の処理
 
