@@ -63,12 +63,3 @@ class MobiApp(MDApp):
         MobiApp.sm.add_widget(ScreenSearch(name="search"))
         MobiApp.sm.add_widget(ScreenWait(name="wait"))
         MobiApp.sm.add_widget(ScreenOut(name="out"))
-
-    def callback(self, text, value):
-        if value and self.root:
-            if text == "Keyword":
-                print("Keyword")
-            elif text == "Filter":
-                print("Filter")
-
-
