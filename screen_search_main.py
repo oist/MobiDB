@@ -4,7 +4,6 @@ from kivy.uix.screenmanager import Screen
 from kivymd.uix.tab import MDTabsBase
 
 import config
-from screen_search_textfield import StyleFilter
 from kivy.app import App
 
 
@@ -67,10 +66,6 @@ class ScreenSearch(Screen, BoxLayout, MDTabsBase):
             else:
                 self.ids["mode_keyword"].active = True
                 self.ids["mode_filter"].active = False
-
-
-
-
 
     def substitute_text(self, ss_text):
         logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")
