@@ -16,8 +16,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-
-class ScreenSearch(Screen, BoxLayout, MDTabsBase):
+class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
     """
     app.sm.current == "search" 時の処理
 
@@ -62,10 +61,7 @@ class ScreenSearch(Screen, BoxLayout, MDTabsBase):
             if active:
                 self.ids["mode_keyword"].active = False
                 self.ids["mode_filter"].active = True
-
-            else:
-                self.ids["mode_keyword"].active = True
-                self.ids["mode_filter"].active = False
+                self.change_screen("search_keyword")
 
     def substitute_text(self, ss_text):
         logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")
