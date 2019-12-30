@@ -4,7 +4,7 @@ from io import StringIO
 import os
 import tempfile
 import webbrowser
-from jinja2 import Environment, FileSystemLoader
+from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 import config
 
 """デバック"""
@@ -115,8 +115,10 @@ class ScorePlot:
 
     def run(self):
         logger.debug("screen_out_plot.py, ScorePlot, run()")
-        # ここで、JS or C#による plotを実行したい
-        env = Environment(loader=FileSystemLoader('./templates', encoding='utf8'))
+        env = Environment(
+            loader=FileSystemLoader('./templates', encoding='utf8'),
+            bytecode_cache=  FileSystemBytecodeCache(directory="./cache", pattern="%s.cache")
+        )
         tpl = env.get_template('index.html')
         data = {
             "protain_names": self.name,
@@ -129,10 +131,6 @@ class ScorePlot:
         html = tpl.render(data=data)
         with open("./index.html", "w") as f:
             print(str(html), file=f)
-            browser = webbrowser.get('"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" %s')
-            browser.open_new_tab(os.path.abspath("./index.html"))
-        print("score : " + str(self.score))
-        print("sequence : " + str(self.sequence))
-        print("acc : " + str(self.acc))
-        print("name : " + str(self.name))
-        print("succeed_score_rate : " + str(self.succeed_score_rate))
+        webbrowser.open_new_tab(os.path.abspath("./index.html"))
+
+        #logger.debug(data)
