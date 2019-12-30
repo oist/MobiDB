@@ -66,7 +66,7 @@
         on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
 
-<ScreenSearch>:
+<ScreenSearchFilter>:
     StyleBackGround:
 
         BoxLayout:
@@ -129,43 +129,13 @@
 <ScreenSearchKeyword>
     StyleBackGround:
 
-        BoxLayout:
-            size_hint_y: 0.1
-            StyleItemCheck:
-                group: "mode"
-                text: "Keyword"
-                active: True
-                id: mode_keyword
-
-            StyleItemCheck:
-                group: "mode"
-                text: "Filter"
-                id: mode_filter
-
-        MDLabel:
-            text: "Keyword"
-
-        StyleSearchScreen:
-            id:keyword
-            helper_text:"input keyword"
-            disabled: mode_filter.active
-
-        MDRaisedButton:
-            size_hint_y: 0.1
-            text: "Search with this conditions"
-            pos_hint: {"center_x": .5}
-            on_press: root.btn_event()
-
-        Label:
-            size_hint_y:0.05
 <ScreenWait>:
     StyleBackGround:
         Image:
-            size: root.size
+            size_hint: None, None
+            size: 1,1
             allow_stretch: True
             keep_ratio: False
-            size_hint_x:1
-            size_hint_y:1
             source:'loading_bouningen.gif'
 
         MDRaisedButton:
