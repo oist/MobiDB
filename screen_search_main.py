@@ -52,6 +52,8 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
             config.threshold_len = int(self.substitute_text(self.ids["th_len"].text))
             config.fill_gap = int(self.substitute_text(self.ids["fill_gap"].text))
 
+            print(config.threshold_val)
+
             self.change_screen("wait")
         except ValueError as e:
             print(e)
@@ -61,6 +63,7 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
         if text == "Keyword":
             if active:
                 self.change_screen("search_keyword")
+                config.isFilter = False
 
     def substitute_text(self, ss_text):
         logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")
