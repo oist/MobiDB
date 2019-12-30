@@ -29,6 +29,7 @@ class ScorePlot:
         self.div = 0
         self.threshold = 0.75
         self.text = ""
+        self.figure_size = self.fig.get_size_inches()
 
         self.load_propaty()
         self.plot_json_data()
@@ -49,7 +50,10 @@ class ScorePlot:
                     self.json_dict = json.loads(line)
                     break
 
-        self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
+        try:
+            self.score = self.json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]  # scoreの値を取得する
+        except:
+            pass
         self.sequence = list(self.json_dict["sequence"])  # シーケンスの値を取得する
         self.acc = self.json_dict["acc"]  # Entry nameを取得する
         try:
@@ -61,10 +65,12 @@ class ScorePlot:
                 div += 1
 
             self.list_id.append(i)
-
-        self.text = "ACC:" + self.acc + "\n" + \
+        try:
+            self.text = "ACC:" + self.acc + "\n" + \
                     "Protain Names : " + self.pName + "\n" + \
                     "Percentage (High):" + str(round(div / len(self.score) * 100, 3)) + "%"
+        except:
+            pass
 
     def plot_json_data(self):
         plt.scatter(self.list_id, self.score, s=25, c=self.score, cmap='jet')
@@ -96,11 +102,20 @@ class ScorePlot:
         self.ln_v.set_xdata(event.xdata)
         self.ln_h.set_ydata(event.ydata)
 
+        #window = plt.get_current_fig_manager().window
+        fig_size = self.fig.get_size_inches()
+        if any(not fig_size == self.figure_size):
+            print("bg update.")
+            self.figure_size = fig_size
+            self.bg = self.fig.canvas.copy_from_bbox(self.ax.bbox)
+
         self.fig.canvas.restore_region(self.bg)
         self.ax.draw_artist(self.ln_h)
         self.ax.draw_artist(self.ln_v)
         self.fig.canvas.blit(self.ax.bbox)
-        self.fig.canvas.flush_events()
+        #self.fig.canvas.update()
+        #self.fig.canvas.flush_events()
+
 
 
     def run(self):
