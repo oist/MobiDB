@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8" />
         <title>MobiDB: {{ data.acc }}</title>
- 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dygraph/2.1.0/dygraph.min.css" />
         <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400' rel='stylesheet' type='text/css'>
@@ -27,7 +26,6 @@
 
     <body>
         <div id="graphdiv" style="width: 100%;"></div>
-        <button onclick="unzoomGraph()" style="text-align:center;">Reset Zoom</button>
 
         <script type="text/javascript">
         {% autoescape false %}
@@ -51,7 +49,7 @@
             const  y = g.getValue(idx, 1);
             const transparency =  String(1 - (10 - Math.floor(y * 10)) / 10)
             const bgColors = `rgba(122,87,209,${transparency})`;
-            
+
             ctx.save();
             ctx.fillStyle = bgColors;
             ctx.lineWidth = 0.4;
@@ -65,8 +63,8 @@
 
         const g = new Dygraph(
             document.getElementById("graphdiv"),
-              points,
-              {
+            points,
+            {
                 labels: ["x", "point", "threshold"],
                 valueRange: [-0.1, 1.1],
                 legend: 'always',
@@ -76,13 +74,13 @@
                 ylabel: "Score",
                 colors: ["#00A0B0", "#6A4A3C",],
                 axes: {
-                       x: {
-                       	 ticker: function(min, max, pixels) {
+                    x: {
+                        ticker: function(min, max, pixels) {
                                 result = [];
                                 label.forEach((e, i) => {
-                                     result.push({ label_v: i, label: e });
+                                    result.push({ label_v: i, label: e });
                                 });
-                         	 return result;
+                            return result;
                         }
                     }
                 },
@@ -93,15 +91,8 @@
                         drawPoints: true,
                     }
                 }
-              }
-          );
-          
-      function unzoomGraph() {
-        g.updateOptions({
-          dateWindow: null,
-          valueRange: null
-        });
-      }
+            }
+        );
         </script>
     </body>
 </html>
