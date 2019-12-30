@@ -17,4 +17,15 @@ logger.propagate = False
 
 
 class ScreenSearchKeyword(Screen, BoxLayout, MDTabsBase):
-    pass
+    def check_event(self, text, active):
+        logger.debug("screen_search_keyword_main.py, ScreenSearchKeyword, check_event()")
+
+        if text == "Filter":
+            if active:
+                self.change_screen("search_filter")
+
+    def change_screen(self, name):
+        logger.debug("screen_search_keyword_main.py, ScreenSearchKeyword, change_screen()")
+
+        app = App.get_running_app()
+        app.sm.current = name
