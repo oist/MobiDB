@@ -1,14 +1,21 @@
-from logging import getLogger
-
+from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
 from kivymd.uix.tab import MDTabsBase
 
 import config
+from screen_search_textfield import StyleFilter
 from kivy.app import App
 
 
+"""デバック"""
 logger = getLogger(__name__)
+handler = StreamHandler()
+handler.setLevel(DEBUG)
+logger.setLevel(DEBUG)
+logger.addHandler(handler)
+logger.propagate = False
+
 
 
 class ScreenSearch(Screen, BoxLayout, MDTabsBase):
@@ -49,6 +56,16 @@ class ScreenSearch(Screen, BoxLayout, MDTabsBase):
             self.change_screen("wait")
         except ValueError as e:
             print(e)
+
+    def check_event(self, instance, text, active):
+
+        if text == "Filter":
+            if active:
+                self.ids["th_val"].disable = False
+            #if self.ids["mode_keyword"].active == True:
+                #print(1)
+
+
 
     def substitute_text(self, ss_text):
         logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")
