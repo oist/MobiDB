@@ -57,7 +57,7 @@ class ScreenWait(Screen):
 
         # cancelボタンが押されたらsearch画面の値を初期化して戻る
         self.ss.kill()
-        self.change_screen("search")
+        self.change_screen("search_filter")
 
     def change_screen(self, name):
         logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
