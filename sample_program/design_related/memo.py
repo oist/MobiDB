@@ -29,7 +29,7 @@ class LimitScoreSearch:
         logger.debug("search_info Begin")
         # jsonファイル読み込み，条件比較を行う
         self.fw = open('success_data.mjson', 'w')
-        with open("disorder_add_protain.mjson", "r") as f:
+        with open("C:/Users/Akihiro Kusumi/Documents/MobiDB/disorder_add_protain.mjson", "r") as f:
             for (i, line) in enumerate(f):
                 json_dict = json.loads(line)
                 count = 0
@@ -134,7 +134,7 @@ class SearchScreen(Screen):
 
 class WaitScreen(Screen):
     """データ抽出中のwait画面"""
-    source = StringProperty('loading4.gif')  # アニメーションgifを表示
+    source = StringProperty('loading5.gif')  # アニメーションgifを表示
 
     def press_btn(self):
         # ボタンが押されたときSearch画面に戻る
@@ -142,6 +142,7 @@ class WaitScreen(Screen):
         logger.debug("press_btn_WS Begin ")
 
         sm.remove_widget(self)
+        Window.size = (800, 600)
         sm.add_widget(OutputScreen(name="out"))
         sm.current = "out"
 
@@ -150,6 +151,7 @@ class WaitScreen(Screen):
 
 class OutputScreen(Screen):
     """output画面"""
+
     def __init__(self, **kwargs):
         super(OutputScreen, self).__init__(**kwargs)
 
@@ -181,6 +183,8 @@ class OutputScreen(Screen):
 
     def return_window(self):
         logger.debug("return_window Begin")
+
+        Window.size = (400, 220)
 
         sm.add_widget(OutputScreen(name="search"))
         sm.remove_widget(self)

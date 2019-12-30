@@ -1,226 +1,167 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
-<Row@BoxLayout>:
+#:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
+#:import colors kivymd.color_definitions.colors
+<StyleSearchScreen@MDTextField>:
+    hint_text: "default: 0"
+    helper_text_mode: "on_focus"
+    helper_text:""
+
+<StyleLabel@MDLabel>:
+    size_hint_y: None
+    height: self.texture_size[1]
+
+<StyleItemCheck@BoxLayout>
+    group: ""
+    text: ""
+    active: False
+    size_hint_y: 0
+    height: self.minimum_height
+    pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+    MDCheckbox:
+        group: root.group
+        active: root.active
+        size_hint: None, None
+        size: dp(48), dp(48)
+        pos_hint: {"center_y": 0}
+        on_active: root.parent.parent.parent.check_event(root.text, self.active)
+
+    StyleLabel:
+        text: root.text
+        pos_hint: {"center_y": 0}
+
+
+<StyleBackGround@BoxLayout>:
+    orientation: "vertical"
+    MDToolbar:
+        id: toolbar
+        title: app.title
+        md_bg_color: app.theme_cls.primary_color
+        background_palette: "Primary"
+        left_action_items: [["menu", lambda x: None]]
+
+    MDSeparator:
+
+<MDMenuItem>:
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.primary_color
     canvas.before:
-        Color:
-            rgba: 0.5, 0.5, 0.5, 1
-        Rectangle:
-            size: self.size
-            pos: self.pos
+	    Color:
+			rgba: app.theme_cls.bg_light
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+<ResultBotton@BoxLayout>:
     value: ''
-    BoxLayout:
-        orientation:'horizontal'
-        Button:
-            size_hint_x: 0.8
-            text: root.value
-            on_press: root.score_plot(root.index)
 
-        Button:
-            size_hint_x: 0.2
-            text: "UniProt"
-            on_press: root.go_UniProt(root.index)
-
-<SSTextBoxLayout@BoxLayout>:
-    orientation:'horizontal'
-    size:self.size
-    size_hint_x: 0.7
+    MDRectangleFlatButton:
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.primary_color
+        size_hint_x: 1
+        size_hint_y: 1
+        text: root.value
+        pos_hint: {'center_x': .5}
+        on_press: root.store_protain_propaty(root.index)
+        on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
 
-<SSLabel@Label>:
-    font_size: 32
-    text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-    halign: 'left'                   # 横方向(左揃え)
+<ScreenSearchFilter>:
+    StyleBackGround:
 
-
-<TopScreen>:
-    BoxLayout:
-        # 背景色
-        canvas:
-            Color:
-                rgba: 0.3, 0.3, 0.3, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        orientation:'vertical'
-        size:root.size                     # windowのサイズを取得
-
-        Button:
-            background_normal: 'body_cell.zip'
-            size:root.size
-            size_hint:None,None
-            text:'search screen '
-            on_press: root.press_btn()#Top_Screenのメソッドが実行される
-
-
-<SearchScreen>:
-    BoxLayout:
-        # 背景色
-        canvas:
-            Color:
-                rgba: 0.3, 0.3, 0.3, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        orientation:'vertical'
-        size:root.size                     # windowのサイズを取得
-
-        # タイトル
-        Label:
-            size_hint_y: 0.2
-        Label:
-            text:'MobiDB Plot Apprication'   # Labelの名前を設定
-            font_size: 48
-            text_size: self.size             # ラベルサイズを設定.これによりhalign, valignが変更可能になる
-            halign: 'left'                   # 横方向(左揃え)
-            valign: 'center'                 # 縦方向(真ん中揃え)
-            underline: True
-        Label:
-            size_hint_y: 0.2
-
-
-        # Threshold Valueの入力
-        SSLabel:
-            text:"Threshold Value"
-        SSTextBoxLayout:
-            TextInput:
-                font_size: 28
-                id:th_val
-                hint_text: 'e.g. 0.8'
-
-        Label:
-            size_hint_y: 0.2
-
-        # Threshold Lengsの入力
-        SSLabel:
-            text:"Threshold Lengs"
-        SSTextBoxLayout:
-            TextInput:
-                font_size: 28
-                id:th_len
-                hint_text: 'e.g. 100'
-        Label:
-            size_hint_y: 0.2
-
-        # fill gapの入力
-        SSLabel:
-            text:"Fill Gap"
-        SSTextBoxLayout:
-            TextInput:
-                font_size: 28
-                id:fill_gap
-                hint_text: 'e.g. 5'
-        Label:
-            size_hint_y: 0.2
-
-        # 実行ボタン
         BoxLayout:
-            orientation:'horizontal'
-            size:self.size
-            Label:
-                size_hint_x: 0.7
-            Button:
-                text: 'Search with this condition'
-                background_color: (0, 2, 10, 0.5)
-                size_hint_x: 0.3
-                on_press: root.press_btn()
-
-<WaitScreen>:
-    BoxLayout:
-        # 背景色
-        canvas:
-            Color:
-                rgba: 0.3, 0.3, 0.3, 1
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        orientation:'vertical'
-        size:root.size                     # windowのサイズを取得
-
-        Label:
             size_hint_y: 0.1
-            text:''
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                active: True
+                id: mode_keyword
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Filter"
+                id: mode_filter
+
+        ScrollView:
+            size_hint_y: 0.75
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(48)
+                spacing: 10
+                pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+                MDLabel:
+                    text: "Threshold value"
+
+                StyleSearchScreen:
+                    id:th_val
+                    disabled: mode_keyword.active
+                    helper_text:"Please input number between 0 < x < 1.0"
+
+                MDLabel:
+                    text: "Threshold length"
+
+                StyleSearchScreen:
+                    id:th_len
+                    disabled: mode_filter.active
+                    disabled_outline_color: "black"
+                    helper_text:"Please input number between 0 < x"
+
+                MDLabel:
+                    text: "Fill gap"
+
+                StyleSearchScreen:
+                    id:fill_gap
+                    disabled: mode_keyword.active
+                    helper_text:"Please input number between 0 < x"
+
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
 
         Label:
-            text_size: self.size
-            text:'Searching Now'
-            valign:'bottom'
-            halign:'left'
-            size_hint_x: 0.5
-            size_hint_y:0.4
-            font_size: 24
-            pos_hint: {"x":0, "y":0.9}
+            size_hint_y:0.05
 
+<ScreenSearchKeyword>
+    StyleBackGround:
+
+<ScreenWait>:
+    StyleBackGround:
         Image:
-            size: root.size
+            size_hint: None, None
+            size: 1,1
             allow_stretch: True
             keep_ratio: False
-            size_hint_x:1
-            size_hint_y:0.4
-            source:'loading4.gif'
+            source:'loading_bouningen.gif'
 
+        MDRaisedButton:
+            text: "Cancel"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
 
         Label:
-            size_hint_y: 0.1
-            text:''
+            size_hint_y:0.05
 
-        Button:
-            size: 50,50
-            size_hint: None,None
-            text:"cancel"
-            on_press: root.press_btn()#Wait_Screenのメソッドが実行される
-
-<OutputScreen>:
+<ScreenOut>:
     rv: rv
-    BoxLayout:
-        orientation: 'vertical'
-        BoxLayout:
-            canvas:
-                Color:
-                    rgba: 0.3, 0.3, 0.3, 1
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            orientation: 'vertical'
-            GridLayout:
-                cols: 3
-                rows: 1
+    StyleBackGround:
+        RecycleView:
+            id: rv
+            scroll_type: ['bars', 'content']
+            scroll_wheel_distance: dp(114)
+            bar_width: dp(10)
+            RecycleBoxLayout:
+                viewclass: 'ResultBotton'
+                default_size: None, dp(60)
+                default_size_hint: 1, None
                 size_hint_y: None
-                height: dp(54)
-                padding: dp(8)
-                spacing: dp(4)
-                BoxLayout:
-                    spacing: dp(8)
-                    Button:
-                        text: 'Filter Keywords'
-                        on_press: root.filter()
-                    TextInput:
-                        id: keyword
-                        size_hint_x: 1
-                        hint_text: 'e.g. integrin'
-                        padding: dp(10), dp(10), 0, 0
-
-                BoxLayout:
-                    spacing: dp(8)
-                    Button:
-                        text: 'Sort in abc order'
-                        on_press: root.sort()
-
-                Button:
-                    text: 'Go back to search window'
-                    on_press: root.return_window()
-
-            RecycleView:
-                id: rv
-                scroll_type: ['bars', 'content']
-                scroll_wheel_distance: dp(114)
-                bar_width: dp(10)
-                RecycleBoxLayout:
-                    viewclass: 'Row'
-                    default_size: None, dp(56)
-                    default_size_hint: 1, None
-                    size_hint_y: None
-                    height: self.minimum_height
-                    orientation: 'vertical'
-                    spacing: dp(2)
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(2)
 
 
 
