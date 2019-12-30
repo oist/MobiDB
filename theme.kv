@@ -71,16 +71,17 @@
 
         BoxLayout:
             size_hint_y: 0.1
-            StyleItemCheck:
-                group: "mode"
-                text: "Keyword"
-                active: True
-                id: mode_keyword
 
             StyleItemCheck:
                 group: "mode"
                 text: "Filter"
                 id: mode_filter
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                id: mode_keyword
+
+
 
         ScrollView:
             size_hint_y: 0.75
@@ -97,7 +98,6 @@
 
                 StyleSearchScreen:
                     id:th_val
-                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x < 1.0"
 
                 MDLabel:
@@ -105,8 +105,6 @@
 
                 StyleSearchScreen:
                     id:th_len
-                    disabled: mode_filter.active
-                    disabled_outline_color: "black"
                     helper_text:"Please input number between 0 < x"
 
                 MDLabel:
@@ -114,7 +112,6 @@
 
                 StyleSearchScreen:
                     id:fill_gap
-                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x"
 
         MDRaisedButton:
@@ -128,6 +125,44 @@
 
 <ScreenSearchKeyword>
     StyleBackGround:
+        BoxLayout:
+            size_hint_y: 0.1
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Filter"
+                id: mode_filter
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                id: mode_keyword
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.8
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+            MDLabel:
+                text: "Keyword Input"
+
+            StyleSearchScreen:
+                id:keyword
+                helper_text:"Please input protain name."
+
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+
+        Label:
+            size_hint_y:0.05
+
+
 
 <ScreenWait>:
     StyleBackGround:
@@ -137,6 +172,8 @@
             allow_stretch: True
             keep_ratio: False
             source:'loading_bouningen.gif'
+
+
 
         MDRaisedButton:
             text: "Cancel"

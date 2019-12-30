@@ -1,3 +1,4 @@
+import time
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import Screen
@@ -56,11 +57,9 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
             print(e)
 
     def check_event(self, text, active):
-
-        if text == "Filter":
+        logger.debug("screen_search_main.py, ScreenSearchFilter, check_event()")
+        if text == "Keyword":
             if active:
-                self.ids["mode_keyword"].active = False
-                self.ids["mode_filter"].active = True
                 self.change_screen("search_keyword")
 
     def substitute_text(self, ss_text):
