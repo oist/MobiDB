@@ -24,7 +24,7 @@
         size_hint: None, None
         size: dp(48), dp(48)
         pos_hint: {"center_y": 0}
-        on_active: root.parent.parent.parent.check_event(self, root.text, self.active)
+        on_active: root.parent.parent.parent.check_event(root.text, self.active)
 
     StyleLabel:
         text: root.text
@@ -93,17 +93,11 @@
                 pos_hint: {'center_x': 0.5, 'center_y': 1}
 
                 MDLabel:
-                    text: "Keyword"
-
-                StyleSearchScreen:
-                    id:keyword
-                    helper_text:"input keyword"
-
-                MDLabel:
                     text: "Threshold value"
 
                 StyleSearchScreen:
                     id:th_val
+                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x < 1.0"
 
                 MDLabel:
@@ -111,6 +105,8 @@
 
                 StyleSearchScreen:
                     id:th_len
+                    disabled: mode_filter.active
+                    disabled_outline_color: "black"
                     helper_text:"Please input number between 0 < x"
 
                 MDLabel:
@@ -118,6 +114,7 @@
 
                 StyleSearchScreen:
                     id:fill_gap
+                    disabled: mode_keyword.active
                     helper_text:"Please input number between 0 < x"
 
         MDRaisedButton:
@@ -129,7 +126,38 @@
         Label:
             size_hint_y:0.05
 
+<ScreenSearchKeyword>
+    StyleBackGround:
 
+        BoxLayout:
+            size_hint_y: 0.1
+            StyleItemCheck:
+                group: "mode"
+                text: "Keyword"
+                active: True
+                id: mode_keyword
+
+            StyleItemCheck:
+                group: "mode"
+                text: "Filter"
+                id: mode_filter
+
+        MDLabel:
+            text: "Keyword"
+
+        StyleSearchScreen:
+            id:keyword
+            helper_text:"input keyword"
+            disabled: mode_filter.active
+
+        MDRaisedButton:
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+
+        Label:
+            size_hint_y:0.05
 <ScreenWait>:
     StyleBackGround:
         Image:
