@@ -130,13 +130,9 @@ class SearchKeyword(threading.Thread):
                     current_pos = config.threshold_len
 
                     try:
+                        if config.keyword in json_dict["protein_names"]:
+                            fw.write('{}\n'.format(json.dumps(json_dict)))
 
-                        while self.alive:
-                        
-                            # 成功したscoreデータの書き込み
-                            if succeeded_times >= config.threshold_len:
-                                fw.write('{}\n'.format(json.dumps(json_dict)))
-                                break
                     except IndexError:
                         pass
                     if not self.alive:
