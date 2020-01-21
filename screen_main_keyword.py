@@ -18,14 +18,13 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-
 class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
     submit = ObjectProperty(None)
+
     def __init__(self, **kwargs):
         super(ScreenMainKeyword, self).__init__(**kwargs)
 
         Window.bind(on_key_down=self._on_keyboard_down)
-
 
     def btn_event(self):
         logger.debug("screen_main_keyword.py, ScreenMainKeyword, btn_event()")
@@ -44,8 +43,6 @@ class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
         logger.debug("screen_main_keyword.py, ScreenMainKeyword, move_keyword_screen()")
 
         self.change_screen("search_filter")
-        config.isFilter = True
-        config.isKeyword = False
 
     def change_screen(self, name):
         logger.debug("screen_main_keyword.py, ScreenMainKeyword, change_screen()")

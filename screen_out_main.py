@@ -40,6 +40,8 @@ class ScreenOut(Screen):
     def on_enter(self):
         logger.debug("screen_out_main.py, ScreenOut, on_enter()")
 
+        self.rv.data = []
+
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)

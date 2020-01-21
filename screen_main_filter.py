@@ -72,12 +72,9 @@ class ScreenMainFilter(Screen, BoxLayout, MDTabsBase):
         logger.debug("screen_main_filter.py, ScreenMainFilter, move_keyword_screen()")
 
         self.change_screen("search_keyword")
-        config.isFilter = False
-        config.isKeyword = True
-
 
     def substitute_text(self, ss_text):
-        logger.debug("screen_main_filter.py, ScreenMainFilter, make_sure_text()")
+        logger.debug("screen_main_filter.py, ScreenMainFilter, substitute_text()")
 
         if ss_text == "":
             return 0
