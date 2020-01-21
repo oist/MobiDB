@@ -14,112 +14,13 @@ logger.propagate = False
 
 
 class SearchKeyword(threading.Thread):
-    """
-    Parameters
-    ----------
-    fw : file = success_data.mjson
-        config.threshold_val, config.threshold_len, config.fill_gapの全条件を満たすプロテインを記録するファイル
-    fr : file = mobiDB_human.mjson
-        原点となるjsonファイル。humanに含まれるプロテインの情報が記載されている。
-    succeeded_times : int
-        score[i] > config.threshold_val の連続回数を保持する。
-    ignored_times : int
-        score[i] < config.threshold_val を許容した回数を保持する。
-    current_pos : int = config.threshold_len
-        現在のスコアの位置を保持する。
-
-
-    Methods
-    ----------
-    kill(self)
-        スレッドを終了させる。
-    compare_score(self)
-        条件に応じて、値を代入する。
-    run(self)
-        scoreを比較し、条件に一致したものをsuccessed_data.mjsonに追加する
-
-
-    Examples
-    ----------
-    検索アルゴリズムはBM法を参考にした。
-    config.threshold_val　→　th_val
-    config.threshold_len　→　th_len
-    config.fill_gap       →　fill_gap
-
-    1. score[current_pos]と th_valを末尾から比較(True-> successed_times++)。
-    2. successed_timesが th_lenを上回れば記入。
-    3. 検索に失敗した場合、その地点にth_lenとfill_gapを足して、再度末尾から検索する。
-
-    以下の条件で検索を行うと、
-    -------------------------------------
-             0  1  2  3  4  5  6
-    score = [1, 0, 0, 1, 0, 1, 1]
-    config.threshold_val    = 0.5
-    config.threshold_len    = 4
-    config.fill_gap         = 1
-    -------------------------------------
-
-    current_pos = th_len
-        score[3] True
-        score[2] False, ignore_times 1
-        score[1] False, ignore_times 2
-
-    current_pos = current_pos + th_len + ignore_times
-        core[6] True
-        score[5] True
-        score[4] Flase, ignore_times 1
-        score[3] True
-
-        と検索は成功し、jsonファイルに記入される。
-
-
-    Examples
-    ----------
-    How to use config.threshold_val, config.threshold_len and config.fill_gap.
-    scoreの範囲は 0 < x < 1である。
-    以下のようなscoreをもったプロテインがあるとする。
-        score = [1, 0, 0.8, 0,8, 0,8]
-
-    また、閾値は以下の通りとする。
-        config.threshold_val    = 0.5
-        config.threshold_len    = 5
-        config.fill_gap         = 0 or 1
-
-    以下のプログラムを実行する。
-        for i in len(score):
-            if score[i] > threshold_val:
-                i += 1
-            elif score[i] < threshold_val
-                i = 0
-
-        if i >= config.threshold_len:
-            print("successed")
-        elif i < config.threshold_len:
-            print("fail")
-
-    出力は,
-        fill_gap = 0 -> i == 3  fail
-        fill_gap = 1 -> i == 5  successed
-
-
-    Raises
-    ------
-    IndexError
-    プロテインにスコアが存在しない場合に発生。
-
-
-    Notes
-    ----------
-    config.threshold_val, config.threshold_len, config.fill_gapの詳細はconfig.pyに記載。
-
-    """
 
     def __init__(self):
         super().__init__()
         self.alive = True
 
     def run(self):
-        logger.debug("screen_wait_search, SearchScore, search_score()")
+        logger.debug("screen_wait_search_keyword, SearchKeyword, search_score()")
 
         with open('success_data.json', 'w') as fw:
             with open("mobiDB_human.json", "r") as fr:
@@ -141,11 +42,11 @@ class SearchKeyword(threading.Thread):
                     self.change_screen("out")
 
     def change_screen(self, name):
-        logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
+        logger.debug("screen_wait_search_keyword.py, SearchKeyword, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name
 
     def kill(self):
-        logger.debug("screen_wait_main.py, ScreenWait, kill()")
+        logger.debug("screen_wait_search_keyword.py, SearchKeyword, kill()")
         self.alive = False

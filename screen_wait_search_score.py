@@ -119,7 +119,7 @@ class SearchScore(threading.Thread):
         self.alive = True
 
     def run(self):
-        logger.debug("screen_wait_search, SearchScore, search_score()")
+        logger.debug("screen_wait_search_score, SearchScore, search_score()")
 
         with open('success_data.json', 'w') as fw:
             with open("mobiDB_human.json", "r") as fr:
@@ -164,11 +164,11 @@ class SearchScore(threading.Thread):
                     self.change_screen("out")
 
     def change_screen(self, name):
-        logger.debug("screen_wait_main.py, ScreenWait, change_screen()")
+        logger.debug("screen_wait_search_score.py, ScreenWait, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name
 
     def kill(self):
-        logger.debug("screen_wait_main.py, ScreenWait, kill()")
+        logger.debug("screen_wait_search_score.py, ScreenWait, kill()")
         self.alive = False
