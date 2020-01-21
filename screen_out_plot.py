@@ -115,6 +115,8 @@ class ScorePlot:
 
     def run(self):
         logger.debug("screen_out_plot.py, ScorePlot, run()")
+        if not os.path.exists("./cache"):
+            os.mkdir("./cache")
         env = Environment(
             loader=FileSystemLoader('./templates', encoding='utf8'),
             bytecode_cache=  FileSystemBytecodeCache(directory="./cache", pattern="%s.cache")
