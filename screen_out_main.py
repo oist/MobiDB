@@ -1,7 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
-from screen_out_button import ResultButton
+from screen_out_result_button import ResultButton
 import json
 
 """デバック"""
@@ -45,32 +45,12 @@ class ScreenOut(Screen):
                 json_dict = json.loads(line)
                 self.rv.data.append({'value': json_dict["protein_names"], 'index': i})
 
-    def btn_event(self, i):
+        self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
+
+    def btn_event(self):
         logger.debug("screen_out_main.py, ScreenOut, btn_event()")
 
-        if i == 0:
-            self.filter_keyword()
-        elif i == 1:
-            self.sort_abc()
-        elif i == 2:
-            self.change_screen("search")
-
-    def filter_keyword(self):
-        logger.debug("screen_out_main.py, ScreenOut, filter_keyword()")
-        temp = []
-
-
-        with open('success_data.json', 'r') as fr:
-            for (i, line) in enumerate(fr):
-                json_dict = json.loads(line)
-                if self.ids["keyword"].text in json_dict["protein_names"]:
-                    temp.append({'value': json_dict["protein_names"], 'index': i})
-
-        self.rv.data = temp
-
-    def sort_abc(self):
-        logger.debug("screen_out_main.py, ScreenOut, sort_abc()")
-        self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
+        self.change_screen("search_filter")
 
     def change_screen(self, name):
         logger.debug("screen_top_main.py, ScreenOut, change_screen()")

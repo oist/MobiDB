@@ -1,4 +1,3 @@
-import time
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
@@ -19,7 +18,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
+class ScreenMainFilter(Screen, BoxLayout, MDTabsBase):
     """
     app.sm.current == "search" 時の処理
 
@@ -52,7 +51,7 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
         Window.bind(on_key_down=self._on_keyboard_down)
 
     def btn_event(self):
-        logger.debug("screen_search_main.py, ScreenSearch, btn_event()")
+        logger.debug("screen_main_filter.py, ScreenMainFilter, btn_event()")
 
         try:
             config.threshold_val = self.substitute_text(self.ids["th_val"].text)
@@ -66,7 +65,7 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
             print(e)
 
     def move_keyword_screen(self):
-        logger.debug("screen_search_main.py, ScreenSearchFilter, move_keyword_screen()")
+        logger.debug("screen_main_filter.py, ScreenMainFilter, move_keyword_screen()")
 
         self.change_screen("search_keyword")
         config.isFilter = False
@@ -74,7 +73,7 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
 
 
     def substitute_text(self, ss_text):
-        logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")
+        logger.debug("screen_main_filter.py, ScreenMainFilter, make_sure_text()")
 
         if ss_text == "":
             return 0
@@ -82,7 +81,7 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
             return float(ss_text.replace('"', ''))
 
     def change_screen(self, name):
-        logger.debug("screen_search_main.py, ScreenSearch, change_screen()")
+        logger.debug("screen_main_filter.py, ScreenMainFilter, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name

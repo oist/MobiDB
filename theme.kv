@@ -1,6 +1,7 @@
 #:import FadeTransition  kivy.uix.screenmanager.FadeTransition
 #:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
 #:import colors kivymd.color_definitions.colors
+
 <StyleSearchScreen@MDTextField>:
     hint_text: "default: 0"
     helper_text_mode: "on_focus"
@@ -48,9 +49,8 @@
         on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
 
-<ScreenSearchFilter>:
-    submit: submit_button
 
+<ScreenMainFilter>:
     StyleBackGround:
         BoxLayout:
             size_hint_y: 0.1
@@ -114,8 +114,12 @@
         Label:
             size_hint_y:0.05
 
+<<<<<<< HEAD
 <ScreenSearchKeyword>
     submit: submit_button
+=======
+<ScreenMainKeyword>
+>>>>>>> takachan
     StyleBackGround:
         BoxLayout:
             size_hint_y: 0.1
@@ -198,3 +202,14 @@
                 height: self.minimum_height
                 orientation: 'vertical'
                 spacing: dp(2)
+
+    AnchorLayout:
+        anchor_x:'right'
+        anchor_y:'bottom'
+        MDFloatingActionButton:
+            icon:"undo-variant"
+            md_bg_color: app.theme_cls.primary_color
+            on_press: root.btn_event()
+
+
+

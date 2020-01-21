@@ -18,33 +18,26 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class ScreenSearchKeyword(Screen, BoxLayout, MDTabsBase):
-    submit = ObjectProperty(None)
-    def __init__(self, **kwargs):
-        super(ScreenSearchKeyword, self).__init__(**kwargs)
 
-        Window.bind(on_key_down=self._on_keyboard_down)
-
-
+class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
     def btn_event(self):
-        logger.debug("screen_search_main.py, ScreenSearch, btn_event()")
+        logger.debug("screen_main_keyword.py, ScreenMainKeyword, btn_event()")
 
         try:
             config.keyword = self.ids["keyword"].text
             self.change_screen("wait")
-            print(config.keyword)
         except ValueError as e:
             print(e)
 
     def move_filter_screen(self):
-        logger.debug("screen_search_main.py, ScreenSearchFilter, move_keyword_screen()")
+        logger.debug("screen_main_keyword.py, ScreenMainKeyword, move_keyword_screen()")
 
         self.change_screen("search_filter")
         config.isFilter = True
         config.isKeyword = False
 
     def change_screen(self, name):
-        logger.debug("screen_search_keyword_main.py, ScreenSearchKeyword, change_screen()")
+        logger.debug("screen_main_keyword.py, ScreenMainKeyword, change_screen()")
 
         app = App.get_running_app()
         app.sm.current = name

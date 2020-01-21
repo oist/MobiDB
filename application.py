@@ -3,10 +3,10 @@ from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.screenmanager import ScreenManager, NoTransition
 from kivymd.app import MDApp
 
-from screen_search_main import ScreenSearchFilter
+from screen_main_filter import ScreenMainFilter
 from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
-from screen_search_keyword_main import ScreenSearchKeyword
+from screen_main_keyword import ScreenMainKeyword
 
 
 """デバック"""
@@ -59,7 +59,7 @@ class MobiApp(MDApp):
     def add_screen(self):
         logger.debug("application.py, App, add_screen()")
 
-        MobiApp.sm.add_widget(ScreenSearchFilter(name="search_filter"))
-        MobiApp.sm.add_widget(ScreenSearchKeyword(name="search_keyword"))
+        MobiApp.sm.add_widget(ScreenMainFilter(name="search_filter"))
+        MobiApp.sm.add_widget(ScreenMainKeyword(name="search_keyword"))
         MobiApp.sm.add_widget(ScreenWait(name="wait"))
         MobiApp.sm.add_widget(ScreenOut(name="out"))
