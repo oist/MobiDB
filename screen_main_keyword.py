@@ -20,6 +20,13 @@ logger.propagate = False
 
 
 class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
+    submit = ObjectProperty(None)
+    def __init__(self, **kwargs):
+        super(ScreenMainKeyword, self).__init__(**kwargs)
+
+        Window.bind(on_key_down=self._on_keyboard_down)
+
+
     def btn_event(self):
         logger.debug("screen_main_keyword.py, ScreenMainKeyword, btn_event()")
 
@@ -28,6 +35,10 @@ class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
             self.change_screen("wait")
         except ValueError as e:
             print(e)
+
+    def on_enter(self):
+        config.isFilter = False
+        config.isKeyword = True
 
     def move_filter_screen(self):
         logger.debug("screen_main_keyword.py, ScreenMainKeyword, move_keyword_screen()")
@@ -41,6 +52,7 @@ class ScreenMainKeyword(Screen, BoxLayout, MDTabsBase):
 
         app = App.get_running_app()
         app.sm.current = name
+
     def _on_keyboard_down(self, instance, keyboard, keycode, text, modifiers):
         app = App.get_running_app()
         if app.sm.current == "search_keyword" and keycode == 40:  # 40 - Enter key pressed

@@ -46,7 +46,7 @@ class ScreenMainFilter(Screen, BoxLayout, MDTabsBase):
     """
     submit = ObjectProperty(None)
     def __init__(self, **kwargs):
-        super(ScreenSearchFilter, self).__init__(**kwargs)
+        super(ScreenMainFilter, self).__init__(**kwargs)
 
         Window.bind(on_key_down=self._on_keyboard_down)
 
@@ -63,6 +63,10 @@ class ScreenMainFilter(Screen, BoxLayout, MDTabsBase):
             self.change_screen("wait")
         except ValueError as e:
             print(e)
+
+    def on_enter(self):
+        config.isFilter = True
+        config.isKeyword = False
 
     def move_keyword_screen(self):
         logger.debug("screen_main_filter.py, ScreenMainFilter, move_keyword_screen()")
