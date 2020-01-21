@@ -1,7 +1,8 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.screenmanager import Screen
 from kivy.app import App
-from screen_wait_search import SearchScore
+from screen_wait_search_score import SearchScore
+from screen_wait_search_keyword import SearchKeyword
 import config
 
 
@@ -45,6 +46,7 @@ class ScreenWait(Screen):
     def __init__(self, **kw):
         super().__init__(**kw)
         self.ss = SearchScore()
+        self.sk = SearchKeyword()
 
     def on_enter(self):
         logger.debug("screen_wait_main.py, ScreenWait, on_enter()")
@@ -54,8 +56,9 @@ class ScreenWait(Screen):
             self.ss = SearchScore()
             self.ss.start()
 
-        else:
-            print("Keyword Search")
+        elif config.isKeyword:
+            self.sk = SearchKeyword()
+            self.sk.start()
 
     def btn_event(self):
         logger.debug("screen_wait_main.py, ScreenWait, btn_event()")
