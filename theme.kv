@@ -40,7 +40,7 @@
         title: app.title
         md_bg_color: app.theme_cls.primary_color
         background_palette: "Primary"
-        left_action_items: [["menu", lambda x: None]]
+        # left_action_items: [["menu", lambda x: None]]
 
     MDSeparator:
 
@@ -54,7 +54,7 @@
 			size: self.size
 			pos: self.pos
 
-<ResultBotton@BoxLayout>:
+<ResultButton@BoxLayout>:
     value: ''
 
     MDRectangleFlatButton:
@@ -174,8 +174,6 @@
             keep_ratio: False
             source:'loading_bouningen.gif'
 
-
-
         MDRaisedButton:
             text: "Cancel"
             pos_hint: {"center_x": .5}
@@ -193,17 +191,10 @@
             scroll_wheel_distance: dp(114)
             bar_width: dp(10)
             RecycleBoxLayout:
-                viewclass: 'ResultBotton'
+                viewclass: 'ResultButton'
                 default_size: None, dp(60)
                 default_size_hint: 1, None
                 size_hint_y: None
                 height: self.minimum_height
                 orientation: 'vertical'
                 spacing: dp(2)
-
-
-
-
-
-
-
