@@ -1,8 +1,6 @@
 from logging import getLogger, StreamHandler, DEBUG
 import json
-from io import StringIO
 import os
-import tempfile
 import webbrowser
 from jinja2 import Environment, FileSystemLoader, FileSystemBytecodeCache
 import config
@@ -69,9 +67,9 @@ class ScorePlot:
     """
 
     def __init__(self, value):
-        logger.debug("screen_out_plot.py, ScorePlot, __init__()")
+        logger.debug("screen_out_score_plot.py, ScorePlot, __init__()")
 
-        self.key = value
+        self.protein_id = value
 
         self.json_dict = dict()
         self.score = list()
@@ -81,11 +79,11 @@ class ScorePlot:
         self.succeed_score_rate = 0
 
     def load_propaty(self):
-        logger.debug("screen_out_plot.py, ScorePlot, load_propaty()")
+        logger.debug("screen_out_score_plot.py, ScorePlot, load_propaty()")
 
         with open('success_data.json', 'r') as fr:
             for (k, line) in enumerate(fr):
-                if k == self.key:
+                if k == self.protein_id:
                     self.json_dict = json.loads(line)
                     break
 
@@ -114,12 +112,12 @@ class ScorePlot:
         self.succeed_score_rate = "{0:.3f}".format(score_rate / score_len * 100)
 
     def run(self):
-        logger.debug("screen_out_plot.py, ScorePlot, run()")
+        logger.debug("screen_out_score_plot.py, ScorePlot, run()")
         if not os.path.exists("./cache"):
             os.mkdir("./cache")
         env = Environment(
             loader=FileSystemLoader('./templates', encoding='utf8'),
-            bytecode_cache=  FileSystemBytecodeCache(directory="./cache", pattern="%s.cache")
+            bytecode_cache=FileSystemBytecodeCache(directory="./cache", pattern="%s.cache")
         )
         tpl = env.get_template('index.html')
         data = {
@@ -134,5 +132,3 @@ class ScorePlot:
         with open("./index.html", "w") as f:
             print(str(html), file=f)
         webbrowser.open_new_tab(os.path.abspath("./index.html"))
-
-        #logger.debug(data)
