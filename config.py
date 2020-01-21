@@ -16,4 +16,4 @@ threshold_len = 0    # score lengsの閾値
 fill_gap = 0          # score gapの閾値
 keyword = ""
 isFilter = True
-
+isKeyword = False

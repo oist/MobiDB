@@ -58,12 +58,13 @@ class ScreenSearchFilter(Screen, BoxLayout, MDTabsBase):
         except ValueError as e:
             print(e)
 
-    def check_event(self, text, active):
-        logger.debug("screen_search_main.py, ScreenSearchFilter, check_event()")
-        if text == "Keyword":
-            if active:
-                self.change_screen("search_keyword")
-                config.isFilter = False
+    def move_keyword_screen(self):
+        logger.debug("screen_search_main.py, ScreenSearchFilter, move_keyword_screen()")
+
+        self.change_screen("search_keyword")
+        config.isFilter = False
+        config.isKeyword = True
+
 
     def substitute_text(self, ss_text):
         logger.debug("screen_search_main.py, ScreenSearch, make_sure_text()")

@@ -12,26 +12,6 @@
     size_hint_y: None
     height: self.texture_size[1]
 
-<StyleItemCheck@BoxLayout>
-    group: ""
-    text: ""
-    active: False
-    size_hint_y: 0
-    height: self.minimum_height
-    pos_hint: {'center_x': 0.5, 'center_y': 1}
-
-    MDCheckbox:
-        group: root.group
-        active: root.active
-        size_hint: None, None
-        size: dp(48), dp(48)
-        pos_hint: {"center_y": 0}
-        on_active: root.parent.parent.parent.check_event(root.text, self.active)
-
-    StyleLabel:
-        text: root.text
-        pos_hint: {"center_y": 0}
-
 
 <StyleBackGround@BoxLayout>:
     orientation: "vertical"
@@ -70,21 +50,29 @@
 
 <ScreenSearchFilter>:
     StyleBackGround:
-
         BoxLayout:
             size_hint_y: 0.1
 
-            StyleItemCheck:
-                group: "mode"
+            MDLabel:
+                size_hint_x: 0.05
+
+            MDRaisedButton:
+                size_hint_x: 0.4
                 text: "Filter"
-                id: mode_filter
-            StyleItemCheck:
-                group: "mode"
+                pos_hint: {"center_x": .5}
+
+            MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                size_hint_x: 0.4
                 text: "Keyword"
-                id: mode_keyword
+                pos_hint: {"center_x": .5}
+                on_press: root.move_keyword_screen()
+                md_bg_color: 162/256, 169/256, 175/256, .8
 
-
-
+            MDLabel:
+                size_hint_x: 0.05
         ScrollView:
             size_hint_y: 0.75
             BoxLayout:
@@ -130,16 +118,26 @@
         BoxLayout:
             size_hint_y: 0.1
 
-            StyleItemCheck:
-                group: "mode"
+            MDLabel:
+                size_hint_x: 0.05
+
+            MDRaisedButton:
+                size_hint_x: 0.4
                 text: "Filter"
-                id: mode_filter
+                pos_hint: {"center_x": .5}
+                on_press: root.move_filter_screen()
+                md_bg_color: 162/256, 169/256, 175/256, .8
 
-            StyleItemCheck:
-                group: "mode"
+            MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                size_hint_x: 0.4
                 text: "Keyword"
-                id: mode_keyword
+                pos_hint: {"center_x": .5}
 
+            MDLabel:
+                size_hint_x: 0.05
         BoxLayout:
             orientation: "vertical"
             size_hint_y: 0.8

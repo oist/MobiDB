@@ -16,7 +16,7 @@ logger.addHandler(handler)
 logger.propagate = False
 
 
-class ResultBotton(Screen):
+class ResultButton(Screen):
     """
     app.sm.current == "out" 時の処理
 

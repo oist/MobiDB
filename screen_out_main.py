@@ -1,6 +1,7 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
+from screen_out_button import ResultButton
 import json
 
 """デバック"""
@@ -10,8 +11,6 @@ handler.setLevel(DEBUG)
 logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
-
-
 
 
 class ScreenOut(Screen):
