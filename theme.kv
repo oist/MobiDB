@@ -49,6 +49,8 @@
 
 
 <ScreenSearchFilter>:
+    submit: submit_button
+
     StyleBackGround:
         BoxLayout:
             size_hint_y: 0.1
@@ -103,6 +105,7 @@
                     helper_text:"Please input number between 0 < x"
 
         MDRaisedButton:
+            id:submit_button
             size_hint_y: 0.1
             text: "Search with this conditions"
             pos_hint: {"center_x": .5}
@@ -112,6 +115,7 @@
             size_hint_y:0.05
 
 <ScreenSearchKeyword>
+    submit: submit_button
     StyleBackGround:
         BoxLayout:
             size_hint_y: 0.1
@@ -151,6 +155,7 @@
                 helper_text:"Please input protain name."
 
         MDRaisedButton:
+            id:submit_button
             size_hint_y: 0.1
             text: "Search with this conditions"
             pos_hint: {"center_x": .5}
