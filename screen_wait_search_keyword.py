@@ -26,10 +26,6 @@ class SearchKeyword(threading.Thread):
             with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
                     json_dict = json.loads(line)
-                    succeeded_times = 0
-                    ignored_times = 0
-                    current_pos = config.threshold_len
-
                     try:
                         if config.keyword in json_dict["protein_names"]:
                             fw.write('{}\n'.format(json.dumps(json_dict)))
