@@ -14,7 +14,8 @@ logger.propagate = False
 
 
 if __name__ == "__main__":
-    logger.debug("main.py, main")
+    logger.debug("main.py, mai"
+                 "n")
 
     # kvファイルをstring型としてload
     with open("./theme.kv", "r", encoding="utf8") as f:
