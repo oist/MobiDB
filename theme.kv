@@ -87,15 +87,9 @@
                 MDLabel:
                     text: "Threshold value"
 
-                NumericInput:
+                StyleSearchScreen:
                     id:th_val
                     helper_text:"Please input number between 0 < x < 1.0"
-                    helper_text_mode: "on_focus"
-                    write_tab: False
-                    multiline: False
-                    min_value : 0
-                    max_value : 1
-                    hint_text : 'Enter values between {} and {}'.format(self.min_value, self.max_value)
 
                 MDLabel:
                     text: "Threshold length"
@@ -159,8 +153,7 @@
 
             StyleSearchScreen:
                 id:keyword
-                hint_text: "default: None"
-                helper_text:"Please input a part of protain name."
+                helper_text:"Please input protain name."
 
         MDRaisedButton:
             id:submit_button
