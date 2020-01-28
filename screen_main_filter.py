@@ -2,7 +2,8 @@ from logging import getLogger, StreamHandler, DEBUG
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.uix.screenmanager import Screen
-from kivy.properties import ObjectProperty
+from kivy.properties import ObjectProperty, NumericProperty
+from kivymd.textfields import MDTextField
 from kivymd.uix.tab import MDTabsBase
 
 import config
@@ -17,6 +18,15 @@ logger.setLevel(DEBUG)
 logger.addHandler(handler)
 logger.propagate = False
 
+class NumericInput(MDTextField):
+    min_value = NumericProperty()
+    max_value = NumericProperty()
+
+    def insert_text(self, string, from_undo=False):
+        new_text = self.text + string
+        if new_text != "":
+            if self.min_value <= float(new_text) <= self.max_value:
+                MDTextField.insert_text(self, string, from_undo=from_undo)
 
 class ScreenMainFilter(Screen, BoxLayout, MDTabsBase):
     """
