@@ -45,7 +45,7 @@ class ScreenOut(Screen):
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                self.rv.data.append({'value': json_dict["protein_names"], 'index': i})
+                self.rv.data.append({'value': json_dict["protein_names"], "acc": json_dict["acc"],'index': i})
 
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
 
