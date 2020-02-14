@@ -38,17 +38,14 @@
 <ResultButton@BoxLayout>:
     value: ''
     acc:''
-    MDLabel:
-        theme_text_color: "Custom"
-        text_color: app.theme_cls.primary_color
-        text: "ACC : " + root.acc
+    length:''
 
     MDRectangleFlatButton:
         theme_text_color: "Custom"
         text_color: app.theme_cls.primary_color
         size_hint_x: 1
         size_hint_y: 1
-        text: root.value
+        text: "ACC: " + root.acc + ", name: " + root.value + ", Length: " + root.length
         on_press: root.store_protain_propaty(root.index)
         on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 

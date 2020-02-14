@@ -1,6 +1,8 @@
 from logging import getLogger, StreamHandler, DEBUG
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
+from kivymd.toast import toast
+
 from screen_out_result_button import ResultButton
 import json
 
@@ -39,13 +41,18 @@ class ScreenOut(Screen):
     """
     def on_enter(self):
         logger.debug("screen_out_main.py, ScreenOut, on_enter()")
+        toast("Success", duration=2)
 
         self.rv.data = []
 
         with open('success_data.json', 'r') as fr:
             for (i, line) in enumerate(fr):
                 json_dict = json.loads(line)
-                self.rv.data.append({'value': json_dict["protein_names"], "acc": json_dict["acc"],'index': i})
+                try:
+                    score_len = str(len(json_dict["mobidb_consensus"]["disorder"]["predictors"][1]["scores"]))
+                except:
+                    score_len = str(0)
+                self.rv.data.append({'value': json_dict["protein_names"], "acc": json_dict["acc"], "length": score_len, 'index': i})
 
         self.rv.data = sorted(self.rv.data, key=lambda x: x['value'])
 
