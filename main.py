@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 from kivy.core.window import Window
 from kivy.lang import Builder
 from application import MobiApp
 from logging import getLogger, StreamHandler, DEBUG
-
+import os
+os.environ['KIVY_IMAGE'] = 'sdl2'
 
 """デバック"""
 logger = getLogger(__name__)

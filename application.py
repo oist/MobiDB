@@ -7,6 +7,8 @@ from screen_main_filter import ScreenMainFilter
 from screen_wait_main import ScreenWait
 from screen_out_main import ScreenOut
 from screen_main_keyword import ScreenMainKeyword
+from kivymd.font_definitions import theme_font_styles
+from kivy.core.text import LabelBase
 
 
 """デバック"""
@@ -48,6 +50,14 @@ class MobiApp(MDApp):
 
     def build(self):
         logger.debug("application.py, App, build()")
+
+        LabelBase.register(
+            name="Roboto-Regular",
+            fn_regular="Roboto-Regular.ttf"
+
+        )
+        theme_font_styles.append('font')
+        self.theme_cls.font_styles["font"] = ["Roboto-Regular", 16, False, 0.15, ]
 
         # 画面をScreenManagerに追加する
         self.title = "MobiDB - Human"
