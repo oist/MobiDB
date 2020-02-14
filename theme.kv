@@ -78,6 +78,7 @@
 
             MDLabel:
                 size_hint_x: 0.05
+
         ScrollView:
             size_hint_y: 0.75
             BoxLayout:
@@ -90,6 +91,7 @@
 
                 MDLabel:
                     text: "Threshold value"
+
 
                 StyleSearchScreen:
                     id:th_val
@@ -116,7 +118,7 @@
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
 
-        Label:
+        MDLabel:
             size_hint_y:0.05
 
 <ScreenMainKeyword>
@@ -125,7 +127,7 @@
         BoxLayout:
             size_hint_y: 0.1
 
-            Label:
+            MDLabel:
                 size_hint_x: 0.05
             MDRaisedButton:
                 text: "Filter"
@@ -133,14 +135,14 @@
                 on_press: root.move_filter_screen()
                 md_bg_color: 162/256, 169/256, 175/256, .8
 
-            Label:
+            MDLabel:
                 size_hint_x: 0.1
 
             MDRaisedButton:
                 text: "Keyword"
                 pos_hint: {"center_x": .5}
 
-            Label:
+            MDLabel:
                 size_hint_x: 0.05
 
 
@@ -166,7 +168,7 @@
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
 
-        Label:
+        MDLabel:
             size_hint_y:0.05
 
 
@@ -183,8 +185,9 @@
             text: "Cancel"
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
+            font_style:"Roboto-Regular"
 
-        Label:
+        MDLabel:
             size_hint_y:0.05
 
 <ScreenOut>:
@@ -204,13 +207,16 @@
                 orientation: 'vertical'
                 spacing: dp(2)
 
+
+
     AnchorLayout:
         anchor_x:'right'
         anchor_y:'bottom'
         MDFloatingActionButton:
             icon:"undo-variant"
-            md_bg_color:  get_color_from_hex(colors['Teal']['500'])
+            md_bg_color: 162/256, 169/256, 175/256, .8
             on_press: root.btn_event()
+            font_style:"Roboto-Regular"
 
 
 

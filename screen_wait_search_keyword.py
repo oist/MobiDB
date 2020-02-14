@@ -2,6 +2,7 @@ from logging import getLogger, StreamHandler, DEBUG
 import json
 import config
 import threading
+from requests.structures import CaseInsensitiveDict
 from kivy.app import App
 
 """デバック"""
@@ -25,10 +26,18 @@ class SearchKeyword(threading.Thread):
         with open('success_data.json', 'w') as fw:
             with open("mobiDB_human.json", "r") as fr:
                 for (i, line) in enumerate(fr):
-                    json_dict = json.loads(line)
+                    json_dict = CaseInsensitiveDict(json.loads(line))
+
                     try:
-                        if config.keyword in json_dict["protein_names"]:
-                            fw.write('{}\n'.format(json.dumps(json_dict)))
+
+                        if config.keyword.lower() in json_dict["protein_names"]:
+                            fw.write('{}\n'.format(json.dumps(dict(json_dict))))
+
+                        elif config.keyword.title() in json_dict["protein_names"]:
+                            fw.write('{}\n'.format(json.dumps(dict(json_dict))))
+
+                        elif config.keyword in json_dict["protein_names"]:
+                            fw.write('{}\n'.format(json.dumps(dict(json_dict))))
 
                     except IndexError:
                         pass
