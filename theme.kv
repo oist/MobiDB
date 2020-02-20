@@ -35,19 +35,73 @@
 			size: self.size
 			pos: self.pos
 
+
 <ResultButton@BoxLayout>:
     value: ''
+    acc:''
+    length:''
 
     MDRectangleFlatButton:
         theme_text_color: "Custom"
-        text_color: app.theme_cls.primary_color
+        text_color: app.theme_cls.text_color
+        font_size: 15
         size_hint_x: 1
         size_hint_y: 1
-        text: root.value
-        pos_hint: {'center_x': .5}
+        text: "ACC: " + root.acc + ", name: " + root.value + ", Length: " + root.length
         on_press: root.store_protain_propaty(root.index)
         on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
 
+
+<ScreenMainKeyword>
+    submit: submit_button
+    StyleBackGround:
+        BoxLayout:
+            size_hint_y: 0.1
+
+            MDLabel:
+                size_hint_x: 0.05
+
+            MDRaisedButton:
+                text: "Keyword"
+                pos_hint: {"center_x": .5}
+
+            MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                text: "Filter"
+                pos_hint: {"center_x": .5}
+                on_press: root.move_filter_screen()
+                md_bg_color: 162/256, 169/256, 175/256, .8
+
+            MDLabel:
+                size_hint_x: 0.05
+
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.75
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+            MDLabel:
+                text: "Keyword Input"
+
+            StyleSearchScreen:
+                id:keyword
+                helper_text:"Please input protain name."
+
+        MDRaisedButton:
+            id:submit_button
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+
+        MDLabel:
+            size_hint_y:0.05
 
 
 <ScreenMainFilter>:
@@ -60,20 +114,21 @@
                 size_hint_x: 0.05
 
             MDRaisedButton:
-                text: "Filter"
-                pos_hint: {"center_x": .5}
-
-            MDLabel:
-                size_hint_x: 0.1
-
-            MDRaisedButton:
                 text: "Keyword"
                 pos_hint: {"center_x": .5}
                 on_press: root.move_keyword_screen()
                 md_bg_color: 162/256, 169/256, 175/256, .8
 
             MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                text: "Filter"
+                pos_hint: {"center_x": .5}
+
+            MDLabel:
                 size_hint_x: 0.05
+
         ScrollView:
             size_hint_y: 0.75
             BoxLayout:
@@ -86,6 +141,7 @@
 
                 MDLabel:
                     text: "Threshold value"
+
 
                 StyleSearchScreen:
                     id:th_val
@@ -112,59 +168,8 @@
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
 
-        Label:
+        MDLabel:
             size_hint_y:0.05
-
-<ScreenMainKeyword>
-    submit: submit_button
-    StyleBackGround:
-        BoxLayout:
-            size_hint_y: 0.1
-
-            Label:
-                size_hint_x: 0.05
-            MDRaisedButton:
-                text: "Filter"
-                pos_hint: {"center_x": .5}
-                on_press: root.move_filter_screen()
-                md_bg_color: 162/256, 169/256, 175/256, .8
-
-            Label:
-                size_hint_x: 0.1
-
-            MDRaisedButton:
-                text: "Keyword"
-                pos_hint: {"center_x": .5}
-
-            Label:
-                size_hint_x: 0.05
-
-
-        BoxLayout:
-            orientation: "vertical"
-            size_hint_y: 0.8
-            height: self.minimum_height
-            padding: dp(48)
-            spacing: 10
-            pos_hint: {'center_x': 0.5, 'center_y': 1}
-
-            MDLabel:
-                text: "Keyword Input"
-
-            StyleSearchScreen:
-                id:keyword
-                helper_text:"Please input protain name."
-
-        MDRaisedButton:
-            id:submit_button
-            size_hint_y: 0.1
-            text: "Search with this conditions"
-            pos_hint: {"center_x": .5}
-            on_press: root.btn_event()
-
-        Label:
-            size_hint_y:0.05
-
 
 
 <ScreenWait>:
@@ -179,13 +184,15 @@
             text: "Cancel"
             pos_hint: {"center_x": .5}
             on_press: root.btn_event()
+            font_style:"Roboto-Regular"
 
-        Label:
+        MDLabel:
             size_hint_y:0.05
 
 <ScreenOut>:
     rv: rv
     StyleBackGround:
+
         RecycleView:
             id: rv
             scroll_type: ['bars', 'content']
@@ -200,13 +207,16 @@
                 orientation: 'vertical'
                 spacing: dp(2)
 
+
+
     AnchorLayout:
         anchor_x:'right'
         anchor_y:'bottom'
         MDFloatingActionButton:
             icon:"undo-variant"
-            md_bg_color:  get_color_from_hex(colors['Teal']['500'])
+            md_bg_color: 162/256, 169/256, 175/256, .8
             on_press: root.btn_event()
+            font_style:"Roboto-Regular"
 
 
 
