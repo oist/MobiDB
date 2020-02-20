@@ -50,7 +50,7 @@ class MobiApp(MDApp):
         logger.debug("application.py, App, build()")
 
         # 画面をScreenManagerに追加する
-        self.title = "MobiDB - Human"
+        self.title = "White Whale - MobiDB(Human)"
         self.theme_cls.primary_palette = "Indigo"
         self.add_screen()
 
