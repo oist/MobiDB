@@ -1,0 +1,222 @@
+#:import FadeTransition  kivy.uix.screenmanager.FadeTransition
+#:import MDDropdownMenu kivymd.uix.menu.MDDropdownMenu
+#:import colors kivymd.color_definitions.colors
+
+<StyleSearchScreen@MDTextField>:
+    hint_text: "default: 0"
+    helper_text_mode: "on_focus"
+    helper_text:""
+    write_tab: False
+    multiline: False
+
+<StyleLabel@MDLabel>:
+    size_hint_y: None
+    height: self.texture_size[1]
+
+
+<StyleBackGround@BoxLayout>:
+    orientation: "vertical"
+    MDToolbar:
+        id: toolbar
+        title: app.title
+        md_bg_color: app.theme_cls.primary_color
+        background_palette: "Primary"
+        # left_action_items: [["menu", lambda x: None]]
+
+    MDSeparator:
+
+<MDMenuItem>:
+    theme_text_color: "Custom"
+    text_color: app.theme_cls.primary_color
+    canvas.before:
+	    Color:
+			rgba: app.theme_cls.bg_light
+		Rectangle:
+			size: self.size
+			pos: self.pos
+
+
+<ResultButton@BoxLayout>:
+    value: ''
+    acc:''
+    length:''
+
+    MDRectangleFlatButton:
+        theme_text_color: "Custom"
+        text_color: app.theme_cls.text_color
+        font_size: 15
+        size_hint_x: 1
+        size_hint_y: 1
+        text: "ACC: " + root.acc + ", name: " + root.value + ", Length: " + root.length
+        on_press: root.store_protain_propaty(root.index)
+        on_release: MDDropdownMenu(items=root.menu_items, width_mult=3).open(self)
+
+
+<ScreenMainKeyword>
+    submit: submit_button
+    StyleBackGround:
+        BoxLayout:
+            size_hint_y: 0.1
+
+            MDLabel:
+                size_hint_x: 0.05
+
+            MDRaisedButton:
+                text: "Keyword"
+                pos_hint: {"center_x": .5}
+
+            MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                text: "Filter"
+                pos_hint: {"center_x": .5}
+                on_press: root.move_filter_screen()
+                md_bg_color: 162/256, 169/256, 175/256, .8
+
+            MDLabel:
+                size_hint_x: 0.05
+
+
+        BoxLayout:
+            orientation: "vertical"
+            size_hint_y: 0.75
+            height: self.minimum_height
+            padding: dp(48)
+            spacing: 10
+            pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+            MDLabel:
+                text: "Keyword Input"
+
+            StyleSearchScreen:
+                id:keyword
+                helper_text:"Please input protain name."
+
+        MDRaisedButton:
+            id:submit_button
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+
+        MDLabel:
+            size_hint_y:0.05
+
+
+<ScreenMainFilter>:
+    submit: submit_button
+    StyleBackGround:
+        BoxLayout:
+            size_hint_y: 0.1
+
+            MDLabel:
+                size_hint_x: 0.05
+
+            MDRaisedButton:
+                text: "Keyword"
+                pos_hint: {"center_x": .5}
+                on_press: root.move_keyword_screen()
+                md_bg_color: 162/256, 169/256, 175/256, .8
+
+            MDLabel:
+                size_hint_x: 0.1
+
+            MDRaisedButton:
+                text: "Filter"
+                pos_hint: {"center_x": .5}
+
+            MDLabel:
+                size_hint_x: 0.05
+
+        ScrollView:
+            size_hint_y: 0.75
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: dp(48)
+                spacing: 10
+                pos_hint: {'center_x': 0.5, 'center_y': 1}
+
+                MDLabel:
+                    text: "Threshold value"
+
+
+                StyleSearchScreen:
+                    id:th_val
+                    helper_text:"Please input number between 0 < x < 1.0"
+
+                MDLabel:
+                    text: "Threshold length"
+
+                StyleSearchScreen:
+                    id:th_len
+                    helper_text:"Please input number between 0 < x"
+
+                MDLabel:
+                    text: "Fill gap"
+
+                StyleSearchScreen:
+                    id:fill_gap
+                    helper_text:"Please input number between 0 < x"
+
+        MDRaisedButton:
+            id:submit_button
+            size_hint_y: 0.1
+            text: "Search with this conditions"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+
+        MDLabel:
+            size_hint_y:0.05
+
+
+<ScreenWait>:
+    StyleBackGround:
+        Image:
+            size_hint: 0.8,0.8
+            allow_stretch: True
+            keep_ratio: False
+            source:'loading_bouningen.gif'
+
+        MDRaisedButton:
+            text: "Cancel"
+            pos_hint: {"center_x": .5}
+            on_press: root.btn_event()
+            font_style:"Roboto-Regular"
+
+        MDLabel:
+            size_hint_y:0.05
+
+<ScreenOut>:
+    rv: rv
+    StyleBackGround:
+
+        RecycleView:
+            id: rv
+            scroll_type: ['bars', 'content']
+            scroll_wheel_distance: dp(114)
+            bar_width: dp(10)
+            RecycleBoxLayout:
+                viewclass: 'ResultButton'
+                default_size: None, dp(60)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(2)
+
+
+
+    AnchorLayout:
+        anchor_x:'right'
+        anchor_y:'bottom'
+        MDFloatingActionButton:
+            icon:"undo-variant"
+            md_bg_color: 162/256, 169/256, 175/256, .8
+            on_press: root.btn_event()
+            font_style:"Roboto-Regular"
+
+
+
