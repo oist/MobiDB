@@ -10,7 +10,7 @@ Cython==0.29.10
 docutils==0.15.2
 idna==2.8
 itsdangerous==1.1.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 Kivy==1.11.1
 kivy-deps.glew==0.1.12
 kivy-deps.gstreamer==0.1.17
